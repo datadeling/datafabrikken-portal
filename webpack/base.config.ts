@@ -9,6 +9,7 @@ const configuration: Configuration = {
   },
   output: {
     path: resolve(__dirname, '../dist'),
+    assetModuleFilename: 'images/[hash][ext][query]',
     publicPath: '/',
     clean: true
   },
@@ -76,25 +77,12 @@ const configuration: Configuration = {
       },
       {
         test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images',
-              publicPath: 'images'
-            }
-          }
-        ]
+        type: 'asset/resource'
       },
       {
         test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
         exclude: [resolve(__dirname, '..', 'src', 'images')]
-      },
-      {
-        test: /\.(png|jpg|gif)$/,
-        type: 'asset/resource'
       }
     ]
   },

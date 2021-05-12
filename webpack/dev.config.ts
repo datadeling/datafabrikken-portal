@@ -74,16 +74,7 @@ const configuration: Configuration = mergeWithCustomize<Configuration>({
       },
       {
         test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'images',
-              publicPath: 'images'
-            }
-          }
-        ]
+        type: 'asset/resource'
       },
       {
         test: /\.js$/,
@@ -111,10 +102,6 @@ const configuration: Configuration = mergeWithCustomize<Configuration>({
         test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
         loader: 'file-loader',
         exclude: [resolve(__dirname, '..', 'src', 'images')]
-      },
-      {
-        test: /\.png/,
-        type: 'asset/resource'
       }
     ]
   },
