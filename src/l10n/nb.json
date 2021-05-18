@@ -1,3 +1,13 @@
 {
-  "title": "Datafabrikken"
+  "title": "Datafabrikken",
+  "lang": {
+    "chosenLanguage": "Language",
+    "norwegian-nb": "Norsk (bokmål)",
+    "norwegian-nn": "Norsk (nynorsk)",
+    "english-en": "English"
+  },
+  "header": {
+    "mainContent": "Til hovedinnhold",
+    "about": "Om Datafabrikken"
+  }
 }

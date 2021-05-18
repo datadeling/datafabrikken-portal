@@ -1,3 +1,13 @@
 {
-  "title": "Data factories"
+  "title": "Data factories",
+  "lang": {
+    "chosenLanguage": "Språk",
+    "norwegian-nb": "Norsk (bokmål)",
+    "norwegian-nn": "Norsk (nynorsk)",
+    "english-en": "English"
+  },
+  "header": {
+    "mainContent": "To main content",
+    "about": "About data factories"
+  }
 }
