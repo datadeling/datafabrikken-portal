@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { CookiesProvider } from 'react-cookie';
 import { ThemeProvider } from 'styled-components';
 
 import GlobalStyles from './styles';
@@ -9,7 +10,9 @@ import Router from '../router';
 const App: FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
-    <Router />
+    <CookiesProvider>
+      <Router />
+    </CookiesProvider>
   </ThemeProvider>
 );
 
