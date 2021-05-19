@@ -6,12 +6,15 @@ import GlobalStyles from './styles';
 import theme from './theme';
 
 import Router from '../router';
+import TranslationsProvider from '../../../providers/translations';
 
 const App: FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
     <CookiesProvider>
-      <Router />
+      <TranslationsProvider>
+        <Router />
+      </TranslationsProvider>
     </CookiesProvider>
   </ThemeProvider>
 );
