@@ -9,5 +9,8 @@
   "header": {
     "mainContent": "To main content",
     "about": "About data factories"
+  },
+  "footer": {
+    "title": "Keep an eye on the Data factories"
   }
 }

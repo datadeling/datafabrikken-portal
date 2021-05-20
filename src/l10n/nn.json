@@ -9,5 +9,8 @@
   "header": {
     "mainContent": "Til hovedinnhald",
     "about": "Om Datafabrikken"
+  },
+  "footer": {
+    "title": "Følg med på Datafabrikken"
   }
 }

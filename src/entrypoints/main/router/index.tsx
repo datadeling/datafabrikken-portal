@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Root from '../../../components/root';
 import Header from '../../../components/header';
+import Footer from '../../../components/footer';
 
 const isFeatureToggleActive = localStorage.getItem('DF_TOGGLE');
 
@@ -20,6 +21,7 @@ const Router: FC = () => (
         </Switch>
       </Suspense>
     </Root>
+    {isFeatureToggleActive && <Footer />}
   </BrowserRouter>
 );
 
