@@ -58,7 +58,14 @@ const configuration: Configuration = mergeWithCustomize<Configuration>({
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.svg$/,
+        test: /^(?!.*\.inline\.svg$).*\.svg$/,
+        loader: 'file-loader',
+        options: {
+          name: '[path][name].[ext]'
+        }
+      },
+      {
+        test: /\.inline.svg$/,
         use: [
           {
             loader: 'babel-loader'
