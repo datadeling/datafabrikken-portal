@@ -9,7 +9,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   height: 80px;
-  background: ${({ theme }) => theme.colour.neutral.N0};
+  background: ${({ theme }) => theme.colour.neutral.N60};
 
   ${onMobileView} {
     & {
@@ -50,7 +50,7 @@ const Link = styled(LinkBase)`
     height: 10px;
     width: 0;
     margin: 0 auto;
-    background-color: #e3e3e3;
+    background-color: ${({ theme }) => theme.colour.blue.B70};
   }
   &:hover {
     &:after {
@@ -64,14 +64,14 @@ const Link = styled(LinkBase)`
 
 const NavigationLinks = styled.ul`
   display: flex;
-  margin-right: auto;
+  margin-left: auto;
 
   & > li {
     flex: 0 0 auto;
   }
 
   & > li * {
-    color: ${({ theme }) => theme.colour.neutral.N70};
+    color: ${({ theme }) => theme.colour.neutral.N0};
   }
 
   & > li:nth-of-type(n + 2) {
@@ -171,6 +171,12 @@ const SkipLink = styled.a`
   }
 `;
 
+const Logo = styled.a`
+  color: ${({ theme }) => theme.colour.neutral.N0};
+  font-size: 2rem;
+  font-weight: 600;
+`;
+
 export default {
   Header,
   Nav,
@@ -180,5 +186,6 @@ export default {
   MenuButton,
   Menu,
   Link,
-  SkipLink
+  SkipLink,
+  Logo
 };

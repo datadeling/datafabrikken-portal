@@ -31,6 +31,9 @@ const Header: FC<Props> = ({ translationsService }) => {
         <Translation id='header.mainContent' />
       </SC.SkipLink>
       <SC.Nav role='navigation'>
+        <SC.Logo href='/'>
+          <Translation id='title' />.
+        </SC.Logo>
         <SC.NavigationLinks>
           <li>
             <SC.Link to='#'>
