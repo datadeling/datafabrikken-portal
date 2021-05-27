@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { CookiesProvider } from 'react-cookie';
 import { ThemeProvider } from 'styled-components';
+import { ParallaxProvider } from 'react-scroll-parallax';
 
 import GlobalStyles from './styles';
 import theme from './theme';
@@ -13,7 +14,9 @@ const App: FC = () => (
     <GlobalStyles />
     <CookiesProvider>
       <TranslationsProvider>
-        <Router />
+        <ParallaxProvider>
+          <Router />
+        </ParallaxProvider>
       </TranslationsProvider>
     </CookiesProvider>
   </ThemeProvider>
