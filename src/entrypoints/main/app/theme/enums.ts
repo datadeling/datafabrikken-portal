@@ -3,5 +3,7 @@ export enum Token {
 }
 
 export enum Colour {
-  NEUTRAL = 'neutral'
+  NEUTRAL = 'neutral',
+  BLUE = 'blue',
+  CYAN = 'cyan'
 }
