@@ -1,7 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { ParallaxBanner as ParallaxBannerBase } from 'react-scroll-parallax';
 
 import NatureImage from '../../../../../images/nature.jpg';
+import { AnimateProps, slideInFromLeft } from '../../../../../utils/animations';
 
 const onMobileView = '@media (max-width: 900px)';
 
@@ -50,7 +51,7 @@ const Container = styled.div`
 
   ${onMobileView} {
     & {
-      margin: 0 calc(12px + (32 - 12) * ((100vw - 320px) / (900 - 320)));
+      padding: 0 1em;
     }
   }
 `;
@@ -61,9 +62,21 @@ const Banner = styled.div`
   padding-top: 25vh;
 `;
 
-const Row = styled.div`
+const Row = styled.div<AnimateProps>`
   display: flex;
   margin-bottom: 15em;
+  visibility: hidden;
+  opacity: 0;
+  will-change: transform, opacity, visibility;
+  animation-delay: 200ms;
+  ${({ animate }) =>
+    animate &&
+    css`
+      animation-duration: 700ms;
+      animation-timing-function: ease-out;
+      animation-fill-mode: forwards;
+      animation-name: ${slideInFromLeft};
+    `}
 `;
 
 const MainContent = styled.main`
