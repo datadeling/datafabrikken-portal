@@ -20,7 +20,7 @@ A landing page (portal) for datafabrikken på datafabrikken.norge.no
 - Build a Docker container using the following command:
   - `docker build -t datafabrikken-portal .`
 - Run the container using the following comand:
-  - `docker run -d -p 3000:8080 -e ENV`
+  - `docker run -d -p 3000:8080 -t datafabrikken-portal`
 
 #### Running application using Docker Compose
 
