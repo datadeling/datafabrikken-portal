@@ -13,6 +13,11 @@ const Footer: FC<Props> = () => (
         <Translation id='footer.title' />
       </SC.Title>
     </SC.Content>
+    <SC.ByLine>
+      <span>
+        <Translation id='footer.byLine' />
+      </span>
+    </SC.ByLine>
   </SC.Footer>
 );
 

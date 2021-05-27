@@ -11,6 +11,7 @@
     "about": "Om Datafabrikken"
   },
   "footer": {
-    "title": "Følg med på Datafabrikken"
+    "title": "Følg med på Datafabrikken",
+    "byLine": "Datafabrikken er eit samarbeid mellom Digital Norway og Digitaliseringsdirektoratet."
   }
 }

@@ -11,6 +11,7 @@
     "about": "About data factories"
   },
   "footer": {
-    "title": "Keep an eye on the Data factories"
+    "title": "Keep an eye on the Data factories",
+    "byLine": "Data factories is a collaboration between Digital Norway and the Norwegian Digitalisation Agency."
   }
 }
