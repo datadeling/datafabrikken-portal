@@ -11,11 +11,11 @@ interface Props {
 const onMobileView = '@media (max-width: 900px)';
 
 const ContentBoxHeader = styled.h2`
-  font-size: 2.8rem;
+  font-size: ${theme.fontSize('FS28')};
   line-height: 1.3;
   word-break: break-word;
   ${onMobileView} {
-    font-size: 1.8rem;
+    font-size: ${theme.fontSize('FS18')};
   }
 `;
 

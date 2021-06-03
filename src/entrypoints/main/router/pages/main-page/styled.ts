@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { ParallaxBanner as ParallaxBannerBase } from 'react-scroll-parallax';
 
-import { theme, Colour } from '../../../app/theme';
+import { Colour, theme } from '../../../app/theme';
 
 import NatureImage from '../../../../../images/nature.jpg';
 import { AnimateProps, slideInFromLeft } from '../../../../../utils/animations';
@@ -20,7 +20,7 @@ const MainPageFeatureToggleOff = styled.article`
 
 const Title = styled.h1`
   color: ${theme.colour(Colour.NEUTRAL, 'N10')};
-  font-size: 3rem;
+  font-size: ${theme.fontSize('FS32')};
 `;
 
 const MainPage = styled.article`
@@ -28,14 +28,14 @@ const MainPage = styled.article`
   display: flex;
   flex-direction: column;
   height: 500vh;
-  padding-top: 5em;
+  padding-top: ${theme.spacing('S50')};
 `;
 
 const ParallaxBanner = styled(ParallaxBannerBase)`
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-top: 5em;
+  padding-top: ${theme.spacing('S50')};
 `;
 
 const Container = styled.div`
@@ -53,7 +53,7 @@ const Container = styled.div`
 
   ${onMobileView} {
     & {
-      padding: 0 1em;
+      padding: 0 ${theme.spacing('S10')};
     }
   }
 `;

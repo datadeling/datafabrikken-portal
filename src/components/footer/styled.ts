@@ -35,7 +35,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 2.4rem;
+  font-size: ${theme.fontSize('FS24')};
   font-weight: 500;
   color: ${theme.colour(Colour.BLUE, 'B70')};
 `;
@@ -45,7 +45,7 @@ const ByLine = styled.div`
   color: ${theme.colour(Colour.NEUTRAL, 'N10')};
   display: flex;
   justify-content: center;
-  margin-top: 5em;
+  margin-top: ${theme.spacing('S50')};
   padding: 3em 0;
 `;
 

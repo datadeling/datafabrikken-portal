@@ -1,4 +1,4 @@
-import { Colour, Token } from './enums';
+import { Colour, Token, Unit } from './enums';
 
 export default {
   [Token.COLOUR]: {
@@ -23,6 +23,157 @@ export default {
       C20: '#f0f6f7',
       C30: '#d5edf2',
       C50: '#2e6773'
+    }
+  },
+  [Token.FONT]: {
+    family: 'Rubik, sans-serif',
+    size: {
+      FS12: {
+        [Unit.PX]: 12,
+        [Unit.REM]: 1.2,
+        [Unit.EM]: 1.2
+      },
+      FS14: {
+        [Unit.PX]: 14,
+        [Unit.REM]: 1.4,
+        [Unit.EM]: 1.4
+      },
+      FS16: {
+        [Unit.PX]: 16,
+        [Unit.REM]: 1.6,
+        [Unit.EM]: 1.6
+      },
+      FS18: {
+        [Unit.PX]: 18,
+        [Unit.REM]: 1.8,
+        [Unit.EM]: 1.8
+      },
+      FS20: {
+        [Unit.PX]: 20,
+        [Unit.REM]: 2.0,
+        [Unit.EM]: 2.0
+      },
+      FS24: {
+        [Unit.PX]: 24,
+        [Unit.REM]: 2.4,
+        [Unit.EM]: 2.4
+      },
+      FS28: {
+        [Unit.PX]: 28,
+        [Unit.REM]: 2.8,
+        [Unit.EM]: 2.8
+      },
+      FS32: {
+        [Unit.PX]: 32,
+        [Unit.REM]: 3.2,
+        [Unit.EM]: 3.2
+      },
+      FS40: {
+        [Unit.PX]: 40,
+        [Unit.REM]: 4.0,
+        [Unit.EM]: 4.0
+      },
+      FS48: {
+        [Unit.PX]: 48,
+        [Unit.REM]: 4.8,
+        [Unit.EM]: 4.8
+      }
+    },
+    weight: {
+      FW100: 100,
+      FW300: 300,
+      FW400: 400,
+      FW500: 500,
+      FW700: 700,
+      FW800: 800,
+      FW900: 900
+    }
+  },
+  [Token.SPACING]: {
+    S4: {
+      [Unit.PX]: 4,
+      [Unit.REM]: 0.4,
+      [Unit.EM]: 0.4
+    },
+    S6: {
+      [Unit.PX]: 6,
+      [Unit.REM]: 0.6,
+      [Unit.EM]: 0.6
+    },
+    S8: {
+      [Unit.PX]: 8,
+      [Unit.REM]: 0.8,
+      [Unit.EM]: 0.8
+    },
+    S10: {
+      [Unit.PX]: 10,
+      [Unit.REM]: 1.0,
+      [Unit.EM]: 1.0
+    },
+    S12: {
+      [Unit.PX]: 12,
+      [Unit.REM]: 1.2,
+      [Unit.EM]: 1.2
+    },
+    S16: {
+      [Unit.PX]: 16,
+      [Unit.REM]: 1.6,
+      [Unit.EM]: 1.6
+    },
+    S24: {
+      [Unit.PX]: 24,
+      [Unit.REM]: 2.4,
+      [Unit.EM]: 2.4
+    },
+    S32: {
+      [Unit.PX]: 32,
+      [Unit.REM]: 3.2,
+      [Unit.EM]: 3.2
+    },
+    S40: {
+      [Unit.PX]: 40,
+      [Unit.REM]: 4.0,
+      [Unit.EM]: 4.0
+    },
+    S48: {
+      [Unit.PX]: 48,
+      [Unit.REM]: 4.8,
+      [Unit.EM]: 4.8
+    },
+    S50: {
+      [Unit.PX]: 50,
+      [Unit.REM]: 5.0,
+      [Unit.EM]: 5.0
+    },
+    S56: {
+      [Unit.PX]: 56,
+      [Unit.REM]: 5.6,
+      [Unit.EM]: 5.6
+    },
+    S64: {
+      [Unit.PX]: 64,
+      [Unit.REM]: 6.4,
+      [Unit.EM]: 6.4
+    },
+    S72: {
+      [Unit.PX]: 72,
+      [Unit.REM]: 7.2,
+      [Unit.EM]: 7.2
+    },
+    S80: {
+      [Unit.PX]: 80,
+      [Unit.REM]: 8.0,
+      [Unit.EM]: 8.0
+    },
+    S88: {
+      [Unit.PX]: 88,
+      [Unit.REM]: 8.8,
+      [Unit.EM]: 8.8
+    },
+    S96: {
+      [Unit.PX]: 96,
+      [Unit.REM]: 9.6,
+      [Unit.EM]: 9.6
     }
   }
 };

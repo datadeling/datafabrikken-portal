@@ -28,7 +28,7 @@ const Nav = styled.nav`
   @media (max-width: 1204px) {
     & {
       width: 100%;
-      margin: 0 3em;
+      margin: 0 ${theme.spacing('S32')};
     }
   }
 
@@ -40,7 +40,7 @@ const Nav = styled.nav`
 `;
 
 const Link = styled(LinkBase)`
-  padding-bottom: 0.5em;
+  padding-bottom: ${theme.spacing('S6')};
   position: relative;
   &:after {
     position: absolute;
@@ -76,7 +76,7 @@ const NavigationLinks = styled.ul`
   }
 
   & > li:nth-of-type(n + 2) {
-    margin-left: 2em;
+    margin-left: ${theme.spacing('S24')};
   }
 
   ${onMobileView} {
@@ -94,7 +94,7 @@ const LanguageMenu = styled(DropdownMenuBase)`
 const ButtonItem = styled.button`
   width: 100%;
   height: 100%;
-  padding: 1em 1.5em;
+  padding: ${theme.spacing('S10')} ${theme.spacing('S16')};
   border: none;
   background: none;
   text-align: left;
@@ -124,7 +124,7 @@ const MenuButton = styled.button`
     content: '\\25BC';
     font-size: 10px;
     margin-top: 1px;
-    margin-left: 0.5em;
+    margin-left: ${theme.spacing('S6')};
   }
 `;
 
@@ -139,7 +139,6 @@ const Menu = styled.ul`
   & > li > * {
     color: ${theme.colour(Colour.NEUTRAL, 'N60')};
     display: block;
-    padding: 1em 2em;
     white-space: pre;
 
     &:hover {
@@ -165,7 +164,7 @@ const SkipLink = styled.a`
     width: 100%;
     height: auto;
     margin: 0;
-    padding: 0.5em 1em;
+    padding: ${theme.spacing('S6')} ${theme.spacing('S10')};
     overflow: visible;
     text-align: center;
     clip: auto;
@@ -175,7 +174,7 @@ const SkipLink = styled.a`
 
 const Logo = styled.a`
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  font-size: 2rem;
+  font-size: ${theme.fontSize('FS20')};
   font-weight: 600;
 `;
 
