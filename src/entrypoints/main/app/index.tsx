@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components';
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 import GlobalStyles from './styles';
-import theme from './theme';
+import { defaultTheme as theme } from './theme';
 
 import Router from '../router';
 import TranslationsProvider from '../../../providers/translations';
