@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { theme, Colour } from '../../entrypoints/main/app/theme';
+
 const onMobileView = '@media (max-width: 900px)';
 
 const Footer = styled.footer`
@@ -9,7 +11,7 @@ const Footer = styled.footer`
   position: relative;
   min-height: 300px;
   padding: 4em 0;
-  background: ${({ theme }) => theme.colour.neutral.N60};
+  background: ${theme.colour(Colour.NEUTRAL, 'N60')};
 
   ${onMobileView} {
     padding: 3em 0;
@@ -35,12 +37,12 @@ const Content = styled.div`
 const Title = styled.div`
   font-size: 2.4rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colour.blue.B70};
+  color: ${theme.colour(Colour.BLUE, 'B70')};
 `;
 
 const ByLine = styled.div`
-  background: ${({ theme }) => theme.colour.neutral.N50};
-  color: ${({ theme }) => theme.colour.neutral.N10};
+  background: ${theme.colour(Colour.NEUTRAL, 'N50')};
+  color: ${theme.colour(Colour.NEUTRAL, 'N10')};
   display: flex;
   justify-content: center;
   margin-top: 5em;

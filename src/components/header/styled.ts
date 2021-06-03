@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Link as LinkBase } from 'react-router-dom';
 
+import { theme, Colour } from '../../entrypoints/main/app/theme';
 import DropdownMenuBase from '../dropdown-menu';
 
 const onMobileView = '@media (max-width: 900px)';
@@ -9,7 +10,7 @@ const Header = styled.header`
   display: flex;
   align-items: center;
   height: 80px;
-  background: ${({ theme }) => theme.colour.neutral.N60};
+  background: ${theme.colour(Colour.NEUTRAL, 'N60')};
 
   ${onMobileView} {
     & {
@@ -50,7 +51,7 @@ const Link = styled(LinkBase)`
     height: 8px;
     width: 0;
     margin: 0 auto;
-    background-color: ${({ theme }) => theme.colour.blue.B70};
+    background-color: ${theme.colour(Colour.BLUE, 'B70')};
   }
   &:hover {
     &:after {
@@ -71,7 +72,7 @@ const NavigationLinks = styled.ul`
   }
 
   & > li * {
-    color: ${({ theme }) => theme.colour.neutral.N0};
+    color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   }
 
   & > li:nth-of-type(n + 2) {
@@ -101,7 +102,7 @@ const ButtonItem = styled.button`
   cursor: pointer;
 
   &:hover {
-    background: ${({ theme }) => theme.colour.neutral.N10};
+    background: ${theme.colour(Colour.NEUTRAL, 'N10')};
   }
 
   ${onMobileView} {
@@ -130,19 +131,19 @@ const MenuButton = styled.button`
 const Menu = styled.ul`
   position: relative;
   border-radius: 5px;
-  background: ${({ theme }) => theme.colour.neutral.N0};
+  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
   overflow: hidden;
   z-index: 1;
 
   & > li > * {
-    color: ${({ theme }) => theme.colour.neutral.N60};
+    color: ${theme.colour(Colour.NEUTRAL, 'N60')};
     display: block;
     padding: 1em 2em;
     white-space: pre;
 
     &:hover {
-      background: ${({ theme }) => theme.colour.neutral.N10};
+      background: ${theme.colour(Colour.NEUTRAL, 'N10')};
     }
   }
 `;
@@ -158,7 +159,7 @@ const SkipLink = styled.a`
   clip: rect(0, 0, 0, 0);
   &:focus,
   &:active {
-    background-color: ${({ theme }) => theme.colour.neutral.N20};
+    background-color: ${theme.colour(Colour.NEUTRAL, 'N20')};
     top: 0;
     left: 0;
     width: 100%;
@@ -173,7 +174,7 @@ const SkipLink = styled.a`
 `;
 
 const Logo = styled.a`
-  color: ${({ theme }) => theme.colour.neutral.N0};
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   font-size: 2rem;
   font-weight: 600;
 `;

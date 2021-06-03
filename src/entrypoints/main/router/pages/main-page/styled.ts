@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { ParallaxBanner as ParallaxBannerBase } from 'react-scroll-parallax';
 
+import { theme, Colour } from '../../../app/theme';
+
 import NatureImage from '../../../../../images/nature.jpg';
 import { AnimateProps, slideInFromLeft } from '../../../../../utils/animations';
 
@@ -17,12 +19,12 @@ const MainPageFeatureToggleOff = styled.article`
 `;
 
 const Title = styled.h1`
-  color: ${({ theme }) => theme.colour.neutral.N10};
+  color: ${theme.colour(Colour.NEUTRAL, 'N10')};
   font-size: 3rem;
 `;
 
 const MainPage = styled.article`
-  background-color: ${({ theme }) => theme.colour.neutral.N60};
+  background-color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   display: flex;
   flex-direction: column;
   height: 500vh;

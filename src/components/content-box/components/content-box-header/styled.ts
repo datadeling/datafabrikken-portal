@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { theme, Colour } from '../../../../entrypoints/main/app/theme';
+
 import { Variant } from './enums';
 
 interface Props {
@@ -22,11 +24,11 @@ const Title = styled.span<Props>`
     switch (variant) {
       case Variant.SECONDARY:
         return css`
-          color: ${({ theme }) => theme.colour.blue.B70};
+          color: ${theme.colour(Colour.BLUE, 'B70')};
         `;
       default:
         return css`
-          color: ${({ theme }) => theme.colour.neutral.N10};
+          color: ${theme.colour(Colour.NEUTRAL, 'N10')};
         `;
     }
   }}
