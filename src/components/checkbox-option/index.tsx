@@ -1,40 +1,61 @@
 import React, { FC, useState, PropsWithChildren, ChangeEvent } from 'react';
 
-import SC from './styled';
-import { getParameter } from '../../utils/location-helper';
 import Translation from '../translation';
+import { MediaType } from '../../types';
+
+import SC from './styled';
 
 interface Props {
-  filterName: string;
-  label: string;
   handleCheckboxChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  isChecked: boolean;
+  filterId: string;
+  filterName: string;
+  filterValue?: string;
+  label?: string;
+  mediaTypes?: MediaType[];
 }
 
 const CheckboxContainer: FC<PropsWithChildren<Props>> = ({
+  handleCheckboxChange,
+  isChecked,
+  filterId,
   filterName,
+  filterValue = '',
   label,
-  handleCheckboxChange
+  mediaTypes
 }) => {
-  const [checked, setChecked] = useState<boolean>(!!getParameter(filterName));
+  const [checked, setChecked] = useState<boolean>(isChecked);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);
     handleCheckboxChange(event);
   };
 
-  const id = encodeURIComponent(filterName);
-
   return (
     <SC.CheckboxContainer>
-      <label htmlFor={id}>
-        <input id={id} type='checkbox' checked={checked} onChange={onChange} />
-        <SC.StyledCheckbox checked={checked}>
+      <label htmlFor={encodeURIComponent(filterId)}>
+        <input
+          type='checkbox'
+          id={encodeURIComponent(filterId)}
+          name={filterName}
+          value={filterValue}
+          checked={checked}
+          onChange={e => onChange(e)}
+        />
+        <SC.StyledCheckbox $checked={checked}>
           <SC.Icon viewBox='0 0 24 24'>
             <polyline points='20 6 9 17 4 12' />
           </SC.Icon>
         </SC.StyledCheckbox>
         <span>
-          <Translation id={label} />
+          {label ? (
+            <Translation id={label} />
+          ) : (
+            mediaTypes
+              ?.filter(({ code }) => code === filterValue)
+              ?.shift()
+              ?.name?.toLowerCase()
+          )}
         </span>
       </label>
     </SC.CheckboxContainer>

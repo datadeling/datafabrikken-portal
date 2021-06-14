@@ -2,11 +2,8 @@ import styled from 'styled-components';
 
 import { theme, Colour } from '../../entrypoints/main/app/theme';
 
-type Props = {
-  checked: boolean;
-};
-
 const CheckboxContainer = styled.div`
+  margin-bottom: ${theme.spacing('S4')};
   & > label {
     align-items: center;
     display: flex;
@@ -34,7 +31,11 @@ const Icon = styled.svg`
   stroke-width: 2px;
 `;
 
-const StyledCheckbox = styled.div<Props>`
+type styledCheckboxProps = {
+  $checked: boolean;
+};
+
+const StyledCheckbox = styled.div<styledCheckboxProps>`
   border: 1px solid;
   width: 25px;
   height: 25px;
@@ -43,7 +44,7 @@ const StyledCheckbox = styled.div<Props>`
     box-shadow: 0 0 0 3px ${theme.colour(Colour.BLUE, 'B36')};
   }
   ${Icon} {
-    visibility: ${({ checked }) => (checked ? 'visible' : 'hidden')};
+    visibility: ${({ $checked }) => ($checked ? 'visible' : 'hidden')};
   }
 `;
 

@@ -16,11 +16,13 @@ import SearchHit from '../../../../../components/search-hit';
 import SearchBar from '../../../../../components/search-bar';
 import {
   getParameter,
+  removeParameter,
   setMultiselectFilterValue,
   setParameter
 } from '../../../../../utils/location-helper';
 
 import Themes from './components/themes';
+import Filters from './components/filters';
 
 import SC from './styled';
 
@@ -30,6 +32,7 @@ interface Props
     ReferenceDataProps {}
 
 const DatasetsPage: FC<Props> = ({
+  datasetsAggregations,
   datasets,
   totalDatasets,
   datasetPageSize,
@@ -41,17 +44,25 @@ const DatasetsPage: FC<Props> = ({
   const { search } = useLocation();
   const history = useHistory();
 
+  const { mediaType } = datasetsAggregations;
+
   const pageParameter = getParameter('page');
   const queryParameter = getParameter('q');
   const losThemeParameter = getParameter('losTheme');
   const themeParameter = getParameter('theme');
+  const openDataParameter = getParameter('opendata');
+  const accessRightsParameter = getParameter('accessRights');
+  const formatParameter = getParameter('format');
 
   useEffect(() => {
     getPagedDatasets({
       page: parseInt(pageParameter, 10),
       q: queryParameter,
       losTheme: losThemeParameter,
-      theme: themeParameter
+      theme: themeParameter,
+      opendata: openDataParameter,
+      accessRights: accessRightsParameter,
+      format: formatParameter
     });
   }, [search]);
 
@@ -83,6 +94,20 @@ const DatasetsPage: FC<Props> = ({
     setMultiselectFilterValue(history, name, value, checked);
   };
 
+  const handleCheckboxChange = ({
+    target: { checked, name }
+  }: ChangeEvent<HTMLInputElement>) => {
+    checked
+      ? setParameter(history, { [name]: 'true' })
+      : removeParameter(history, name);
+  };
+
+  const handleMultiSelectFilter = ({
+    target: { checked, name, value }
+  }: ChangeEvent<HTMLInputElement>) => {
+    setMultiselectFilterValue(history, name, value, checked);
+  };
+
   return (
     <Root>
       <SC.Container>
@@ -101,7 +126,19 @@ const DatasetsPage: FC<Props> = ({
           <Themes onFilterTheme={handleFilterTheme} />
         </SC.Themes>
         <SC.Row>
-          <SC.Aside />
+          <SC.Aside>
+            <SC.Filters>
+              <Filters
+                handleCheckboxChange={handleCheckboxChange}
+                handleMultiSelectFilter={handleMultiSelectFilter}
+                mediaTypeAggregations={mediaType}
+                mediaTypesReferenceData={mediatypes}
+                openDataParameter={openDataParameter}
+                accessRightsParameter={accessRightsParameter}
+                formatParameter={formatParameter}
+              />
+            </SC.Filters>
+          </SC.Aside>
           <SC.SearchList>
             {datasets?.map(
               ({

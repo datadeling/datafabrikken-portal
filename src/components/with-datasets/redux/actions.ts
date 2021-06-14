@@ -16,6 +16,8 @@ interface GetDatasetsParams {
   opendata?: string;
   losTheme?: string;
   theme?: string;
+  accessRights?: string;
+  format?: string;
 }
 
 export function getPagedDatasetsRequested(params?: GetDatasetsParams) {

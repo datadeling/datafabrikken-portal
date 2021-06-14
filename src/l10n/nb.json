@@ -37,7 +37,11 @@
     "limitedAccess": "Begrenset tilgang"
   },
   "filter": {
-    "openData": "åpne data"
+    "title": "Filter",
+    "accessRights": "Tilgang",
+    "openData": "åpne data",
+    "restrictedAccessRights": "begrenset tilgang",
+    "format": "Format"
   },
   "unknown": "Ukjent"
 }

@@ -11,7 +11,9 @@ import {
 import type { Dataset, Paged } from '../../../types';
 
 function* getPagedDatasetsRequested({
-  payload: { params: { page, q, opendata, losTheme, theme } = {} }
+  payload: {
+    params: { page, q, opendata, losTheme, theme, accessRights, format } = {}
+  }
 }: ReturnType<typeof actions.getPagedDatasetsRequested>) {
   try {
     const data: Record<string, any> = yield call(
@@ -21,7 +23,9 @@ function* getPagedDatasetsRequested({
         q,
         opendata,
         losTheme,
-        theme
+        theme,
+        accessRights,
+        format
       })
     );
     if (data) {

@@ -50,15 +50,6 @@ const Title = styled.h1`
   }
 `;
 
-const AsideTitle = styled.div`
-  font-size: ${theme.fontSize('FS16')};
-  margin-bottom: ${theme.spacing('S16')};
-`;
-
-const AsideSubTitle = styled.div`
-  margin-bottom: ${theme.spacing('S6')};
-`;
-
 const SearchList = styled.section`
   padding: 0 ${theme.spacing('S10')};
 `;
@@ -73,6 +64,15 @@ const SearchContainer = styled.div`
 
 const Themes = styled.div`
   margin-bottom: ${theme.spacing('S20')};
+  ${onMobileView} {
+    display: none;
+  }
+`;
+
+const Filters = styled.div`
+  ${onMobileView} {
+    display: none;
+  }
 `;
 
 const Pagination = styled.div`
@@ -105,10 +105,9 @@ export default {
   Row,
   Aside,
   Title,
-  AsideTitle,
-  AsideSubTitle,
   SearchList,
   SearchContainer,
   Themes,
+  Filters,
   Pagination
 };

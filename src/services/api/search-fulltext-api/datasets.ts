@@ -14,7 +14,7 @@ const mapFilters = ({
   orgPath,
   theme,
   opendata,
-  accessrights: accessRights,
+  accessRights,
   spatial,
   provenance,
   uris,
@@ -60,7 +60,13 @@ const mapFilters = ({
     filters.push({ opendata });
   }
   if (accessRights) {
-    filters.push({ accessRights });
+    filters.push({
+      collection: {
+        field: 'accessRights.code.keyword',
+        values: ['PUBLIC', 'RESTRICTED', 'NON_PUBLIC'],
+        operator: 'OR'
+      }
+    });
   }
   if (spatial) {
     filters.push({ spatial });
@@ -127,7 +133,8 @@ const mapFilters = ({
     filters.push({
       collection: {
         field: 'distribution.mediaType.code.keyword',
-        values: format.split(',')
+        values: format.split(','),
+        operator: 'OR'
       }
     });
   }
