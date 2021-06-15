@@ -8,7 +8,8 @@
   },
   "header": {
     "mainContent": "To main content",
-    "about": "About data factories"
+    "about": "About data factories",
+    "findData": "Find data"
   },
   "footer": {
     "title": "Keep an eye on the Data factories",
@@ -17,6 +18,11 @@
   "truncatedText": {
     "expanded": "Hide description",
     "collapsed": "Show full description"
+  },
+  "findDataPage": {
+    "title": "Find data",
+    "findData": "Search data",
+    "findDataText": "Lorem ipsum."
   },
   "owner": "Owner"
 }

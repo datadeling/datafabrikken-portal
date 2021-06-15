@@ -42,6 +42,11 @@ const Header: FC<Props> = ({ translationsService }) => {
             </SC.Link>
           </li>
           <li>
+            <SC.Link to={PATHNAME.COMPETENCE_AND_GUIDANCE}>
+              <Translation id='header.findData' />
+            </SC.Link>
+          </li>
+          <li>
             <SC.LanguageMenu
               isOpen={isLanguageMenuOpen}
               onClose={closeLanguageMenu}

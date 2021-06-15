@@ -8,7 +8,8 @@
   },
   "header": {
     "mainContent": "Til hovedinnhald",
-    "about": "Om Datafabrikken"
+    "about": "Om Datafabrikken",
+    "findData": "Finn data"
   },
   "footer": {
     "title": "Følg med på Datafabrikken",
@@ -17,6 +18,11 @@
   "truncatedText": {
     "expanded": "Skjul skildringa",
     "collapsed": "Vis heile skildringa"
+  },
+  "findDataPage": {
+    "title": "Finn data",
+    "findData": "Søk etter data",
+    "findDataText": "Rett til søkesiden."
   },
   "owner": "Eigar"
 }
