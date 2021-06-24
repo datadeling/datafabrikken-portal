@@ -15,9 +15,9 @@ const ParallaxContainer: FC<PropsWithChildren<Props>> = ({ children }) => (
         amount: 0.2,
         props: {
           style: {
-            backgroundSize: '60%',
+            backgroundSize: '100%',
             backgroundRepeat: 'repeat-y',
-            backgroundPosition: 'right'
+            backgroundPosition: 'left top'
           }
         }
       },
@@ -26,9 +26,9 @@ const ParallaxContainer: FC<PropsWithChildren<Props>> = ({ children }) => (
         amount: 0.1,
         props: {
           style: {
-            backgroundSize: '60%',
+            backgroundSize: '100%',
             backgroundRepeat: 'repeat-y',
-            backgroundPosition: 'right'
+            backgroundPosition: 'left top'
           }
         }
       }
