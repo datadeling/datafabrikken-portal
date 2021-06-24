@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { Link as LinkBase } from 'react-router-dom';
 
+import { MdClose } from 'react-icons/md';
+import { FiMenu } from 'react-icons/fi';
+
 import { theme, Colour } from '../../entrypoints/main/app/theme';
+
+import DropdownMenuBase from '../dropdown-menu';
 
 import BetaLogoBase from '../../images/tag-beta-desktop.inline.svg';
 
@@ -126,6 +131,63 @@ const BetaIcon = styled(BetaLogoBase)`
   }
 `;
 
+const DropdownMenu = styled(DropdownMenuBase)`
+  display: none;
+  margin-left: auto;
+
+  ${onMobileView} {
+    & {
+      display: flex;
+    }
+  }
+`;
+
+const MenuButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+`;
+
+const HamburgerIcon = styled(FiMenu)`
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  width: 40px;
+  height: 40px;
+  padding-right: ${theme.spacing('S4')};
+`;
+
+const CloseIcon = styled(MdClose)`
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  width: 40px;
+  height: 40px;
+`;
+
+const Menu = styled.ul`
+  overflow-y: hidden;
+  list-style: none;
+  position: fixed;
+  top: calc(55px + (80 - 55) * ((100vw - 320px) / (900 - 320)));
+  background: #2d3340;
+  left: 0;
+  bottom: 0;
+  height: 100vh;
+  width: 100vh;
+  overflow: hidden;
+  z-index: 9;
+
+  & > li > a {
+    display: block;
+    padding: ${theme.spacing('S12')} ${theme.spacing('S16')};
+    white-space: pre;
+    border-top: 1px solid #3b4559;
+    font-size: 1.5rem;
+  }
+`;
+
 export default {
   Header,
   Nav,
@@ -133,5 +195,10 @@ export default {
   Link,
   SkipLink,
   Logo,
-  BetaIcon
+  BetaIcon,
+  DropdownMenu,
+  MenuButton,
+  Menu,
+  HamburgerIcon,
+  CloseIcon
 };
