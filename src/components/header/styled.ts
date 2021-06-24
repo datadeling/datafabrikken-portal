@@ -171,7 +171,7 @@ const Menu = styled.ul`
   list-style: none;
   position: fixed;
   top: calc(55px + (80 - 55) * ((100vw - 320px) / (900 - 320)));
-  background: #2d3340;
+  background: ${theme.colour(Colour.BLUE, 'B52')};
   left: 0;
   bottom: 0;
   height: 100vh;
@@ -183,7 +183,7 @@ const Menu = styled.ul`
     display: block;
     padding: ${theme.spacing('S12')} ${theme.spacing('S16')};
     white-space: pre;
-    border-top: 1px solid #3b4559;
+    border-top: 1px solid ${theme.colour(Colour.BLUE, 'B48')};
     font-size: 1.5rem;
   }
 `;
