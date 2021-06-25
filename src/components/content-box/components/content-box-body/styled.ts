@@ -14,7 +14,6 @@ const ContentBoxBody = styled.div`
   }
   ${LinkSC.Link} {
     font-size: ${theme.fontSize('FS10')};
-    width: 50%;
   }
 `;
 

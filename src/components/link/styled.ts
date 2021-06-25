@@ -10,6 +10,7 @@ type linkProps = {
 
 const Link = styled.a<linkProps>`
   align-items: center;
+  align-self: flex-start;
   cursor: pointer;
   display: inline-flex;
   font-weight: ${theme.fontWeight('FW400')};
@@ -31,6 +32,7 @@ const Link = styled.a<linkProps>`
       default:
         return css`
           color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+          border-bottom: 3px solid rgb(158, 190, 255);
         `;
     }
   }}
