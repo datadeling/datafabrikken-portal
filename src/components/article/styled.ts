@@ -4,6 +4,8 @@ import ContainerSC from '../container/styled';
 
 import { Colour, theme, Unit } from '../../entrypoints/main/app/theme';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const Article = styled.article`
   line-height: 1.5;
   margin-bottom: ${theme.spacing('S50')};
@@ -22,16 +24,25 @@ const Header = styled.section`
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
   margin-bottom: ${theme.spacing('S10')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS18')};
+  }
 `;
 
 const Ingress = styled.p`
   font-size: ${theme.fontSize('FS16')};
   line-height: 1.5;
   margin-bottom: ${theme.spacing('S16')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS12')};
+  }
 `;
 
 const Body = styled.div`
   font-size: ${theme.fontSize('FS12')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS10')};
+  }
   margin-bottom: ${theme.spacing('S10')};
   & > h2 {
     font-size: ${theme.fontSize('FS16')};
@@ -77,6 +88,9 @@ const Quote = styled.div`
   line-height: 1.5;
   padding: ${theme.spacing('S6')} ${theme.spacing('S10')};
   margin: ${theme.spacing('S16')} 0;
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS14')};
+  }
 `;
 
 const ImageWrapper = styled.div`
