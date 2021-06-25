@@ -4,8 +4,6 @@ import Footer from '../footer';
 
 import SC from './styled';
 
-const isFeatureToggleActive = localStorage.getItem('DF_TOGGLE');
-
 interface Props {
   invertColor?: boolean;
 }
@@ -16,7 +14,7 @@ const Root: FC<PropsWithChildren<Props>> = ({
 }) => (
   <SC.Root invertColor={invertColor}>
     {children}
-    {isFeatureToggleActive && <Footer />}
+    <Footer />
   </SC.Root>
 );
 

@@ -19,7 +19,6 @@ import {
   InfoBoxTitle,
   SC as InfoBoxSC
 } from '../../../../../components/info-box';
-import Translation from '../../../../../components/translation';
 import withNews, {
   Props as CmsNewsProps
 } from '../../../../../components/with-cms-news';
@@ -32,8 +31,6 @@ import { dateStringToDate, formatDate } from '../../../../../utils/date';
 import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter';
 
 import SC from './styled';
-
-const isFeatureToggleActive = localStorage.getItem('DF_TOGGLE');
 
 const articleId = 'a8ba0c51-4693-401c-b2c8-61dfe144cc83';
 
@@ -54,7 +51,7 @@ const MainPage: FC<Props> = ({
   }, []);
   const modules = cmsPage?.field_modules ?? [];
   const firstElement = modules?.shift();
-  return isFeatureToggleActive ? (
+  return (
     <ParallaxContainer>
       <Root>
         <Container>
@@ -155,12 +152,6 @@ const MainPage: FC<Props> = ({
         </Container>
       </Root>
     </ParallaxContainer>
-  ) : (
-    <SC.MainPageFeatureToggleOff>
-      <SC.Title>
-        <Translation id='title' />
-      </SC.Title>
-    </SC.MainPageFeatureToggleOff>
   );
 };
 

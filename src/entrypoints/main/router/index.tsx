@@ -6,8 +6,6 @@ import { PATHNAME } from '../../../enums';
 import Breadcrumbs from '../../../components/breadcrumbs';
 import Header from '../../../components/header';
 
-const isFeatureToggleActive = localStorage.getItem('DF_TOGGLE');
-
 const routes = {
   [PATHNAME.MAIN]: lazy(() => import('./pages/main-page')),
   [PATHNAME.ABOUT]: lazy(() => import('./pages/article-page')),
@@ -26,7 +24,7 @@ const routes = {
 
 const Router: FC = () => (
   <BrowserRouter>
-    {isFeatureToggleActive && <Header />}
+    <Header />
     <Breadcrumbs />
     <Suspense fallback={null}>
       <Switch>
