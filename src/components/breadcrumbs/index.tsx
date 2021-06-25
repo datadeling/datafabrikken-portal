@@ -32,7 +32,7 @@ const routes = [
   },
   {
     path: `${PATHNAME.FIND_DATA}${PATHNAME.DATA_SOURCES}`,
-    breadcrumb: () => <ArticleBreadCrumb />
+    breadcrumb: 'Oversikt over datakilder'
   },
   {
     path: `${PATHNAME.FIND_DATA}${PATHNAME.GUIDEANCE_AND_COMPETENCE}${PATHNAME.LEGAL_FRAMEWORK}`,
@@ -40,7 +40,7 @@ const routes = [
   },
   {
     path: `${PATHNAME.FIND_DATA}${PATHNAME.GUIDEANCE_AND_COMPETENCE}`,
-    breadcrumb: () => <ArticleBreadCrumb />
+    breadcrumb: 'Veiledere og kompetanse'
   },
   {
     path: PATHNAME.FIND_DATA,
