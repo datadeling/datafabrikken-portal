@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import { PATHNAME } from '../../../enums';
 
+import Breadcrumbs from '../../../components/breadcrumbs';
 import Header from '../../../components/header';
 
 const isFeatureToggleActive = localStorage.getItem('DF_TOGGLE');
@@ -26,6 +27,7 @@ const routes = {
 const Router: FC = () => (
   <BrowserRouter>
     {isFeatureToggleActive && <Header />}
+    <Breadcrumbs />
     <Suspense fallback={null}>
       <Switch>
         <Route exact path={PATHNAME.MAIN} component={routes[PATHNAME.MAIN]} />
