@@ -6,6 +6,8 @@ import { theme } from '../../../app/theme';
 import NatureImage from '../../../../../images/nature.jpg';
 import { AnimateProps, slideInFromLeft } from '../../../../../utils/animations';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const MainPageFeatureToggleOff = styled.article`
   background-image: url(${NatureImage});
   background-repeat: no-repeat;
@@ -76,6 +78,9 @@ const NewsRow = styled.div<AnimateProps>`
       animation-fill-mode: forwards;
       animation-name: ${slideInFromLeft};
     `}
+  ${onMobileView} {
+    flex-direction: column;
+  }
 `;
 
 export default {
