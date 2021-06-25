@@ -1,5 +1,6 @@
 import React, { FC, memo } from 'react';
 import { Helmet } from 'react-helmet';
+import { Link as RouterLink } from 'react-router-dom';
 
 import { PARAGRAPH } from '../../enums';
 import {
@@ -54,8 +55,17 @@ export const renderModule = (module: any) => {
       );
     }
     case PARAGRAPH.INFO_BOX: {
+      const infoBoxUrl = module?.field_link?.uri?.replace('internal:', '');
+      const r = new RegExp('^(?:[a-z]+:)?//', 'i');
+      const isAbsoluteUrl = r.test(infoBoxUrl) ?? false;
       return (
-        <InfoBox key={module.id} href={module.field_link?.uri} invertColor>
+        <InfoBox
+          key={module.id}
+          {...(isAbsoluteUrl
+            ? { href: module.field_link?.uri }
+            : { as: RouterLink, to: infoBoxUrl })}
+          invertColor
+        >
           <InfoBoxTitle>
             <h2>{module.field_link?.title}</h2>
           </InfoBoxTitle>
