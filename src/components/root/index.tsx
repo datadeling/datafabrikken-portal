@@ -12,7 +12,7 @@ const Root: FC<PropsWithChildren<Props>> = ({
   invertColor = false,
   children
 }) => (
-  <SC.Root invertColor={invertColor}>
+  <SC.Root $invertColor={invertColor}>
     {children}
     <Footer />
   </SC.Root>

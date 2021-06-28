@@ -3,16 +3,16 @@ import styled from 'styled-components';
 import { Colour, theme } from '../../entrypoints/main/app/theme';
 
 type RootProps = {
-  invertColor?: boolean;
+  $invertColor?: boolean;
 };
 
 const Root = styled.main<RootProps>`
-  background-color: ${({ invertColor }) =>
-    invertColor
+  background-color: ${({ $invertColor }) =>
+    $invertColor
       ? theme.colour(Colour.NEUTRAL, 'N0')
       : theme.colour(Colour.BLUE, 'B52')};
-  color: ${({ invertColor }) =>
-    invertColor
+  color: ${({ $invertColor }) =>
+    $invertColor
       ? theme.colour(Colour.BLUE, 'B52')
       : theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
