@@ -20,7 +20,12 @@ interface Props extends ComponentPropsWithoutRef<'a'> {
   as?: keyof JSX.IntrinsicElements | ComponentType<any>;
 }
 
-const InfoBox: FC<PropsWithChildren<Props>> = ({ children, as, ...props }) => {
+const InfoBox: FC<PropsWithChildren<Props>> = ({
+  invertColor,
+  children,
+  as,
+  ...props
+}) => {
   const renderInfoBoxIcon = () =>
     Children.map(children, child =>
       isValidElement(child) && child.type === InfoBoxIcon ? (
@@ -39,7 +44,7 @@ const InfoBox: FC<PropsWithChildren<Props>> = ({ children, as, ...props }) => {
     )?.shift();
 
   return (
-    <SC.InfoBox as={as} {...props}>
+    <SC.InfoBox $invertColor={invertColor} as={as} {...props}>
       {renderInfoBoxIcon()}
       <SC.ContentWrapper>
         {renderInfoBoxTitle()}

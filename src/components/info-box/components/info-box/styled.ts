@@ -7,20 +7,20 @@ import InfoBoxTitleSC from '../info-box-title/styled';
 const onMobileView = '@media (max-width: 900px)';
 
 type infoBoxProps = {
-  invertColor?: boolean;
+  $invertColor?: boolean;
 };
 const InfoBox = styled.a<infoBoxProps>`
-  background-color: ${({ invertColor }) =>
-    invertColor
+  background-color: ${({ $invertColor }) =>
+    $invertColor
       ? theme.colour(Colour.NEUTRAL, 'N02')
       : theme.colour(Colour.BLUE, 'B48')};
-  color: ${({ invertColor }) =>
-    invertColor
+  color: ${({ $invertColor }) =>
+    $invertColor
       ? theme.colour(Colour.BLUE, 'B52')
       : theme.colour(Colour.NEUTRAL, 'N0')};
   box-shadow: 0 2px 8px
-    ${({ invertColor }) =>
-      invertColor
+    ${({ $invertColor }) =>
+      $invertColor
         ? theme.colour(Colour.NEUTRAL, 'N30')
         : theme.colour(Colour.NEUTRAL, 'N60')};
   display: flex;
