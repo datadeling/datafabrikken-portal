@@ -57,7 +57,7 @@ const Body = styled.div`
     margin-bottom: ${theme.spacing('S10')};
   }
   & > p {
-    margin-bottom: ${theme.spacing('S10')};
+    margin-bottom: ${theme.spacing('S20')};
     & > a {
       border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
     }
