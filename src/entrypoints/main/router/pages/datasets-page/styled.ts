@@ -48,7 +48,7 @@ const Title = styled.h1`
   margin-bottom: ${theme.spacing('S6')};
   text-align: center;
   ${onMobileView} {
-    font-size: ${theme.fontSize('FS24')};
+    font-size: ${theme.fontSize('FS18')};
   }
 `;
 
