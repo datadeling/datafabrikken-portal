@@ -16,8 +16,13 @@ export interface Props extends ComponentPropsWithoutRef<'a'> {
   as?: keyof JSX.IntrinsicElements | ComponentType<any>;
 }
 
-const Link: FC<PropsWithChildren<Props>> = ({ children, as, ...props }) => (
-  <SC.Link as={as} {...props}>
+const Link: FC<PropsWithChildren<Props>> = ({
+  variant,
+  showIcon,
+  children,
+  ...props
+}) => (
+  <SC.Link $variant={variant} $showIcon={showIcon} {...props}>
     {children}
   </SC.Link>
 );

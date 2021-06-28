@@ -5,8 +5,8 @@ import { theme, Colour } from '../../entrypoints/main/app/theme';
 import { Variant } from './enums';
 
 type linkProps = {
-  variant?: Variant;
-  showIcon?: boolean;
+  $variant?: Variant;
+  $showIcon?: boolean;
 };
 
 const Link = styled.a<linkProps>`
@@ -15,8 +15,8 @@ const Link = styled.a<linkProps>`
   cursor: pointer;
   display: inline-flex;
   font-weight: ${theme.fontWeight('FW400')};
-  ${({ showIcon = true }) =>
-    showIcon &&
+  ${({ $showIcon = true }) =>
+    $showIcon &&
     css`
       &:after {
         font-family: 'Material Icons';
@@ -26,8 +26,8 @@ const Link = styled.a<linkProps>`
       }
     `}
 
-  ${({ variant }) => {
-    switch (variant) {
+  ${({ $variant }) => {
+    switch ($variant) {
       case Variant.PRIMARY:
         return css`
           padding: ${theme.spacing('S10')};
