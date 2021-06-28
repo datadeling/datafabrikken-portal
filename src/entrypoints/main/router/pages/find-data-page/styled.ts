@@ -4,9 +4,14 @@ import { theme } from '../../../app/theme';
 
 import DatasetIconBase from '../../../../../images/service-data-search.inline.svg';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const Page = styled.article`
   line-height: 1.5;
   padding-top: ${theme.spacing('S50')};
+  ${onMobileView} {
+    padding-top: ${theme.spacing('S10')};
+  }
 `;
 
 const Title = styled.h1`

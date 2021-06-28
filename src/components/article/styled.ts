@@ -13,6 +13,9 @@ const Article = styled.article`
 
 const Container = styled(ContainerSC.Container)`
   padding-top: ${theme.spacing('S50')};
+  ${onMobileView} {
+    padding-top: ${theme.spacing('S10')};
+  }
 `;
 
 const Header = styled.section`

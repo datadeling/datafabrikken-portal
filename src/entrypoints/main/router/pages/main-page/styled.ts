@@ -33,6 +33,9 @@ const Banner = styled.div`
   display: flex;
   height: 100vh;
   padding-top: 25vh;
+  ${onMobileView} {
+    padding-top: ${theme.spacing('S50')};
+  }
 `;
 
 const Row = styled.div<AnimateProps>`
