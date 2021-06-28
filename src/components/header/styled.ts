@@ -19,6 +19,10 @@ const Header = styled.header`
   align-items: center;
   height: 80px;
   background: ${theme.colour(Colour.BLUE, 'B52')};
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 
   ${onMobileView} {
     & {
