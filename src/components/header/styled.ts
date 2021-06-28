@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 import { Link as LinkBase } from 'react-router-dom';
 
-import { MdClose } from 'react-icons/md';
-import { FiMenu } from 'react-icons/fi';
-
 import { theme, Colour } from '../../entrypoints/main/app/theme';
 
 import DropdownMenuBase from '../dropdown-menu';
@@ -157,17 +154,49 @@ const MenuButton = styled.button`
   cursor: pointer;
 `;
 
-const HamburgerIcon = styled(FiMenu)`
-  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  width: 40px;
-  height: 40px;
-  padding-right: ${theme.spacing('S4')};
-`;
+type burgerProps = {
+  open: boolean;
+};
 
-const CloseIcon = styled(MdClose)`
-  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  width: 40px;
-  height: 40px;
+const Burger = styled.div<burgerProps>`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-right: ${theme.spacing('S6')};
+  z-index: 10;
+
+  &:focus {
+    outline: none;
+  }
+
+  div {
+    width: 30px;
+    height: 4px;
+    background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+    border-radius: 10px;
+    transition: all 200ms linear;
+    position: relative;
+    transform-origin: 1px;
+
+    :first-child {
+      transform: ${({ open }) => (open ? 'rotate(45deg)' : 'rotate(0)')};
+    }
+
+    :nth-child(2) {
+      opacity: ${({ open }) => (open ? '0' : '1')};
+      transform: ${({ open }) => (open ? 'translateX(20px)' : 'translateX(0)')};
+    }
+
+    :nth-child(3) {
+      transform: ${({ open }) => (open ? 'rotate(-45deg)' : 'rotate(0)')};
+    }
+  }
 `;
 
 const Menu = styled.ul`
@@ -203,6 +232,5 @@ export default {
   DropdownMenu,
   MenuButton,
   Menu,
-  HamburgerIcon,
-  CloseIcon
+  Burger
 };

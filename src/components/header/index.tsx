@@ -80,8 +80,12 @@ const Header: FC<Props> = () => {
         >
           <Trigger>
             <SC.MenuButton onClick={openDropdownMenu}>
-              {isDropdownMenuOpen ? <SC.CloseIcon /> : <SC.HamburgerIcon />}
-              Meny
+              <SC.Burger open={isDropdownMenuOpen}>
+                <div />
+                <div />
+                <div />
+              </SC.Burger>
+              <span>Meny</span>
             </SC.MenuButton>
           </Trigger>
           <Menu>
