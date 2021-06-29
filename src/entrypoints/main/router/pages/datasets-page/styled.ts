@@ -4,8 +4,6 @@ import ContainerSC from '../../../../../components/container/styled';
 
 import { Colour, theme } from '../../../app/theme';
 
-import ThemeBoxSC from '../../../../../components/theme-box/styled';
-
 const onMobileView = '@media (max-width: 900px)';
 
 const Container = styled(ContainerSC.Container)`
@@ -77,26 +75,6 @@ const Themes = styled.div`
   margin-bottom: ${theme.spacing('S20')};
 `;
 
-const ThemesRow = styled.div`
-  display: flex;
-  margin-bottom: ${theme.spacing('S6')};
-  padding: 0 ${theme.spacing('S10')};
-  ${ThemeBoxSC.ThemeBox}:first-child {
-    margin-left: 0;
-  }
-  ${ThemeBoxSC.ThemeBox} {
-    margin-left: ${theme.spacing('S6')};
-  }
-  ${onMobileView} {
-    flex-direction: column;
-    margin-bottom: 0;
-    ${ThemeBoxSC.ThemeBox} {
-      margin-left: 0;
-      margin-bottom: ${theme.spacing('S6')};
-    }
-  }
-`;
-
 const Pagination = styled.div`
   display: flex;
   justify-content: center;
@@ -132,6 +110,5 @@ export default {
   SearchList,
   SearchContainer,
   Themes,
-  ThemesRow,
   Pagination
 };
