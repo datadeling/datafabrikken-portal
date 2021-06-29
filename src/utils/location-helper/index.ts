@@ -1,5 +1,7 @@
 import qs from 'qs';
 
+import { addValue } from '../string-helper';
+
 export const setParameter = (
   history: any,
   parameters: Record<string, string | number | null>
@@ -25,14 +27,6 @@ export const getParameter = (parameter: string) =>
 export function removeValue(listAsString: string, value: string) {
   const list: string[] = listAsString.split(',');
   return list.filter(item => item !== value).join() || undefined;
-}
-
-export function addValue(listAsString: any, value: string) {
-  return (listAsString || '')
-    .split(',')
-    .concat(value)
-    .filter((v: any) => !!v)
-    .join(',');
 }
 
 export const setMultiselectFilterValue = (
