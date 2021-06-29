@@ -3,9 +3,16 @@ import styled from 'styled-components';
 import { theme, Colour } from '../../entrypoints/main/app/theme';
 import LinkSC from '../link/styled';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const Root = styled.div`
   background-color: ${theme.colour(Colour.BLUE, 'B52')};
   margin-top: 80px;
+  ${onMobileView} {
+    & {
+      margin-top: calc(55px + (80 - 55) * ((100vw - 320px) / (900 - 320)));
+    }
+  }
 `;
 
 const BreadCrumb = styled.div`
