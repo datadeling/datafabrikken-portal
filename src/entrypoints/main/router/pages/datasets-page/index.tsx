@@ -52,12 +52,12 @@ const DatasetsPage: FC<Props> = ({
   const { search } = useLocation();
   const history = useHistory();
 
-  useEffect(() => {
-    const pageParameter = getParameter('page');
-    const queryParameter = getParameter('q');
-    const losThemeParameter = getParameter('losTheme');
-    const themeParameter = getParameter('theme');
+  const pageParameter = getParameter('page');
+  const queryParameter = getParameter('q');
+  const losThemeParameter = getParameter('losTheme');
+  const themeParameter = getParameter('theme');
 
+  useEffect(() => {
     getPagedDatasets({
       page: parseInt(pageParameter, 10),
       q: queryParameter,
