@@ -62,7 +62,7 @@ export const renderModule = (module: any) => {
         <InfoBox
           key={module.id}
           {...(isAbsoluteUrl
-            ? { href: module.field_link?.uri }
+            ? { href: module.field_link?.uri, target: '_blank' }
             : { as: RouterLink, to: infoBoxUrl })}
           invertColor
         >
