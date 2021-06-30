@@ -69,7 +69,11 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
   return (
     <SC.SearchHit>
       <SC.Title>
-        <a href={`${FDK_PORTAL_HOST}/datasets/${id}`}>
+        <a
+          href={`${FDK_PORTAL_HOST}/datasets/${id}`}
+          target='_blank'
+          rel='noreferrer'
+        >
           <Translation text={title} />
         </a>
       </SC.Title>
