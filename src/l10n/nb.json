@@ -43,5 +43,6 @@
     "restrictedAccessRights": "begrenset tilgang",
     "format": "Format"
   },
-  "unknown": "Ukjent"
+  "unknown": "Ukjent",
+  "toTop": "Til toppen"
 }
