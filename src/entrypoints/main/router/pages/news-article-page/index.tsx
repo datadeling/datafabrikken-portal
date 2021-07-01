@@ -5,6 +5,8 @@ import { RouteComponentProps } from 'react-router-dom';
 import withPage, {
   Props as CmsArticleProps
 } from '../../../../../components/with-cms-page';
+
+import Root from '../../../../../components/root';
 import Article from '../../../../../components/article';
 
 interface RouteParams {
@@ -30,7 +32,7 @@ const NewsArticlePage: FC<Props> = ({
     };
   }, []);
 
-  return cmsPage ? <Article article={cmsPage} /> : null;
+  return <Root invertColor>{cmsPage && <Article article={cmsPage} />}</Root>;
 };
 
 export default compose<FC>(memo, withPage)(NewsArticlePage);
