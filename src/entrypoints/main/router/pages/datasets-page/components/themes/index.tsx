@@ -27,7 +27,7 @@ const Themes: FC<Props> = ({ onFilterTheme }) => (
         handleChange={onFilterTheme}
         filterName='theme'
         value='SOCI'
-        label='Befolkning of samfunn'
+        label='Befolkning og samfunn'
       >
         <ThemePopulationIcon />
       </ThemeBox>
