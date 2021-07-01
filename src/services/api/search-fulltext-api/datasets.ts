@@ -60,13 +60,7 @@ const mapFilters = ({
     filters.push({ opendata });
   }
   if (accessRights) {
-    filters.push({
-      collection: {
-        field: 'accessRights.code.keyword',
-        values: ['PUBLIC', 'RESTRICTED', 'NON_PUBLIC'],
-        operator: 'OR'
-      }
-    });
+    filters.push({ opendata: 'false' });
   }
   if (spatial) {
     filters.push({ spatial });
