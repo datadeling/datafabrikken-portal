@@ -38,6 +38,8 @@
   },
   "filter": {
     "title": "Filter",
+    "openFilters": "Søkefilter",
+    "closeFilters": "Lukk søkefilter",
     "accessRights": "Tilgang",
     "openData": "åpne data",
     "restrictedAccessRights": "begrenset tilgang",

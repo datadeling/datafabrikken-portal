@@ -1,4 +1,11 @@
-import React, { ChangeEvent, FC, FormEvent, memo, useEffect } from 'react';
+import React, {
+  ChangeEvent,
+  FC,
+  FormEvent,
+  memo,
+  useEffect,
+  useState
+} from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, useLocation, useHistory } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
@@ -10,6 +17,7 @@ import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../../components/with-reference-data';
 
+import { Menu, Trigger } from '../../../../../components/dropdown-menu';
 import Translation from '../../../../../components/translation';
 import Root from '../../../../../components/root';
 import SearchHit from '../../../../../components/search-hit';
@@ -41,6 +49,16 @@ const DatasetsPage: FC<Props> = ({
   referenceData: { themes = [], mediatypes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData }
 }) => {
+  const [isDropdownFiltersOpen, setIsDropdownFiltersOpen] = useState(false);
+
+  const openDropdownFilters = () => {
+    setIsDropdownFiltersOpen(true);
+  };
+
+  const closeDropdownFilters = () => {
+    setIsDropdownFiltersOpen(false);
+  };
+
   const { search } = useLocation();
   const history = useHistory();
 
@@ -122,6 +140,38 @@ const DatasetsPage: FC<Props> = ({
             />
           </SC.SearchContainer>
         </SC.Row>
+        <SC.DropdownFilters
+          isOpen={isDropdownFiltersOpen}
+          onClose={closeDropdownFilters}
+        >
+          <Trigger>
+            <SC.DropdownFilterButton onClick={openDropdownFilters}>
+              {isDropdownFiltersOpen ? (
+                <>
+                  <Translation id='filter.closeFilters' />
+                  <SC.ExpandLessIcon />
+                </>
+              ) : (
+                <>
+                  <Translation id='filter.openFilters' />
+                  <SC.ExpandMoreIcon />
+                </>
+              )}
+            </SC.DropdownFilterButton>
+          </Trigger>
+          <Menu>
+            <Themes onFilterTheme={handleFilterTheme} />
+            <Filters
+              handleCheckboxChange={handleCheckboxChange}
+              handleMultiSelectFilter={handleMultiSelectFilter}
+              mediaTypeAggregations={mediaType}
+              mediaTypesReferenceData={mediatypes}
+              openDataParameter={openDataParameter}
+              accessRightsParameter={accessRightsParameter}
+              formatParameter={formatParameter}
+            />
+          </Menu>
+        </SC.DropdownFilters>
         <SC.Themes>
           <Themes onFilterTheme={handleFilterTheme} />
         </SC.Themes>

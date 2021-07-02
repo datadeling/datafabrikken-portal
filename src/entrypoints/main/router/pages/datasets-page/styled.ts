@@ -1,6 +1,9 @@
 import styled, { css } from 'styled-components';
 
 import ContainerSC from '../../../../../components/container/styled';
+import DropdownMenuBase, {
+  SC as DropdownMenuSC
+} from '../../../../../components/dropdown-menu';
 
 import { Colour, theme } from '../../../app/theme';
 
@@ -62,6 +65,58 @@ const SearchContainer = styled.div`
   padding: 0 ${theme.spacing('S10')};
 `;
 
+const DropdownFilters = styled(DropdownMenuBase)`
+  display: none;
+  margin-bottom: ${theme.spacing('S24')};
+  padding: 0 ${theme.spacing('S10')};
+
+  ${onMobileView} {
+    & {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+  & > ${DropdownMenuSC.DropdownMenu.Trigger} {
+    display: flex;
+  }
+  & > ${DropdownMenuSC.DropdownMenu.Menu} {
+    margin-top: ${theme.spacing('S10')};
+    position: static;
+  }
+`;
+
+const DropdownFilterButton = styled.button`
+  align-items: center;
+  appearance: none;
+  background-color: ${theme.colour(Colour.BLUE, 'B20')};
+  border: none;
+  color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+  cursor: pointer;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  padding: ${theme.spacing('S10')};
+`;
+
+const ExpandMoreIcon = styled.div`
+  &:after {
+    font-family: 'Material Icons';
+    content: '\\e5cf';
+    font-size: ${theme.fontSize('FS16')};
+    margin-left: ${theme.spacing('S4')};
+  }
+`;
+
+const ExpandLessIcon = styled.div`
+  &:after {
+    font-family: 'Material Icons';
+    content: '\\e5ce';
+    font-size: ${theme.fontSize('FS16')};
+    margin-left: ${theme.spacing('S4')};
+  }
+`;
+
 const Themes = styled.div`
   margin-bottom: ${theme.spacing('S20')};
   ${onMobileView} {
@@ -107,6 +162,10 @@ export default {
   Title,
   SearchList,
   SearchContainer,
+  DropdownFilters,
+  DropdownFilterButton,
+  ExpandLessIcon,
+  ExpandMoreIcon,
   Themes,
   Filters,
   Pagination
