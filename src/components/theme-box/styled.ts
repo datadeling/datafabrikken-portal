@@ -16,6 +16,9 @@ const ThemeIcon = styled.div`
   & > svg {
     fill: ${theme.colour(Colour.BLUE, 'B20')};
   }
+  ${onMobileView} {
+    flex: 0 0 10%;
+  }
 `;
 
 const ThemeBox = styled.div<Props>`
