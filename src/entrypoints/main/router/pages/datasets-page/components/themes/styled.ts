@@ -19,6 +19,7 @@ const ThemesRow = styled.div`
   ${onMobileView} {
     flex-direction: column;
     margin-bottom: 0;
+    padding: 0;
     ${ThemeBoxSC.ThemeBox} {
       margin-left: 0;
       margin-bottom: ${theme.spacing('S6')};
