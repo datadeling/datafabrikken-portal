@@ -101,6 +101,13 @@ const DatasetsPage: FC<Props> = ({
     });
   };
 
+  const searchClear = () => {
+    setParameter(history, {
+      q: null,
+      page: null
+    });
+  };
+
   const onPageChange = ({ selected }: any) => {
     setParameter(history, { page: selected });
     window.scroll(0, 0);
@@ -137,6 +144,7 @@ const DatasetsPage: FC<Props> = ({
             <SearchBar
               placeholder='Søk etter datasett'
               onSubmit={searchSubmit}
+              onClear={searchClear}
             />
           </SC.SearchContainer>
         </SC.Row>

@@ -6,10 +6,17 @@ import { getParameter } from '../../utils/location-helper';
 interface Props {
   placeholder: string;
   onSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  onClear: () => void;
 }
 
-const SearchBar: FC<Props> = ({ placeholder, onSubmit }) => {
+const SearchBar: FC<Props> = ({ placeholder, onSubmit, onClear }) => {
   const [searchQuery, setSearchQuery] = useState<string>(getParameter('q'));
+
+  function clearSearchField(e: FormEvent) {
+    e.preventDefault();
+    setSearchQuery('');
+    onClear();
+  }
 
   return (
     <SC.SearchBar onSubmit={onSubmit}>
@@ -23,6 +30,9 @@ const SearchBar: FC<Props> = ({ placeholder, onSubmit }) => {
           setSearchQuery(currentTarget.value ?? '')
         }
       />
+      <SC.ClearButton type='button' onClick={clearSearchField}>
+        <SC.ClearIcon />
+      </SC.ClearButton>
       <SC.SearchButton>
         <SC.SearchIcon />
       </SC.SearchButton>

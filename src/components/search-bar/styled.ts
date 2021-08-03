@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { theme, Colour } from '../../entrypoints/main/app/theme';
 
 import SearchSVG from '../../images/icon-search-md.inline.svg';
+import ClearSVG from '../../images/icon-clear.inline.svg';
 
 const onMobileView = '@media (max-width: 900px)';
 
@@ -39,6 +40,21 @@ const SearchField = styled.input`
   }
 `;
 
+const ClearButton = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  margin-right: ${theme.spacing('S6')};
+`;
+
+const ClearIcon = styled(ClearSVG)`
+  width: 1em;
+  & > path {
+    fill: ${theme.colour(Colour.NEUTRAL, 'N70')};
+  }
+`;
+
 const SearchButton = styled.button`
   background-color: transparent;
   border: none;
@@ -51,4 +67,11 @@ const SearchIcon = styled(SearchSVG)`
   width: 2em;
 `;
 
-export default { SearchBar, SearchField, SearchButton, SearchIcon };
+export default {
+  SearchBar,
+  SearchField,
+  SearchButton,
+  SearchIcon,
+  ClearButton,
+  ClearIcon
+};
