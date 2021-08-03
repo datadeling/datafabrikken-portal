@@ -58,9 +58,9 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
 
   const determineAccessRightLabel = () => {
     switch (accessRight?.code) {
-      case (AccessRightEnum.PUBLIC,
-      AccessRightEnum.RESTRICTED,
-      AccessRightEnum.NON_PUBLIC):
+      case AccessRightEnum.PUBLIC:
+      case AccessRightEnum.RESTRICTED:
+      case AccessRightEnum.NON_PUBLIC:
         return <Translation id='accessRights.limitedAccess' />;
       default:
         return <Translation id='unknown' />;
