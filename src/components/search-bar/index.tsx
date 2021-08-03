@@ -23,7 +23,9 @@ const SearchBar: FC<Props> = ({ placeholder, onSubmit }) => {
           setSearchQuery(currentTarget.value ?? '')
         }
       />
-      <SC.SearchIcon />
+      <SC.SearchButton>
+        <SC.SearchIcon />
+      </SC.SearchButton>
     </SC.SearchBar>
   );
 };

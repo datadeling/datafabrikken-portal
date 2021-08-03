@@ -39,9 +39,16 @@ const SearchField = styled.input`
   }
 `;
 
-const SearchIcon = styled(SearchSVG)`
-  width: 2em;
-  margin: ${theme.spacing('S10')};
+const SearchButton = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  margin-right: ${theme.spacing('S10')};
+  outline: none;
 `;
 
-export default { SearchBar, SearchField, SearchIcon };
+const SearchIcon = styled(SearchSVG)`
+  width: 2em;
+`;
+
+export default { SearchBar, SearchField, SearchButton, SearchIcon };
