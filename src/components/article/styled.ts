@@ -82,6 +82,16 @@ const Body = styled.div`
       }
     }
   }
+  & > ol,
+  ul {
+    margin-left: 1em;
+  }
+  & > ul {
+    list-style: disc;
+  }
+  & > ol {
+    list-style: decimal;
+  }
 `;
 
 const Quote = styled.div`
