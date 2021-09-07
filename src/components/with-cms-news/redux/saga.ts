@@ -19,7 +19,7 @@ function* getNewsRequested({
     } else {
       yield put(actions.getNewsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getNewsFailed(e.message));
   }
 }

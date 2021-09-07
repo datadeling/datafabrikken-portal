@@ -28,7 +28,7 @@ function* getCmsPageRequested({
     } else {
       yield put(actions.getCmsPageFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getCmsPageFailed(e.message));
   }
 }
@@ -44,7 +44,7 @@ function* getCmsNewsArticleRequested({
     } else {
       yield put(actions.getCmsPageFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getCmsPageFailed(e.message));
   }
 }

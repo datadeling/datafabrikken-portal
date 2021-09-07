@@ -33,7 +33,7 @@ function* getPagedDatasetsRequested({
     } else {
       yield put(actions.getPagedDatasetsFailed(''));
     }
-  } catch (e) {
+  } catch (e: any) {
     yield put(actions.getPagedDatasetsFailed(e.message));
   }
 }
