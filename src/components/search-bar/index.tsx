@@ -1,4 +1,4 @@
-import React, { FC, FormEvent, useState } from 'react';
+import React, { FC, FormEvent, useCallback, useState } from 'react';
 
 import SC from './styled';
 import { getParameter } from '../../utils/location-helper';
@@ -12,11 +12,11 @@ interface Props {
 const SearchBar: FC<Props> = ({ placeholder, onSubmit, onClear }) => {
   const [searchQuery, setSearchQuery] = useState<string>(getParameter('q'));
 
-  function clearSearchField(e: FormEvent) {
+  const clearSearchField = useCallback((e: FormEvent) => {
     e.preventDefault();
     setSearchQuery('');
     onClear();
-  }
+  }, []);
 
   return (
     <SC.SearchBar onSubmit={onSubmit}>
