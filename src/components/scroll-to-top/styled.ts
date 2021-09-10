@@ -15,13 +15,15 @@ const ScrollButton = styled.button`
   appearance: none;
   background: none;
   border: none;
-  border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B20')};
+  border: 1px solid ${theme.colour(Colour.BLUE, 'B20')};
+  border-radius: 2px;
   color: currentColor;
   cursor: pointer;
   display: flex;
   font-size: ${theme.fontSize('FS12')};
   justify-content: center;
   outline: none;
+  padding: ${theme.spacing('S10')} ${theme.spacing('S20')};
   &:after {
     font-family: 'Material Icons';
     content: '\\e5d8';
