@@ -24,11 +24,15 @@ const ScrollButton = styled.button`
   justify-content: center;
   outline: none;
   padding: ${theme.spacing('S10')} ${theme.spacing('S20')};
-  &:after {
-    font-family: 'Material Icons';
-    content: '\\e5d8';
-    font-size: ${theme.fontSize('FS12')};
-    margin-left: ${theme.spacing('S2')};
+  & > svg {
+    margin-left: ${theme.spacing('S6')};
+    width: 26px;
+  }
+
+  &:hover {
+    & > svg * {
+      animation-play-state: running !important;
+    }
   }
 `;
 

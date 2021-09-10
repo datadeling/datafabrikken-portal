@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
+import UpIcon from '../icons/up-icon';
+
 import SC from './styled';
 import Translation from '../translation';
 
@@ -32,6 +34,7 @@ export default function ScrollToTop() {
       {isVisible && (
         <SC.ScrollButton onClick={scrollToTop}>
           <Translation id='toTop' />
+          <UpIcon />
         </SC.ScrollButton>
       )}
     </SC.ScrollToTop>
