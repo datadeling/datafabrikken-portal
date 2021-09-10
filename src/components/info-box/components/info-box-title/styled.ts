@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import { theme } from '../../../../entrypoints/main/app/theme';
 
 const Title = styled.div`
+  align-items: flex-start;
   display: inline-flex;
   font-size: ${theme.fontSize('FS16')};
   margin-bottom: ${theme.spacing('S8')};
-  &:after {
-    font-family: 'Material Icons';
-    content: '\\e5c8';
-    font-size: ${theme.fontSize('FS16')};
-    margin-left: ${theme.spacing('S4')};
+
+  & > svg {
+    flex: 0 0 30px;
   }
 `;
 

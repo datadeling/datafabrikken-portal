@@ -30,9 +30,8 @@ const InfoBox = styled.a<infoBoxProps>`
   padding: ${theme.spacing('S24')};
   &:hover {
     ${InfoBoxTitleSC.Title} {
-      &:after {
-        transition: padding-left 150ms ease-out 100ms;
-        padding-left: ${theme.spacing('S2')};
+      & > svg * {
+        animation-play-state: running !important;
       }
     }
   }

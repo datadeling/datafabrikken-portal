@@ -6,6 +6,8 @@ import React, {
   ComponentType
 } from 'react';
 
+import LinkIcon from '../icons/link-icon';
+
 import SC from './styled';
 import { Variant } from './enums';
 
@@ -18,12 +20,13 @@ export interface Props extends ComponentPropsWithoutRef<'a'> {
 
 const Link: FC<PropsWithChildren<Props>> = ({
   variant,
-  showIcon,
+  showIcon = true,
   children,
   ...props
 }) => (
-  <SC.Link $variant={variant} $showIcon={showIcon} {...props}>
+  <SC.Link $variant={variant} {...props}>
     {children}
+    {showIcon && <LinkIcon />}
   </SC.Link>
 );
 

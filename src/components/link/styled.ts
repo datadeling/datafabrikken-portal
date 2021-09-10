@@ -6,7 +6,6 @@ import { Variant } from './enums';
 
 type linkProps = {
   $variant?: Variant;
-  $showIcon?: boolean;
 };
 
 const Link = styled.a<linkProps>`
@@ -15,16 +14,6 @@ const Link = styled.a<linkProps>`
   cursor: pointer;
   display: inline-flex;
   font-weight: ${theme.fontWeight('FW400')};
-  ${({ $showIcon = true }) =>
-    $showIcon &&
-    css`
-      &:after {
-        font-family: 'Material Icons';
-        content: '\\e5c8';
-        font-size: ${theme.fontSize('FS16')};
-        margin-left: ${theme.spacing('S2')};
-      }
-    `}
 
   ${({ $variant }) => {
     switch ($variant) {
@@ -41,6 +30,16 @@ const Link = styled.a<linkProps>`
         `;
     }
   }}
+
+  & > svg {
+    width: 30px;
+  }
+
+  &:hover {
+    & > svg * {
+      animation-play-state: running !important;
+    }
+  }
 `;
 
 export default { Link };
