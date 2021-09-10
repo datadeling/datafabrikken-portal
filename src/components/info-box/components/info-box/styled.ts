@@ -25,6 +25,7 @@ const InfoBox = styled.a<infoBoxProps>`
         : theme.colour(Colour.NEUTRAL, 'N60')};
   display: flex;
   flex: 0 1 49%;
+  line-height: 1.15;
   margin-bottom: ${theme.spacing('S20')};
   padding: ${theme.spacing('S24')};
   &:hover {
@@ -61,6 +62,7 @@ const IconWrapper = styled.div`
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex: 1;
 `;
 
 const Date = styled.span`
