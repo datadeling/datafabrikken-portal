@@ -7,6 +7,7 @@ const ScrollToTop = styled.div`
   justify-content: center;
   margin-bottom: ${theme.spacing('S20')};
   margin-top: ${theme.spacing('S20')};
+  z-index: 10;
 `;
 
 const ScrollButton = styled.button`
