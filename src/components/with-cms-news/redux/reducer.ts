@@ -26,7 +26,7 @@ export default function reducer(
     case GET_CMS_NEWS_FAILED:
       return state;
     case RESET_CMS_NEWS:
-      return state.set('cmsNews', []);
+      return state.set('cmsNews', fromJS([]));
     default:
       return state;
   }
