@@ -7,7 +7,7 @@ export const articleIds: { [pathname: string]: { [key: string]: string } } = {
   [PATHNAME.CONTACT]: {
     nb: '382bcca1-3b63-4a03-9719-bfb1810464e0'
   },
-  [PATHNAME.DATA_COMMUNITY]: {
+  [PATHNAME.COMMUNITY_ABOUT]: {
     nb: '54fabd83-4318-4f56-bc68-3e3d066e38dc'
   },
   [`${PATHNAME.FIND_DATA}${PATHNAME.DATA_SOURCES}`]: {

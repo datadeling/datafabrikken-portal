@@ -10,7 +10,8 @@ const routes = {
   [PATHNAME.DATASETS]: lazy(() => import('../pages/datasets-page')),
   [PATHNAME.NEWS]: lazy(() => import('../pages/news-page')),
   NEWS_ARTICLE: lazy(() => import('../pages/news-article-page')),
-  [PATHNAME.DATA_COMMUNITY]: lazy(() => import('../pages/article-page')),
+  [PATHNAME.COMMUNITY]: lazy(() => import('../pages/community-page')),
+  [PATHNAME.COMMUNITY_ABOUT]: lazy(() => import('../pages/article-page')),
   [PATHNAME.DATA_SOURCES]: lazy(() => import('../pages/article-page')),
   [PATHNAME.GUIDEANCE_AND_COMPETENCE]: lazy(
     () => import('../pages/article-page')
@@ -62,8 +63,13 @@ const Routes: FC = () => (
     <Route exact path={PATHNAME.CONTACT} component={routes[PATHNAME.CONTACT]} />
     <Route
       exact
-      path={PATHNAME.DATA_COMMUNITY}
-      component={routes[PATHNAME.DATA_COMMUNITY]}
+      path={[PATHNAME.COMMUNITY]}
+      component={routes[PATHNAME.COMMUNITY]}
+    />
+    <Route
+      exact
+      path={PATHNAME.COMMUNITY_ABOUT}
+      component={routes[PATHNAME.COMMUNITY_ABOUT]}
     />
   </Switch>
 );

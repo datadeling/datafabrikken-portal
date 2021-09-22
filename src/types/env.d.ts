@@ -6,4 +6,5 @@ export interface EnvironmentVariables {
   REFERENCE_DATA_HOST: string;
   FDK_PORTAL_HOST: string;
   CMS_API_HOST: string;
+  COMMUNITY_API_HOST: string;
 }
