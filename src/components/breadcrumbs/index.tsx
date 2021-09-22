@@ -59,8 +59,12 @@ const routes = [
     breadcrumb: () => <Translation id='header.contact' />
   },
   {
-    path: PATHNAME.DATA_COMMUNITY,
+    path: PATHNAME.COMMUNITY,
     breadcrumb: () => <Translation id='header.community' />
+  },
+  {
+    path: PATHNAME.COMMUNITY_ABOUT,
+    breadcrumb: () => <Translation id='header.communityAbout' />
   }
 ];
 

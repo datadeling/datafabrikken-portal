@@ -5,8 +5,8 @@ import withDataset, { Props as CmsPageProps } from '../../with-cms-page';
 
 interface Props extends CmsPageProps {}
 
-const DatasetBreadcrumb: FC<Props> = ({ cmsPage }) => (
+const ArticleBreadcrumb: FC<Props> = ({ cmsPage }) => (
   <span>{cmsPage?.title ?? ''}</span>
 );
 
-export default compose<FC>(memo, withDataset)(DatasetBreadcrumb);
+export default compose<FC>(memo, withDataset)(ArticleBreadcrumb);

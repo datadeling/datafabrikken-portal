@@ -69,7 +69,7 @@ const Header: FC<Props> = () => {
             </SC.Link>
           </li>
           <li>
-            <SC.Link to={PATHNAME.DATA_COMMUNITY}>
+            <SC.Link to={PATHNAME.COMMUNITY}>
               <Translation id='header.community' />
             </SC.Link>
           </li>
@@ -126,7 +126,7 @@ const Header: FC<Props> = () => {
               </li>
               <li>
                 <SC.Link
-                  to={PATHNAME.DATA_COMMUNITY}
+                  to={PATHNAME.COMMUNITY}
                   onClick={() => closeDropdownMenu()}
                 >
                   <Translation id='header.community' />

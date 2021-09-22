@@ -13,7 +13,8 @@
     "findData": "Finn data",
     "news": "Siste nytt",
     "contact": "Kontakt",
-    "community": "Datalandsbyen"
+    "community": "Datalandsbyen",
+    "communityAbout": "Om Datalandsbyen"
   },
   "footer": {
     "title": "Følg med på Datafabrikken",
@@ -46,5 +47,11 @@
     "format": "Format"
   },
   "unknown": "Ukjent",
-  "toTop": "Til toppen"
+  "toTop": "Til toppen",
+  "community": {
+    "posted": "svarte",
+    "noPosts": "Ingen innlegg ennå",
+    "topics": "emner",
+    "posts": "innlegg"
+  }
 }
