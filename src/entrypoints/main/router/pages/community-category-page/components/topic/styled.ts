@@ -9,7 +9,8 @@ const Topic = styled.div`
   gap: ${theme.spacing('S32')};
   font-size: ${theme.fontSize('FS10')};
   color: ${theme.colour(Colour.BLUE, 'B52')};
-  padding: ${theme.spacing('S16')};
+  padding: ${theme.spacing('S16')} ${theme.spacing('S20')}
+    ${theme.spacing('S16')} ${theme.spacing('S20')};
   margin-bottom: ${theme.spacing('S10')};
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
 `;
@@ -34,24 +35,23 @@ const Title = styled.div`
   }
 `;
 
-const CountContainer = styled.div`
+const Statistics = styled.ul`
   display: flex;
-  align-items: center;
-  min-width: 50px;
-  max-width: 50px;
+  list-style-type: none;
+
+  & > li {
+    min-width: 80px;
+    max-width: 80px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  & > li > svg {
+    margin-right: ${theme.spacing('S4')};
+  }
 
   ${onMobileView} {
     display: none;
-  }
-`;
-
-const Count = styled.span`
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-
-  & > svg {
-    margin-right: ${theme.spacing('S4')};
   }
 `;
 
@@ -100,8 +100,7 @@ export default {
   Topic,
   TitleContainer,
   Title,
-  CountContainer,
-  Count,
+  Statistics,
   UserInfo,
   PostContainer,
   Teaser,

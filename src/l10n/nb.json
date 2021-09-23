@@ -55,7 +55,12 @@
     "posts": "innlegg",
     "views": "visninger",
     "votes": "stemmer",
+    "users": "brukere",
     "categoryHasNoPosts": "Denne kategorien har ingen innlegg ennå. Bli den første til å publisere.",
-    "loginToPublish": "Logg inn for å publisere"
+    "loginToPublish": "Logg inn for å publisere",
+    "loginToComment": "Logg inn for å kommmentere",
+    "formerUser": "En tidligere bruker",
+    "postDeleted": "Dette innlegget er slettet!",
+    "calendarEvent": "Hendelse"
   }
 }

@@ -7,11 +7,11 @@ import {
 
 import { CommunityCategory } from '../../../types';
 
-export function getCategoryRequested(id: string) {
+export function getCategoryRequested(slug: string) {
   return {
     type: GET_COMMUNITY_CATEGORY_REQUESTED,
     payload: {
-      id
+      slug
     }
   };
 }

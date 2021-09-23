@@ -8,7 +8,8 @@ const Category = styled.div`
   display: flex;
   font-size: ${theme.fontSize('FS10')};
   color: ${theme.colour(Colour.BLUE, 'B52')};
-  padding: ${theme.spacing('S16')};
+  padding: ${theme.spacing('S16')} ${theme.spacing('S20')}
+    ${theme.spacing('S16')} ${theme.spacing('S20')};
   margin-bottom: ${theme.spacing('S10')};
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
 `;

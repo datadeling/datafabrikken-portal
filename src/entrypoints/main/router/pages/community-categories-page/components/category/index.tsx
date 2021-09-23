@@ -52,6 +52,7 @@ const getCategoryIcon = (id: number) => {
 const Category: FC<Props> = ({
   category: {
     cid,
+    slug,
     name,
     description,
     post_count: postCount,
@@ -75,7 +76,7 @@ const Category: FC<Props> = ({
       <SC.CategoryIcon>{getCategoryIcon(cid)}</SC.CategoryIcon>
       <SC.TitleContainer>
         <SC.Title>
-          <Link as={RouterLink} to={`${PATHNAME.COMMUNITY}/${cid}`}>
+          <Link as={RouterLink} to={`${PATHNAME.COMMUNITY}/${slug}`}>
             {name}
           </Link>
         </SC.Title>
