@@ -32,7 +32,13 @@ const CommunityCategoryPage: FC<Props> = ({
   location: { pathname }
 }) => {
   useEffect(() => {
-    getCategory(pathname.substr(pathname.lastIndexOf('/') + 1));
+    getCategory(
+      pathname
+        .split('/')
+        .slice(pathname.split('/').length - 2)
+        .join('/')
+    );
+
     return () => {
       resetCategory();
     };

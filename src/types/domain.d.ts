@@ -172,6 +172,7 @@ export interface CommunityPost {
   category: CommunityCategory;
   isMainPost: boolean;
   replies: number;
+  index: number;
 }
 
 export interface CommunityTopic {

@@ -35,3 +35,9 @@ export enum DataFormat {
 export enum GoogleAnalyticsTrackingId {
   DATAFABRIKKEN = 'UA-110098477-5'
 }
+
+export enum CommunityPlaceholder {
+  FORMER_USER = '[[global:former_user]]',
+  POST_DELETED = '[[topic:post_is_deleted]]',
+  CALENDAR_EVENT_TITLE = '[[calendar:event_title]]'
+}

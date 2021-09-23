@@ -31,6 +31,7 @@ import {
   formatDateTime
 } from '../../../../../../../utils/date';
 import Tag from '../../../../../../../components/community/tag';
+import { CommunityPlaceholder } from '../../../../../../../types/enums';
 
 interface ExternalProps {
   topic: CommunityTopic;
@@ -40,8 +41,7 @@ interface Props extends ExternalProps, TranslationProps {}
 
 const Topic: FC<Props> = ({
   topic: {
-    tid,
-    cid,
+    slug,
     title,
     votes,
     viewcount,
@@ -49,14 +49,18 @@ const Topic: FC<Props> = ({
     teaser,
     user,
     timestampISO,
-    tags
+    tags,
+    category: { slug: categorySlug }
   },
   translationsService
 }) => (
   <SC.Topic>
     <SC.TitleContainer>
       <SC.Title>
-        <Link as={RouterLink} to={`${PATHNAME.COMMUNITY}/${cid}/${tid}`}>
+        <Link
+          as={RouterLink}
+          to={`${PATHNAME.COMMUNITY}/${categorySlug}/${slug}`}
+        >
           {title}
         </Link>
       </SC.Title>
@@ -70,32 +74,32 @@ const Topic: FC<Props> = ({
         ))}
       </SC.Tags>
     </SC.TitleContainer>
-    <SC.CountContainer
-      title={`${votes < 0 ? 0 : votes} ${translationsService.translate(
-        'community.votes'
-      )}`}
-    >
-      <SC.Count>
+    <SC.Statistics>
+      <li
+        title={`${votes < 0 ? 0 : votes} ${translationsService.translate(
+          'community.votes'
+        )}`}
+      >
         <LikeIcon />
-      </SC.Count>
-      <SC.Count>{votes < 0 ? 0 : votes}</SC.Count>
-    </SC.CountContainer>
-    <SC.CountContainer
-      title={`${postcount} ${translationsService.translate('community.posts')}`}
-    >
-      <SC.Count>
+        {votes < 0 ? 0 : votes}
+      </li>
+      <li
+        title={`${postcount} ${translationsService.translate(
+          'community.posts'
+        )}`}
+      >
         <PostIcon />
-      </SC.Count>
-      <SC.Count>{postcount}</SC.Count>
-    </SC.CountContainer>
-    <SC.CountContainer
-      title={`${viewcount} ${translationsService.translate('community.views')}`}
-    >
-      <SC.Count>
+        {postcount}
+      </li>
+      <li
+        title={`${viewcount} ${translationsService.translate(
+          'community.views'
+        )}`}
+      >
         <EyeIcon />
-      </SC.Count>
-      <SC.Count>{viewcount}</SC.Count>
-    </SC.CountContainer>
+        {viewcount}
+      </li>
+    </SC.Statistics>
     <SC.PostContainer>
       {teaser && (
         <SC.Teaser>
@@ -107,9 +111,17 @@ const Topic: FC<Props> = ({
               {formatDateTime(new Date(teaser.timestampISO))}
             </SC.PostDate>
           </SC.UserInfo>
-          <Link as={RouterLink} to={`${PATHNAME.COMMUNITY}/${cid}/${tid}`}>
+          <Link
+            as={RouterLink}
+            to={`${PATHNAME.COMMUNITY}/${categorySlug}/${slug}`}
+          >
             <Truncate lines={3} width={280} trimWhitespace>
-              {htmlToText(teaser.content)}
+              {htmlToText(
+                teaser.content.replaceAll(
+                  CommunityPlaceholder.CALENDAR_EVENT_TITLE,
+                  `${translationsService.translate('community.calendarEvent')}`
+                )
+              )}
             </Truncate>
           </Link>
         </SC.Teaser>
