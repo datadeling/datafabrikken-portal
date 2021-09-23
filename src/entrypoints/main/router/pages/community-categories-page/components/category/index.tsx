@@ -2,9 +2,9 @@ import React, { FC, memo } from 'react';
 
 import { Link as RouterLink } from 'react-router-dom';
 
-import { htmlToText } from 'html-to-text';
-
 import Truncate from 'react-truncate';
+
+import { htmlToText } from 'html-to-text';
 
 import { compose } from 'redux';
 import Link from '../../../../../../../components/link';
@@ -17,7 +17,7 @@ import CalendarIcon from '../../../../../../../images/icon-calendar.inline.svg';
 import MegaphoneIcon from '../../../../../../../images/icon-megaphone.inline.svg';
 import PostIcon from '../../../../../../../images/icon-post.inline.svg';
 import TopicIcon from '../../../../../../../images/icon-topic.inline.svg';
-import { CommunityCategory, CommunityPost } from '../../../../../../../types';
+import { CommunityCategory } from '../../../../../../../types';
 
 import { PATHNAME } from '../../../../../../../enums';
 
@@ -27,6 +27,7 @@ import {
   withTranslations,
   Props as TranslationProps
 } from '../../../../../../../providers/translations';
+import { formatDateTime } from '../../../../../../../utils/date';
 
 interface ExternalProps {
   category: CommunityCategory;
@@ -46,11 +47,6 @@ const getCategoryIcon = (id: number) => {
     default:
       return <TextCloudIcon />;
   }
-};
-
-const formatPostDate = (post: CommunityPost) => {
-  const d = new Date(post?.timestamp);
-  return `${d.getDay()}.${d.getMonth()}.${d.getFullYear()} kl ${d.getHours()}:${d.getMinutes()}`;
 };
 
 const Category: FC<Props> = ({
@@ -113,14 +109,14 @@ const Category: FC<Props> = ({
               <SC.PostDate>
                 <Translation id='community.posted' />
                 &nbsp;
-                {formatPostDate(lastPost)}
+                {formatDateTime(new Date(lastPost.timestampISO))}
               </SC.PostDate>
             </SC.UserInfo>
             <Link
               as={RouterLink}
               to={`${PATHNAME.COMMUNITY}/${cid}/${lastPost.topic.tid}`}
             >
-              <Truncate width={280} trimWhitespace lines={3}>
+              <Truncate lines={3} width={280} trimWhitespace>
                 {htmlToText(lastPost.content)}
               </Truncate>
             </Link>

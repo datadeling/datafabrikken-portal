@@ -6,6 +6,7 @@ import { Variant } from './enums';
 
 type linkProps = {
   $variant?: Variant;
+  $external: boolean;
 };
 
 const Link = styled.a<linkProps>`
@@ -33,6 +34,11 @@ const Link = styled.a<linkProps>`
 
   & > svg {
     width: 30px;
+    ${({ $external }) =>
+      $external &&
+      css`
+        transform: rotate(-45deg);
+      `}
   }
 
   &:hover {

@@ -10,7 +10,10 @@ const routes = {
   [PATHNAME.DATASETS]: lazy(() => import('../pages/datasets-page')),
   [PATHNAME.NEWS]: lazy(() => import('../pages/news-page')),
   NEWS_ARTICLE: lazy(() => import('../pages/news-article-page')),
-  [PATHNAME.COMMUNITY]: lazy(() => import('../pages/community-page')),
+  [PATHNAME.COMMUNITY]: lazy(
+    () => import('../pages/community-categories-page')
+  ),
+  COMMUNITY_CATEGORY: lazy(() => import('../pages/community-category-page')),
   [PATHNAME.COMMUNITY_ABOUT]: lazy(() => import('../pages/article-page')),
   [PATHNAME.DATA_SOURCES]: lazy(() => import('../pages/article-page')),
   [PATHNAME.GUIDEANCE_AND_COMPETENCE]: lazy(
@@ -65,6 +68,11 @@ const Routes: FC = () => (
       exact
       path={[PATHNAME.COMMUNITY]}
       component={routes[PATHNAME.COMMUNITY]}
+    />
+    <Route
+      exact
+      path={`${PATHNAME.COMMUNITY}/:categoryId`}
+      component={routes.COMMUNITY_CATEGORY}
     />
     <Route
       exact
