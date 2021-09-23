@@ -9,6 +9,7 @@ import Container from '../container';
 import Link from '../link';
 
 import ArticleBreadCrumb from './article-breadcrumb';
+import CommunityCategoryBreadCrumb from './community-category-breadcrumb';
 import SC from './styled';
 
 interface Props {}
@@ -61,6 +62,10 @@ const routes = [
   {
     path: PATHNAME.COMMUNITY,
     breadcrumb: () => <Translation id='header.community' />
+  },
+  {
+    path: `${PATHNAME.COMMUNITY}/:categoryId`,
+    breadcrumb: () => <CommunityCategoryBreadCrumb />
   },
   {
     path: PATHNAME.COMMUNITY_ABOUT,

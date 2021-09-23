@@ -52,6 +52,10 @@
     "posted": "svarte",
     "noPosts": "Ingen innlegg ennå",
     "topics": "emner",
-    "posts": "innlegg"
+    "posts": "innlegg",
+    "views": "visninger",
+    "votes": "stemmer",
+    "categoryHasNoPosts": "Denne kategorien har ingen innlegg ennå. Bli den første til å publisere.",
+    "loginToPublish": "Logg inn for å publisere"
   }
 }

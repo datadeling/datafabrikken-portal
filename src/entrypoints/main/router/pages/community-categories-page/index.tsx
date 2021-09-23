@@ -25,7 +25,7 @@ const articleId = '54fabd83-4318-4f56-bc68-3e3d066e38dc';
 
 interface Props extends CmsArticleProps, CommunityCategoriesProps {}
 
-const CommunityPage: FC<Props> = ({
+const CommunityCategoriesPage: FC<Props> = ({
   cmsPage,
   cmsPageActions: { getCmsPageRequested: getCmsPage, resetCmsPage },
   communityCategories,
@@ -75,4 +75,4 @@ export default compose<FC>(
   memo,
   withPage,
   withCommunityCategories
-)(CommunityPage);
+)(CommunityCategoriesPage);

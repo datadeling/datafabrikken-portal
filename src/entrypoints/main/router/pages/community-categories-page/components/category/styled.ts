@@ -44,6 +44,8 @@ const Ingress = styled.div`
 const CountContainer = styled.div`
   display: flex;
   align-items: center;
+  min-width: 50px;
+  max-width: 50px;
   margin-left: ${theme.spacing('S32')};
 
   ${onMobileView} {

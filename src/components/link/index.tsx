@@ -14,6 +14,7 @@ import { Variant } from './enums';
 export interface Props extends ComponentPropsWithoutRef<'a'> {
   variant?: Variant;
   showIcon?: boolean;
+  external?: boolean;
   to?: string;
   as?: keyof JSX.IntrinsicElements | ComponentType<any>;
 }
@@ -22,9 +23,10 @@ const Link: FC<PropsWithChildren<Props>> = ({
   variant,
   showIcon = true,
   children,
+  external,
   ...props
 }) => (
-  <SC.Link $variant={variant} {...props}>
+  <SC.Link $variant={variant} $external={external} {...props}>
     {children}
     {showIcon && <LinkIcon />}
   </SC.Link>
