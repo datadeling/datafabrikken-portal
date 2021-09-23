@@ -26,7 +26,8 @@ const configuration: Configuration = mergeWithCustomize<Configuration>({
     host: '0.0.0.0',
     port: 3000,
     hot: true,
-    before: app => app.get('/config.js', (_, res) => res.status(204).send()),
+    onBeforeSetupMiddleware: devServer =>
+      devServer.app.get('/config.js', (_, res) => res.status(204).send()),
     historyApiFallback: {
       rewrites: [{ from: /./, to: '/index.html' }]
     }
