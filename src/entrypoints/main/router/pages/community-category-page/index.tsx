@@ -18,6 +18,7 @@ import Topic from './components/topic';
 import SC from './styled';
 import env from '../../../../../env';
 import { CommunityTopic } from '../../../../../types';
+import { compareTopics } from '../../../../../utils/community/utils';
 
 interface Props extends CommunityCategoryProps, RouteComponentProps {}
 
@@ -47,33 +48,8 @@ const CommunityCategoryPage: FC<Props> = ({
   const [sortByDateAsc, setSortByDateAsc] = useState(false);
   const [sortByDateDesc, setSortByDateDesc] = useState(false);
 
-  const sortTopics = (first: CommunityTopic, second: CommunityTopic) => {
-    if (sortByDateAsc) {
-      if (first.timestamp > second.timestamp) {
-        return 1;
-      }
-      if (first.timestamp < second.timestamp) {
-        return -1;
-      }
-      return 0;
-    }
-    if (sortByDateDesc) {
-      if (first.timestamp > second.timestamp) {
-        return -1;
-      }
-      if (first.timestamp < second.timestamp) {
-        return 1;
-      }
-      return 0;
-    }
-    if (first.index < second.index) {
-      return -1;
-    }
-    if (first.index > second.index) {
-      return 1;
-    }
-    return 0;
-  };
+  const sortTopics = (first: CommunityTopic, second: CommunityTopic) =>
+    compareTopics(first, second, sortByDateAsc, sortByDateDesc);
 
   const handleSort = (byDateAsc: boolean) => {
     setSortByDateAsc(byDateAsc);
@@ -110,7 +86,7 @@ const CommunityCategoryPage: FC<Props> = ({
                     onClick={() => handleSort(true)}
                     active={sortByDateAsc}
                   >
-                    Dato stigende
+                    <Translation id='community.sort.dateAscending' />
                   </SC.SortButton>
                 </SC.SortButtonWrapper>
                 <SC.SortButtonWrapper>
@@ -118,7 +94,7 @@ const CommunityCategoryPage: FC<Props> = ({
                     onClick={() => handleSort(false)}
                     active={sortByDateDesc}
                   >
-                    Dato synkende
+                    <Translation id='community.sort.dateDescending' />
                   </SC.SortButton>
                 </SC.SortButtonWrapper>
               </SC.Sort>
