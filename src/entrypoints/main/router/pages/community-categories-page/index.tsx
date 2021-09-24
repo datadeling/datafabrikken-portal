@@ -21,7 +21,7 @@ import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter'
 import SC from './styled';
 import { categorySorter } from '../../../../../utils/community/utils';
 
-const articleId = '54fabd83-4318-4f56-bc68-3e3d066e38dc';
+const articleId = '7e856b1b-0f96-44fe-b4c3-7a30a3140fb7';
 
 interface Props extends CmsArticleProps, CommunityCategoriesProps {}
 
@@ -52,7 +52,9 @@ const CommunityCategoriesPage: FC<Props> = ({
             <SC.Ingress
               // eslint-disable-next-line react/no-danger
               dangerouslySetInnerHTML={{
-                __html: convertToSanitizedHtml(cmsPage?.field_ingress ?? '')
+                __html: convertToSanitizedHtml(
+                  cmsPage?.field_modules[0]?.field_body?.value ?? ''
+                )
               }}
             />
             <SC.IconWrapper>
