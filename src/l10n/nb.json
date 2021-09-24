@@ -61,6 +61,10 @@
     "loginToComment": "Logg inn for å kommmentere",
     "formerUser": "En tidligere bruker",
     "postDeleted": "Dette innlegget er slettet!",
-    "calendarEvent": "Hendelse"
+    "calendarEvent": "Hendelse",
+    "sort": {
+      "dateAscending": "Dato stigende",
+      "dateDescending": "Dato synkende"
+    }
   }
 }

@@ -28,6 +28,8 @@ import {
   Props as TranslationProps
 } from '../../../../../../../providers/translations';
 import { formatDateTime } from '../../../../../../../utils/date';
+import { CommunityPlaceholder } from '../../../../../../../types/enums';
+import { postSorter } from '../../../../../../../utils/community/utils';
 
 interface ExternalProps {
   category: CommunityCategory;
@@ -61,15 +63,7 @@ const Category: FC<Props> = ({
   },
   translationsService
 }) => {
-  const lastPost = posts.sort((first, second) => {
-    if (Date.parse(first.timestampISO) > Date.parse(second.timestampISO)) {
-      return 1;
-    }
-    if (Date.parse(first.timestampISO) < Date.parse(second.timestampISO)) {
-      return -1;
-    }
-    return 0;
-  })[0];
+  const lastPost = posts.sort(postSorter)[0];
 
   return (
     <SC.Category>
@@ -82,26 +76,25 @@ const Category: FC<Props> = ({
         </SC.Title>
         <SC.Ingress>{description}</SC.Ingress>
       </SC.TitleContainer>
-      <SC.CountContainer
-        title={`${topicCount} ${translationsService.translate(
-          'community.topics'
-        )}`}
-      >
-        <SC.Count>
+      <SC.Statistics>
+        <li
+          title={`${topicCount} ${translationsService.translate(
+            'community.topics'
+          )}`}
+        >
           <TopicIcon />
-        </SC.Count>
-        <SC.Count>{topicCount}</SC.Count>
-      </SC.CountContainer>
-      <SC.CountContainer
-        title={`${postCount} ${translationsService.translate(
-          'community.posts'
-        )}`}
-      >
-        <SC.Count>
+          {topicCount}
+        </li>
+        <li
+          title={`${postCount} ${translationsService.translate(
+            'community.posts'
+          )}`}
+        >
           <PostIcon />
-        </SC.Count>
-        <SC.Count>{postCount}</SC.Count>
-      </SC.CountContainer>
+          {postCount}
+        </li>
+      </SC.Statistics>
+
       <SC.PostContainer>
         {lastPost && (
           <SC.Post>
@@ -118,7 +111,14 @@ const Category: FC<Props> = ({
               to={`${PATHNAME.COMMUNITY}/${cid}/${lastPost.topic.tid}`}
             >
               <Truncate lines={3} width={280} trimWhitespace>
-                {htmlToText(lastPost.content)}
+                {htmlToText(
+                  lastPost.content.replaceAll(
+                    CommunityPlaceholder.CALENDAR_EVENT_TITLE,
+                    `${translationsService.translate(
+                      'community.calendarEvent'
+                    )}`
+                  )
+                )}
               </Truncate>
             </Link>
           </SC.Post>

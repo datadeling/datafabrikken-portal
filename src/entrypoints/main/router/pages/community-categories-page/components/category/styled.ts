@@ -42,25 +42,24 @@ const Ingress = styled.div`
   margin-top: ${theme.spacing('S10')};
 `;
 
-const CountContainer = styled.div`
+const Statistics = styled.ul`
   display: flex;
-  align-items: center;
-  min-width: 50px;
-  max-width: 50px;
+  list-style-type: none;
   margin-left: ${theme.spacing('S32')};
+
+  & > li {
+    min-width: 80px;
+    max-width: 80px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  & > li > svg {
+    margin-right: ${theme.spacing('S4')};
+  }
 
   ${onMobileView} {
     display: none;
-  }
-`;
-
-const Count = styled.span`
-  display: flex;
-  align-items: center;
-  white-space: nowrap;
-
-  & > svg {
-    margin-right: ${theme.spacing('S4')};
   }
 `;
 
@@ -107,8 +106,7 @@ export default {
   TitleContainer,
   Title,
   Ingress,
-  CountContainer,
-  Count,
+  Statistics,
   UserInfo,
   PostContainer,
   Post,
