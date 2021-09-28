@@ -129,6 +129,9 @@ const CommunityTopicPage: FC<Props> = ({
             {posts.map((post, index) => (
               <Post key={`post-${index}`} post={post} />
             ))}
+            <Link href={`${COMMUNITY_API_HOST}/login`} external>
+              <Translation id='community.loginToComment' />
+            </Link>
           </SC.Posts>
         </SC.Page>
       </Container>

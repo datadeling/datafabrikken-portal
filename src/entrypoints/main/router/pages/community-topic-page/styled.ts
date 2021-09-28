@@ -19,6 +19,15 @@ const Info = styled.p`
 const Posts = styled.div`
   padding: ${theme.spacing('S40')};
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+
+  & > a {
+    padding-top: ${theme.spacing('S24')};
+    color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+
+    & > svg {
+      width: 20px;
+    }
+  }
 `;
 
 const Header = styled.div`
@@ -58,6 +67,10 @@ const Statistics = styled.ul`
 const LinkWrapper = styled.div`
   flex-grow: 1;
   text-align: right;
+
+  & > a > svg {
+    width: 20px;
+  }
 `;
 
 export default {

@@ -61,6 +61,10 @@ const Header = styled.div`
   display: flex;
   margin-bottom: ${theme.spacing('S10')};
   justify-content: space-between;
+
+  & > a > svg {
+    width: 20px;
+  }
 `;
 
 const Sort = styled.div`
