@@ -19,8 +19,8 @@ interface ExternalProps {
 
 interface Props extends ExternalProps {}
 
-const Post: FC<Props> = ({ post: { content, user, timestampISO, index } }) => (
-  <SC.Post $firstPost={index === 0}>
+const Post: FC<Props> = ({ post: { content, user, timestampISO } }) => (
+  <SC.Post>
     <SC.UserInfo>
       <User user={user} />
       {formatDateTime(new Date(timestampISO))}

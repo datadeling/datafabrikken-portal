@@ -88,8 +88,8 @@ const CommunityTopicPage: FC<Props> = ({
           <SC.Header>
             {tags?.length > 0 && (
               <SC.Tags>
-                {tags?.map(tag => (
-                  <Tag {...tag} />
+                {tags?.map((tag, index) => (
+                  <Tag key={`tag-${index}`} {...tag} />
                 ))}
               </SC.Tags>
             )}

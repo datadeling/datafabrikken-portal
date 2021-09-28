@@ -1,12 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { theme, Colour } from '../../../../../app/theme';
 
-type postProps = {
-  $firstPost: boolean;
-};
-
-const Post = styled.div<postProps>`
+const Post = styled.div`
   display: flex;
   flex-direction: column;
   font-size: ${theme.fontSize('FS10')};
@@ -14,13 +10,10 @@ const Post = styled.div<postProps>`
   padding: ${theme.spacing('S24')};
   background: ${theme.colour(Colour.NEUTRAL, 'N02')};
   margin-bottom: ${theme.spacing('S10')};
-
-  ${({ $firstPost }) =>
-    $firstPost &&
-    css`
-      padding-top: 0;
-      background: ${theme.colour(Colour.NEUTRAL, 'N0')};
-    `}
+  &:first-child {
+    padding-top: 0;
+    background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  }
 `;
 
 const UserInfo = styled.div`
