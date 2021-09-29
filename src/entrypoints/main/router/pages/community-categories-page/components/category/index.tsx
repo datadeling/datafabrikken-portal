@@ -108,7 +108,7 @@ const Category: FC<Props> = ({
             </SC.UserInfo>
             <Link
               as={RouterLink}
-              to={`${PATHNAME.COMMUNITY}/${cid}/${lastPost.topic.tid}`}
+              to={`${PATHNAME.COMMUNITY}/${slug}/${lastPost.topic.slug}`}
             >
               <Truncate lines={3} width={280} trimWhitespace>
                 {htmlToText(

@@ -4,6 +4,8 @@ import { compose } from 'redux';
 
 import parse from 'html-react-parser';
 
+import env from '../../../../../../../env';
+
 import { CommunityPost } from '../../../../../../../types';
 
 import Translation from '../../../../../../../components/translation';
@@ -19,6 +21,8 @@ interface ExternalProps {
 
 interface Props extends ExternalProps {}
 
+const { COMMUNITY_API_HOST } = env;
+
 const Post: FC<Props> = ({ post: { content, user, timestampISO } }) => (
   <SC.Post>
     <SC.UserInfo>
@@ -29,7 +33,12 @@ const Post: FC<Props> = ({ post: { content, user, timestampISO } }) => (
       {content === CommunityPlaceholder.POST_DELETED ? (
         <Translation id='community.postDeleted' />
       ) : (
-        parse(content)
+        parse(
+          content.replaceAll(
+            'src="/assets/',
+            `src="${COMMUNITY_API_HOST}/assets/`
+          )
+        )
       )}
     </SC.Content>
   </SC.Post>
