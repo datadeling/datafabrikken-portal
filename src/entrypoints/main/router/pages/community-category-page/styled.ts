@@ -15,6 +15,9 @@ const Page = styled.article`
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
   margin-bottom: ${theme.spacing('S10')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS18')};
+  }
 `;
 
 const Info = styled.p`
