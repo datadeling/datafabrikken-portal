@@ -26,7 +26,7 @@ export const formatDateTime = (date: Date | null) =>
           day: '2-digit'
         })
         .split('/')
-        .join('.')} kl${date.toLocaleTimeString('nb-NO', {
+        .join('.')} kl. ${date.toLocaleTimeString('nb-NO', {
         hour: '2-digit',
         minute: '2-digit'
       })}`
