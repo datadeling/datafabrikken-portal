@@ -66,7 +66,7 @@ const IngressRow = styled.div`
 
 const IconWrapper = styled.div`
   display: flex;
-  flex: 0 0 20%;
+  flex: 0 0 12%;
   margin-left: ${theme.spacing('S64')};
   ${onMinWidth} {
     display: none;
