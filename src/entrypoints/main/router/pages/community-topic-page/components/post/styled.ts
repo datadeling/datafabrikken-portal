@@ -10,7 +10,11 @@ const Post = styled.div`
   padding: ${theme.spacing('S24')};
   background: ${theme.colour(Colour.NEUTRAL, 'N02')};
   margin-bottom: ${theme.spacing('S10')};
-  overflow: hidden;
+
+  & * > img {
+    max-width: 100%;
+    height: auto;
+  }
 
   &:first-child {
     padding-top: 0;
