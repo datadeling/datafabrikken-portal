@@ -7,6 +7,7 @@ import CommunityCategoryReducer from '../../../components/with-community-categor
 import CommunityTopicReducer from '../../../components/with-community-topic/redux/reducer';
 import DatasetsReducer from '../../../components/with-datasets/redux/reducer';
 import ReferenceDataReducer from '../../../components/with-reference-data/redux/reducer';
+import DatasetReducer from '../../../components/with-dataset/redux/reducer';
 
 export default combineReducers({
   CmsPageReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
   CommunityCategoryReducer,
   CommunityTopicReducer,
   DatasetsReducer,
-  ReferenceDataReducer
+  ReferenceDataReducer,
+  DatasetReducer
 });
