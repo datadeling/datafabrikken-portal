@@ -7,6 +7,7 @@ import communityCategorySaga from '../../../components/with-community-category/r
 import communityTopicSaga from '../../../components/with-community-topic/redux/saga';
 import datasetsSaga from '../../../components/with-datasets/redux/saga';
 import referenceDataSaga from '../../../components/with-reference-data/redux/saga';
+import datasetSaga from '../../../components/with-dataset/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -16,6 +17,7 @@ export default function* saga() {
     communityCategorySaga(),
     communityTopicSaga(),
     datasetsSaga(),
-    referenceDataSaga()
+    referenceDataSaga(),
+    datasetSaga()
   ]);
 }
