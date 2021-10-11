@@ -126,7 +126,7 @@ const mapFilters = ({
   if (format) {
     filters.push({
       collection: {
-        field: 'distribution.mediaType.code.keyword',
+        field: 'fdkFormatPrefixed.keyword',
         values: format.split(','),
         operator: 'OR'
       }

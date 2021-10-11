@@ -42,3 +42,9 @@ export enum CommunityPlaceholder {
   POST_DELETED = '[[topic:post_is_deleted]]',
   CALENDAR_EVENT_TITLE = '[[calendar:event_title]]'
 }
+
+export enum MediaTypeOrExtentType {
+  MEDIA_TYPE = 'MEDIA_TYPE',
+  FILE_TYPE = 'FILE_TYPE',
+  UNKNOWN = 'UNKNOWN'
+}

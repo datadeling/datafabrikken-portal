@@ -6,12 +6,14 @@ import SC from './styled';
 import TruncatedText from '../truncated-text';
 import Translation from '../translation';
 import RoundedTag, { Variant } from '../rounded-tag';
-import { AccessRight as AccessRightEnum } from '../../types/enums';
-import { formatSorter, toFormat, toMediaType } from '../../utils/mediatype';
+import {
+  AccessRight as AccessRightEnum,
+  MediaTypeOrExtentType
+} from '../../types/enums';
 import type {
   AccessRight,
   Distribution,
-  MediaType,
+  MediaTypeOrExtent,
   Publisher,
   TextLanguage
 } from '../../types';
@@ -25,7 +27,6 @@ interface Props {
   description: TextLanguage;
   distributions?: Distribution[];
   accessRight?: AccessRight;
-  mediatypes?: MediaType[];
 }
 
 function isDatasetOpen(
@@ -44,17 +45,12 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
   title,
   description,
   distributions = [],
-  accessRight,
-  mediatypes = []
+  accessRight
 }) => {
-  const formats = distributions
-    ?.reduce((previous, current) => {
-      const format = current.format ?? [];
-      return [...previous, ...format];
-    }, [] as string[])
-    .map(toFormat)
-    .sort(formatSorter)
-    .map(toMediaType(mediatypes));
+  const formats = distributions?.reduce(
+    (previous, { fdkFormat = [] }) => [...previous, ...(fdkFormat ?? [])],
+    [] as MediaTypeOrExtent[]
+  );
 
   const determineAccessRightLabel = () => {
     switch (accessRight?.code) {
@@ -101,15 +97,23 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
             <span>{determineAccessRightLabel()}</span>
           </RoundedTag>
         )}
-        {[...new Set(formats)].map((format, index) => (
-          <RoundedTag
-            as='div'
-            key={`format-${format}-${index}`}
-            variant={Variant.SECONDARY}
-          >
-            <span>{format}</span>
-          </RoundedTag>
-        ))}
+        {[
+          ...new Set(
+            formats
+              .filter(format => format.type !== MediaTypeOrExtentType.UNKNOWN)
+              .map(format => format.name)
+          )
+        ]
+          .sort()
+          .map((format, index) => (
+            <RoundedTag
+              as='div'
+              key={`format-${format}-${index}`}
+              variant={Variant.SECONDARY}
+            >
+              <span>{format}</span>
+            </RoundedTag>
+          ))}
       </SC.Tags>
     </SC.SearchHit>
   );

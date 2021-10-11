@@ -57,7 +57,7 @@ export interface Distribution {
   type: string;
   title: Partial<TextLanguage>;
   description: Partial<TextLanguage>;
-  format: string[];
+  fdkFormat: MediaTypeOrExtent[];
   license: License[];
   openLicense: boolean;
   accessURL: string[];
@@ -95,11 +95,11 @@ interface ReferenceType {
   prefLabel: Partial<TextLanguage>;
 }
 
-export interface MediaType {
-  uri: string;
+export interface MediaTypeOrExtent {
+  uri?: string;
+  name?: string;
   code: string;
-  name: string;
-  prefLabel?: Partial<TextLanguage>;
+  type: MediaTypeOrExtentType;
 }
 
 export interface ReferenceData {

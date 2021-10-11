@@ -13,7 +13,7 @@ const CheckboxContainer = styled.div`
     & > input {
       border: 0;
       clip: rect(0 0 0 0);
-      clippath: inset(50%);
+      clip-path: inset(50%);
       height: 1px;
       margin: -1px;
       overflow: hidden;
@@ -37,6 +37,7 @@ type styledCheckboxProps = {
 
 const StyledCheckbox = styled.div<styledCheckboxProps>`
   border: 1px solid;
+  min-width: 25px;
   width: 25px;
   height: 25px;
   transition: all 150ms;
