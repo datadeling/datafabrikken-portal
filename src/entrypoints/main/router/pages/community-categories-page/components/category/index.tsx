@@ -15,8 +15,10 @@ import TextCloudIcon from '../../../../../../../images/icon-text-cloud.inline.sv
 import LightBulbIcon from '../../../../../../../images/icon-lightbulb.inline.svg';
 import CalendarIcon from '../../../../../../../images/icon-calendar.inline.svg';
 import MegaphoneIcon from '../../../../../../../images/icon-megaphone.inline.svg';
+import ThumbsIcon from '../../../../../../../images/icon-thumbs.inline.svg';
 import PostIcon from '../../../../../../../images/icon-post.inline.svg';
 import TopicIcon from '../../../../../../../images/icon-topic.inline.svg';
+
 import { CommunityCategory } from '../../../../../../../types';
 
 import { PATHNAME } from '../../../../../../../enums';
@@ -43,6 +45,8 @@ const getCategoryIcon = (id: number) => {
       return <LightBulbIcon />;
     case 3:
       return <CalendarIcon />;
+    case 4:
+      return <ThumbsIcon />;
     case 6:
     case 7:
       return <MegaphoneIcon />;
