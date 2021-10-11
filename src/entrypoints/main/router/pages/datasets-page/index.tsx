@@ -49,7 +49,7 @@ const DatasetsPage: FC<Props> = ({
     getPagedDatasetsRequested: getPagedDatasets,
     resetPagedDatasets
   },
-  referenceData: { themes = [], mediatypes = [] },
+  referenceData: { themes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData }
 }) => {
   const [isDropdownFiltersOpen, setIsDropdownFiltersOpen] = useState(false);
@@ -65,7 +65,7 @@ const DatasetsPage: FC<Props> = ({
   const { search } = useLocation();
   const history = useHistory();
 
-  const { mediaType } = datasetsAggregations;
+  const { format } = datasetsAggregations;
 
   const pageParameter = getParameter('page');
   const queryParameter = getParameter('q');
@@ -98,9 +98,6 @@ const DatasetsPage: FC<Props> = ({
   useEffect(() => {
     if (themes.length === 0) {
       getReferenceData('themes');
-    }
-    if (mediatypes.length === 0) {
-      getReferenceData('mediatypes');
     }
   }, []);
 
@@ -183,8 +180,7 @@ const DatasetsPage: FC<Props> = ({
             <Filters
               handleCheckboxChange={handleCheckboxChange}
               handleMultiSelectFilter={handleMultiSelectFilter}
-              mediaTypeAggregations={mediaType}
-              mediaTypesReferenceData={mediatypes}
+              formatAggregations={format}
               openDataParameter={openDataParameter}
               accessRightsParameter={accessRightsParameter}
               formatParameter={formatParameter}
@@ -201,8 +197,7 @@ const DatasetsPage: FC<Props> = ({
                 <Filters
                   handleCheckboxChange={handleCheckboxChange}
                   handleMultiSelectFilter={handleMultiSelectFilter}
-                  mediaTypeAggregations={mediaType}
-                  mediaTypesReferenceData={mediatypes}
+                  formatAggregations={format}
                   openDataParameter={openDataParameter}
                   accessRightsParameter={accessRightsParameter}
                   formatParameter={formatParameter}
@@ -227,28 +222,26 @@ const DatasetsPage: FC<Props> = ({
                     description={description}
                     distributions={distribution}
                     accessRight={accessRights}
-                    mediatypes={mediatypes}
                   />
                 )
               )}
-              {datasets?.length > 0 && (
-                <SC.Pagination>
-                  <ReactPaginate
-                    pageCount={totalDatasets / datasetPageSize}
-                    pageRangeDisplayed={2}
-                    marginPagesDisplayed={1}
-                    previousLabel='forrige'
-                    nextLabel='neste'
-                    breakLabel={<span>...</span>}
-                    breakClassName='break-me'
-                    containerClassName='pagination'
-                    onPageChange={onPageChange}
-                    activeClassName='active'
-                    forcePage={datasetsPage}
-                    disableInitialCallback
-                  />
-                </SC.Pagination>
-              )}
+
+              <SC.Pagination>
+                <ReactPaginate
+                  pageCount={totalDatasets / datasetPageSize}
+                  pageRangeDisplayed={2}
+                  marginPagesDisplayed={1}
+                  previousLabel='forrige'
+                  nextLabel='neste'
+                  breakLabel={<span>...</span>}
+                  breakClassName='break-me'
+                  containerClassName='pagination'
+                  onPageChange={onPageChange}
+                  activeClassName='active'
+                  forcePage={datasetsPage}
+                  disableInitialCallback
+                />
+              </SC.Pagination>
             </SC.SearchList>
           </SC.Row>
         )}

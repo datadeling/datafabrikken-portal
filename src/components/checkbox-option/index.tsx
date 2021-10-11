@@ -1,7 +1,6 @@
 import React, { FC, useState, PropsWithChildren, ChangeEvent } from 'react';
 
 import Translation from '../translation';
-import { MediaType } from '../../types';
 
 import SC from './styled';
 
@@ -12,7 +11,7 @@ interface Props {
   filterName: string;
   filterValue?: string;
   label?: string;
-  mediaTypes?: MediaType[];
+  rawLabel?: string;
 }
 
 const CheckboxContainer: FC<PropsWithChildren<Props>> = ({
@@ -22,7 +21,7 @@ const CheckboxContainer: FC<PropsWithChildren<Props>> = ({
   filterName,
   filterValue = '',
   label,
-  mediaTypes
+  rawLabel
 }) => {
   const [checked, setChecked] = useState<boolean>(isChecked);
 
@@ -47,16 +46,7 @@ const CheckboxContainer: FC<PropsWithChildren<Props>> = ({
             <polyline points='20 6 9 17 4 12' />
           </SC.Icon>
         </SC.StyledCheckbox>
-        <span>
-          {label ? (
-            <Translation id={label} />
-          ) : (
-            mediaTypes
-              ?.filter(({ code }) => code === filterValue)
-              ?.shift()
-              ?.name?.toLowerCase()
-          )}
-        </span>
+        <span>{label ? <Translation id={label} /> : rawLabel}</span>
       </label>
     </SC.CheckboxContainer>
   );

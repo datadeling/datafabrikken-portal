@@ -44,7 +44,11 @@
     "accessRights": "Tilgang",
     "openData": "åpne data",
     "restrictedAccessRights": "begrenset tilgang",
-    "format": "Format"
+    "format": "Format",
+    "search": "Søk",
+    "searchFormat": "Søk på format",
+    "showMore": "Vis flere",
+    "showFewer": "Vis færre"
   },
   "unknown": "Ukjent",
   "toTop": "Til toppen",
@@ -66,5 +70,9 @@
       "dateAscending": "Dato stigende",
       "dateDescending": "Dato synkende"
     }
+  },
+  "formatType": {
+    "MEDIA_TYPE": "Mediatype",
+    "FILE_TYPE": "Filtype"
   }
 }
