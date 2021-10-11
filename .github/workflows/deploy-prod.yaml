@@ -81,16 +81,15 @@ jobs:
           gcloud container clusters get-credentials datafabrikken-prod --region europe-north1-a --project datafabrikken-prod
           kubectl apply -f ./kubectlapply.yaml --force
 
-# Consider using dedicated channel
-#      - name: Notify slack
-#        uses: 8398a7/action-slack@v3
-#        with:
-#          mention: 'channel'
-#          if_mention: failure
-#          status: ${{ job.status }}
-#          author_name: 'Application: datafabrikken-portal | Environment: prod'
-#          fields: commit,author,workflow,message
-#        env:
-#          GITHUB_TOKEN: ${{ github.token }}
-#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-#        if: always()
+      - name: Notify slack
+        uses: 8398a7/action-slack@v3
+        with:
+          mention: 'channel'
+          if_mention: failure
+          status: ${{ job.status }}
+          author_name: 'Application: datafabrikken-portal | Environment: prod'
+          fields: commit,author,workflow,message
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        if: always()
