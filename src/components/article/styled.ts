@@ -43,18 +43,33 @@ const Ingress = styled.p`
 
 const Body = styled.div`
   font-size: ${theme.fontSize('FS12')};
+  line-height: 1.25;
+
   ${onMobileView} {
     font-size: ${theme.fontSize('FS10')};
   }
   margin-bottom: ${theme.spacing('S10')};
-  & > h2 {
-    font-size: ${theme.fontSize('FS16')};
+  & > h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin-bottom: ${theme.spacing('S10')};
   }
-  & > h3,
-  h4 {
+  & > h2 {
+    font-size: ${theme.fontSize('FS20')};
+  }
+  & > h3 {
+    font-size: ${theme.fontSize('FS16')};
+  }
+  & > h4 {
     font-size: ${theme.fontSize('FS14')};
-    margin-bottom: ${theme.spacing('S10')};
+  }
+  & > h5 {
+    font-size: ${theme.fontSize('FS12')};
+  }
+  & > h6 {
+    font-size: ${theme.fontSize('FS10')};
   }
   & > p {
     margin-bottom: ${theme.spacing('S20')};
@@ -71,6 +86,12 @@ const Body = styled.div`
         margin-left: ${theme.spacing('S4')};
       }
     }
+    & code {
+      font: 'Roboto Mono, monospace';
+    }
+    & em {
+      font-style: italic;
+    }
   }
   & > div {
     & > div {
@@ -84,7 +105,7 @@ const Body = styled.div`
   }
   & > ol,
   ul {
-    margin-left: 1em;
+    margin-left: 2em;
   }
   & > ul {
     list-style: disc;

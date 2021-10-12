@@ -3,6 +3,7 @@ import { css } from 'styled-components';
 export default css`
   @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@100;300;400;500;700;800;900&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Material+Icons&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 
   html,
   * {
