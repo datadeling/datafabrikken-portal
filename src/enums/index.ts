@@ -10,7 +10,8 @@ export enum PATHNAME {
   GUIDEANCE_AND_COMPETENCE = '/veiledere-og-kompetanse',
   PRIVATE_SECTOR = '/privat-sektor',
   CONTACT = '/kontakt',
-  LEGAL_FRAMEWORK = '/juridiske-rammer-bruk-av-data'
+  LEGAL_FRAMEWORK = '/juridiske-rammer-bruk-av-data',
+  TEXT_FORMAT = '/tekst-format'
 }
 
 export enum PARAGRAPH {

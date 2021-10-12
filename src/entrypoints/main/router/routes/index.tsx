@@ -2,6 +2,10 @@ import React, { memo, FC, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { PATHNAME } from '../../../../enums';
+import env from '../../../../env';
+import { Environment } from '../../../../types/enums';
+
+const { ENV } = env;
 
 const routes = {
   [PATHNAME.MAIN]: lazy(() => import('../pages/main-page')),
@@ -21,7 +25,8 @@ const routes = {
     () => import('../pages/article-page')
   ),
   [PATHNAME.CONTACT]: lazy(() => import('../pages/contact-page')),
-  ARTICLE: lazy(() => import('../pages/article-page'))
+  ARTICLE: lazy(() => import('../pages/article-page')),
+  [PATHNAME.TEXT_FORMAT]: lazy(() => import('../pages/article-page'))
 };
 
 const Routes: FC = () => (
@@ -85,6 +90,13 @@ const Routes: FC = () => (
       path={PATHNAME.COMMUNITY_ABOUT}
       component={routes[PATHNAME.COMMUNITY_ABOUT]}
     />
+    {(ENV === Environment.DEVELOPMENT || ENV === Environment.STAGING) && (
+      <Route
+        exact
+        path={PATHNAME.TEXT_FORMAT}
+        component={routes[PATHNAME.TEXT_FORMAT]}
+      />
+    )}
   </Switch>
 );
 

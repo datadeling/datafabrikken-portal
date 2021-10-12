@@ -22,5 +22,8 @@ export const articleIds: { [pathname: string]: { [key: string]: string } } = {
   [`${PATHNAME.FIND_DATA}${PATHNAME.GUIDEANCE_AND_COMPETENCE}${PATHNAME.LEGAL_FRAMEWORK}`]:
     {
       nb: '888b5157-8822-4e18-9076-e48f7c6ad19c'
-    }
+    },
+  [PATHNAME.TEXT_FORMAT]: {
+    nb: '7983844f-f5fd-41e9-b297-20c4d6e97b13'
+  }
 };
