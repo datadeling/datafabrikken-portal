@@ -56,7 +56,7 @@ const CommunityCategoryPage: FC<Props> = ({
     setSortByDateDesc(!byDateAsc);
   };
 
-  const { name = '', topics = [] } = communityCategory ?? {};
+  const { name = '', slug = '', topics = [] } = communityCategory ?? {};
 
   const getActiveTopics = () => topics.filter(topic => !topic.deleted);
 
@@ -74,9 +74,9 @@ const CommunityCategoryPage: FC<Props> = ({
             <Link
               variant={Variant.PRIMARY}
               external
-              href={`${COMMUNITY_API_HOST}/login`}
+              href={`${COMMUNITY_API_HOST}/category/${slug}`}
             >
-              <Translation id='community.loginToPublish' />
+              <Translation id='community.newTopic' />
             </Link>
             {getActiveTopics().length > 0 && (
               <SC.Sort>
