@@ -72,6 +72,7 @@ const CommunityTopicPage: FC<Props> = ({
   }, [communityTopic?.category?.slug]);
 
   const {
+    slug,
     title = '',
     posts = [],
     tags = [],
@@ -120,8 +121,8 @@ const CommunityTopicPage: FC<Props> = ({
               </li>
             </SC.Statistics>
             <SC.LinkWrapper>
-              <Link href={`${COMMUNITY_API_HOST}/login`} external>
-                <Translation id='community.loginToComment' />
+              <Link href={`${COMMUNITY_API_HOST}/topic/${slug}`} external>
+                <Translation id='community.writeComment' />
               </Link>
             </SC.LinkWrapper>
           </SC.Header>
@@ -129,8 +130,8 @@ const CommunityTopicPage: FC<Props> = ({
             {posts.map((post, index) => (
               <Post key={`post-${index}`} post={post} />
             ))}
-            <Link href={`${COMMUNITY_API_HOST}/login`} external>
-              <Translation id='community.loginToComment' />
+            <Link href={`${COMMUNITY_API_HOST}/topic/${slug}`} external>
+              <Translation id='community.writeComment' />
             </Link>
           </SC.Posts>
         </SC.Page>
