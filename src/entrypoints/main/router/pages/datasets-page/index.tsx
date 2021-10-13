@@ -45,7 +45,10 @@ const DatasetsPage: FC<Props> = ({
   totalDatasets,
   datasetPageSize,
   datasetsPage,
-  datasetsActions: { getPagedDatasetsRequested: getPagedDatasets },
+  datasetsActions: {
+    getPagedDatasetsRequested: getPagedDatasets,
+    resetPagedDatasets
+  },
   referenceData: { themes = [], mediatypes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData }
 }) => {
@@ -73,15 +76,23 @@ const DatasetsPage: FC<Props> = ({
   const formatParameter = getParameter('format');
 
   useEffect(() => {
-    getPagedDatasets({
-      page: parseInt(pageParameter, 10),
-      q: queryParameter,
-      losTheme: losThemeParameter,
-      theme: themeParameter,
-      opendata: openDataParameter,
-      accessRights: accessRightsParameter,
-      format: formatParameter
-    });
+    if (
+      queryParameter.length > 0 ||
+      losThemeParameter.length > 0 ||
+      themeParameter.length > 0
+    ) {
+      getPagedDatasets({
+        page: parseInt(pageParameter, 10),
+        q: queryParameter,
+        losTheme: losThemeParameter,
+        theme: themeParameter,
+        opendata: openDataParameter,
+        accessRights: accessRightsParameter,
+        format: formatParameter
+      });
+    } else {
+      resetPagedDatasets();
+    }
   }, [search]);
 
   useEffect(() => {
@@ -183,62 +194,64 @@ const DatasetsPage: FC<Props> = ({
         <SC.Themes>
           <Themes onFilterTheme={handleFilterTheme} />
         </SC.Themes>
-        <SC.Row>
-          <SC.Aside>
-            <SC.Filters>
-              <Filters
-                handleCheckboxChange={handleCheckboxChange}
-                handleMultiSelectFilter={handleMultiSelectFilter}
-                mediaTypeAggregations={mediaType}
-                mediaTypesReferenceData={mediatypes}
-                openDataParameter={openDataParameter}
-                accessRightsParameter={accessRightsParameter}
-                formatParameter={formatParameter}
-              />
-            </SC.Filters>
-          </SC.Aside>
-          <SC.SearchList>
-            {datasets?.map(
-              ({
-                id,
-                publisher,
-                title,
-                description,
-                distribution,
-                accessRights
-              }: any) => (
-                <SearchHit
-                  key={id}
-                  id={id}
-                  publisher={publisher}
-                  title={title}
-                  description={description}
-                  distributions={distribution}
-                  accessRight={accessRights}
-                  mediatypes={mediatypes}
+        {datasets?.length > 0 && (
+          <SC.Row>
+            <SC.Aside>
+              <SC.Filters>
+                <Filters
+                  handleCheckboxChange={handleCheckboxChange}
+                  handleMultiSelectFilter={handleMultiSelectFilter}
+                  mediaTypeAggregations={mediaType}
+                  mediaTypesReferenceData={mediatypes}
+                  openDataParameter={openDataParameter}
+                  accessRightsParameter={accessRightsParameter}
+                  formatParameter={formatParameter}
                 />
-              )
-            )}
-            {datasets?.length > 0 && (
-              <SC.Pagination>
-                <ReactPaginate
-                  pageCount={totalDatasets / datasetPageSize}
-                  pageRangeDisplayed={2}
-                  marginPagesDisplayed={1}
-                  previousLabel='forrige'
-                  nextLabel='neste'
-                  breakLabel={<span>...</span>}
-                  breakClassName='break-me'
-                  containerClassName='pagination'
-                  onPageChange={onPageChange}
-                  activeClassName='active'
-                  forcePage={datasetsPage}
-                  disableInitialCallback
-                />
-              </SC.Pagination>
-            )}
-          </SC.SearchList>
-        </SC.Row>
+              </SC.Filters>
+            </SC.Aside>
+            <SC.SearchList>
+              {datasets?.map(
+                ({
+                  id,
+                  publisher,
+                  title,
+                  description,
+                  distribution,
+                  accessRights
+                }: any) => (
+                  <SearchHit
+                    key={id}
+                    id={id}
+                    publisher={publisher}
+                    title={title}
+                    description={description}
+                    distributions={distribution}
+                    accessRight={accessRights}
+                    mediatypes={mediatypes}
+                  />
+                )
+              )}
+              {datasets?.length > 0 && (
+                <SC.Pagination>
+                  <ReactPaginate
+                    pageCount={totalDatasets / datasetPageSize}
+                    pageRangeDisplayed={2}
+                    marginPagesDisplayed={1}
+                    previousLabel='forrige'
+                    nextLabel='neste'
+                    breakLabel={<span>...</span>}
+                    breakClassName='break-me'
+                    containerClassName='pagination'
+                    onPageChange={onPageChange}
+                    activeClassName='active'
+                    forcePage={datasetsPage}
+                    disableInitialCallback
+                  />
+                </SC.Pagination>
+              )}
+            </SC.SearchList>
+          </SC.Row>
+        )}
       </SC.Container>
     </Root>
   );
