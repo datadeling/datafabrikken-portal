@@ -8,10 +8,10 @@ import {
   getParagraphBodyValue,
   getParagraphImage
 } from '../../utils/drupal-values';
-import { convertToSanitizedHtml } from '../../utils/markdown-converter';
 
 import { Variant as ContainerVariant } from '../container';
 import { InfoBox, InfoBoxBody, InfoBoxTitle } from '../info-box';
+import Markdown from '../markdown';
 
 import SC from './styled';
 import { CmsArticle } from '../../types';
@@ -24,23 +24,15 @@ export const renderModule = (module: any) => {
   switch (module.type) {
     case PARAGRAPH.BODY:
       return (
-        <SC.Body
-          key={module.id}
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: convertToSanitizedHtml(getParagraphBodyValue(module))
-          }}
-        />
+        <SC.Body key={module.id}>
+          <Markdown allowHtml>{getParagraphBodyValue(module)}</Markdown>
+        </SC.Body>
       );
     case PARAGRAPH.QUOTE:
       return (
-        <SC.Quote
-          key={module.id}
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: convertToSanitizedHtml(getParagraphBodyProcessed(module))
-          }}
-        />
+        <SC.Quote key={module.id}>
+          <Markdown allowHtml>{getParagraphBodyProcessed(module)}</Markdown>
+        </SC.Quote>
       );
     case PARAGRAPH.IMAGE: {
       const image = getParagraphImage(module);
@@ -70,12 +62,7 @@ export const renderModule = (module: any) => {
             <h2>{module.field_link?.title}</h2>
           </InfoBoxTitle>
           <InfoBoxBody truncate={false}>
-            <div
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: convertToSanitizedHtml(module.field_body?.processed)
-              }}
-            />
+            <Markdown allowHtml>{module.field_body?.processed}</Markdown>
           </InfoBoxBody>
         </InfoBox>
       );
@@ -101,12 +88,9 @@ const Article: FC<Props> = ({ article }) => {
         <SC.Container variant={ContainerVariant.WIDTH_720}>
           <SC.Title>{title}</SC.Title>
           {ingress && (
-            <SC.Ingress
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: convertToSanitizedHtml(ingress)
-              }}
-            />
+            <SC.Ingress>
+              <Markdown allowHtml>{ingress}</Markdown>
+            </SC.Ingress>
           )}
         </SC.Container>
       </SC.Header>

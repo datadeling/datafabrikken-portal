@@ -37,13 +37,12 @@ class TranslationsService {
     );
   }
 
-  public getTranslateText(textObj: string | Partial<TextLanguage>) {
+  public getTranslateText(textObj?: string | Partial<TextLanguage> | null) {
+    if (textObj == null) {
+      return null;
+    }
     if (typeof textObj === 'string') {
       return textObj;
-    }
-
-    if (textObj === null) {
-      return null;
     }
 
     return (
@@ -62,6 +61,21 @@ class TranslationsService {
     this.translations.setLanguage(this.language);
 
     this.changeLanguageCallback?.(this.language);
+  }
+
+  public getTranslateTextWithLanguageCode(
+    textObj?: string | Partial<TextLanguage>,
+    language?: Language
+  ) {
+    const selectedLanguage = language || this.getLanguage();
+    if (textObj == null) {
+      return null;
+    }
+    if (typeof textObj === 'string') {
+      return textObj;
+    }
+
+    return textObj?.[selectedLanguage] || null;
   }
 }
 

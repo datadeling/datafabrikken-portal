@@ -32,7 +32,7 @@
   "news": {
     "title": "Siste nytt om Datafabrikken"
   },
-  "owner": "Eier",
+  "owner": "Utgiver",
   "openData": "Åpne data",
   "accessRights": {
     "limitedAccess": "Begrenset tilgang"
@@ -52,6 +52,155 @@
   },
   "unknown": "Ukjent",
   "toTop": "Til toppen",
+  "sidemenu": {
+    "heading": "Gå til"
+  },
+  "detailsPage": {
+    "intro": {
+      "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
+      "entity": {
+        "dataset": "Datasettbeskrivelse",
+        "dataservice": "Datatenestebeskrivelse",
+        "concept": "Omgrepsbeskrivelse",
+        "infomod": "Informasjonsmodellbeskrivelse",
+        "publicservice": "Tenestebeskrivelse",
+        "event": "Hendingsbeskrivelse"
+      }
+    },
+    "sectionTitles": {
+      "dataset": {
+        "description": "Beskrivelse",
+        "objective": "Formål",
+        "distributions": "Distribusjoner",
+        "usage": "Bruk av datasettet",
+        "sample": "Eksempeldata",
+        "provenance": "Opphav og oppdatering",
+        "quality": "Kvalitet på innhold",
+        "conceptReferences": "Begreper brukt i datasett",
+        "datasetReferences": "Relasjoner",
+        "dataserviceReferences": "Brukt i datatjeneste (API)",
+        "keywords": "Søkeord",
+        "qualifiedAttributions": "Innholdsleverandører",
+        "restrictions": "Avgrensninger",
+        "contactInformation": "Kontaktinformasjon"
+      },
+      "dataService": {
+        "description": "Beskrivelse",
+        "formats": "Formater",
+        "contactInformation": "Kontaktinformasjon",
+        "usage": "Ta i bruk datatjenesten",
+        "conformsTo": "Er i samsvar med",
+        "datasetReferences": "Tilknyttede datasettbeskrivelser",
+        "informationModelReferences": "Informasjonsmodeller"
+      }
+    }
+  },
+  "errorPage": {
+    "pageNotFound": "Ikke funnet",
+    "serverError": {
+      "title": "Dette er flaut...",
+      "content1": "Det har visst skjedd noe teknisk krøll i vår ende.",
+      "content2": "Vi jobber med å rette opp feilen. Prøv igjen om en liten stund."
+    },
+    "clientError": {
+      "title": "Oi da...",
+      "content": "Det ser ut til at du har blitt sendt til en side som ikke eksisterer.",
+      "backLink": "Gå til forsiden"
+    }
+  },
+  "dataset": {
+    "keyInfo": "Bruk av datasettet",
+    "accessRight": "Datasettet er",
+    "title": "Datasett",
+    "type": "Type",
+    "datasetdescription": "Datasettbeskrivelse",
+    "firstHarvested": "publisert i Felles datakatalog",
+    "lastChanged": "Sist endret i Felles datakatalog",
+    "conformsTo": "Innholdsstandard",
+    "informationModel": "I samsvar med informasjonsmodell",
+    "informationModelDefaultText": "Informasjonsmodell",
+    "distributions": "Andre distribusjoner",
+    "distributionsAPI": "API-distribusjoner ({0})",
+    "distibutionsAPILabel": "API-distribusjoner",
+    "distribution": {
+      "title": "Distribusjoner",
+      "description": "Beskrivelse",
+      "noDescription": "Ingen beskrivelse",
+      "downloadUrl": "Nedlastingslenke",
+      "download": "Last ned",
+      "format": "Tilgjengelig Format",
+      "accessUrl": "TilgangsURL",
+      "license": "Forutsetning for bruk av datasettet",
+      "licenseLinkDefault": "Lisens",
+      "conformsTo": "Innholdsstandard",
+      "moreInformation": "Mer Informasjon",
+      "page": "Mer informasjon om distribusjonen",
+      "standard": "Standard",
+      "referenceDefaultCode": "Andre relasjoner",
+      "referenceDefault": "Relasjon",
+      "type": "Type",
+      "dataService": "Datatjeneste"
+    },
+    "issued": "Utgitt",
+    "quality": "Kvalitet på innhold",
+    "provenance": "Opphav",
+    "currentness": "Aktualitet",
+    "frequency": "Oppdateringsfrekvens",
+    "miscInfo": "Øvrig info",
+    "created": "Opprettet",
+    "modified": "Sist oppdatert",
+    "language": "Språk",
+    "theme": "Tema",
+    "periodFrom": "Tidsmessig avgrenset fra",
+    "periodTo": "Tidsmessig avgrenset til",
+    "spatial": "Geografisk avgrenset til",
+    "temporal": {
+      "description": "Tidsmessig avgrenset til",
+      "from": "Fra",
+      "to": "til"
+    },
+    "information": "Opplysninger",
+    "keyword": "Søkeord",
+    "subject": "Begrep brukt i datasettet",
+    "restrictions": "Avgrensninger",
+    "comments": "Kommentar",
+    "objective": "Formål",
+    "registeredIn": "registrert i",
+    "related": "Relasjoner",
+    "relates": "Relatert",
+    "restriction": "Restriksjon",
+    "downloadText": "Last ned DCAT-beskrivelse:",
+    "isPartOf": "Datasettet er en del av",
+    "relevanceAnnotation": "Relevans",
+    "completenessAnnotation": "Kompletthet",
+    "accuracyAnnotation": "Nøyaktighet",
+    "availabilityAnnotations": "Tilgjengelighet",
+    "contactPoint": {
+      "email": "E-post",
+      "telephone": "Telefon",
+      "background": "Bakgrunnsinformasjon om datasettet",
+      "organizationUnit": "Ta kontakt med"
+    },
+    "legalBasisForRestriction": "Skjermingshjemmel",
+    "legalBasisForRestrictionDefaultText": "Hjemmel",
+    "legalBasisForProcessing": "Behandlingsgrunnlag",
+    "legalBasisForProcessingDefaultText": "Grunnlag",
+    "legalBasisForAccess": "Utleveringshjemmel",
+    "leagalBasisForAccessDefaultText": "Hjemmel",
+    "accessRights": {
+      "authorityCode": {
+        "public": "Offentlig",
+        "restricted": "Begrenset offentlighet",
+        "nonPublic": "Unntatt offentlighet",
+        "publicDetailsLabel": "Datasettet kan deles offentlig",
+        "restrictedDetailsLabel": "Datasettet har begrenset offentlighet",
+        "nonPublicDetailsLabel": "Datasettet er unntatt offentlighet"
+      }
+    },
+    "sample": "Eksempeldata",
+    "landingPage": "Mer informasjon",
+    "landingPageDesc": "Landingsside for dette datasettet"
+  },
   "community": {
     "posted": "svarte",
     "noPosts": "Ingen innlegg ennå",
@@ -70,6 +219,11 @@
       "dateAscending": "Dato stigende",
       "dateDescending": "Dato synkende"
     }
+  },
+  "contactPoint": {
+    "contactPoint": "Kontaktpunkt",
+    "email": "E-post",
+    "telephone": "Telefon"
   },
   "formatType": {
     "MEDIA_TYPE": "Mediatype",

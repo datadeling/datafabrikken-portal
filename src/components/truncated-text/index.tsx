@@ -11,15 +11,18 @@ import useResize from './hooks';
 import Translation from '../translation';
 
 import SC from './styled';
+import { ThemeProps } from '../../entrypoints/main/app/theme/types';
 
 interface Props {
   visibleLines: number;
   lineHeight: number;
+  backgroundColour?: (props: ThemeProps) => string;
 }
 
 const TruncatedText: FC<PropsWithChildren<Props>> = ({
   visibleLines,
   lineHeight,
+  backgroundColour,
   children
 }) => {
   const [expanded, setExpanded] = useState(false);
@@ -39,6 +42,7 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
         lineHeight={lineHeight}
         truncate={truncate && !expanded}
         visibleLines={visibleLines + 1}
+        backgroundColour={backgroundColour}
       >
         {children}
       </SC.TextContent>

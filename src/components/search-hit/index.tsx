@@ -1,7 +1,5 @@
 import React, { FC, memo, PropsWithChildren } from 'react';
 
-import env from '../../env';
-
 import SC from './styled';
 import TruncatedText from '../truncated-text';
 import Translation from '../translation';
@@ -10,6 +8,7 @@ import {
   AccessRight as AccessRightEnum,
   MediaTypeOrExtentType
 } from '../../types/enums';
+import { PATHNAME } from '../../enums';
 import type {
   AccessRight,
   Distribution,
@@ -17,8 +16,6 @@ import type {
   Publisher,
   TextLanguage
 } from '../../types';
-
-const { FDK_PORTAL_HOST } = env;
 
 interface Props {
   id: string;
@@ -67,9 +64,7 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
     <SC.SearchHit>
       <SC.Title>
         <a
-          href={`${FDK_PORTAL_HOST}/datasets/${id}`}
-          target='_blank'
-          rel='noreferrer'
+          href={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}${PATHNAME.DATASET_DETAILS}/${id}`}
         >
           <Translation text={title} />
         </a>
