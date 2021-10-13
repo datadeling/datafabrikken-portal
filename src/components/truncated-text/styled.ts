@@ -1,12 +1,19 @@
 import styled, { css } from 'styled-components';
 
 import { theme, Colour } from '../../entrypoints/main/app/theme';
+import { ThemeProps } from '../../entrypoints/main/app/theme/types';
 
-type textContentProps = {
+interface backgroundColourProps {
+  backgroundColour?: (props: ThemeProps) => string;
+}
+
+interface truncateProps {
   lineHeight: number;
   truncate: boolean;
   visibleLines: number;
-};
+}
+
+interface textContentProps extends truncateProps, backgroundColourProps {}
 
 const TruncateContainer = styled.div`
   margin-bottom: 1em;
@@ -19,7 +26,7 @@ const TextContent = styled.div<textContentProps>`
   -webkit-box-orient: vertical;
   line-height: ${({ lineHeight }) => lineHeight || 20}px;
 
-  ${({ truncate, lineHeight, visibleLines }) =>
+  ${({ truncate, lineHeight, visibleLines, backgroundColour }) =>
     truncate &&
     css`
       -webkit-line-clamp: ${visibleLines};
@@ -34,7 +41,7 @@ const TextContent = styled.div<textContentProps>`
         top: 0;
         background: linear-gradient(
           transparent ${lineHeight * 3}px,
-          ${theme.colour(Colour.NEUTRAL, 'N0')}
+          ${backgroundColour ?? theme.colour(Colour.NEUTRAL, 'N0')}
         );
       }
     `}
@@ -45,7 +52,7 @@ const ExpandButton = styled.button`
   border-bottom-style: dotted;
   border-bottom-color: ${theme.colour(Colour.NEUTRAL, 'N60')};
   color: ${theme.colour(Colour.BLUE, 'B52')};
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  background-color: transparent;
   cursor: pointer;
 `;
 export default { TruncateContainer, TextContent, ExpandButton };

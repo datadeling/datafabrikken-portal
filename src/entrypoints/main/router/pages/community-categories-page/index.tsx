@@ -16,10 +16,9 @@ import Container from '../../../../../components/container';
 
 import Category from './components/category';
 
-import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter';
-
 import SC from './styled';
 import { categorySorter } from '../../../../../utils/community/utils';
+import Markdown from '../../../../../components/markdown';
 
 const articleId = '7e856b1b-0f96-44fe-b4c3-7a30a3140fb7';
 
@@ -49,14 +48,11 @@ const CommunityCategoriesPage: FC<Props> = ({
         <SC.Page>
           <SC.Title>{cmsPage?.title}</SC.Title>
           <SC.IngressRow>
-            <SC.Ingress
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: convertToSanitizedHtml(
-                  cmsPage?.field_modules[0]?.field_body?.value ?? ''
-                )
-              }}
-            />
+            <SC.Ingress>
+              <Markdown allowHtml>
+                {cmsPage?.field_modules[0]?.field_body?.value ?? ''}
+              </Markdown>
+            </SC.Ingress>
             <SC.IconWrapper>
               <CommunityIcon />
             </SC.IconWrapper>

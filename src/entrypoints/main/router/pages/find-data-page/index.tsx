@@ -16,7 +16,6 @@ import {
   InfoBoxIcon
 } from '../../../../../components/info-box';
 import { PARAGRAPH } from '../../../../../enums';
-import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter';
 
 import DatasetIcon from '../../../../../images/service-data-search.inline.svg';
 import DatasourcesIcon from '../../../../../images/service-data-sources.inline.svg';
@@ -25,6 +24,7 @@ import GuidanceIcon from '../../../../../images/service-guide.inline.svg';
 
 import { Entity } from './enums';
 import SC from './styled';
+import Markdown from '../../../../../components/markdown';
 
 const articleId = '8d6ed4d9-f2b9-4d24-9561-595af3876240';
 
@@ -69,12 +69,7 @@ export const renderModule = (module: any) => {
             <h2>{module.field_link?.title}</h2>
           </InfoBoxTitle>
           <InfoBoxBody>
-            <div
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{
-                __html: convertToSanitizedHtml(module.field_body?.processed)
-              }}
-            />
+            <Markdown allowHtml>{module.field_body?.processed}</Markdown>
           </InfoBoxBody>
         </InfoBox>
       );

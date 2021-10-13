@@ -4,7 +4,7 @@ import { RedirectProps } from 'react-router-dom';
 import { Variant } from './enums';
 import SC from './styled';
 
-interface Props extends HTMLAttributes<HTMLElement> {
+export interface Props extends HTMLAttributes<HTMLElement> {
   as?: keyof JSX.IntrinsicElements | ComponentType<any>;
   variant?: Variant;
 }

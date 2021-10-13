@@ -28,9 +28,9 @@ import withPage, {
 
 import { PATHNAME } from '../../../../../enums';
 import { dateStringToDate, formatDate } from '../../../../../utils/date';
-import { convertToSanitizedHtml } from '../../../../../utils/markdown-converter';
 
 import SC from './styled';
+import Markdown from '../../../../../components/markdown';
 
 const articleId = 'a8ba0c51-4693-401c-b2c8-61dfe144cc83';
 
@@ -64,14 +64,9 @@ const MainPage: FC<Props> = ({
                   </ContentBoxSC.ContentBoxHeader.Title>
                 </ContentBoxHeader>
                 <ContextBoxBody>
-                  <div
-                    // eslint-disable-next-line react/no-danger
-                    dangerouslySetInnerHTML={{
-                      __html: convertToSanitizedHtml(
-                        firstElement?.field_body?.processed
-                      )
-                    }}
-                  />
+                  <Markdown allowHtml>
+                    {firstElement?.field_body?.processed}
+                  </Markdown>
                   {firstElement?.field_link && (
                     <Link
                       variant={Variant.PRIMARY}
@@ -99,14 +94,9 @@ const MainPage: FC<Props> = ({
                           {module?.field_title}
                         </ContentBoxSC.ContentBoxHeader.Title>
                         <ContextBoxBody>
-                          <div
-                            // eslint-disable-next-line react/no-danger
-                            dangerouslySetInnerHTML={{
-                              __html: convertToSanitizedHtml(
-                                module?.field_body?.processed
-                              )
-                            }}
-                          />
+                          <Markdown allowHtml>
+                            {module?.field_body?.processed}
+                          </Markdown>
                           {module?.field_link && (
                             <Link
                               as={RouterLink}

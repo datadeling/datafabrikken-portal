@@ -1,0 +1,14 @@
+<svg id="enceot4QTxa1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" shape-rendering="geometricPrecision" text-rendering="geometricPrecision">
+<style>
+<![CDATA[#enceot4QTxa1{pointer-events: all}#enceot4QTxa1 * {animation-play-state: paused !important}#enceot4QTxa1:hover * {animation-play-state: running !important}#enceot4QTxa3_to {animation: enceot4QTxa3_to__to 2500ms linear infinite normal forwards}@keyframes enceot4QTxa3_to__to { 0% {transform: translate(8px,5px);animation-timing-function: cubic-bezier(0.42,0,0.58,1)} 16% {transform: translate(8px,9px);animation-timing-function: cubic-bezier(0.42,0,0.58,1)} 32% {transform: translate(8px,6px);animation-timing-function: cubic-bezier(0.42,0,0.58,1)} 48% {transform: translate(8px,9px);animation-timing-function: cubic-bezier(0.42,0,0.58,1)} 64% {transform: translate(8px,6px);animation-timing-function: cubic-bezier(0.42,0,0.58,1)} 80% {transform: translate(8px,9px);animation-timing-function: cubic-bezier(0.42,0,0.58,1)} 96% {transform: translate(8px,5px)} 100% {transform: translate(8px,5px)}}]]>
+</style>
+<g id="enceot4QTxa2">
+<g id="enceot4QTxa3_to" transform="translate(8,5)">
+<g id="enceot4QTxa3" transform="translate(-8,-5.5)">
+<polyline id="enceot4QTxa4" points="4,5.5 8,9.5 12,5.5" fill="none" stroke="rgb(55,70,76)" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<line id="enceot4QTxa5" x1="8" y1="1.5" x2="8" y2="9.5" fill="none" stroke="rgb(55,70,76)" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<polyline id="enceot4QTxa6" points="1.5,11.5 1.5,14.49 14.5,14.48 14.5,11.5" transform="matrix(1 0 0 1 0 -0.005)" fill="none" stroke="rgb(55,70,76)" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</svg>

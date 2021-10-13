@@ -65,6 +65,7 @@ export interface Distribution {
   conformsTo: ConformsTo[];
   page?: Page[];
   accessService?: AccessService[];
+  fdkFormat: MediaTypeOrExtent[];
 }
 
 interface AccessRight {
@@ -87,7 +88,49 @@ export interface Dataset {
   modified: string;
   distribution: Distribution[];
   accessRights?: AccessRight;
+  harvest: Partial<Harvest>;
+  provenance?: Provenance;
+  sample?: Sample[];
+  legalBasisForRestriction?: LegalBasis[];
+  legalBasisForProcessing?: LegalBasis[];
+  legalBasisForAccess?: LegalBasis[];
+  conformsTo: ConformsTo[];
+  informationModel?: Partial<ReferenceType>[];
+  language?: Partial<ReferenceType>[];
+  landingPage: string[];
+  qualifiedAttributions: QualifiedAttribution[];
+  assessment?: Assessment;
+  hasRelevanceAnnotation?: Partial<Annotation>;
+  hasCompletenessAnnotation?: Partial<Annotation>;
+  hasAccuracyAnnotation?: Partial<Annotation>;
+  hasAvailabilityAnnotation?: Partial<Annotation>;
+  hasCurrentnessAnnotation?: Partial<Annotation>;
+  accrualPeriodicity?: AccrualPeriodicity;
+  references?: DatasetReference[];
+  temporal?: TemporalRestriction[];
+  contactPoint: Partial<ContactPoint>[];
 }
+
+interface ContactPoint {
+  email: string;
+  uri: string;
+  organizationUnit: string;
+  organizationName: string;
+  hasURL: string;
+  hasTelephone: string;
+}
+
+interface Provenance {
+  code: string;
+  prefLabel: Partial<TextLanguage>;
+}
+
+export interface Harvest {
+  firstHarvested: string;
+  lastHarvested: string;
+}
+
+export type Theme = LosTheme | EuTheme;
 
 interface ReferenceType {
   uri: string;

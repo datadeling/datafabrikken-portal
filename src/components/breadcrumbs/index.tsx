@@ -9,6 +9,7 @@ import Container from '../container';
 import Link from '../link';
 
 import ArticleBreadCrumb from './article-breadcrumb';
+import DatasetBreadcrumb from './dataset-breadcrumb';
 import CommunityCategoryBreadCrumb from './community-category-breadcrumb';
 import CommunityTopicBreadCrumb from './community-topic-breadcrumb';
 import SC from './styled';
@@ -63,6 +64,10 @@ const routes = [
   {
     path: PATHNAME.COMMUNITY,
     breadcrumb: () => <Translation id='header.community' />
+  },
+  {
+    path: `${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}${PATHNAME.DATASET_DETAILS}/:id`,
+    breadcrumb: () => <DatasetBreadcrumb />
   },
   {
     path: `${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle`,

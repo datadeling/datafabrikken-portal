@@ -5,6 +5,8 @@ import { PATHNAME } from '../../../../enums';
 import env from '../../../../env';
 import { Environment } from '../../../../types/enums';
 
+import ErrorPage from '../../../../components/error-page';
+
 const { ENV } = env;
 
 const routes = {
@@ -26,6 +28,9 @@ const routes = {
   ),
   [PATHNAME.CONTACT]: lazy(() => import('../pages/contact-page')),
   ARTICLE: lazy(() => import('../pages/article-page')),
+  [PATHNAME.DATASET_DETAILS]: lazy(
+    () => import('../pages/details-page-dataset')
+  ),
   [PATHNAME.TEXT_FORMAT]: lazy(() => import('../pages/article-page'))
 };
 
@@ -77,6 +82,11 @@ const Routes: FC = () => (
     />
     <Route
       exact
+      path={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}${PATHNAME.DATASET_DETAILS}/:datasetId`}
+      component={routes[PATHNAME.DATASET_DETAILS]}
+    />
+    <Route
+      exact
       path={`${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle`}
       component={routes.COMMUNITY_CATEGORY}
     />
@@ -97,6 +107,7 @@ const Routes: FC = () => (
         component={routes[PATHNAME.TEXT_FORMAT]}
       />
     )}
+    <Route render={() => <ErrorPage errorCode='404' />} />
   </Switch>
 );
 

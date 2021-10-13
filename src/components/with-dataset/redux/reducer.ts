@@ -21,7 +21,7 @@ export default function reducer(
 ) {
   switch (action.type) {
     case GET_DATASET_REQUESTED:
-      return state.set('dataset', null).set('isLoadingDataset', true);
+      return state.set('isLoadingDataset', true);
     case GET_DATASET_SUCCEEDED:
       return state
         .set('dataset', fromJS(action.payload.dataset))
@@ -29,7 +29,7 @@ export default function reducer(
     case GET_DATASET_FAILED:
       return state.set('isLoadingDataset', false);
     case RESET_DATASET:
-      return state.set('isLoadingDataset', false);
+      return state.set('dataset', null).set('isLoadingDataset', false);
     default:
       return state;
   }

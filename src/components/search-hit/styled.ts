@@ -17,12 +17,6 @@ const Title = styled.h3`
   display: inline-flex;
   font-size: ${theme.fontSize('FS16')};
   margin-bottom: ${theme.spacing('S4')};
-  &:after {
-    font-family: 'Material Icons';
-    content: '\\e0b2';
-    font-size: ${theme.fontSize('FS16')};
-    margin-left: ${theme.spacing('S4')};
-  }
 `;
 
 const Publisher = styled.div`

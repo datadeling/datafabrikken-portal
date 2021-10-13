@@ -1,4 +1,7 @@
-export const dateStringToDate = (dateString: string) => {
+export const dateStringToDate = (dateString?: string) => {
+  if (dateString == null) {
+    return null;
+  }
   const dateStringTimestamp = Date.parse(dateString);
   const date = new Date(dateStringTimestamp);
   date.setHours(0, 0, 0, 0);
