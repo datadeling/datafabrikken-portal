@@ -34,7 +34,8 @@ export enum DataFormat {
 }
 
 export enum GoogleAnalyticsTrackingId {
-  DATAFABRIKKEN = 'G-FFPJE1KZ19'
+  DATAFABRIKKEN = 'G-FFPJE1KZ19',
+  COMMUNITY = 'G-WVFGGM6DCG'
 }
 
 export enum CommunityPlaceholder {
