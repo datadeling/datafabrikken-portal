@@ -47,10 +47,11 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
   distributions = [],
   accessRight
 }) => {
-  const formats = distributions?.reduce(
-    (previous, { fdkFormat = [] }) => [...previous, ...(fdkFormat ?? [])],
-    [] as MediaTypeOrExtent[]
-  );
+  const formats =
+    distributions?.reduce(
+      (previous, { fdkFormat = [] }) => [...previous, ...(fdkFormat ?? [])],
+      [] as MediaTypeOrExtent[]
+    ) ?? [];
 
   const determineAccessRightLabel = () => {
     switch (accessRight?.code) {
