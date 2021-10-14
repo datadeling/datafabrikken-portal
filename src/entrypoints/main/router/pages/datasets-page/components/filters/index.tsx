@@ -81,8 +81,6 @@ const Filters: FC<Props> = ({
     }, {});
   };
 
-  // eslint-disable-next-line no-console
-  console.log({ formatParameter });
   const renderFormatFilterCheckbox = (
     items: BucketItem[],
     groupIndex: number
