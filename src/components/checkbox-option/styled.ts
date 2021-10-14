@@ -5,7 +5,6 @@ import { theme, Colour } from '../../entrypoints/main/app/theme';
 const CheckboxContainer = styled.div`
   margin-bottom: ${theme.spacing('S4')};
   & > label {
-    align-items: center;
     display: flex;
     & > span {
       margin-left: ${theme.spacing('S4')};
