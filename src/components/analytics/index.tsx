@@ -11,7 +11,7 @@ const Analytics: FC = () => {
   const { hostname } = location;
 
   const isDatafabrikken = ['datafabrikken.norge.no'].includes(hostname);
-  const isCommunity = [`${PATHNAME.COMMUNITY}`].includes(pathname);
+  const isCommunity = pathname.includes(PATHNAME.COMMUNITY);
 
   const configureAnalytics = () => {
     const trackingIds = [];
