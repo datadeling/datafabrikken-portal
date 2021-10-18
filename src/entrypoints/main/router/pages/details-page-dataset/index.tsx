@@ -140,6 +140,7 @@ const DatasetDetailsPage: FC<Props> = ({
   return renderPage ? (
     <DetailsPage
       entity={entity}
+      entityId={dataset?.id}
       title={title}
       publisher={dataset?.publisher}
       lastPublished={lastPublished}

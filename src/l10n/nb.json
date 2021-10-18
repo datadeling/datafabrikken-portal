@@ -228,5 +228,8 @@
   "formatType": {
     "MEDIA_TYPE": "Mediatype",
     "FILE_TYPE": "Filtype"
+  },
+  "metadataQualityPage": {
+    "metadataQuality": "Metadatakvalitet"
   }
 }
