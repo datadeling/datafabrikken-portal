@@ -114,7 +114,7 @@ const Category: FC<Props> = ({
               as={RouterLink}
               to={`${PATHNAME.COMMUNITY}/${slug}/${lastPost.topic.slug}`}
             >
-              <Truncate lines={3} width={280} trimWhitespace>
+              <Truncate lines={2} width={280} trimWhitespace>
                 {htmlToText(
                   lastPost.content.replaceAll(
                     CommunityPlaceholder.CALENDAR_EVENT_TITLE,
