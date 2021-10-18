@@ -34,6 +34,12 @@ const SubBanner = styled.div`
   display: flex;
   justify-content: space-between;
   font-size: ${theme.fontSize('FS12')};
+  ${onMobileView} {
+    flex-direction: column;
+    & > * {
+      margin-top: ${theme.spacing('S2')};
+    }
+  }
 `;
 
 const Content = styled.section`

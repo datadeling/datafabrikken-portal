@@ -25,9 +25,11 @@ import { Publisher, TextLanguage, Theme } from '../../types';
 import { getReferenceData } from '../../services/api/reference-data/reference-data';
 import translations from '../../services/translations';
 import ContentSection from './components/content-section';
+import MetadataQuality from './components/metadata-quality';
 
 interface ExternalProps {
   entity: Entity;
+  entityId?: string;
   title: Partial<TextLanguage>;
   publisher?: Partial<Publisher>;
   lastPublished: string;
@@ -47,6 +49,7 @@ const publisherLabel: Record<Entity, string> = {
 
 const DetailsPage: FC<PropsWithChildren<Props>> = ({
   entity,
+  entityId,
   title: pageTitle,
   publisher,
   lastPublished,
@@ -93,6 +96,7 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
             {': '}
             <Translation text={publisher?.prefLabel} />
           </p>
+          <MetadataQuality entityId={entityId} />
         </SC.SubBanner>
       </SC.Banner>
       <SC.Content>
