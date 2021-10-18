@@ -115,7 +115,7 @@ const Topic: FC<Props> = ({
             as={RouterLink}
             to={`${PATHNAME.COMMUNITY}/${categorySlug}/${slug}`}
           >
-            <Truncate lines={3} width={280} trimWhitespace>
+            <Truncate lines={2} width={280} trimWhitespace>
               {htmlToText(
                 teaser.content.replaceAll(
                   CommunityPlaceholder.CALENDAR_EVENT_TITLE,
