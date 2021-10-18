@@ -8,6 +8,7 @@ import CommunityTopicReducer from '../../../components/with-community-topic/redu
 import DatasetsReducer from '../../../components/with-datasets/redux/reducer';
 import ReferenceDataReducer from '../../../components/with-reference-data/redux/reducer';
 import DatasetReducer from '../../../components/with-dataset/redux/reducer';
+import AssessmentReducer from '../../../components/with-assessment/redux/reducer';
 
 export default combineReducers({
   CmsPageReducer,
@@ -17,5 +18,6 @@ export default combineReducers({
   CommunityTopicReducer,
   DatasetsReducer,
   ReferenceDataReducer,
-  DatasetReducer
+  DatasetReducer,
+  AssessmentReducer
 });

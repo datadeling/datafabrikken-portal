@@ -1,4 +1,9 @@
-import { AccessRight as AccessRightEnum } from './enums';
+import {
+  AccessRight as AccessRightEnum,
+  RatingCategory,
+  DimensionType,
+  IndicatorType
+} from './enums';
 
 export interface TextLanguage {
   nb: string;
@@ -287,4 +292,40 @@ export interface CommunityUser {
   picture: string;
   'icon:text': string;
   'icon:bgColor': string;
+}
+
+export interface Assessment {
+  id: string;
+  entity: AssessmentEntity;
+  rating: Rating;
+  dimensions: Dimension[];
+  updated: string;
+}
+
+export interface AssessmentEntity {
+  uri: string;
+  title: Partial<TextLanguage>;
+  type: EntityEnum;
+  catalog: Catalog;
+}
+
+export interface Dimension {
+  type: DimensionType;
+  rating: Rating;
+  indicators: Indicator[];
+}
+
+export interface Rating {
+  score: number;
+  maxScore: number;
+  satisfiedCriteria: number;
+  totalCriteria: number;
+  category: RatingCategory;
+  dimensionsRating: Record<DimensionType, Pick<Rating, 'score' | 'maxScore'>>;
+}
+
+export interface Indicator {
+  type: IndicatorType;
+  weight: number;
+  conforms: boolean;
 }

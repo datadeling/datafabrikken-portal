@@ -9,6 +9,8 @@ export default validateEnv(
     REFERENCE_DATA_HOST: 'https://data.norge.no',
     FDK_PORTAL_HOST: 'https://data.norge.no',
     CMS_API_HOST: 'https://cms-datafabrikken.digdir.no',
-    COMMUNITY_API_HOST: 'https://community.staging.fellesdatakatalog.digdir.no'
+    COMMUNITY_API_HOST: 'https://community.staging.fellesdatakatalog.digdir.no',
+    METADATA_QUALITY_ASSESSMENT_API:
+      'https://metadata-quality.staging.fellesdatakatalog.digdir.no'
   }
 );

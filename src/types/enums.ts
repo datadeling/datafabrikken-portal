@@ -49,3 +49,32 @@ export enum MediaTypeOrExtentType {
   FILE_TYPE = 'FILE_TYPE',
   UNKNOWN = 'UNKNOWN'
 }
+
+export enum RatingCategory {
+  EXCELLENT = 'excellent',
+  GOOD = 'good',
+  SUFFICIENT = 'sufficient',
+  POOR = 'poor'
+}
+
+export enum DimensionType {
+  ACCESSIBILITY = 'accessibility',
+  FINDABILITY = 'findability',
+  INTEROPERABILITY = 'interoperability',
+  READABILITY = 'readability',
+  REUSABILITY = 'reusability'
+}
+
+export enum IndicatorType {
+  DISTRIBUTABLE_DATA = 'distributableData',
+  KEYWORD_USAGE = 'keywordUsage',
+  SUBJECT_USAGE = 'subjectUsage',
+  GEO_SEARCH = 'geoSearch',
+  CONTROLLED_VOCABULARY_USAGE = 'controlledVocabularyUsage',
+  LICENSE_INFORMATION = 'licenseInformation',
+  CONTACT_POINT = 'contactPoint',
+  TITLE = 'title',
+  TITLE_NO_ORG_NAME = 'titleNoOrgName',
+  DESCRIPTION = 'description',
+  DESCRIPTION_WITHOUT_TITLE = 'descriptionWithoutTitle'
+}

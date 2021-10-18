@@ -7,4 +7,5 @@ export interface EnvironmentVariables {
   FDK_PORTAL_HOST: string;
   CMS_API_HOST: string;
   COMMUNITY_API_HOST: string;
+  METADATA_QUALITY_ASSESSMENT_API: string;
 }
