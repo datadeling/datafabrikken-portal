@@ -183,6 +183,7 @@ export interface CmsArticle {
   title: string;
   field_ingress: string;
   field_modules: any;
+  field_image_some: any;
   langcode: string;
   links: Partial<Links>;
 }

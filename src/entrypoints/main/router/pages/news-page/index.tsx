@@ -14,6 +14,7 @@ import withNews, {
 
 import {
   InfoBox,
+  InfoBoxImage,
   InfoBoxBody,
   InfoBoxTitle,
   SC as InfoBoxSC
@@ -41,17 +42,31 @@ const NewsPage: FC<Props> = ({
             <Translation id='news.title' />
           </SC.Title>
           <SC.Content>
-            {cmsNews?.map(({ id, created, title, field_ingress: ingress }) => (
-              <InfoBox key={id} as={RouterLink} to={`${PATHNAME.NEWS}/${id}`}>
-                <InfoBoxSC.InfoBox.Date>
-                  {created && formatDate(dateStringToDate(created))}
-                </InfoBoxSC.InfoBox.Date>
-                <InfoBoxTitle>
-                  <h2>{title}</h2>
-                </InfoBoxTitle>
-                <InfoBoxBody>{ingress}</InfoBoxBody>
-              </InfoBox>
-            ))}
+            {cmsNews?.map(
+              ({
+                id,
+                created,
+                title,
+                field_ingress: ingress,
+                field_image_some: image_some
+              }) => (
+                <InfoBox key={id} as={RouterLink} to={`${PATHNAME.NEWS}/${id}`}>
+                  {image_some && (
+                    <InfoBoxImage
+                      src={image_some.thumbnail.download_urls.canonical}
+                      alt={image_some.thumbnail.meta.alt}
+                    />
+                  )}
+                  <InfoBoxSC.InfoBox.Date>
+                    {created && formatDate(dateStringToDate(created))}
+                  </InfoBoxSC.InfoBox.Date>
+                  <InfoBoxTitle>
+                    <h2>{title}</h2>
+                  </InfoBoxTitle>
+                  <InfoBoxBody>{ingress}</InfoBoxBody>
+                </InfoBox>
+              )
+            )}
           </SC.Content>
         </SC.Page>
       </Container>

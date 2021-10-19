@@ -8,6 +8,7 @@ import React, {
   PropsWithChildren
 } from 'react';
 
+import InfoBoxImage from '../info-box-image';
 import InfoBoxIcon from '../info-box-icon';
 import InfoBoxTitle from '../info-box-title';
 import InfoBoxBody from '../info-box-body';
@@ -26,6 +27,12 @@ const InfoBox: FC<PropsWithChildren<Props>> = ({
   as,
   ...props
 }) => {
+  const renderInfoBoxImage = () =>
+    Children.map(children, child =>
+      isValidElement(child) && child.type === InfoBoxImage ? (
+        <SC.ImageWrapper>{child}</SC.ImageWrapper>
+      ) : null
+    )?.shift();
   const renderInfoBoxIcon = () =>
     Children.map(children, child =>
       isValidElement(child) && child.type === InfoBoxIcon ? (
@@ -45,11 +52,14 @@ const InfoBox: FC<PropsWithChildren<Props>> = ({
 
   return (
     <SC.InfoBox $invertColor={invertColor} as={as} {...props}>
-      {renderInfoBoxIcon()}
-      <SC.ContentWrapper>
-        {renderInfoBoxTitle()}
-        {renderInfoBoxBody()}
-      </SC.ContentWrapper>
+      <SC.InfoBoxHeader>{renderInfoBoxImage()}</SC.InfoBoxHeader>
+      <SC.InfoBoxRow>
+        {renderInfoBoxIcon()}
+        <SC.ContentWrapper>
+          {renderInfoBoxTitle()}
+          {renderInfoBoxBody()}
+        </SC.ContentWrapper>
+      </SC.InfoBoxRow>
     </SC.InfoBox>
   );
 };
