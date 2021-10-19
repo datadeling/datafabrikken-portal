@@ -9,6 +9,7 @@ import type { Dataset } from '../../types';
 export interface Props {
   datasetsAggregations: any;
   datasets: Dataset[];
+  datasetsRelations: Dataset[];
   totalDatasets: number;
   datasetsPage: number;
   datasetPageSize: number;
@@ -26,7 +27,9 @@ const withDatasets = (Component: ComponentType<any>) => {
     totalDatasets: state.DatasetsReducer.get('totalDatasets'),
     datasetsPage: state.DatasetsReducer.get('datasetsPage'),
     datasetPageSize: state.DatasetsReducer.get('datasetPageSize'),
-    hasMoreDatasets: state.DatasetsReducer.get('hasMoreDatasets')
+    hasMoreDatasets: state.DatasetsReducer.get('hasMoreDatasets'),
+    datasetsRelations:
+      state.DatasetsReducer.get('datasetsRelations')?.toJS() ?? []
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

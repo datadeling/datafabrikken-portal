@@ -5,7 +5,11 @@ import {
   GET_DATASETS_REQUESTED,
   GET_DATASETS_SUCCEEDED,
   GET_DATASETS_FAILED,
-  RESET_DATASETS
+  RESET_DATASETS,
+  GET_DATASETS_RELATIONS_REQUESTED,
+  GET_DATASETS_RELATIONS_SUCCEEDED,
+  GET_DATASETS_RELATIONS_FAILED,
+  RESET_DATASETS_RELATIONS
 } from './action-types';
 
 import type { Actions } from '../../../types';
@@ -16,7 +20,8 @@ const initialState = fromJS({
   totalDatasets: 0,
   datasetsPage: 0,
   datasetPageSize: 0,
-  hasMoreDatasets: false
+  hasMoreDatasets: false,
+  datasetsRelations: []
 });
 
 export default function reducer(
@@ -57,6 +62,17 @@ export default function reducer(
         .set('datasetsPage', 0)
         .set('datasetPageSize', 0)
         .set('hasMoreDatasets', false);
+    case GET_DATASETS_RELATIONS_REQUESTED:
+      return state.set('datasetsRelations', fromJS([]));
+    case GET_DATASETS_RELATIONS_SUCCEEDED:
+      return state.set(
+        'datasetsRelations',
+        fromJS(action.payload.pagedDatasets.hits)
+      );
+    case GET_DATASETS_RELATIONS_FAILED:
+      return state.set('datasetsRelations', fromJS([]));
+    case RESET_DATASETS_RELATIONS:
+      return state.set('datasetsRelations', fromJS([]));
     default:
       return state;
   }

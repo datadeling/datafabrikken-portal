@@ -1,4 +1,4 @@
-export const dateStringToDate = (dateString?: string) => {
+export const dateStringToDate = (dateString?: string | null) => {
   if (dateString == null) {
     return null;
   }
@@ -34,3 +34,14 @@ export const formatDateTime = (date: Date | null) =>
         minute: '2-digit'
       })}`
     : '';
+
+const isDateSameDayAsNow = (date: Date) =>
+  date.getFullYear() === new Date().getFullYear() &&
+  date.getMonth() === new Date().getMonth() &&
+  date.getDate() === new Date().getDate();
+
+export const isDateBeforeToday = (date?: Date | null) =>
+  date && date.valueOf() < Date.now() && !isDateSameDayAsNow(date);
+
+export const isDateAfterToday = (date?: Date | null) =>
+  date && date.valueOf() > Date.now() && !isDateSameDayAsNow(date);

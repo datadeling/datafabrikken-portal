@@ -5,7 +5,8 @@ import SC from './styled';
 interface Props {
   property: string | ReactNode;
   value: string | ReactNode;
-  highlighted?: boolean;
+  $highlighted?: boolean;
+  $valuesAsList?: boolean;
 }
 
 const KeyValueListItem: FC<PropsWithChildren<Props>> = ({
@@ -15,7 +16,7 @@ const KeyValueListItem: FC<PropsWithChildren<Props>> = ({
 }) => (
   <SC.ListItem {...props}>
     {property && <SC.Property>{property}</SC.Property>}
-    <SC.Value>{value}</SC.Value>
+    <SC.Value {...props}>{value}</SC.Value>
   </SC.ListItem>
 );
 

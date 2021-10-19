@@ -5,7 +5,11 @@ import {
   RESET_DATASETS,
   LOAD_MORE_DATASETS_REQUESTED,
   LOAD_MORE_DATASETS_SUCCEEDED,
-  LOAD_MORE_DATASETS_FAILED
+  LOAD_MORE_DATASETS_FAILED,
+  GET_DATASETS_RELATIONS_REQUESTED,
+  GET_DATASETS_RELATIONS_SUCCEEDED,
+  GET_DATASETS_RELATIONS_FAILED,
+  RESET_DATASETS_RELATIONS
 } from './action-types';
 
 import type { Dataset, Paged } from '../../../types';
@@ -18,6 +22,8 @@ interface GetDatasetsParams {
   theme?: string;
   accessRights?: string;
   format?: string;
+  uris?: string[];
+  referencesSource?: string;
 }
 
 export function getPagedDatasetsRequested(params?: GetDatasetsParams) {
@@ -83,5 +89,38 @@ export function loadMoreDatasetsFailed(message: string) {
     payload: {
       message
     }
+  };
+}
+
+export function getDatasetsRelationsRequested(params?: GetDatasetsParams) {
+  return {
+    type: GET_DATASETS_RELATIONS_REQUESTED,
+    payload: {
+      params
+    }
+  };
+}
+
+export function getDatasetsRelationsSucceeded(pagedDatasets: Paged<Dataset>) {
+  return {
+    type: GET_DATASETS_RELATIONS_SUCCEEDED,
+    payload: {
+      pagedDatasets
+    }
+  };
+}
+
+export function getDatasetsRelationsFailed(message: string) {
+  return {
+    type: GET_DATASETS_RELATIONS_FAILED,
+    payload: {
+      message
+    }
+  };
+}
+
+export function resetDatasetsRelations() {
+  return {
+    type: RESET_DATASETS_RELATIONS
   };
 }
