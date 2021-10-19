@@ -76,7 +76,7 @@ const Themes: FC<Props> = ({
   <SC.Themes>
     {isOpenData && (
       <Link to={`${rootPaths[entity]}?opendata=true`} className='open-data'>
-        <Translation id='openData' />
+        <Translation id='detailsPage.openData' />
       </Link>
     )}
     {isPublicData && (
@@ -84,7 +84,7 @@ const Themes: FC<Props> = ({
         to={`${rootPaths[entity]}?accessrights=PUBLIC`}
         className='public-data'
       >
-        <Translation id='publicData' />
+        <Translation id='detailsPage.publicData' />
       </Link>
     )}
     {isRestrictedData && (
@@ -92,7 +92,7 @@ const Themes: FC<Props> = ({
         to={`${rootPaths[entity]}?accessrights=RESTRICTED`}
         className='restricted-data'
       >
-        <Translation id='restrictedData' />
+        <Translation id='detailsPage.restrictedData' />
       </Link>
     )}
     {isNonPublicData && (
@@ -100,7 +100,7 @@ const Themes: FC<Props> = ({
         to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
         className='non-public-data'
       >
-        <Translation id='nonPublicData' />
+        <Translation id='detailsPage.nonPublicData' />
       </Link>
     )}
     {themes.map(theme => {

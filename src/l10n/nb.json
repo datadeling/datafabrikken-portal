@@ -56,6 +56,10 @@
     "heading": "Gå til"
   },
   "detailsPage": {
+    "openData": "Åpne data",
+    "publicData": "Kan deles offentlig",
+    "restrictedData": "Begrenset offentlighet",
+    "nonPublicData": "Unntatt offentlighet",
     "intro": {
       "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
       "entity": {
@@ -93,6 +97,25 @@
         "datasetReferences": "Tilknyttede datasettbeskrivelser",
         "informationModelReferences": "Informasjonsmodeller"
       }
+    },
+    "relationList": {
+      "title": {
+        "dataset": "Andre som relaterer til dette datasettet",
+        "dataservice": "Andre som relaterer til denne datatjenesten",
+        "concept": "Andre som relaterer til dette begrepet",
+        "informationmodel": "Andre som relaterer til denne informasjonsmodellen",
+        "public_service": "Andre som relaterer til denne tjenesten",
+        "event": "Andre som relaterer til denne hendelsen"
+      },
+      "subtitle": {
+        "dataset": "Datasett",
+        "dataservice": "Datatjeneste",
+        "concept": "Begrep",
+        "informationmodel": "Informasjonsmodell",
+        "public_service": "Tjeneste",
+        "event": "Hendelse"
+      },
+      "referenceType": "relasjonstype"
     }
   },
   "errorPage": {
@@ -231,5 +254,7 @@
   },
   "metadataQualityPage": {
     "metadataQuality": "Metadatakvalitet"
-  }
+  },
+
+  "sampleData": "Eksempeldata"
 }

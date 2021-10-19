@@ -11,18 +11,18 @@ import KeyValueListItem from '../key-value-list-item';
 import SC from './styled';
 
 interface Props {
-  highlighted?: boolean;
+  $highlighted?: boolean;
 }
 
 const KeyValueList: FC<PropsWithChildren<Props>> = ({
   children,
-  highlighted,
+  $highlighted,
   ...props
 }) => (
   <SC.List {...props}>
     {Children.map(children, child =>
       isValidElement(child) && child.type === KeyValueListItem
-        ? React.cloneElement(child, { $highlighted: highlighted })
+        ? React.cloneElement(child, { $highlighted })
         : null
     )}
   </SC.List>

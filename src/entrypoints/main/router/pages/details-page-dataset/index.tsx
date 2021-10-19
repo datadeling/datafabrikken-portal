@@ -8,6 +8,15 @@ import withDataset, {
 import withReferenceData, {
   Props as ReferenceDataProps
 } from '../../../../../components/with-reference-data';
+import withDatasets, {
+  Props as DatasetsProps
+} from '../../../../../components/with-datasets';
+import withPublicServices, {
+  Props as PublicServicesProps
+} from '../../../../../components/with-public-services';
+import withDataServices, {
+  Props as DataServicesProps
+} from '../../../../../components/with-data-services';
 
 import DetailsPage from '../../../../../components/details-page';
 
@@ -22,11 +31,13 @@ import Markdown from '../../../../../components/markdown';
 import ErrorPage from '../../../../../components/error-page';
 import KeyValueList from '../../../../../components/key-value-list';
 import KeyValueListItem from '../../../../../components/key-value-list-item';
+import RelationList from '../../../../../components/relation-list';
 import ExternalLink from '../../../../../components/link-external';
 import InlineList from '../../../../../components/inline-list';
 import { PATHNAME } from '../../../../../enums';
 import InternalLink from '../../../../../components/link-internal';
 import withErrorBoundary from '../../../../../components/with-error-boundary';
+import { ItemWithRelationType } from '../../../../../types';
 
 interface RouteParams {
   datasetId?: string;
@@ -34,15 +45,36 @@ interface RouteParams {
 
 interface Props
   extends DatasetProps,
+    DatasetsProps,
     ReferenceDataProps,
+    PublicServicesProps,
+    DataServicesProps,
     RouteComponentProps<RouteParams> {}
 
 const DatasetDetailsPage: FC<Props> = ({
   dataset,
+  datasets,
+  datasetsRelations,
+  publicServicesRelations,
+  dataServicesRelations,
   isLoadingDataset,
   referenceData: { referencetypes: referenceTypes },
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
+  datasetsActions: {
+    getPagedDatasetsRequested: getDatasets,
+    resetPagedDatasets,
+    getDatasetsRelationsRequested: getDatasetsRelations,
+    resetDatasetsRelations
+  },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
+  dataServicesActions: {
+    getDataServicesRelationsRequested: getDataServicesRelations,
+    resetDataServicesRelations
+  },
+  publicServicesActions: {
+    getPublicServicesRelationsRequested: getPublicServicesRelations,
+    resetPublicServicesRelations
+  },
   match: {
     params: { datasetId }
   }
@@ -123,6 +155,18 @@ const DatasetDetailsPage: FC<Props> = ({
 
   const themes = [...(dataset?.losTheme ?? []), ...(dataset?.theme ?? [])];
 
+  const referencedDatasets = datasets;
+  const datasetReferenceTypes = dataset?.references ?? [];
+
+  const referencedResourcesUnResolved =
+    dataset?.references?.filter(
+      ({ source: { uri: datasetRefererenceUri } }) =>
+        !referencedDatasets.some(
+          ({ uri: referencedDatasetsUri }) =>
+            referencedDatasetsUri === datasetRefererenceUri
+        )
+    ) ?? [];
+
   useEffect(() => {
     if (datasetId) {
       getDataset(datasetId);
@@ -135,8 +179,35 @@ const DatasetDetailsPage: FC<Props> = ({
 
     return () => {
       resetDataset();
+      resetPagedDatasets();
+      resetDatasetsRelations();
+      resetDataServicesRelations();
+      resetPublicServicesRelations();
     };
   }, [datasetId, getDataset]);
+
+  useEffect(() => {
+    if (isMounted) {
+      const datasetUris =
+        dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
+      if (datasetUris && datasetUris.length > 0) {
+        getDatasets({ uris: datasetUris });
+      }
+
+      if (dataset?.uri) {
+        getDatasetsRelations({ referencesSource: dataset.uri });
+        getDataServicesRelations({ dataseturi: dataset.uri });
+        getPublicServicesRelations({ isDescribedAt: dataset.uri });
+      }
+    }
+  }, [dataset?.id, isMounted]);
+
+  const publicServicesRelatedByWithRelationType: ItemWithRelationType[] =
+    publicServicesRelations.map(relation => ({
+      relation,
+      relationType: translations.translate('sampleData') as string
+    }));
+
   return renderPage ? (
     <DetailsPage
       entity={entity}
@@ -203,7 +274,7 @@ const DatasetDetailsPage: FC<Props> = ({
               },
               index
             ) => (
-              <KeyValueList key={`sample-${index}`} highlighted>
+              <KeyValueList key={`sample-${index}`} $highlighted>
                 <KeyValueListItem
                   property={translations.translate(
                     'dataset.distribution.description'
@@ -473,6 +544,66 @@ const DatasetDetailsPage: FC<Props> = ({
         </ContentSection>
       )}
 
+      {(referencedDatasets.length > 0 ||
+        referencedResourcesUnResolved.length > 0) && (
+        <ContentSection
+          id='dataset-references'
+          title={translations.translate(
+            'detailsPage.sectionTitles.dataset.datasetReferences'
+          )}
+        >
+          <KeyValueList>
+            {referencedDatasets?.map(
+              ({ id, uri, title: datasetTitle }, index) => (
+                <KeyValueListItem
+                  key={`${id}-${index}`}
+                  property={translations.getTranslateText(
+                    referenceTypes?.find(
+                      ({ uri: referenceUri }) =>
+                        referenceUri ===
+                        datasetReferenceTypes.find(
+                          ({ source }) => source.uri === uri
+                        )?.referenceType?.uri
+                    )?.prefLabel
+                  )}
+                  value={
+                    <InternalLink
+                      to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}${PATHNAME.DATASET_DETAILS}/${id}`}
+                    >
+                      {translations.getTranslateText(datasetTitle)}
+                    </InternalLink>
+                  }
+                />
+              )
+            )}
+            {referencedResourcesUnResolved?.map(
+              (
+                {
+                  source: { uri },
+                  referenceType: { uri: referenceTypeUri } = {}
+                },
+                index
+              ) => (
+                <KeyValueListItem
+                  key={`${uri}-${index}`}
+                  property={translations.getTranslateText(
+                    referenceTypes?.find(
+                      ({ uri: referenceTypesUri }) =>
+                        referenceTypesUri === referenceTypeUri
+                    )?.prefLabel
+                  )}
+                  value={
+                    <ExternalLink href={uri} rel='noopener noreferrer'>
+                      {uri}
+                    </ExternalLink>
+                  }
+                />
+              )
+            )}
+          </KeyValueList>
+        </ContentSection>
+      )}
+
       {keywords.length > 0 && (
         <ContentSection
           id='keywords'
@@ -543,6 +674,24 @@ const DatasetDetailsPage: FC<Props> = ({
         </ContentSection>
       )}
 
+      {(datasetsRelations.length > 0 ||
+        publicServicesRelations.length > 0 ||
+        dataServicesRelations.length > 0) && (
+        <ContentSection
+          id='relationList'
+          title={translations.translate(
+            'detailsPage.relationList.title.dataset'
+          )}
+        >
+          <RelationList
+            parentIdentifier={dataset?.uri}
+            datasets={datasetsRelations}
+            publicServices={publicServicesRelatedByWithRelationType}
+            dataServices={dataServicesRelations}
+          />
+        </ContentSection>
+      )}
+
       {contactPoints.length > 0 && (
         <ContentSection
           id='contact-information'
@@ -601,5 +750,8 @@ export default compose<FC<Props>>(
   memo,
   withDataset,
   withReferenceData,
+  withDatasets,
+  withDataServices,
+  withPublicServices,
   withErrorBoundary(ErrorPage)
 )(DatasetDetailsPage);

@@ -8,6 +8,8 @@ import communityTopicSaga from '../../../components/with-community-topic/redux/s
 import datasetsSaga from '../../../components/with-datasets/redux/saga';
 import referenceDataSaga from '../../../components/with-reference-data/redux/saga';
 import datasetSaga from '../../../components/with-dataset/redux/saga';
+import publicServicesSaga from '../../../components/with-public-services/redux/saga';
+import dataServicesSaga from '../../../components/with-data-services/redux/saga';
 import assessmentSaga from '../../../components/with-assessment/redux/saga';
 
 export default function* saga() {
@@ -20,6 +22,8 @@ export default function* saga() {
     datasetsSaga(),
     referenceDataSaga(),
     datasetSaga(),
+    publicServicesSaga(),
+    dataServicesSaga(),
     assessmentSaga()
   ]);
 }

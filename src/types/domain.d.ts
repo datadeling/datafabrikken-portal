@@ -294,6 +294,84 @@ export interface CommunityUser {
   'icon:bgColor': string;
 }
 
+interface DatasetReference {
+  referenceType: ReferenceType;
+  source: { uri: string };
+  prefLabel: Partial<TextLanguage>;
+}
+
+interface ItemWithRelationType {
+  relation: Partial<Event> | Partial<PublicService>;
+  relationType: string;
+}
+
+export interface PublicService {
+  id: string;
+  type: EntityEnum.PUBLIC_SERVICE;
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  isDescribedAt?: Partial<PublicService>[];
+  isGroupedBy?: string[];
+  hasCompetentAuthority?: Partial<Publisher>[];
+  harvest?: Partial<Harvest>;
+  keyword?: Partial<TextLanguage>[];
+  sector?: Partial<Concept>[];
+  isClassifiedBy?: Partial<Concept>[];
+  language?: PublicServiceLanguage[];
+  requires?: PublicService[];
+  produces?: PublicServiceOutput[];
+  hasCriterion?: PublicServiceCriterionRequirement[];
+  follows?: PublicServiceRule[];
+  hasLegalResource?: PublicServiceLegalResource[];
+  hasInput?: PublicServiceInput[];
+  hasParticipation?: PublicServiceParticipation[];
+  hasChannel?: PublicServiceChannel[];
+  processingTime?: string;
+  hasCost?: PublicServiceCost[];
+  relation?: PublicService[];
+  hasContactPoint?: PublicServiceContactPoint[];
+  associatedBroaderTypesByEvents?: string[];
+  spatial: string[];
+}
+
+export interface Event {
+  id: string;
+  uri: string;
+  identifier: string;
+  title: Partial<TextLanguage>;
+  description: Partial<TextLanguage>;
+  type: EntityEnum.EVENT;
+  dctType?: SkosConcept[];
+  hasCompetentAuthority?: Partial<Publisher>[];
+  harvest?: Partial<Harvest>;
+  relation?: string[];
+  specialized_type?: SpecializedEventType;
+}
+
+export interface DataService {
+  id: string;
+  type: EntityEnum.DATA_SERVICE;
+  uri: string;
+  publisher: Partial<Publisher>;
+  title: Partial<TextLanguage>;
+  description?: Partial<TextLanguage>;
+  descriptionFormatted?: Partial<TextLanguage>;
+  nationalComponent: boolean;
+  isOpenAccess: boolean;
+  isOpenLicense: boolean;
+  isFree: boolean;
+  harvest?: Partial<Harvest>;
+  fdkFormat?: Partial<MediaTypeOrExtent>[];
+  endpointURL?: string[];
+  endpointDescription?: string[];
+  landingPage: string[];
+  conformsTo?: ConformsTo[];
+  servesDataset?: string[];
+  contactPoint?: Partial<ContactPoint>[];
+}
+
 export interface Assessment {
   id: string;
   entity: AssessmentEntity;

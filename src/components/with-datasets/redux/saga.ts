@@ -1,6 +1,9 @@
 import { all, call, put, takeLatest } from 'redux-saga/effects';
 
-import { GET_DATASETS_REQUESTED } from './action-types';
+import {
+  GET_DATASETS_REQUESTED,
+  GET_DATASETS_RELATIONS_REQUESTED
+} from './action-types';
 import * as actions from './actions';
 
 import {
@@ -12,7 +15,16 @@ import type { Dataset, Paged } from '../../../types';
 
 function* getPagedDatasetsRequested({
   payload: {
-    params: { page, q, opendata, losTheme, theme, accessRights, format } = {}
+    params: {
+      page,
+      q,
+      opendata,
+      losTheme,
+      theme,
+      accessRights,
+      format,
+      uris
+    } = {}
   }
 }: ReturnType<typeof actions.getPagedDatasetsRequested>) {
   try {
@@ -25,7 +37,8 @@ function* getPagedDatasetsRequested({
         losTheme,
         theme,
         accessRights,
-        format
+        format,
+        uris
       })
     );
     if (data) {
@@ -38,6 +51,48 @@ function* getPagedDatasetsRequested({
   }
 }
 
+function* getDatasetsRelationsRequested({
+  payload: {
+    params: {
+      page,
+      q,
+      opendata,
+      losTheme,
+      theme,
+      accessRights,
+      format,
+      referencesSource
+    } = {}
+  }
+}: ReturnType<typeof actions.getDatasetsRelationsRequested>) {
+  try {
+    const data: Record<string, any> = yield call(
+      searchDatasets,
+      paramsToSearchBody({
+        page,
+        q,
+        opendata,
+        losTheme,
+        theme,
+        accessRights,
+        format,
+        referencesSource
+      })
+    );
+
+    if (data) {
+      yield put(actions.getDatasetsRelationsSucceeded(data as Paged<Dataset>));
+    } else {
+      yield put(actions.getDatasetsRelationsFailed(''));
+    }
+  } catch (e: any) {
+    yield put(actions.getDatasetsRelationsFailed(e.message));
+  }
+}
+
 export default function* saga() {
-  yield all([takeLatest(GET_DATASETS_REQUESTED, getPagedDatasetsRequested)]);
+  yield all([
+    takeLatest(GET_DATASETS_REQUESTED, getPagedDatasetsRequested),
+    takeLatest(GET_DATASETS_RELATIONS_REQUESTED, getDatasetsRelationsRequested)
+  ]);
 }
