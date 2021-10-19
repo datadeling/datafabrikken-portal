@@ -7,6 +7,9 @@ const onMobileView = '@media (max-width: 900px)';
 const Page = styled.article`
   line-height: 1.5;
   padding-top: ${theme.spacing('S50')};
+  ${onMobileView} {
+    padding-top: ${theme.spacing('S10')};
+  }
 `;
 
 const Title = styled.h1`
@@ -33,21 +36,34 @@ const Posts = styled.div`
       width: 20px;
     }
   }
+
+  ${onMobileView} {
+    padding: ${theme.spacing('S10')} ${theme.spacing('S8')};
+  }
 `;
 
 const Header = styled.div`
   display: flex;
   margin-bottom: ${theme.spacing('S12')};
+  ${onMobileView} {
+    flex-direction: column;
+    gap: ${theme.spacing('S4')};
+  }
 `;
 
 const Tags = styled.div`
   display: inline-flex;
+  white-space: nowrap;
   margin-right: ${theme.spacing('S24')};
   gap: ${theme.spacing('S4')};
 
   & > a > span {
     background-color: ${theme.colour(Colour.BLUE, 'B44')};
     color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  }
+
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS8')};
   }
 `;
 
@@ -66,12 +82,24 @@ const Statistics = styled.ul`
     & > path {
       stroke: #ffffff;
     }
+
+    ${onMobileView} {
+      transform: scale(0.75);
+    }
+  }
+
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS8')};
   }
 `;
 
 const LinkWrapper = styled.div`
   flex-grow: 1;
   text-align: right;
+
+  ${onMobileView} {
+    text-align: left;
+  }
 
   & > a > svg {
     width: 20px;

@@ -32,6 +32,11 @@ export default {
   [Token.FONT]: {
     family: 'Rubik, sans-serif',
     size: {
+      FS8: {
+        [Unit.PX]: 8,
+        [Unit.REM]: 0.8,
+        [Unit.EM]: 0.8
+      },
       FS10: {
         [Unit.PX]: 10,
         [Unit.REM]: 1.0,

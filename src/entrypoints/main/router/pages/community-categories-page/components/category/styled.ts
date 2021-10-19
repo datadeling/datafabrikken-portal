@@ -8,20 +8,29 @@ const Category = styled.div`
   display: flex;
   font-size: ${theme.fontSize('FS10')};
   color: ${theme.colour(Colour.BLUE, 'B52')};
-  padding: ${theme.spacing('S16')} ${theme.spacing('S20')}
-    ${theme.spacing('S16')} ${theme.spacing('S20')};
+  padding: ${theme.spacing('S16')} ${theme.spacing('S20')};
   margin-bottom: ${theme.spacing('S10')};
   background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+
+  ${onMobileView} {
+    flex-direction: column;
+    padding: ${theme.spacing('S10')} ${theme.spacing('S8')};
+  }
 `;
 
 const CategoryIcon = styled.div`
   display: flex;
+  min-width: 44px;
 `;
 
 const TitleContainer = styled.div`
   display: flex;
-  flex-direction: column;
   flex-grow: 1;
+`;
+
+const TitleColumn = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-left: ${theme.spacing('S12')};
 `;
 
@@ -52,14 +61,24 @@ const Statistics = styled.ul`
     max-width: 80px;
     display: inline-flex;
     align-items: center;
+
+    ${onMobileView} {
+      min-width: 60px;
+      max-width: 60px;
+    }
   }
 
   & > li > svg {
     margin-right: ${theme.spacing('S4')};
+    ${onMobileView} {
+      transform: scale(0.75);
+    }
   }
 
   ${onMobileView} {
-    display: none;
+    margin-top: ${theme.spacing('S10')};
+    margin-left: ${theme.spacing('S48')};
+    font-size: ${theme.fontSize('FS8')};
   }
 `;
 
@@ -104,6 +123,7 @@ export default {
   Category,
   CategoryIcon,
   TitleContainer,
+  TitleColumn,
   Title,
   Ingress,
   Statistics,

@@ -27,12 +27,30 @@ const BreadCrumbs = styled.div`
   display: flex;
   font-size: 0.9rem;
   padding: ${theme.spacing('S16')} 0;
-  ${BreadCrumb}:not(:last-child):after {
+
+  ${BreadCrumb}:not(:first-child):before {
     font-family: 'Material Icons';
     content: '\\e5cc';
     font-size: ${theme.fontSize('FS12')};
-    margin-left: ${theme.spacing('S2')};
+    margin-right: ${theme.spacing('S2')};
   }
+
+  ${onMobileView} {
+    ${BreadCrumb} {
+      display: none;
+    }
+    ${BreadCrumb}:nth-last-child(2) {
+      display: flex;
+    }
+    ${BreadCrumb}:nth-last-child(2):before {
+      display: flex;
+      font-family: 'Material Icons';
+      content: '\\f1e6';
+      font-size: ${theme.fontSize('FS12')};
+      margin-right: ${theme.spacing('S2')};
+    }
+  }
+
   ${LinkSC.Link} {
     align-self: center;
   }

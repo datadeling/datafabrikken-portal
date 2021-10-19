@@ -10,6 +10,9 @@ const onMobileView = '@media (max-width: 900px)';
 const Page = styled.article`
   line-height: 1.5;
   padding-top: ${theme.spacing('S50')};
+  ${onMobileView} {
+    padding-top: ${theme.spacing('S10')};
+  }
 `;
 
 const Title = styled.h1`
@@ -68,12 +71,19 @@ const Header = styled.div`
   & > a > svg {
     width: 20px;
   }
+
+  ${onMobileView} {
+    flex-direction: column;
+  }
 `;
 
 const Sort = styled.div`
   display: flex;
   align-items: flex-end;
   gap: ${theme.spacing('S10')};
+  ${onMobileView} {
+    margin-top: ${theme.spacing('S10')};
+  }
 `;
 
 const SortLabel = styled.span`
