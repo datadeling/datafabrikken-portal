@@ -17,6 +17,7 @@ import {
   InfoBox,
   InfoBoxBody,
   InfoBoxTitle,
+  InfoBoxImage,
   SC as InfoBoxSC
 } from '../../../../../components/info-box';
 import withNews, {
@@ -119,12 +120,24 @@ const MainPage: FC<Props> = ({
               {({ inView, ref }) => (
                 <SC.NewsRow ref={ref} animate={inView}>
                   {cmsNews?.map(
-                    ({ id, created, title, field_ingress: ingress }) => (
+                    ({
+                      id,
+                      created,
+                      title,
+                      field_ingress: ingress,
+                      field_image_some: image_some
+                    }) => (
                       <InfoBox
                         key={id}
                         as={RouterLink}
                         to={`${PATHNAME.NEWS}/${id}`}
                       >
+                        {image_some && (
+                          <InfoBoxImage
+                            src={image_some.thumbnail.download_urls.canonical}
+                            alt={image_some.thumbnail.meta.alt}
+                          />
+                        )}
                         <InfoBoxSC.InfoBox.Date>
                           {created && formatDate(dateStringToDate(created))}
                         </InfoBoxSC.InfoBox.Date>

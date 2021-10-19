@@ -24,10 +24,11 @@ const InfoBox = styled.a<infoBoxProps>`
         ? theme.colour(Colour.NEUTRAL, 'N30')
         : theme.colour(Colour.NEUTRAL, 'N60')};
   display: flex;
+  flex-direction: column;
   flex: 0 1 49%;
   line-height: 1.15;
   margin-bottom: ${theme.spacing('S20')};
-  padding: ${theme.spacing('S24')};
+
   &:hover {
     ${InfoBoxTitleSC.Title} {
       & > svg * {
@@ -37,8 +38,16 @@ const InfoBox = styled.a<infoBoxProps>`
   }
   ${onMobileView} {
     flex-basis: 100%;
-    flex-direction: column;
   }
+`;
+
+const InfoBoxHeader = styled.div`
+  display: flex;
+`;
+
+const InfoBoxRow = styled.div`
+  display: flex;
+  padding: ${theme.spacing('S24')};
 `;
 
 const IconWrapper = styled.div`
@@ -58,6 +67,16 @@ const IconWrapper = styled.div`
   }
 `;
 
+const ImageWrapper = styled.div`
+  min-height: 300px;
+  max-height: 300px;
+  overflow: hidden;
+
+  & img {
+    max-width: calc(100%);
+  }
+`;
+
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -70,4 +89,12 @@ const Date = styled.span`
   margin-bottom: ${theme.spacing('S6')};
 `;
 
-export default { InfoBox, IconWrapper, ContentWrapper, Date };
+export default {
+  InfoBox,
+  InfoBoxHeader,
+  InfoBoxRow,
+  IconWrapper,
+  ImageWrapper,
+  ContentWrapper,
+  Date
+};

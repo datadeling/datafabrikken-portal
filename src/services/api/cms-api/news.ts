@@ -3,7 +3,7 @@ import { cmsApiGet } from './host';
 
 export const getNews = (pageLimit: number) =>
   cmsApiGet(
-    `/node/news?filter[status]=1&page[limit]=${pageLimit}&&sort=-created`
+    `/node/news?filter[status]=1&page[limit]=${pageLimit}&&sort=-created&include=field_image_some,field_image_some.field_media_image`
   ).then(deserialize);
 
 export const getNewsPage = (id: string) =>
