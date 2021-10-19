@@ -71,14 +71,16 @@ const Category: FC<Props> = ({
 
   return (
     <SC.Category>
-      <SC.CategoryIcon>{getCategoryIcon(cid)}</SC.CategoryIcon>
       <SC.TitleContainer>
-        <SC.Title>
-          <Link as={RouterLink} to={`${PATHNAME.COMMUNITY}/${slug}`}>
-            {name}
-          </Link>
-        </SC.Title>
-        <SC.Ingress>{description}</SC.Ingress>
+        <SC.CategoryIcon>{getCategoryIcon(cid)}</SC.CategoryIcon>
+        <SC.TitleColumn>
+          <SC.Title>
+            <Link as={RouterLink} to={`${PATHNAME.COMMUNITY}/${slug}`}>
+              {name}
+            </Link>
+          </SC.Title>
+          <SC.Ingress>{description}</SC.Ingress>
+        </SC.TitleColumn>
       </SC.TitleContainer>
       <SC.Statistics>
         <li

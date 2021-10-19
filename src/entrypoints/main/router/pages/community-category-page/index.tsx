@@ -8,7 +8,7 @@ import withCommunityCategory, {
 } from '../../../../../components/with-community-category';
 
 import Translation from '../../../../../components/translation';
-import Link, { Variant } from '../../../../../components/link';
+import Link from '../../../../../components/link';
 
 import Root from '../../../../../components/root';
 import Container from '../../../../../components/container';
@@ -71,22 +71,20 @@ const CommunityCategoryPage: FC<Props> = ({
             </SC.Info>
           )}
           <SC.Header>
-            <Link
-              variant={Variant.PRIMARY}
-              external
-              href={`${COMMUNITY_API_HOST}/category/${slug}`}
-            >
+            <Link external href={`${COMMUNITY_API_HOST}/category/${slug}`}>
               <Translation id='community.newTopic' />
             </Link>
             {getActiveTopics().length > 0 && (
               <SC.Sort>
-                <SC.SortLabel>Sorter etter:</SC.SortLabel>
+                <SC.SortLabel>
+                  <Translation id='community.sort.sortByDate' />
+                </SC.SortLabel>
                 <SC.SortButtonWrapper>
                   <SC.SortButton
                     onClick={() => handleSort(true)}
                     active={sortByDateAsc}
                   >
-                    <Translation id='community.sort.dateAscending' />
+                    <Translation id='community.sort.ascending' />
                   </SC.SortButton>
                 </SC.SortButtonWrapper>
                 <SC.SortButtonWrapper>
@@ -94,7 +92,7 @@ const CommunityCategoryPage: FC<Props> = ({
                     onClick={() => handleSort(false)}
                     active={sortByDateDesc}
                   >
-                    <Translation id='community.sort.dateDescending' />
+                    <Translation id='community.sort.descending' />
                   </SC.SortButton>
                 </SC.SortButtonWrapper>
               </SC.Sort>

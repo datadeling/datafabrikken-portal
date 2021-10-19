@@ -239,8 +239,9 @@
     "postDeleted": "Dette innlegget er slettet!",
     "calendarEvent": "Hendelse",
     "sort": {
-      "dateAscending": "Dato stigende",
-      "dateDescending": "Dato synkende"
+      "sortByDate": "Sorter etter dato:",
+      "ascending": "Stigende",
+      "descending": "Synkende"
     }
   },
   "contactPoint": {

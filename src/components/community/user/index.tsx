@@ -30,10 +30,12 @@ const User: FC<Props> = ({ user }) => {
       {user.picture ? (
         <SC.Picture src={`${COMMUNITY_API_HOST}${user.picture}`} />
       ) : (
-        <SC.Icon colour={user['icon:bgColor']}>{user['icon:text']}</SC.Icon>
+        <SC.Icon $colour={user['icon:bgColor']}>{user['icon:text']}</SC.Icon>
       )}
 
-      <SC.Name colour={user['icon:bgColor']}>{userName()}</SC.Name>
+      <SC.NameWrapper>
+        <SC.Name $colour={user['icon:bgColor']}>{userName()}</SC.Name>
+      </SC.NameWrapper>
     </SC.User>
   );
 };

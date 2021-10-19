@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import { theme, Colour } from '../../../../../app/theme';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const Post = styled.div`
   display: flex;
   flex-direction: column;
@@ -20,12 +22,19 @@ const Post = styled.div`
     padding-top: 0;
     background: ${theme.colour(Colour.NEUTRAL, 'N0')};
   }
+
+  ${onMobileView} {
+    padding: ${theme.spacing('S10')};
+  }
 `;
 
 const UserInfo = styled.div`
   display: inline-flex;
   justify-content: space-between;
   margin-bottom: ${theme.spacing('S10')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS8')};
+  }
 `;
 
 const Content = styled.div`

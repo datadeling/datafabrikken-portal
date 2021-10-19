@@ -68,11 +68,13 @@ const Topic: FC<Props> = ({
         <User user={user} />
         {formatDate(dateStringToDate(timestampISO))}
       </SC.UserInfo>
-      <SC.Tags>
-        {tags?.map((tag, index) => (
-          <Tag key={`tag-${index}`} {...tag} />
-        ))}
-      </SC.Tags>
+      {tags && tags.length > 0 && (
+        <SC.Tags>
+          {tags?.map((tag, index) => (
+            <Tag key={`tag-${index}`} {...tag} />
+          ))}
+        </SC.Tags>
+      )}
     </SC.TitleContainer>
     <SC.Statistics>
       <li

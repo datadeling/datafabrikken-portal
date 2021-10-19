@@ -11,14 +11,14 @@ const User = styled.a`
   }
 `;
 
-const Icon = styled.div<{ colour: string }>`
+const Icon = styled.div<{ $colour: string }>`
   display: flex;
   align-items: center;
   justify-content: center;
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  background-color: ${({ colour }) => colour};
-  font-size: ${theme.fontSize('FS16')};
-  font-weight: ${theme.fontWeight('FW700')};
+  background-color: ${({ $colour }) => $colour};
+  font-size: ${theme.fontSize('FS12')};
+  font-weight: ${theme.fontWeight('FW300')};
   width: 23px;
   height: 23px;
   border-radius: 50%;
@@ -37,15 +37,12 @@ const Picture = styled.img`
   margin-right: 5px;
 `;
 
-const Name = styled.span<{ colour: string }>`
-  color: ${({ colour }) => colour};
-  font-weight: ${theme.fontWeight('FW700')};
+const NameWrapper = styled.div`
   margin-right: 5px;
-
-  &:hover {
-    text-decoration: underline;
-    text-decoration-color: ${({ colour }) => colour};
-  }
 `;
 
-export default { User, Icon, Name, Picture };
+const Name = styled.span<{ $colour: string }>`
+  border-bottom: 2px solid ${({ $colour }) => $colour};
+`;
+
+export default { User, Icon, NameWrapper, Name, Picture };
