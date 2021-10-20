@@ -15,6 +15,7 @@ export interface Props {
   datasetPageSize: number;
   hasMoreDatasets: boolean;
   datasetsActions: typeof actions;
+  isLoadingDatasets: boolean;
 }
 
 const withDatasets = (Component: ComponentType<any>) => {
@@ -29,7 +30,8 @@ const withDatasets = (Component: ComponentType<any>) => {
     datasetPageSize: state.DatasetsReducer.get('datasetPageSize'),
     hasMoreDatasets: state.DatasetsReducer.get('hasMoreDatasets'),
     datasetsRelations:
-      state.DatasetsReducer.get('datasetsRelations')?.toJS() ?? []
+      state.DatasetsReducer.get('datasetsRelations')?.toJS() ?? [],
+    isLoadingDatasets: state.DatasetsReducer.get('isLoadingDatasets')
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

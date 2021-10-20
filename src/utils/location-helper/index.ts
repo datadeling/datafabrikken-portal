@@ -42,6 +42,22 @@ export const removeParameter = (history: any, parameter: string) => {
   history.push(`${pathname}${updatedParams}`);
 };
 
+export const clearParameters = (history: any) => {
+  const { pathname, search } = location;
+
+  const currentParams = qs.parse(search, { ignoreQueryPrefix: true }) || {};
+  const { q } = currentParams;
+
+  const updatedParams = qs.stringify(
+    { q },
+    {
+      skipNulls: true,
+      addQueryPrefix: true
+    }
+  );
+  history.push(`${pathname}${updatedParams}`);
+};
+
 export const getParameter = (parameter: string) =>
   (qs.parse(location.search, { ignoreQueryPrefix: true })?.[
     parameter

@@ -9,6 +9,12 @@ const Error404Icon = styled(Error404IconBase)`
   height: 250px;
   width: 250px;
   margin: ${theme.spacing('S16')};
+
+  & path,
+  circle {
+    stroke-width: 1px;
+  }
+
   @keyframes eWDRH4dIksG37_to__to {
     0% {
       transform: translate(13.93px, 43.299999px);

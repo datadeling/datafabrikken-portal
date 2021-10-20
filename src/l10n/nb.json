@@ -27,7 +27,10 @@
   "findDataPage": {
     "title": "Finn data",
     "findData": "Søk etter datasett",
-    "findDataText": "Rett til søkesiden."
+    "findDataText": "Rett til søkesiden.",
+    "noHits": "Ingen resultater funnet",
+    "noHitsSubtitle": "Prøv å fjerne et filter, eller",
+    "noHitsLink": "start søket på nytt"
   },
   "news": {
     "title": "Siste nytt om Datafabrikken"
@@ -48,7 +51,8 @@
     "search": "Søk",
     "searchFormat": "Søk på format",
     "showMore": "Vis flere",
-    "showFewer": "Vis færre"
+    "showFewer": "Vis færre",
+    "clearAll": "nullstill filter"
   },
   "unknown": "Ukjent",
   "toTop": "Til toppen",
