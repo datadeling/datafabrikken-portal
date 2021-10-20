@@ -20,20 +20,24 @@ const Topic: FC<Props> = ({ topic }) => {
   return (
     <SC.Topic>
       <SC.Info>
-        <h3>
+        <SC.Title>
           <InternalLink
             to={`${PATHNAME.COMMUNITY}/${topic.category.slug}/${topic.slug}`}
           >
             {topic.title}
           </InternalLink>
-        </h3>
-        <div>
-          {topic?.tags?.map((tag, index) => (
-            <Tag key={`tag_${index}`} {...tag} />
-          ))}
-
-          <User user={topicOwner} />
-        </div>
+        </SC.Title>
+        <SC.SubTitle>
+          <SC.UserTime>
+            <User user={topicOwner} />
+            {new Date(topic.timestamp).toLocaleDateString()}
+          </SC.UserTime>
+          <SC.Tags>
+            {topic?.tags?.map((tag, index) => (
+              <Tag key={`tag_${index}`} {...tag} />
+            ))}
+          </SC.Tags>
+        </SC.SubTitle>
       </SC.Info>
       <SC.Statistics>
         <li>
