@@ -15,7 +15,7 @@ const withCmsNews = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    cmsNews: state.CmsNewsReducer.get('cmsNews').toJS()
+    cmsNews: state.CmsNewsReducer.get('cmsNews')?.toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({

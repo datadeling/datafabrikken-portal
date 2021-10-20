@@ -17,7 +17,7 @@ const withDataServices = (Component: ComponentType<any>) => {
   const mapStateToProps = (state: any) => ({
     dataServicesRelations: state.DataServicesReducer.get(
       'dataServicesRelations'
-    ).toJS()
+    )?.toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
