@@ -12,6 +12,7 @@ import Link from '../../../../../components/link';
 
 import Root from '../../../../../components/root';
 import Container from '../../../../../components/container';
+import CommunityMenu from '../../../../../components/community/menu';
 
 import Topic from './components/topic';
 
@@ -64,6 +65,7 @@ const CommunityCategoryPage: FC<Props> = ({
     <Root>
       <Container>
         <SC.Page>
+          <CommunityMenu />
           <SC.Title>{name}</SC.Title>
           {getActiveTopics().length === 0 && (
             <SC.Info>

@@ -9,15 +9,19 @@ const onMobileView = '@media (max-width: 900px)';
 
 const Page = styled.article`
   line-height: 1.5;
+<<<<<<< HEAD
   padding-top: ${theme.spacing('S50')};
   ${onMobileView} {
     padding-top: ${theme.spacing('S10')};
   }
+=======
+>>>>>>> b247d9f (feat: community menu)
 `;
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
   margin-bottom: ${theme.spacing('S10')};
+  margin-top: ${theme.spacing('S4')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
   }
