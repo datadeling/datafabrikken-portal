@@ -3,6 +3,8 @@ import { compose } from 'redux';
 
 import { RouteComponentProps } from 'react-router-dom';
 
+import parse from 'html-react-parser';
+
 import withCommunityTopic, {
   Props as CommunityTopicProps
 } from '../../../../../components/with-community-topic';
@@ -85,7 +87,7 @@ const CommunityTopicPage: FC<Props> = ({
     <Root>
       <Container>
         <SC.Page>
-          <SC.Title>{title}</SC.Title>
+          <SC.Title>{parse(title)}</SC.Title>
           <SC.Header>
             {tags?.length > 0 && (
               <SC.Tags>
