@@ -15,7 +15,7 @@ const withReferenceData = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: any) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    referenceData: state.ReferenceDataReducer.get('referenceData').toJS()
+    referenceData: state.ReferenceDataReducer.get('referenceData')?.toJS()
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => ({
