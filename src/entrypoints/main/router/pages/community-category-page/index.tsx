@@ -46,7 +46,7 @@ const CommunityCategoryPage: FC<Props> = ({
   }, []);
 
   const [sortByDateAsc, setSortByDateAsc] = useState(false);
-  const [sortByDateDesc, setSortByDateDesc] = useState(false);
+  const [sortByDateDesc, setSortByDateDesc] = useState(true);
 
   const sortTopics = (first: CommunityTopic, second: CommunityTopic) =>
     compareTopics(first, second, sortByDateAsc, sortByDateDesc);
