@@ -33,11 +33,17 @@ const InfoBox: FC<PropsWithChildren<Props>> = ({
         <SC.ImageWrapper>{child}</SC.ImageWrapper>
       ) : null
     )?.shift();
+
   const renderInfoBoxIcon = () =>
     Children.map(children, child =>
       isValidElement(child) && child.type === InfoBoxIcon ? (
         <SC.IconWrapper>{child}</SC.IconWrapper>
       ) : null
+    )?.shift();
+
+  const renderInfoBoxDate = () =>
+    Children.map(children, child =>
+      isValidElement(child) && child.type === SC.Date ? child : null
     )?.shift();
 
   const renderInfoBoxTitle = () =>
@@ -56,6 +62,7 @@ const InfoBox: FC<PropsWithChildren<Props>> = ({
       <SC.InfoBoxRow>
         {renderInfoBoxIcon()}
         <SC.ContentWrapper>
+          {renderInfoBoxDate()}
           {renderInfoBoxTitle()}
           {renderInfoBoxBody()}
         </SC.ContentWrapper>
