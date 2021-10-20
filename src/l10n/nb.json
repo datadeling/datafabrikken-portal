@@ -287,6 +287,15 @@
       "sortByDate": "Sorter etter dato:",
       "ascending": "Stigende",
       "descending": "Synkende"
+    },
+    "header": {
+      "categories": "Kategorier",
+      "tags": "Emneord",
+      "recent": "Siste",
+      "popular": "Populære",
+      "calendar": "Kalender",
+      "about": "Om Datalandsbyen",
+      "login": "Login/registrer"
     }
   },
   "contactPoint": {

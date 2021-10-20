@@ -17,6 +17,7 @@ export default {
     [Colour.BLUE]: {
       B04: '#ebf1ff',
       B14: '#9ebeff',
+      B18: '#75a3ff',
       B20: '#70a0ff',
       B36: '#5a73a6',
       B44: '#475673',

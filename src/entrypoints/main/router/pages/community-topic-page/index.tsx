@@ -15,6 +15,7 @@ import EyeIcon from '../../../../../images/icon-eye.inline.svg';
 
 import Root from '../../../../../components/root';
 import Container from '../../../../../components/container';
+import CommunityMenu from '../../../../../components/community/menu';
 import Link from '../../../../../components/link';
 import Translation from '../../../../../components/translation';
 
@@ -87,6 +88,7 @@ const CommunityTopicPage: FC<Props> = ({
     <Root>
       <Container>
         <SC.Page>
+          <CommunityMenu />
           <SC.Title>{parse(title)}</SC.Title>
           <SC.Header>
             {tags?.length > 0 && (

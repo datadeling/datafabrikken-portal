@@ -13,6 +13,7 @@ import CommunityIcon from '../../../../../images/service-community.inline.svg';
 
 import Root from '../../../../../components/root';
 import Container from '../../../../../components/container';
+import CommunityMenu from '../../../../../components/community/menu';
 
 import Category from './components/category';
 
@@ -46,6 +47,7 @@ const CommunityCategoriesPage: FC<Props> = ({
     <Root>
       <Container>
         <SC.Page>
+          <CommunityMenu />
           <SC.Title>{cmsPage?.title}</SC.Title>
           <SC.IngressRow>
             <SC.Ingress>
