@@ -46,4 +46,4 @@ const Name = styled.span<{ $colour: string }>`
   }
 `;
 
-export default { User, Icon, NameWrapper, Name, Picture };
+export default { User, Icon, Name, Picture };

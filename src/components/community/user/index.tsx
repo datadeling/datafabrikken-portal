@@ -33,9 +33,7 @@ const User: FC<Props> = ({ user }) => {
         <SC.Icon $colour={user['icon:bgColor']}>{user['icon:text']}</SC.Icon>
       )}
 
-      <SC.NameWrapper>
-        <SC.Name $colour={user['icon:bgColor']}>{userName()}</SC.Name>
-      </SC.NameWrapper>
+      <SC.Name $colour={user['icon:bgColor']}>{userName()}</SC.Name>
     </SC.User>
   );
 };
