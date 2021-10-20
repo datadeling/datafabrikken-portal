@@ -17,6 +17,9 @@ import withPublicServices, {
 import withDataServices, {
   Props as DataServicesProps
 } from '../../../../../components/with-data-services';
+import withCommunityTopicSearch, {
+  Props as CommunityProps
+} from '../../../../../components/with-community-search';
 
 import DetailsPage from '../../../../../components/details-page';
 
@@ -38,6 +41,8 @@ import { PATHNAME } from '../../../../../enums';
 import InternalLink from '../../../../../components/link-internal';
 import withErrorBoundary from '../../../../../components/with-error-boundary';
 import { ItemWithRelationType } from '../../../../../types';
+import Topic from '../../../../../components/community/topic';
+import Translation from '../../../../../components/translation';
 
 interface RouteParams {
   datasetId?: string;
@@ -49,6 +54,7 @@ interface Props
     ReferenceDataProps,
     PublicServicesProps,
     DataServicesProps,
+    CommunityProps,
     RouteComponentProps<RouteParams> {}
 
 const DatasetDetailsPage: FC<Props> = ({
@@ -58,6 +64,7 @@ const DatasetDetailsPage: FC<Props> = ({
   publicServicesRelations,
   dataServicesRelations,
   isLoadingDataset,
+  topics,
   referenceData: { referencetypes: referenceTypes },
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
   datasetsActions: {
@@ -75,6 +82,7 @@ const DatasetDetailsPage: FC<Props> = ({
     getPublicServicesRelationsRequested: getPublicServicesRelations,
     resetPublicServicesRelations
   },
+  communityActions: { searchTopicsRequested: searchCommunity, resetTopics },
   match: {
     params: { datasetId }
   }
@@ -171,6 +179,7 @@ const DatasetDetailsPage: FC<Props> = ({
     if (datasetId) {
       getDataset(datasetId);
       setIsMounted(true);
+      searchCommunity(datasetId);
     }
 
     if (!referenceTypes) {
@@ -183,6 +192,7 @@ const DatasetDetailsPage: FC<Props> = ({
       resetDatasetsRelations();
       resetDataServicesRelations();
       resetPublicServicesRelations();
+      resetTopics();
     };
   }, [datasetId, getDataset]);
 
@@ -740,6 +750,39 @@ const DatasetDetailsPage: FC<Props> = ({
           )}
         </ContentSection>
       )}
+      <ContentSection
+        id='community_section'
+        title={translations.translate('detailsPage.community.title')}
+      >
+        {topics.length > 0 ? (
+          <>
+            <span>
+              <Translation id='detailsPage.community.subtitle.content.dataset' />
+              {topics.length}
+              <Translation
+                id={
+                  topics.length === 1
+                    ? 'detailsPage.community.subtitle.mention'
+                    : 'detailsPage.community.subtitle.mentionPlural'
+                }
+              />
+              <InternalLink to={PATHNAME.COMMUNITY}>
+                <Translation id='detailsPage.community.subtitle.link' />
+              </InternalLink>
+            </span>
+            {topics.map(topic => (
+              <Topic key={`topic_${topic.tid}`} topic={topic} />
+            ))}
+          </>
+        ) : (
+          <span>
+            <Translation id='detailsPage.community.subtitle.empty.dataset' />
+            <InternalLink to={PATHNAME.COMMUNITY}>
+              <Translation id='detailsPage.community.subtitle.link' />
+            </InternalLink>
+          </span>
+        )}
+      </ContentSection>
     </DetailsPage>
   ) : (
     <ErrorPage errorCode='404' />
@@ -753,5 +796,6 @@ export default compose<FC<Props>>(
   withDatasets,
   withDataServices,
   withPublicServices,
+  withCommunityTopicSearch,
   withErrorBoundary(ErrorPage)
 )(DatasetDetailsPage);

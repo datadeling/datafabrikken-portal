@@ -5,6 +5,7 @@ const User = styled.a`
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  font-size: ${theme.fontSize('FS10')};
 
   &:hover {
     text-decoration: none;
@@ -17,8 +18,6 @@ const Icon = styled.div<{ $colour: string }>`
   justify-content: center;
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   background-color: ${({ $colour }) => $colour};
-  font-size: ${theme.fontSize('FS12')};
-  font-weight: ${theme.fontWeight('FW300')};
   width: 23px;
   height: 23px;
   border-radius: 50%;
@@ -37,12 +36,14 @@ const Picture = styled.img`
   margin-right: 5px;
 `;
 
-const NameWrapper = styled.div`
-  margin-right: 5px;
-`;
-
 const Name = styled.span<{ $colour: string }>`
-  border-bottom: 2px solid ${({ $colour }) => $colour};
+  color: ${theme.colour(Colour.NEUTRAL, 'N70')};
+  border-bottom: 1px solid ${({ $colour }) => $colour};
+  margin-right: 5px;
+
+  &:hover {
+    border-bottom: 0;
+  }
 `;
 
 export default { User, Icon, NameWrapper, Name, Picture };

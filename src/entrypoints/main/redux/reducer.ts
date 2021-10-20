@@ -5,6 +5,7 @@ import CmsNewsReducer from '../../../components/with-cms-news/redux/reducer';
 import CommunityCategoriesReducer from '../../../components/with-community-categories/redux/reducer';
 import CommunityCategoryReducer from '../../../components/with-community-category/redux/reducer';
 import CommunityTopicReducer from '../../../components/with-community-topic/redux/reducer';
+import CommunitySearchReducer from '../../../components/with-community-search/redux/reducer';
 import DatasetsReducer from '../../../components/with-datasets/redux/reducer';
 import ReferenceDataReducer from '../../../components/with-reference-data/redux/reducer';
 import DatasetReducer from '../../../components/with-dataset/redux/reducer';
@@ -18,6 +19,7 @@ export default combineReducers({
   CommunityCategoriesReducer,
   CommunityCategoryReducer,
   CommunityTopicReducer,
+  CommunitySearchReducer,
   DatasetsReducer,
   ReferenceDataReducer,
   DatasetReducer,

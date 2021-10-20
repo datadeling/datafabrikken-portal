@@ -5,6 +5,7 @@ import cmsNewsSaga from '../../../components/with-cms-news/redux/saga';
 import communityCategoriesSaga from '../../../components/with-community-categories/redux/saga';
 import communityCategorySaga from '../../../components/with-community-category/redux/saga';
 import communityTopicSaga from '../../../components/with-community-topic/redux/saga';
+import communitySearchSaga from '../../../components/with-community-search/redux/saga';
 import datasetsSaga from '../../../components/with-datasets/redux/saga';
 import referenceDataSaga from '../../../components/with-reference-data/redux/saga';
 import datasetSaga from '../../../components/with-dataset/redux/saga';
@@ -24,6 +25,7 @@ export default function* saga() {
     datasetSaga(),
     publicServicesSaga(),
     dataServicesSaga(),
-    assessmentSaga()
+    assessmentSaga(),
+    communitySearchSaga()
   ]);
 }
