@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import Truncate from 'react-truncate';
 
+import parse from 'html-react-parser';
 import { htmlToText } from 'html-to-text';
 
 import { compose } from 'redux';
@@ -61,7 +62,7 @@ const Topic: FC<Props> = ({
           as={RouterLink}
           to={`${PATHNAME.COMMUNITY}/${categorySlug}/${slug}`}
         >
-          {title}
+          {parse(title)}
         </Link>
       </SC.Title>
       <SC.UserInfo>

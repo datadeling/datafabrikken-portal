@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import Truncate from 'react-truncate';
 
+import parse from 'html-react-parser';
 import { htmlToText } from 'html-to-text';
 
 import { compose } from 'redux';
@@ -76,10 +77,10 @@ const Category: FC<Props> = ({
         <SC.TitleColumn>
           <SC.Title>
             <Link as={RouterLink} to={`${PATHNAME.COMMUNITY}/${slug}`}>
-              {name}
+              {parse(name)}
             </Link>
           </SC.Title>
-          <SC.Ingress>{description}</SC.Ingress>
+          <SC.Ingress>{parse(description)}</SC.Ingress>
         </SC.TitleColumn>
       </SC.TitleContainer>
       <SC.Statistics>
