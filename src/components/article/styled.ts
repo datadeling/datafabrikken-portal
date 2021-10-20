@@ -32,7 +32,7 @@ const Title = styled.h1`
   }
 `;
 
-const Ingress = styled.p`
+const Ingress = styled.div`
   font-size: ${theme.fontSize('FS16')};
   line-height: 1.5;
   margin-bottom: ${theme.spacing('S16')};
