@@ -1,15 +1,15 @@
 import React, { FC } from 'react';
 
-import Translation from '../../translation';
-import env from '../../../env';
-
 import Tag from '../tag';
 import User from '../user';
 
 import SC from './styled';
 import type { CommunityTopic } from '../../../types';
-
-const { COMMUNITY_API_HOST } = env;
+import EyeIcon from '../../../images/icon-eye.inline.svg';
+import LikeIcon from '../../../images/icon-like.inline.svg';
+import PostIcon from '../../../images/icon-post.inline.svg';
+import { PATHNAME } from '../../../enums';
+import InternalLink from '../../link-internal';
 
 interface Props {
   topic: CommunityTopic;
@@ -21,9 +21,11 @@ const Topic: FC<Props> = ({ topic }) => {
     <SC.Topic>
       <SC.Info>
         <h3>
-          <SC.TopicTitle href={`${COMMUNITY_API_HOST}/topic/${topic.slug}`}>
+          <InternalLink
+            to={`${PATHNAME.COMMUNITY}/${topic.category.slug}/${topic.slug}`}
+          >
             {topic.title}
-          </SC.TopicTitle>
+          </InternalLink>
         </h3>
         <div>
           {topic?.tags?.map((tag, index) => (
@@ -35,16 +37,17 @@ const Topic: FC<Props> = ({ topic }) => {
       </SC.Info>
       <SC.Statistics>
         <li>
-          <SC.BigNumber>{topic.votes}</SC.BigNumber>
-          <Translation id='community.votes' />
+          <LikeIcon />
+          {topic.votes}
         </li>
         <li>
-          <SC.BigNumber>{topic.postcount}</SC.BigNumber>
-          <Translation id='community.posts' />
+          <PostIcon />
+          {topic.postcount}
         </li>
         <li>
-          <SC.BigNumber>{topic.viewcount}</SC.BigNumber>
-          <Translation id='community.views' />
+          <EyeIcon />
+
+          {topic.viewcount}
         </li>
       </SC.Statistics>
     </SC.Topic>
