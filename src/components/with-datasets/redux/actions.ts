@@ -24,6 +24,7 @@ interface GetDatasetsParams {
   format?: string;
   uris?: string[];
   referencesSource?: string;
+  keywords?: string;
 }
 
 export function getPagedDatasetsRequested(params?: GetDatasetsParams) {

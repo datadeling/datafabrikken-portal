@@ -4,6 +4,7 @@ import ContainerSC from '../../../../../components/container/styled';
 import DropdownMenuBase, {
   SC as DropdownMenuSC
 } from '../../../../../components/dropdown-menu';
+import ErrorSC from '../../../../../components/error-page/components/error-400/styled';
 
 import { Colour, theme } from '../../../app/theme';
 
@@ -155,6 +156,19 @@ const Pagination = styled.div`
   }
 `;
 
+const NoHits = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 80%;
+  & > h3 {
+    font-size: ${theme.fontSize('FS16')};
+  }
+`;
+
+const NoDatasetsFoundIcon = styled(ErrorSC.Error404Icon)``;
+
 export default {
   Container,
   Row,
@@ -168,5 +182,7 @@ export default {
   ExpandMoreIcon,
   Themes,
   Filters,
-  Pagination
+  Pagination,
+  NoHits,
+  NoDatasetsFoundIcon
 };

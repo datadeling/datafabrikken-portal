@@ -23,7 +23,8 @@ function* getPagedDatasetsRequested({
       theme,
       accessRights,
       format,
-      uris
+      uris,
+      keywords
     } = {}
   }
 }: ReturnType<typeof actions.getPagedDatasetsRequested>) {
@@ -38,7 +39,8 @@ function* getPagedDatasetsRequested({
         theme,
         accessRights,
         format,
-        uris
+        uris,
+        keywords
       })
     );
     if (data) {

@@ -21,7 +21,8 @@ const initialState = fromJS({
   datasetsPage: 0,
   datasetPageSize: 0,
   hasMoreDatasets: false,
-  datasetsRelations: []
+  datasetsRelations: [],
+  isLoadingDatasets: false
 });
 
 export default function reducer(
@@ -36,7 +37,9 @@ export default function reducer(
         .set('totalDatasets', 0)
         .set('datasetsPage', 0)
         .set('datasetPageSize', 0)
-        .set('hasMoreDatasets', false);
+        .set('hasMoreDatasets', false)
+        .set('isLoadingDatasets', true);
+
     case GET_DATASETS_SUCCEEDED:
       return state
         .set(
@@ -51,7 +54,8 @@ export default function reducer(
           'hasMoreDatasets',
           action.payload.pagedDatasets.page.currentPage + 1 <
             action.payload.pagedDatasets.page.totalPages
-        );
+        )
+        .set('isLoadingDatasets', false);
     case GET_DATASETS_FAILED:
       return state.set('isLoadingDatasets', false);
     case RESET_DATASETS:
@@ -61,7 +65,8 @@ export default function reducer(
         .set('totalDatasets', 0)
         .set('datasetsPage', 0)
         .set('datasetPageSize', 0)
-        .set('hasMoreDatasets', false);
+        .set('hasMoreDatasets', false)
+        .set('isLoadingDatasets', false);
     case GET_DATASETS_RELATIONS_REQUESTED:
       return state.set('datasetsRelations', fromJS([]));
     case GET_DATASETS_RELATIONS_SUCCEEDED:

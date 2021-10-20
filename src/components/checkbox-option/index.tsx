@@ -1,4 +1,10 @@
-import React, { FC, useState, PropsWithChildren, ChangeEvent } from 'react';
+import React, {
+  FC,
+  useState,
+  PropsWithChildren,
+  ChangeEvent,
+  useEffect
+} from 'react';
 
 import Translation from '../translation';
 
@@ -24,6 +30,10 @@ const CheckboxContainer: FC<PropsWithChildren<Props>> = ({
   rawLabel
 }) => {
   const [checked, setChecked] = useState<boolean>(isChecked);
+
+  useEffect(() => {
+    setChecked(isChecked);
+  }, [isChecked]);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     setChecked(event.target.checked);

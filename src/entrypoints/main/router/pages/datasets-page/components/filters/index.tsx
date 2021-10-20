@@ -18,11 +18,18 @@ import FilterSearchField from '../filter-search-field';
 
 interface ExternalProps {
   handleCheckboxChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  handleMultiSelectFilter: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleMultiSelectFilter: (
+    checked: boolean,
+    name: string,
+    value: string
+  ) => void;
+  handleRemoveFilter: (parameter: string) => void;
+  handleClearParameters: () => void;
   formatAggregations: any;
   openDataParameter: string;
   accessRightsParameter: string;
   formatParameter: string;
+  keywordsParameter?: string;
 }
 
 interface Props extends ExternalProps, TranslationProps {}
@@ -36,10 +43,13 @@ type BucketItem = {
 const Filters: FC<Props> = ({
   handleCheckboxChange,
   handleMultiSelectFilter,
+  handleRemoveFilter,
+  handleClearParameters,
   formatAggregations,
   openDataParameter,
   accessRightsParameter,
   formatParameter,
+  keywordsParameter,
   translationsService
 }) => {
   const [formatSearch, setFormatSearch] = useState('');
@@ -88,7 +98,9 @@ const Filters: FC<Props> = ({
     items.map(item => (
       <FilterCheckbox
         key={`format-${groupIndex}-${item.key}`}
-        handleCheckboxChange={handleMultiSelectFilter}
+        handleCheckboxChange={({ target: { checked, name, value } }) =>
+          handleMultiSelectFilter(checked, name, value)
+        }
         isChecked={formatParameter.includes(item.key)}
         filterId={`format-${groupIndex}-${item.key}`}
         filterName='format'
@@ -135,11 +147,68 @@ const Filters: FC<Props> = ({
         </div>
       ));
 
+  const formatParameters =
+    (formatParameter && formatParameter.split(',')) ?? [];
+  const renderFilterPills =
+    keywordsParameter ||
+    openDataParameter ||
+    accessRightsParameter ||
+    formatParameters;
+
   return (
     <>
       <SC.Title>
         <Translation id='filter.title' />
       </SC.Title>
+      {renderFilterPills && (
+        <SC.FilterPillContainer>
+          {keywordsParameter && (
+            <SC.FilterPill
+              key='filter-pill-keyword'
+              onClick={() => handleRemoveFilter('keywords')}
+            >
+              {keywordsParameter}
+              <SC.CloseIcon />
+            </SC.FilterPill>
+          )}
+          {openDataParameter && (
+            <SC.FilterPill
+              key='filter-pill-openData'
+              onClick={() => handleRemoveFilter('opendata')}
+            >
+              <Translation id='filter.openData' />
+              <SC.CloseIcon />
+            </SC.FilterPill>
+          )}
+          {accessRightsParameter && (
+            <SC.FilterPill
+              key='filter-pill-accessRights'
+              onClick={() => handleRemoveFilter('accessRights')}
+            >
+              <Translation id='filter.restrictedAccessRights' />
+              <SC.CloseIcon />
+            </SC.FilterPill>
+          )}
+          {formatParameters &&
+            formatParameters.map((formatString, index) => (
+              <SC.FilterPill
+                key={`filter-pill-format-${index}`}
+                onClick={() =>
+                  handleMultiSelectFilter(false, 'format', formatString)
+                }
+              >
+                {formatString.startsWith('MEDIA_TYPE ')
+                  ? formatString.split(' ')[1]
+                  : formatString}
+                <SC.CloseIcon />
+              </SC.FilterPill>
+            ))}
+
+          <SC.InversePill onClick={handleClearParameters}>
+            <Translation id='filter.clearAll' />
+          </SC.InversePill>
+        </SC.FilterPillContainer>
+      )}
       <SC.FilterSection>
         <SC.FilterTypeTitle>
           <Translation id='filter.accessRights' />
