@@ -25,7 +25,7 @@ interface Props extends CommunityCategoryProps, RouteComponentProps {}
 
 const { COMMUNITY_API_HOST } = env;
 
-const CommunityCategoryPage: FC<Props> = ({
+const CommunityTopicsPage: FC<Props> = ({
   communityCategory,
   communityCategoryActions: {
     getCategoryRequested: getCategory,
@@ -111,4 +111,4 @@ const CommunityCategoryPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(memo, withCommunityCategory)(CommunityCategoryPage);
+export default compose<FC>(memo, withCommunityCategory)(CommunityTopicsPage);

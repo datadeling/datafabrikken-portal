@@ -19,8 +19,9 @@ const routes = {
   [PATHNAME.COMMUNITY]: lazy(
     () => import('../pages/community-categories-page')
   ),
-  COMMUNITY_CATEGORY: lazy(() => import('../pages/community-category-page')),
+  [PATHNAME.COMMUNITY_TAGS]: lazy(() => import('../pages/community-tags-page')),
   COMMUNITY_TOPIC: lazy(() => import('../pages/community-topic-page')),
+  COMMUNITY_TOPICS: lazy(() => import('../pages/community-topics-page')),
   [PATHNAME.COMMUNITY_ABOUT]: lazy(() => import('../pages/article-page')),
   [PATHNAME.DATA_SOURCES]: lazy(() => import('../pages/article-page')),
   [PATHNAME.GUIDEANCE_AND_COMPETENCE]: lazy(
@@ -77,7 +78,7 @@ const Routes: FC = () => (
     <Route exact path={PATHNAME.CONTACT} component={routes[PATHNAME.CONTACT]} />
     <Route
       exact
-      path={[PATHNAME.COMMUNITY]}
+      path={PATHNAME.COMMUNITY}
       component={routes[PATHNAME.COMMUNITY]}
     />
     <Route
@@ -87,8 +88,18 @@ const Routes: FC = () => (
     />
     <Route
       exact
-      path={`${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle`}
-      component={routes.COMMUNITY_CATEGORY}
+      path={PATHNAME.COMMUNITY_TAGS}
+      component={routes[PATHNAME.COMMUNITY_TAGS]}
+    />
+    <Route
+      exact
+      path={[
+        `${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle`,
+        PATHNAME.COMMUNITY_POPULAR,
+        PATHNAME.COMMUNITY_RECENT,
+        `${PATHNAME.COMMUNITY_TAGS}/:tag/`
+      ]}
+      component={routes.COMMUNITY_TOPICS}
     />
     <Route
       exact

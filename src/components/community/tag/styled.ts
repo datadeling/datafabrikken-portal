@@ -7,6 +7,7 @@ const Tag = styled.a`
   border-radius: 50px;
   font-weight: ${theme.fontWeight('FW400')};
   color: ${theme.colour(Colour.BLUE, 'B36')};
+  white-space: nowrap;
 
   &:hover {
     background-color: ${theme.colour(Colour.BLUE, 'B36')};
