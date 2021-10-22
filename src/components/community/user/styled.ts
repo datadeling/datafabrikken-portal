@@ -36,9 +36,13 @@ const Picture = styled.img`
   margin-right: 5px;
 `;
 
+const NameWrapper = styled.div`
+  margin-right: 5px;
+`;
+
 const Name = styled.span<{ $colour: string }>`
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
-  border-bottom: 1px solid ${({ $colour }) => $colour};
+  border-bottom: 2px solid ${({ $colour }) => $colour};
   margin-right: 5px;
 
   &:hover {
@@ -46,4 +50,4 @@ const Name = styled.span<{ $colour: string }>`
   }
 `;
 
-export default { User, Icon, Name, Picture };
+export default { User, Icon, NameWrapper, Name, Picture };
