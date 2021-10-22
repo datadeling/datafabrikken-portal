@@ -1,14 +1,15 @@
 import React, { FC } from 'react';
+import { Link } from 'react-router-dom';
 
 import SC from './styled';
 
 import type { CommunityTag } from '../../../types';
-import env from '../../../env';
-
-const { COMMUNITY_API_HOST } = env;
+import { PATHNAME } from '../../../enums';
 
 const Tag: FC<CommunityTag> = ({ value, valueEscaped }) => (
-  <SC.Tag href={`${COMMUNITY_API_HOST}/tags/${valueEscaped}`}>{value}</SC.Tag>
+  <Link to={`${PATHNAME.COMMUNITY_TAGS}/${valueEscaped}`}>
+    <SC.Tag>{value}</SC.Tag>
+  </Link>
 );
 
 export default Tag;
