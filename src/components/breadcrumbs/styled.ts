@@ -18,6 +18,7 @@ const Root = styled.div`
 const BreadCrumb = styled.div`
   align-items: center;
   display: inline-flex;
+  white-space: nowrap;
   margin-right: ${theme.spacing('S2')};
 `;
 
@@ -27,6 +28,12 @@ const BreadCrumbs = styled.div`
   display: flex;
   font-size: 0.9rem;
   padding: ${theme.spacing('S16')} 0;
+
+  ${BreadCrumb}:last-child > span {
+    width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
   ${BreadCrumb}:not(:first-child):before {
     content: '';
