@@ -9,10 +9,18 @@ const Page = styled.article`
   line-height: 1.5;
 `;
 
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const TitleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
-  margin-bottom: ${theme.spacing('S10')};
-  margin-top: ${theme.spacing('S4')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
   }
@@ -21,7 +29,6 @@ const Title = styled.h1`
 const Ingress = styled.div`
   font-size: ${theme.fontSize('FS16')};
   line-height: 1.5;
-  margin-bottom: ${theme.spacing('S16')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS12')};
   }
@@ -58,15 +65,9 @@ const Ingress = styled.div`
   }
 `;
 
-const IngressRow = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-bottom: ${theme.spacing('S32')};
-`;
-
 const IconWrapper = styled.div`
   display: flex;
-  flex: 0 0 12%;
+  flex: 0 0 15%;
   margin-left: ${theme.spacing('S64')};
   ${onMinWidth} {
     display: none;
@@ -85,9 +86,10 @@ const Content = styled.div`
 
 export default {
   Page,
+  Header,
+  TitleContainer,
   Title,
   IconWrapper,
   Ingress,
-  IngressRow,
   Content
 };

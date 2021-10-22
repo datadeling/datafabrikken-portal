@@ -9,19 +9,10 @@ const onMobileView = '@media (max-width: 900px)';
 
 const Page = styled.article`
   line-height: 1.5;
-<<<<<<< HEAD
-  padding-top: ${theme.spacing('S50')};
-  ${onMobileView} {
-    padding-top: ${theme.spacing('S10')};
-  }
-=======
->>>>>>> b247d9f (feat: community menu)
 `;
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
-  margin-bottom: ${theme.spacing('S10')};
-  margin-top: ${theme.spacing('S4')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
   }
@@ -101,6 +92,31 @@ const SortButtonWrapper = styled.span`
 
 const SortButton = styled(ButtonBase)``;
 
+const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  & > .pagination {
+    align-items: center;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+
+    & > li > * {
+      display: flex;
+      padding: 0.5em 1em;
+    }
+    & > li.active > a {
+      background-color: ${theme.colour(Colour.BLUE, 'B36')};
+    }
+  }
+  ${onMobileView} {
+    font-size: 0.7rem;
+  }
+`;
+
 export default {
   Page,
   Title,
@@ -113,5 +129,6 @@ export default {
   Sort,
   SortLabel,
   SortButtonWrapper,
-  SortButton
+  SortButton,
+  Pagination
 };

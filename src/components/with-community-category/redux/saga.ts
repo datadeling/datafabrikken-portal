@@ -7,10 +7,10 @@ import * as actions from './actions';
 import { getCategory } from '../../../services/api/community-api/category';
 
 function* getCategoryRequested({
-  payload: { slug }
+  payload: { slug, page, sort }
 }: ReturnType<typeof actions.getCategoryRequested>) {
   try {
-    const data: Record<string, any> = yield call(getCategory, slug);
+    const data: Record<string, any> = yield call(getCategory, slug, page, sort);
     if (data) {
       yield put(actions.getCategorySucceeded(data as CommunityCategory));
     } else {

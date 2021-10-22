@@ -111,7 +111,7 @@ const PostDate = styled.span`
 
 const Tags = styled.div`
   display: inline-flex;
-  white-space: nowrap;
+  flex-wrap: wrap;
   gap: ${theme.spacing('S4')};
   ${onMobileView} {
     margin-bottom: ${theme.spacing('S10')};

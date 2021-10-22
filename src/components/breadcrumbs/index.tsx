@@ -110,20 +110,16 @@ const Breadcrumbs: FC<Props> = ({ breadcrumbs }: any) =>
     <SC.Root>
       <Container>
         <SC.BreadCrumbs>
-          {breadcrumbs.map(({ key, match, breadcrumb }: any, index: number) => {
-            // eslint-disable-next-line no-console
-            console.log({ key, match, breadcrumb });
-            return (
-              <SC.BreadCrumb key={key}>
-                {index < breadcrumbs.length - 1 && (
-                  <Link as={RouterLink} to={match?.url} showIcon={false}>
-                    {breadcrumb}
-                  </Link>
-                )}
-                {index === breadcrumbs.length - 1 && <span>{breadcrumb}</span>}
-              </SC.BreadCrumb>
-            );
-          })}
+          {breadcrumbs.map(({ key, match, breadcrumb }: any, index: number) => (
+            <SC.BreadCrumb key={key}>
+              {index < breadcrumbs.length - 1 && (
+                <Link as={RouterLink} to={match?.url} showIcon={false}>
+                  {breadcrumb}
+                </Link>
+              )}
+              {index === breadcrumbs.length - 1 && <span>{breadcrumb}</span>}
+            </SC.BreadCrumb>
+          ))}
         </SC.BreadCrumbs>
       </Container>
     </SC.Root>

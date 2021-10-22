@@ -11,7 +11,7 @@ import {
 import { Actions } from '../../../types';
 
 const initialState = fromJS({
-  communityCategory: []
+  communityCategory: null
 });
 
 export default function reducer(
