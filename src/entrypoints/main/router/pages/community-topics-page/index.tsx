@@ -203,7 +203,7 @@ const CommunityTopicsPage: FC<Props> = ({
                 containerClassName='pagination'
                 onPageChange={onPageChange}
                 activeClassName='active'
-                forcePage={currentPage}
+                forcePage={currentPage - 1}
                 disableInitialCallback
               />
             </SC.Pagination>

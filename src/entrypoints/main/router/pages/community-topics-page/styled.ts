@@ -90,7 +90,9 @@ const SortButtonWrapper = styled.span`
   font-weight: ${theme.fontWeight('FW300')};
 `;
 
-const SortButton = styled(ButtonBase)``;
+const SortButton = styled(ButtonBase)`
+  white-space: nowrap;
+`;
 
 const Pagination = styled.div`
   display: flex;

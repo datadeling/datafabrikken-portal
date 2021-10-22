@@ -119,6 +119,10 @@ const SkipLink = styled.a`
 const Logo = styled.a`
   font-size: ${theme.fontSize('FS20')};
   font-weight: 600;
+
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS18')};
+  }
 `;
 
 const BetaIcon = styled(BetaLogoBase)`
