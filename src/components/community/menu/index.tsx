@@ -43,18 +43,22 @@ const CommunityMenu: FC<Props> = () => (
         <Translation id='community.header.popular' />
       </SC.Link>
     </li>
-    <li>
-      <SC.Link to={PATHNAME.COMMUNITY_ABOUT}>
-        <InfoIcon />
-        <Translation id='community.header.about' />
-      </SC.Link>
-    </li>
-    <li>
-      <SC.ExternalLink href={`${COMMUNITY_API_HOST}/login`} target='_self'>
-        <LoginIcon />
-        <Translation id='community.header.login' />
-      </SC.ExternalLink>
-    </li>
+    {false && (
+      <li>
+        <SC.Link to={PATHNAME.COMMUNITY_ABOUT}>
+          <InfoIcon />
+          <Translation id='community.header.about' />
+        </SC.Link>
+      </li>
+    )}
+    {false && (
+      <li>
+        <SC.ExternalLink href={`${COMMUNITY_API_HOST}/login`} target='_self'>
+          <LoginIcon />
+          <Translation id='community.header.login' />
+        </SC.ExternalLink>
+      </li>
+    )}
   </SC.Menu>
 );
 
