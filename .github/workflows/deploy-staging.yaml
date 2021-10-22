@@ -83,6 +83,11 @@ jobs:
         run: |
           gcloud container clusters get-credentials datafabrikken-dev --region europe-north1-a --project datafabrikken-dev
           kubectl apply -f ./kubectlapply.yaml --force
+          if ! kubectl --namespace=staging rollout status deployment datafabrikken-portal; then
+            kubectl --namespace=staging rollout undo deployment datafabrikken-portal
+            kubectl --namespace=staging rollout status deployment datafabrikken-portal
+            exit 1
+          fi
 
       - name: Notify slack
         uses: 8398a7/action-slack@v3
