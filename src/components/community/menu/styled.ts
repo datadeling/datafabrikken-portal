@@ -6,6 +6,8 @@ import { theme, Colour } from '../../../entrypoints/main/app/theme';
 
 import TopicIconBase from '../../../images/icon-topic.inline.svg';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const Link = styled(LinkBase)`
   display: flex;
   flex-direction: column;
@@ -65,6 +67,10 @@ const Menu = styled.ul`
   gap: ${theme.spacing('S12')};
   padding-top: ${theme.spacing('S10')};
   padding-bottom: ${theme.spacing('S10')};
+
+  ${onMobileView} {
+    justify-content: space-between;
+  }
 `;
 
 const TopicIcon = styled(TopicIconBase)`
