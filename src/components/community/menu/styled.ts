@@ -14,6 +14,7 @@ const Link = styled(LinkBase)`
   align-items: center;
   padding-bottom: ${theme.spacing('S4')};
   position: relative;
+  white-space: nowrap;
   &:after {
     position: absolute;
     content: '';
@@ -41,6 +42,7 @@ const ExternalLink = styled.a`
   align-items: center;
   padding-bottom: ${theme.spacing('S4')};
   position: relative;
+  white-space: nowrap;
   &:after {
     position: absolute;
     content: '';
@@ -70,6 +72,7 @@ const Menu = styled.ul`
 
   ${onMobileView} {
     justify-content: space-between;
+    gap: 0;
   }
 `;
 
