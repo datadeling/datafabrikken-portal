@@ -97,7 +97,7 @@ const Routes: FC = () => (
         `${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle`,
         PATHNAME.COMMUNITY_POPULAR,
         PATHNAME.COMMUNITY_RECENT,
-        `${PATHNAME.COMMUNITY_TAGS}/:tag/`
+        `${PATHNAME.COMMUNITY_TAGS}/:tag`
       ]}
       component={routes.COMMUNITY_TOPICS}
     />

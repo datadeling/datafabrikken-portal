@@ -34,15 +34,17 @@ const CommunityTopicPage: FC<Props> = ({
         <SC.Page>
           <CommunityMenu />
           <SC.Title>Emneord</SC.Title>
-          <SC.Header>
+          <SC.TagsWrapper>
             {tags?.length > 0 && (
               <SC.Tags>
-                {tags?.map((tag, index) => (
-                  <Tag key={`tag-${index}`} {...tag} />
-                ))}
+                {tags
+                  ?.sort((tagA, tagB) => tagA.value.localeCompare(tagB.value))
+                  .map((tag, index) => (
+                    <Tag key={`tag-${index}`} {...tag} />
+                  ))}
               </SC.Tags>
             )}
-          </SC.Header>
+          </SC.TagsWrapper>
         </SC.Page>
       </Container>
     </Root>
