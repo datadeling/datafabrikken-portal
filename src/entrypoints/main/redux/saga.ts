@@ -7,6 +7,7 @@ import communityCategorySaga from '../../../components/with-community-category/r
 import communityTagsSaga from '../../../components/with-community-tags/redux/saga';
 import communityTopicSaga from '../../../components/with-community-topic/redux/saga';
 import communitySearchSaga from '../../../components/with-community-search/redux/saga';
+import communityTopicsSaga from '../../../components/with-community-topics/redux/saga';
 import datasetsSaga from '../../../components/with-datasets/redux/saga';
 import referenceDataSaga from '../../../components/with-reference-data/redux/saga';
 import datasetSaga from '../../../components/with-dataset/redux/saga';
@@ -22,6 +23,7 @@ export default function* saga() {
     communityCategorySaga(),
     communityTagsSaga(),
     communityTopicSaga(),
+    communityTopicsSaga(),
     datasetsSaga(),
     referenceDataSaga(),
     datasetSaga(),
