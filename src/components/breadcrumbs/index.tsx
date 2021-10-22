@@ -12,6 +12,7 @@ import ArticleBreadCrumb from './article-breadcrumb';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import CommunityCategoryBreadCrumb from './community-category-breadcrumb';
 import CommunityTopicBreadCrumb from './community-topic-breadcrumb';
+import CommunityTagBreadCrumb from './community-tag-breadcrumb';
 import SC from './styled';
 
 interface Props {}
@@ -70,16 +71,32 @@ const routes = [
     breadcrumb: () => <DatasetBreadcrumb />
   },
   {
+    path: PATHNAME.COMMUNITY_ABOUT,
+    breadcrumb: () => <Translation id='header.communityAbout' />
+  },
+  {
+    path: PATHNAME.COMMUNITY_RECENT,
+    breadcrumb: () => <Translation id='community.header.recent' />
+  },
+  {
+    path: PATHNAME.COMMUNITY_POPULAR,
+    breadcrumb: () => <Translation id='community.header.popular' />
+  },
+  {
+    path: PATHNAME.COMMUNITY_TAGS,
+    breadcrumb: () => <Translation id='community.header.tags' />
+  },
+  {
+    path: `${PATHNAME.COMMUNITY_TAGS}/:tag`,
+    breadcrumb: () => <CommunityTagBreadCrumb />
+  },
+  {
     path: `${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle`,
     breadcrumb: () => <CommunityCategoryBreadCrumb />
   },
   {
     path: `${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle/:topicSlugId/:topicSlugTitle`,
     breadcrumb: () => <CommunityTopicBreadCrumb />
-  },
-  {
-    path: PATHNAME.COMMUNITY_ABOUT,
-    breadcrumb: () => <Translation id='header.communityAbout' />
   }
 ];
 
@@ -93,16 +110,20 @@ const Breadcrumbs: FC<Props> = ({ breadcrumbs }: any) =>
     <SC.Root>
       <Container>
         <SC.BreadCrumbs>
-          {breadcrumbs.map(({ key, match, breadcrumb }: any, index: number) => (
-            <SC.BreadCrumb key={key}>
-              {index < breadcrumbs.length - 1 && (
-                <Link as={RouterLink} to={match?.url} showIcon={false}>
-                  {breadcrumb}
-                </Link>
-              )}
-              {index === breadcrumbs.length - 1 && <span>{breadcrumb}</span>}
-            </SC.BreadCrumb>
-          ))}
+          {breadcrumbs.map(({ key, match, breadcrumb }: any, index: number) => {
+            // eslint-disable-next-line no-console
+            console.log({ key, match, breadcrumb });
+            return (
+              <SC.BreadCrumb key={key}>
+                {index < breadcrumbs.length - 1 && (
+                  <Link as={RouterLink} to={match?.url} showIcon={false}>
+                    {breadcrumb}
+                  </Link>
+                )}
+                {index === breadcrumbs.length - 1 && <span>{breadcrumb}</span>}
+              </SC.BreadCrumb>
+            );
+          })}
         </SC.BreadCrumbs>
       </Container>
     </SC.Root>
