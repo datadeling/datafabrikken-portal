@@ -204,6 +204,7 @@ export interface CommunityCategory {
   slug: string;
   posts: CommunityPost[];
   topics: CommunityTopic[];
+  pagination: CommunityPagination;
 }
 export interface CommunityPost {
   pid: number;
@@ -295,6 +296,18 @@ export interface CommunityUser {
   'icon:bgColor': string;
 }
 
+export interface CommunityPage {
+  page: number;
+  active: boolean;
+}
+export interface CommunityPagination {
+  prev: CommunityPage;
+  next: CommunityPage;
+  first: CommunityPage;
+  last: CommunityPage;
+  currentPage: number;
+  pageCount: number;
+}
 interface DatasetReference {
   referenceType: ReferenceType;
   source: { uri: string };

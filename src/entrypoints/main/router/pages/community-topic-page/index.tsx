@@ -66,7 +66,7 @@ const CommunityTopicPage: FC<Props> = ({
 
   useEffect(() => {
     if (communityTopic) {
-      getCategory(communityTopic.category?.slug);
+      getCategory(communityTopic.category?.slug, 1);
     }
 
     return () => {

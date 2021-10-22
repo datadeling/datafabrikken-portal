@@ -48,17 +48,19 @@ const CommunityCategoriesPage: FC<Props> = ({
       <Container>
         <SC.Page>
           <CommunityMenu />
-          <SC.Title>{cmsPage?.title}</SC.Title>
-          <SC.IngressRow>
-            <SC.Ingress>
-              <Markdown allowHtml>
-                {cmsPage?.field_modules[0]?.field_body?.value ?? ''}
-              </Markdown>
-            </SC.Ingress>
+          <SC.Header>
+            <SC.TitleContainer>
+              <SC.Title>{cmsPage?.title}</SC.Title>
+              <SC.Ingress>
+                <Markdown allowHtml>
+                  {cmsPage?.field_modules[0]?.field_body?.value ?? ''}
+                </Markdown>
+              </SC.Ingress>
+            </SC.TitleContainer>
             <SC.IconWrapper>
               <CommunityIcon />
             </SC.IconWrapper>
-          </SC.IngressRow>
+          </SC.Header>
           {communityCategories
             .filter(category => !category.disabled)
             .sort(categorySorter)
