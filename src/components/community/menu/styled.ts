@@ -63,6 +63,8 @@ const ExternalLink = styled.a`
 const Menu = styled.ul`
   display: flex;
   gap: ${theme.spacing('S12')};
+  padding-top: ${theme.spacing('S10')};
+  padding-bottom: ${theme.spacing('S10')};
 `;
 
 const TopicIcon = styled(TopicIconBase)`
