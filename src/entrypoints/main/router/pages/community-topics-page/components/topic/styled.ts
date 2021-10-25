@@ -80,6 +80,8 @@ const PostContainer = styled.div`
 const Teaser = styled.div`
   min-width: 300px;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
 
   & > a {
     display: inline;

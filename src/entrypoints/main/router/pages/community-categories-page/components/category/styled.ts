@@ -95,6 +95,8 @@ const PostContainer = styled.div`
 const Post = styled.div`
   min-width: 300px;
   max-width: 300px;
+  display: flex;
+  flex-direction: column;
 
   & > a {
     display: inline;
