@@ -1,7 +1,8 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { theme, Colour } from '../../../entrypoints/main/app/theme';
 
-const Tag = styled.span`
+const Tag = styled(Link)`
   padding: ${theme.spacing('S4')} ${theme.spacing('S6')};
   background-color: ${theme.colour(Colour.BLUE, 'B04')};
   border-radius: 50px;

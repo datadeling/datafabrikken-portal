@@ -37,11 +37,10 @@ const Title = styled.h3`
 
 const SubTitle = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
   font-size: ${theme.fontSize('FS10')};
   ${onMobileView} {
-    flex-direction: column;
-    align-items: flex-start;
     & > * {
       margin-top: ${theme.spacing('S6')};
     }
@@ -56,8 +55,9 @@ const UserTime = styled.div`
 const Tags = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin-top: ${theme.spacing('S4')};
   & > a {
-    margin-left: ${theme.spacing('S4')};
+    margin-right: ${theme.spacing('S4')};
   }
 `;
 
