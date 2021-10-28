@@ -16,7 +16,7 @@ interface ExternalProps {
 
 interface Props extends ExternalProps, AssessmentProps {}
 
-export const determineRatingIcon = (r: Rating | null | undefined) => {
+export const determineRatingIcon = (r: Partial<Rating> | null | undefined) => {
   switch (r?.category) {
     case RatingCategory.EXCELLENT:
       return <SC.QualityIconExcellent />;
@@ -27,6 +27,26 @@ export const determineRatingIcon = (r: Rating | null | undefined) => {
     case RatingCategory.POOR:
     default:
       return <SC.QualityIconPoor />;
+  }
+};
+
+export const determineRatingTranslation = (
+  r: Partial<Rating> | null | undefined
+) => {
+  switch (r?.category) {
+    case RatingCategory.EXCELLENT:
+      return (
+        <Translation id='metadataQualityPage.metadataQualityIsExcellent' />
+      );
+    case RatingCategory.GOOD:
+      return <Translation id='metadataQualityPage.metadataQualityIsGood' />;
+    case RatingCategory.SUFFICIENT:
+      return (
+        <Translation id='metadataQualityPage.metadataQualityIsSufficient' />
+      );
+    case RatingCategory.POOR:
+    default:
+      return <Translation id='metadataQualityPage.metadataQualityIsPoor' />;
   }
 };
 

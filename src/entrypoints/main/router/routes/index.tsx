@@ -32,7 +32,8 @@ const routes = {
   [PATHNAME.DATASET_DETAILS]: lazy(
     () => import('../pages/details-page-dataset')
   ),
-  [PATHNAME.TEXT_FORMAT]: lazy(() => import('../pages/article-page'))
+  [PATHNAME.TEXT_FORMAT]: lazy(() => import('../pages/article-page')),
+  [PATHNAME.ORGANIZATION]: lazy(() => import('../pages/organization-page'))
 };
 
 const Routes: FC = () => (
@@ -110,6 +111,11 @@ const Routes: FC = () => (
       exact
       path={PATHNAME.COMMUNITY_ABOUT}
       component={routes[PATHNAME.COMMUNITY_ABOUT]}
+    />
+    <Route
+      exact
+      path={`${PATHNAME.ORGANIZATION}/:organizationId`}
+      component={routes[PATHNAME.ORGANIZATION]}
     />
     {(ENV === Environment.DEVELOPMENT || ENV === Environment.STAGING) && (
       <Route

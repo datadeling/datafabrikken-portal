@@ -78,3 +78,21 @@ export enum IndicatorType {
   DESCRIPTION = 'description',
   DESCRIPTION_WITHOUT_TITLE = 'descriptionWithoutTitle'
 }
+
+export enum Filter {
+  LASTXDAYS = 'last_x_days',
+  OPENDATA = 'opendata',
+  ACCESSRIGHTS = 'accessrights',
+  PROVENANCE = 'provenance',
+  SUBJECTEXISTS = 'subjectExists',
+  FORMAT = 'format',
+  LOS = 'losTheme',
+  ORGPATH = 'orgPath',
+  ORGANIZATION_NUMBER = 'organizationNumber',
+  THEME = 'theme',
+  Q = 'q',
+  PAGE = 'page',
+  SORTFIELD = 'sortfield',
+  CATALOGNAME = 'catalog_name',
+  EVENT_TYPE = 'eventType'
+}

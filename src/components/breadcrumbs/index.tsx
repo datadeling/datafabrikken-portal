@@ -13,6 +13,7 @@ import DatasetBreadcrumb from './dataset-breadcrumb';
 import CommunityCategoryBreadCrumb from './community-category-breadcrumb';
 import CommunityTopicBreadCrumb from './community-topic-breadcrumb';
 import CommunityTagBreadCrumb from './community-tag-breadcrumb';
+import OrganizationPageBreadcrumb from './organization-breadcrumb';
 import SC from './styled';
 
 interface Props {}
@@ -97,6 +98,10 @@ const routes = [
   {
     path: `${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle/:topicSlugId/:topicSlugTitle`,
     breadcrumb: () => <CommunityTopicBreadCrumb />
+  },
+  {
+    path: `${PATHNAME.ORGANIZATION}/:organizationId`,
+    breadcrumb: () => <OrganizationPageBreadcrumb />
   }
 ];
 

@@ -17,7 +17,8 @@ export enum PATHNAME {
   TEXT_FORMAT = '/tekst-format',
   DATASET_DETAILS = '/datasett',
   FDK_PUBLIC_SERVICES = '/public-services',
-  FDK_DATA_SERVICES = '/dataservices'
+  FDK_DATA_SERVICES = '/dataservices',
+  ORGANIZATION = '/virksomheter'
 }
 
 export enum PARAGRAPH {

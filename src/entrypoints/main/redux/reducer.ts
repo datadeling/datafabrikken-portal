@@ -14,6 +14,9 @@ import DatasetReducer from '../../../components/with-dataset/redux/reducer';
 import PublicServicesReducer from '../../../components/with-public-services/redux/reducer';
 import DataServicesReducer from '../../../components/with-data-services/redux/reducer';
 import AssessmentReducer from '../../../components/with-assessment/redux/reducer';
+import OrganizationReducer from '../../../components/with-organization/redux/reducer';
+import OrganizationsCatalogReducer from '../../../components/with-organizations-catalog/redux/reducer';
+import ReportReducer from '../../../components/with-report/redux/reducer';
 
 export default combineReducers({
   CmsPageReducer,
@@ -29,5 +32,8 @@ export default combineReducers({
   DatasetReducer,
   PublicServicesReducer,
   DataServicesReducer,
-  AssessmentReducer
+  AssessmentReducer,
+  OrganizationReducer,
+  OrganizationsCatalogReducer,
+  ReportReducer
 });

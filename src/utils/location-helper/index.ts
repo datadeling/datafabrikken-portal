@@ -92,3 +92,26 @@ export const setMultiselectFilterValue = (
 
   history.push(`${pathname}${updatedParams}`);
 };
+
+export function patchSearchQuery(
+  key: string,
+  value: string,
+  removePageFilter = true
+) {
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true
+  });
+  if (removePageFilter) {
+    query.page = undefined;
+  }
+  query[key] = [...new Set([query[key], value])].filter(Boolean).join();
+  return qs.stringify(query, { addQueryPrefix: true });
+}
+
+export function patchMultipleSearchQuery(filter: Record<string, any>) {
+  const query = qs.parse(location.search, {
+    ignoreQueryPrefix: true
+  });
+
+  return qs.stringify({ ...query, ...filter }, { addQueryPrefix: true });
+}
