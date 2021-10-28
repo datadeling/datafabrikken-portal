@@ -11,6 +11,11 @@ export default validateEnv(
     CMS_API_HOST: 'https://cms-datafabrikken.digdir.no',
     COMMUNITY_API_HOST: 'https://community.staging.fellesdatakatalog.digdir.no',
     METADATA_QUALITY_ASSESSMENT_API:
-      'https://metadata-quality.staging.fellesdatakatalog.digdir.no'
+      'https://metadata-quality.staging.fellesdatakatalog.digdir.no',
+    ORGANIZATION_HOST:
+      'https://organization-bff.staging.fellesdatakatalog.digdir.no',
+    ORGANIZATION_CATALOGUE_HOST:
+      'https://organization-catalogue.staging.fellesdatakatalog.digdir.no',
+    REPORT_API_HOST: 'https://reports-bff.staging.fellesdatakatalog.digdir.no'
   }
 );

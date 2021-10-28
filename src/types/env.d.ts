@@ -8,4 +8,7 @@ export interface EnvironmentVariables {
   CMS_API_HOST: string;
   COMMUNITY_API_HOST: string;
   METADATA_QUALITY_ASSESSMENT_API: string;
+  ORGANIZATION_HOST: string;
+  ORGANIZATION_CATALOGUE_HOST: string;
+  REPORT_API_HOST: string;
 }

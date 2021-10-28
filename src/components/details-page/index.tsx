@@ -26,6 +26,8 @@ import { getReferenceData } from '../../services/api/reference-data/reference-da
 import translations from '../../services/translations';
 import ContentSection from './components/content-section';
 import MetadataQuality from './components/metadata-quality';
+import InternalLink from '../link-internal';
+import { PATHNAME } from '../../enums';
 
 interface ExternalProps {
   entity: Entity;
@@ -91,11 +93,11 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           {isAuthoritative && <SC.AuthoritativeIcon />}
         </SC.Title>
         <SC.SubBanner>
-          <p>
+          <InternalLink to={`${PATHNAME.ORGANIZATION}/${publisher?.id}`}>
             <Translation id={publisherLabel[entity]} />
             {': '}
             <Translation text={publisher?.prefLabel} />
-          </p>
+          </InternalLink>
           <MetadataQuality entityId={entityId} />
         </SC.SubBanner>
       </SC.Banner>

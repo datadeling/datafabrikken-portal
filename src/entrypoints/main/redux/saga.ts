@@ -14,6 +14,9 @@ import datasetSaga from '../../../components/with-dataset/redux/saga';
 import publicServicesSaga from '../../../components/with-public-services/redux/saga';
 import dataServicesSaga from '../../../components/with-data-services/redux/saga';
 import assessmentSaga from '../../../components/with-assessment/redux/saga';
+import organizationSaga from '../../../components/with-organization/redux/saga';
+import organizationsCatalogSaga from '../../../components/with-organizations-catalog/redux/saga';
+import reportSaga from '../../../components/with-report/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -30,6 +33,9 @@ export default function* saga() {
     publicServicesSaga(),
     dataServicesSaga(),
     assessmentSaga(),
-    communitySearchSaga()
+    communitySearchSaga(),
+    organizationSaga(),
+    organizationsCatalogSaga(),
+    reportSaga()
   ]);
 }

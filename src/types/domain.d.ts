@@ -421,3 +421,91 @@ export interface Indicator {
   weight: number;
   conforms: boolean;
 }
+
+export interface OrganizationCountsAndRating {
+  organization: {
+    organizationId: string;
+    orgType: string;
+    sectorCode: string;
+    industryCode: string;
+    homepage: string;
+  };
+  datasets: {
+    totalCount: number;
+    newCount: number;
+    authoritativeCount: number;
+    openCount: number;
+    quality: {
+      category: RatingCategory;
+      percentage: number;
+    };
+  };
+  dataservices: {
+    totalCount: number;
+    newCount: number;
+  };
+  concepts: {
+    totalCount: number;
+    newCount: number;
+  };
+  informationmodels: {
+    totalCount: number;
+    newCount: number;
+  };
+}
+
+export interface EnhetsregisteretOrganization {
+  organisasjonsnummer: string;
+  navn: string;
+  organisasjonsform: {
+    kode: string;
+    beskrivelse: string;
+  };
+  hjemmeside: string;
+  postadresse: EnhetsregisteretAdresse;
+  naeringskode1: {
+    beskrivelse: string;
+    kode: string;
+  };
+  forretningsadresse: EnhetsregisteretAdresse;
+  institusjonellSektorkode: {
+    kode: string;
+    beskrivelse: string;
+  };
+}
+
+interface EnhetsregisteretAdresse {
+  land: string;
+  landkode: string;
+  postnummer: string;
+  poststed: string;
+  adresse: string[];
+  kommune: string;
+  kommunenummer: string;
+}
+
+interface Report {
+  totalObjects: number;
+  newLastWeek: number;
+  organizationCount: number;
+  catalogs: KeyWithCountObject[];
+}
+
+export interface DatasetsReport extends Report {
+  formats: KeyWithCountObject[];
+  nationalComponent: number;
+  opendata: number;
+  withSubject: number;
+  accessRights: KeyWithCountObject[];
+  themesAndTopicsCount: KeyWithCountObject[];
+}
+
+export interface KeyWithCountObject {
+  key: string;
+  count: number;
+}
+
+export interface DataPoint {
+  xAxis: string;
+  yAxis: string;
+}
