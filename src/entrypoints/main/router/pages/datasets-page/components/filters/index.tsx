@@ -15,6 +15,7 @@ import {
 import LinkIcon from '../../../../../../../components/icons/link-icon';
 
 import FilterSearchField from '../filter-search-field';
+import { GetDatasetsParams } from '../../../../../../../components/with-datasets/redux/actions';
 
 interface ExternalProps {
   handleCheckboxChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -26,10 +27,7 @@ interface ExternalProps {
   handleRemoveFilter: (parameter: string) => void;
   handleClearParameters: () => void;
   formatAggregations: any;
-  openDataParameter: string;
-  accessRightsParameter: string;
-  formatParameter: string;
-  keywordsParameter?: string;
+  datasetParameters: GetDatasetsParams;
 }
 
 interface Props extends ExternalProps, TranslationProps {}
@@ -46,14 +44,16 @@ const Filters: FC<Props> = ({
   handleRemoveFilter,
   handleClearParameters,
   formatAggregations,
-  openDataParameter,
-  accessRightsParameter,
-  formatParameter,
-  keywordsParameter,
-  translationsService
+  translationsService,
+  datasetParameters
 }) => {
   const [formatSearch, setFormatSearch] = useState('');
   const [openGroups, setOpenGroups] = useState<string[]>([]);
+  const { format, keywords, opendata, accessRights, last_x_days } =
+    datasetParameters;
+  const formatParameters = format && format.split(',');
+  const renderFilterPills =
+    keywords || opendata || accessRights || formatParameters || last_x_days;
 
   const onClickSearch = (value: string) => {
     setFormatSearch(value);
@@ -101,7 +101,7 @@ const Filters: FC<Props> = ({
         handleCheckboxChange={({ target: { checked, name, value } }) =>
           handleMultiSelectFilter(checked, name, value)
         }
-        isChecked={formatParameter.includes(item.key)}
+        isChecked={format?.includes(item.key) ?? false}
         filterId={`format-${groupIndex}-${item.key}`}
         filterName='format'
         filterValue={item.key}
@@ -147,14 +147,6 @@ const Filters: FC<Props> = ({
         </div>
       ));
 
-  const formatParameters =
-    (formatParameter && formatParameter.split(',')) ?? [];
-  const renderFilterPills =
-    keywordsParameter ||
-    openDataParameter ||
-    accessRightsParameter ||
-    formatParameters;
-
   return (
     <>
       <SC.Title>
@@ -162,16 +154,16 @@ const Filters: FC<Props> = ({
       </SC.Title>
       {renderFilterPills && (
         <SC.FilterPillContainer>
-          {keywordsParameter && (
+          {keywords && (
             <SC.FilterPill
               key='filter-pill-keyword'
               onClick={() => handleRemoveFilter('keywords')}
             >
-              {keywordsParameter}
+              {keywords}
               <SC.CloseIcon />
             </SC.FilterPill>
           )}
-          {openDataParameter && (
+          {opendata && (
             <SC.FilterPill
               key='filter-pill-openData'
               onClick={() => handleRemoveFilter('opendata')}
@@ -180,7 +172,7 @@ const Filters: FC<Props> = ({
               <SC.CloseIcon />
             </SC.FilterPill>
           )}
-          {accessRightsParameter && (
+          {accessRights && (
             <SC.FilterPill
               key='filter-pill-accessRights'
               onClick={() => handleRemoveFilter('accessRights')}
@@ -203,6 +195,18 @@ const Filters: FC<Props> = ({
                 <SC.CloseIcon />
               </SC.FilterPill>
             ))}
+          {last_x_days && (
+            <SC.FilterPill
+              key='filter-pill-last_x_days'
+              onClick={() => handleRemoveFilter('last_x_days')}
+            >
+              <Translation
+                id='filter.last_x_days'
+                values={{ term: last_x_days }}
+              />
+              <SC.CloseIcon />
+            </SC.FilterPill>
+          )}
 
           <SC.InversePill onClick={handleClearParameters}>
             <Translation id='filter.clearAll' />
@@ -217,14 +221,14 @@ const Filters: FC<Props> = ({
           label='filter.openData'
           filterId='opendata'
           filterName='opendata'
-          isChecked={!!openDataParameter}
+          isChecked={!!opendata}
           handleCheckboxChange={handleCheckboxChange}
         />
         <FilterCheckbox
           label='filter.restrictedAccessRights'
           filterId='accessRights'
           filterName='accessRights'
-          isChecked={!!accessRightsParameter}
+          isChecked={!!accessRights}
           handleCheckboxChange={handleCheckboxChange}
         />
       </SC.FilterSection>

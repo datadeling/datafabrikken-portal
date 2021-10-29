@@ -30,7 +30,11 @@
     "findDataText": "Rett til søkesiden.",
     "noHits": "Ingen resultater funnet",
     "noHitsSubtitle": "Prøv å fjerne et filter, eller",
-    "noHitsLink": "start søket på nytt"
+    "noHitsLink": "start søket på nytt",
+    "totalNumDatasets": "Datasettbeskrivelser totalt",
+    "newDatasets": "Nye siste 7 dager",
+    "numOrganizationsPublished": "Virksomheter har publisert datasett"
+
   },
   "news": {
     "title": "Siste nytt om Datafabrikken"
@@ -52,7 +56,8 @@
     "searchFormat": "Søk på format",
     "showMore": "Vis flere",
     "showFewer": "Vis færre",
-    "clearAll": "nullstill filter"
+    "clearAll": "nullstill filter",
+    "last_x_days": "Siste {term} dager"
   },
   "unknown": "Ukjent",
   "toTop": "Til toppen",

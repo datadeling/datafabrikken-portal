@@ -63,6 +63,9 @@ export const getParameter = (parameter: string) =>
     parameter
   ] as string) ?? '';
 
+export const getAllParameters = () =>
+  qs.parse(location.search, { ignoreQueryPrefix: true }) || {};
+
 export function removeValue(listAsString: string, value: string) {
   const list: string[] = listAsString.split(',');
   return list.filter(item => item !== value).join() || undefined;

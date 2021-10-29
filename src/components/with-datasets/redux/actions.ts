@@ -14,7 +14,7 @@ import {
 
 import type { Dataset, Paged } from '../../../types';
 
-interface GetDatasetsParams {
+export interface GetDatasetsParams {
   page?: number;
   q?: string;
   opendata?: string;
@@ -25,6 +25,19 @@ interface GetDatasetsParams {
   uris?: string[];
   referencesSource?: string;
   keywords?: string;
+  last_x_days?: string;
+  id?: any;
+  orgPath?: any;
+  spatial?: any;
+  provenance?: any;
+  accessService?: any;
+  subject?: any;
+  subjectExists?: any;
+  catalog_name?: any;
+  info_model?: any;
+  conformsTo?: any;
+  relatedToInfoModel?: any;
+  organizationNumber?: any;
 }
 
 export function getPagedDatasetsRequested(params?: GetDatasetsParams) {

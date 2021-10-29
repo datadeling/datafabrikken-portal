@@ -1,3 +1,4 @@
+import { GetDatasetsParams } from '../../../components/with-datasets/redux/actions';
 import { Dataset } from '../../../types';
 import { searchFullTextApiPost } from './host';
 
@@ -10,28 +11,28 @@ const mapSorting = ({ sortfield }: any) =>
     : undefined;
 
 const mapFilters = ({
-  id,
   losTheme: los,
-  orgPath,
   theme,
   opendata,
   accessRights,
-  spatial,
-  provenance,
   uris,
-  accessService,
-  subject,
   last_x_days,
   format,
+  keywords,
+  referencesSource,
+  id,
+  orgPath,
+  spatial,
+  provenance,
+  accessService,
+  subject,
   subjectExists,
   catalog_name,
-  keywords,
   info_model,
-  referencesSource,
   conformsTo,
   relatedToInfoModel,
   organizationNumber
-}: any) => {
+}: GetDatasetsParams) => {
   const filters = [];
   if (id) {
     filters.push({ _id: id });
