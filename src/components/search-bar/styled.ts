@@ -10,13 +10,21 @@ const onMobileView = '@media (max-width: 900px)';
 const SearchBar = styled.form`
   background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
-  flex: 0 0 60%;
+  flex: 0 1 60%;
   border: 1px solid ${theme.colour(Colour.NEUTRAL, 'N70')};
   border-radius: 5px;
   align-items: center;
   ${onMobileView} {
     & {
       flex: 1;
+    }
+  }
+
+  & > button {
+    margin-right: ${theme.spacing('S6')};
+
+    &:last-of-type {
+      margin-right: ${theme.spacing('S10')};
     }
   }
 `;
@@ -45,7 +53,6 @@ const ClearButton = styled.button`
   border: none;
   cursor: pointer;
   outline: none;
-  margin-right: ${theme.spacing('S6')};
 `;
 
 const ClearIcon = styled(ClearSVG)`
@@ -59,7 +66,6 @@ const SearchButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  margin-right: ${theme.spacing('S10')};
   outline: none;
 `;
 

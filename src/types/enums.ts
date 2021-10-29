@@ -96,3 +96,8 @@ export enum Filter {
   CATALOGNAME = 'catalog_name',
   EVENT_TYPE = 'eventType'
 }
+
+export enum SortOrder {
+  ASC,
+  DSC
+}
