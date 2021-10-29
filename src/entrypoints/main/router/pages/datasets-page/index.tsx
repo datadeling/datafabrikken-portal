@@ -24,6 +24,7 @@ import SearchHit from '../../../../../components/search-hit';
 import SearchBar from '../../../../../components/search-bar';
 import {
   clearParameters,
+  getAllParameters,
   getParameter,
   removeParameter,
   setMultiselectFilterValue,
@@ -36,10 +37,18 @@ import Filters from './components/filters';
 import SC from './styled';
 import InternalLink from '../../../../../components/link-internal';
 import { PATHNAME } from '../../../../../enums';
+import withReport, {
+  Props as ReportProps
+} from '../../../../../components/with-report';
+import withErrorBoundary from '../../../../../components/with-error-boundary';
+import ErrorPage from '../../../../../components/error-page';
+import StatisticsRegular from '../../../../../components/statistics-regular';
+import translations from '../../../../../services/translations';
 
 interface Props
   extends RouteComponentProps,
     DatasetsProps,
+    ReportProps,
     ReferenceDataProps {}
 
 const DatasetsPage: FC<Props> = ({
@@ -54,7 +63,9 @@ const DatasetsPage: FC<Props> = ({
     resetPagedDatasets
   },
   referenceData: { themes = [] },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData }
+  referenceDataActions: { getReferenceDataRequested: getReferenceData },
+  datasetsReport,
+  reportActions: { getDatasetsReportRequested: getReport }
 }) => {
   const [isDropdownFiltersOpen, setIsDropdownFiltersOpen] = useState(false);
 
@@ -72,30 +83,13 @@ const DatasetsPage: FC<Props> = ({
   const { format } = datasetsAggregations;
 
   const pageParameter = getParameter('page');
-  const queryParameter = getParameter('q');
-  const losThemeParameter = getParameter('losTheme');
-  const themeParameter = getParameter('theme');
-  const openDataParameter = getParameter('opendata');
-  const accessRightsParameter = getParameter('accessRights');
-  const formatParameter = getParameter('format');
-  const keywordsParameter = getParameter('keywords');
+  const datasetParams = getAllParameters();
 
   useEffect(() => {
-    if (
-      queryParameter.length > 0 ||
-      losThemeParameter.length > 0 ||
-      themeParameter.length > 0 ||
-      keywordsParameter.length > 0
-    ) {
+    if (Object.keys(datasetParams).length > 0) {
       getPagedDatasets({
         page: parseInt(pageParameter, 10),
-        q: queryParameter,
-        losTheme: losThemeParameter,
-        theme: themeParameter,
-        opendata: openDataParameter,
-        accessRights: accessRightsParameter,
-        format: formatParameter,
-        keywords: keywordsParameter
+        ...datasetParams
       });
     } else {
       resetPagedDatasets();
@@ -105,6 +99,9 @@ const DatasetsPage: FC<Props> = ({
   useEffect(() => {
     if (themes.length === 0) {
       getReferenceData('themes');
+    }
+    if (datasetsReport == null) {
+      getReport({});
     }
   }, []);
 
@@ -194,16 +191,14 @@ const DatasetsPage: FC<Props> = ({
               }
               handleClearParameters={() => clearParameters(history)}
               formatAggregations={format}
-              openDataParameter={openDataParameter}
-              accessRightsParameter={accessRightsParameter}
-              formatParameter={formatParameter}
+              datasetParameters={datasetParams}
             />
           </Menu>
         </SC.DropdownFilters>
         <SC.Themes>
           <Themes onFilterTheme={handleFilterTheme} />
         </SC.Themes>
-        {search && (
+        {search || datasets.length > 0 ? (
           <SC.Row>
             <SC.Aside>
               <SC.Filters>
@@ -215,10 +210,7 @@ const DatasetsPage: FC<Props> = ({
                   }
                   handleClearParameters={() => clearParameters(history)}
                   formatAggregations={format}
-                  openDataParameter={openDataParameter}
-                  accessRightsParameter={accessRightsParameter}
-                  formatParameter={formatParameter}
-                  keywordsParameter={keywordsParameter}
+                  datasetParameters={datasetParams}
                 />
               </SC.Filters>
             </SC.Aside>
@@ -281,10 +273,47 @@ const DatasetsPage: FC<Props> = ({
               </SC.NoHits>
             )}
           </SC.Row>
+        ) : (
+          <SC.ReportsRow>
+            <StatisticsRegular
+              onClick={() => getPagedDatasets({})}
+              icon={<SC.DatasetIcon />}
+              count={datasetsReport?.totalObjects ?? ''}
+              description={
+                translations.translate(
+                  'findDataPage.totalNumDatasets'
+                ) as string
+              }
+            />
+            <StatisticsRegular
+              to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}?last_x_days=7`}
+              icon={<SC.NewIcon />}
+              count={datasetsReport?.newLastWeek ?? ''}
+              description={
+                translations.translate('findDataPage.newDatasets') as string
+              }
+            />
+            <StatisticsRegular
+              to={`${PATHNAME.ORGANIZATION}`}
+              icon={<SC.DatasetIcon />}
+              count={datasetsReport?.catalogs.length ?? 0}
+              description={
+                translations.translate(
+                  'findDataPage.numOrganizationsPublished'
+                ) as string
+              }
+            />
+          </SC.ReportsRow>
         )}
       </SC.Container>
     </Root>
   );
 };
 
-export default compose<FC>(memo, withDatasets, withReferenceData)(DatasetsPage);
+export default compose<FC>(
+  memo,
+  withDatasets,
+  withReferenceData,
+  withReport,
+  withErrorBoundary(ErrorPage)
+)(DatasetsPage);

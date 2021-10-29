@@ -14,34 +14,12 @@ import {
 import type { Dataset, Paged } from '../../../types';
 
 function* getPagedDatasetsRequested({
-  payload: {
-    params: {
-      page,
-      q,
-      opendata,
-      losTheme,
-      theme,
-      accessRights,
-      format,
-      uris,
-      keywords
-    } = {}
-  }
+  payload: { params = {} }
 }: ReturnType<typeof actions.getPagedDatasetsRequested>) {
   try {
     const data: Record<string, any> = yield call(
       searchDatasets,
-      paramsToSearchBody({
-        page,
-        q,
-        opendata,
-        losTheme,
-        theme,
-        accessRights,
-        format,
-        uris,
-        keywords
-      })
+      paramsToSearchBody(params)
     );
     if (data) {
       yield put(actions.getPagedDatasetsSucceeded(data as Paged<Dataset>));
@@ -54,32 +32,12 @@ function* getPagedDatasetsRequested({
 }
 
 function* getDatasetsRelationsRequested({
-  payload: {
-    params: {
-      page,
-      q,
-      opendata,
-      losTheme,
-      theme,
-      accessRights,
-      format,
-      referencesSource
-    } = {}
-  }
+  payload: { params = {} }
 }: ReturnType<typeof actions.getDatasetsRelationsRequested>) {
   try {
     const data: Record<string, any> = yield call(
       searchDatasets,
-      paramsToSearchBody({
-        page,
-        q,
-        opendata,
-        losTheme,
-        theme,
-        accessRights,
-        format,
-        referencesSource
-      })
+      paramsToSearchBody(params)
     );
 
     if (data) {

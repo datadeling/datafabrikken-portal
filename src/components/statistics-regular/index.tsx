@@ -5,14 +5,20 @@ interface StatisticsProps {
   icon: ReactElement;
   count: string | number;
   description: string | ReactElement;
+  onClick?: () => void;
 }
 
 interface ExternalProps extends StatisticsProps {
   to?: string;
 }
 
-const Statistics: FC<StatisticsProps> = ({ icon, count, description }) => (
-  <SC.StatisticsContainer>
+const Statistics: FC<StatisticsProps> = ({
+  icon,
+  count,
+  description,
+  onClick
+}) => (
+  <SC.StatisticsContainer onClick={onClick}>
     <SC.IconWithCount>
       {icon}
       {count}

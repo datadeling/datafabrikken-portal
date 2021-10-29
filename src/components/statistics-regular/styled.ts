@@ -1,8 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { theme, Colour } from '../../entrypoints/main/app/theme';
 
-const StatisticsContainer = styled.div`
+const StatisticsContainer = styled.div<{ onClick: any }>`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -12,6 +12,15 @@ const StatisticsContainer = styled.div`
   background-color: ${theme.colour(Colour.BLUE, 'B52')};
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   padding: ${theme.spacing('S8')};
+
+  ${({ onClick }) =>
+    onClick &&
+    css`
+      cursor: pointer;
+      &:hover {
+        background-color: ${theme.colour(Colour.BLUE, 'B48')};
+      }
+    `}
 `;
 
 const LinkWrapper = styled(Link)`

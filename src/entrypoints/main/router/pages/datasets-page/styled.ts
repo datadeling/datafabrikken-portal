@@ -6,6 +6,9 @@ import DropdownMenuBase, {
 } from '../../../../../components/dropdown-menu';
 import ErrorSC from '../../../../../components/error-page/components/error-400/styled';
 
+import DatasetIconBase from '../../../../../images/dataset.inline.svg';
+import NewIconBase from '../../../../../images/dataset-new.inline.svg';
+
 import { Colour, theme } from '../../../app/theme';
 
 const onMobileView = '@media (max-width: 900px)';
@@ -169,6 +172,49 @@ const NoHits = styled.div`
 
 const NoDatasetsFoundIcon = styled(ErrorSC.Error404Icon)``;
 
+const ReportsRow = styled.div`
+  display: flex;
+  margin: ${theme.spacing('S20')} 0;
+  & > * {
+    margin: ${theme.spacing('S4')};
+    flex-basis: 100%;
+
+    &:first-child {
+      margin-left: 0;
+      ${onMobileView} {
+        margin: ${theme.spacing('S4')};
+      }
+    }
+
+    &:last-child {
+      margin-right: 0;
+      ${onMobileView} {
+        margin: ${theme.spacing('S4')};
+      }
+    }
+  }
+
+  ${onMobileView} {
+    flex-direction: column;
+  }
+`;
+
+const DatasetIcon = styled(DatasetIconBase)`
+  & > path,
+  circle,
+  rect {
+    stroke-width: 0.65px;
+  }
+`;
+
+const NewIcon = styled(NewIconBase)`
+  & > path,
+  circle,
+  rect {
+    stroke-width: 0.65px;
+  }
+`;
+
 export default {
   Container,
   Row,
@@ -184,5 +230,8 @@ export default {
   Filters,
   Pagination,
   NoHits,
-  NoDatasetsFoundIcon
+  NoDatasetsFoundIcon,
+  ReportsRow,
+  DatasetIcon,
+  NewIcon
 };
