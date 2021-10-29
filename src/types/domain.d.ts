@@ -509,3 +509,13 @@ export interface DataPoint {
   xAxis: string;
   yAxis: string;
 }
+
+export interface OrganizationSummary {
+  id: string;
+  name: string;
+  prefLabel: Partial<TextLanguage>;
+  datasetCount: number;
+  conceptCount: number;
+  dataserviceCount: number;
+  informationmodelCount: number;
+}

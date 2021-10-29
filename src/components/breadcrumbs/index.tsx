@@ -102,6 +102,10 @@ const routes = [
   {
     path: `${PATHNAME.ORGANIZATION}/:organizationId`,
     breadcrumb: () => <OrganizationPageBreadcrumb />
+  },
+  {
+    path: `${PATHNAME.ORGANIZATION}`,
+    breadcrumb: () => <Translation id='header.organizations' />
   }
 ];
 

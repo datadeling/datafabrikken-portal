@@ -14,7 +14,8 @@
     "news": "Siste nytt",
     "contact": "Kontakt",
     "community": "Datalandsbyen",
-    "communityAbout": "Om Datalandsbyen"
+    "communityAbout": "Om Datalandsbyen",
+    "organizations": "Virksomheter"
   },
   "footer": {
     "title": "Følg med på Datafabrikken",
@@ -394,6 +395,12 @@
     "organisationInEnhetsregisteret": "Opplysninger om {organizationName} i Enhetsregisteret",
     "goToDataset": "Gå til datasettbeskrivelse"
   },
-
-  "sampleData": "Eksempeldata"
+  "sampleData": "Eksempeldata",
+  "searchOrganizations": "Søk på virksomheter",
+  "searchOrganization": "Søk på virksomhetsnavn",
+  "organizationsPage": {
+    "datasetsDescription": "datasettbeskrivelser",
+    "organization": "Virksomhet",
+    "numberDatasets": "Antall Datasett"
+  }
 }
