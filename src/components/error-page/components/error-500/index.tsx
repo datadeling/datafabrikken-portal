@@ -1,17 +1,22 @@
 import React, { FC } from 'react';
-
-import Error500Icon from '../../../../images/illustration-404.inline.svg';
-import translations from '../../../../services/translations';
+import Translation from '../../../translation';
 
 import SC from './styled';
 
 const Error500: FC = () => (
-  <SC.Error500>
-    <Error500Icon />
-    <h1>{translations.translate('errorPage.serverError.title')}</h1>
-    <p>{translations.translate('errorPage.serverError.content1')}</p>
-    <p>{translations.translate('errorPage.serverError.content2')}</p>
-  </SC.Error500>
+  <SC.Container>
+    <SC.Error500>
+      <SC.Error500Icon />
+      <SC.Title>
+        <Translation id='errorPage.serverError.title' />
+      </SC.Title>
+      <SC.SubTitle>
+        <Translation id='errorPage.serverError.content1' />
+        <br />
+        <Translation id='errorPage.serverError.content2' />
+      </SC.SubTitle>
+    </SC.Error500>
+  </SC.Container>
 );
 
 export default Error500;

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { theme } from '../../../../entrypoints/main/app/theme';
 import Error404IconBase from '../../../../images/illustration-404.inline.svg';
 import InternalLink from '../../../link-internal';
+import ContainerSC from '../../../container/styled';
 
 const onMobileView = '@media (max-width: 900px)';
 
@@ -166,4 +167,11 @@ const SubTitle = styled.p`
   margin-bottom: ${theme.spacing('S2')};
 `;
 
-export default { Error400, Link, Error404Icon, Title, SubTitle };
+const Container = styled(ContainerSC.Container)`
+  padding-top: ${theme.spacing('S50')};
+  ${onMobileView} {
+    padding-top: ${theme.spacing('S10')};
+  }
+`;
+
+export default { Error400, Link, Error404Icon, Title, SubTitle, Container };
