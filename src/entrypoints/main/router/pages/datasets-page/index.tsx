@@ -310,7 +310,7 @@ const DatasetsPage: FC<Props> = ({
             <StatisticsRegular
               to={`${PATHNAME.ORGANIZATION}`}
               icon={<SC.DatasetIcon />}
-              count={datasetsReport?.catalogs.length ?? 0}
+              count={datasetsReport?.organizationCount ?? 0}
               description={
                 translations.translate(
                   'findDataPage.numOrganizationsPublished'
