@@ -1,4 +1,4 @@
-import React, { memo, FC, useState, useEffect } from 'react';
+import React, { memo, FC, useState, useEffect, ChangeEvent } from 'react';
 import { compose } from 'redux';
 import type { RouteComponentProps } from 'react-router-dom';
 
@@ -139,7 +139,9 @@ const OrganizationsPage: FC<Props> = ({
               placeholder={
                 translations.translate('searchOrganization') as string
               }
-              onChange={(value: string) => setSearchQuery(value)}
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                setSearchQuery(event.currentTarget.value ?? '')
+              }
               onClear={() => setSearchQuery('')}
               onSubmit={e => e.preventDefault()}
             />
