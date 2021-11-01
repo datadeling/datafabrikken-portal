@@ -20,6 +20,12 @@ import withErrorBoundary from '../../../../../components/with-error-boundary';
 import Root from '../../../../../components/root';
 import KeyValueList from '../../../../../components/key-value-list';
 import KeyValueListItem from '../../../../../components/key-value-list-item';
+import {
+  patchMultipleSearchQuery,
+  patchSearchQuery
+} from '../../../../../utils/location-helper';
+import { PATHNAME } from '../../../../../enums';
+import { Filter } from '../../../../../types/enums';
 
 interface RouteParams {
   organizationId: string;
@@ -169,6 +175,15 @@ const OrganizationPage: FC<Props> = ({
                 <SC.Section>
                   <SC.CataloguesStatistics>
                     <StatisticsRegular
+                      to={
+                        organization?.organizationId &&
+                        `${PATHNAME.FIND_DATA}${
+                          PATHNAME.DATASETS
+                        }${patchSearchQuery(
+                          Filter.ORGANIZATION_NUMBER,
+                          organization.organizationId
+                        )}`
+                      }
                       icon={<SC.DatasetIcon />}
                       count={rating.datasets?.totalCount ?? 0}
                       description={
@@ -178,6 +193,12 @@ const OrganizationPage: FC<Props> = ({
                       }
                     />
                     <StatisticsRegular
+                      to={`${PATHNAME.FIND_DATA}${
+                        PATHNAME.DATASETS
+                      }${patchMultipleSearchQuery({
+                        [Filter.ORGPATH]: organization?.orgPath,
+                        [Filter.LASTXDAYS]: '7'
+                      })}`}
                       icon={<SC.NewIcon />}
                       count={rating.datasets?.newCount ?? 0}
                       description={
@@ -192,6 +213,12 @@ const OrganizationPage: FC<Props> = ({
                       }
                     />
                     <StatisticsRegular
+                      to={`${PATHNAME.FIND_DATA}${
+                        PATHNAME.DATASETS
+                      }${patchMultipleSearchQuery({
+                        [Filter.ORGPATH]: organization?.orgPath,
+                        [Filter.PROVENANCE]: 'NASJONAL'
+                      })}`}
                       icon={<SC.AuthoritativeIcon />}
                       count={rating.datasets?.authoritativeCount ?? 0}
                       description={
@@ -206,6 +233,12 @@ const OrganizationPage: FC<Props> = ({
                       }
                     />
                     <StatisticsRegular
+                      to={`${PATHNAME.FIND_DATA}${
+                        PATHNAME.DATASETS
+                      }${patchMultipleSearchQuery({
+                        [Filter.ORGPATH]: organization?.orgPath,
+                        [Filter.OPENDATA]: 'true'
+                      })}`}
                       icon={<SC.AccessOpenIcon />}
                       count={rating.datasets?.openCount ?? 0}
                       description={

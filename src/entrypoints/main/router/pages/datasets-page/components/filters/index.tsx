@@ -16,6 +16,8 @@ import LinkIcon from '../../../../../../../components/icons/link-icon';
 
 import FilterSearchField from '../filter-search-field';
 import { GetDatasetsParams } from '../../../../../../../components/with-datasets/redux/actions';
+import { Publisher } from '../../../../../../../types';
+import translations from '../../../../../../../services/translations';
 
 interface ExternalProps {
   handleCheckboxChange: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -28,6 +30,7 @@ interface ExternalProps {
   handleClearParameters: () => void;
   formatAggregations: any;
   datasetParameters: GetDatasetsParams;
+  publisher?: Publisher | null;
 }
 
 interface Props extends ExternalProps, TranslationProps {}
@@ -45,15 +48,31 @@ const Filters: FC<Props> = ({
   handleClearParameters,
   formatAggregations,
   translationsService,
-  datasetParameters
+  datasetParameters,
+  publisher
 }) => {
   const [formatSearch, setFormatSearch] = useState('');
   const [openGroups, setOpenGroups] = useState<string[]>([]);
-  const { format, keywords, opendata, accessRights, last_x_days } =
-    datasetParameters;
+  const {
+    format,
+    keywords,
+    opendata,
+    accessRights,
+    last_x_days,
+    organizationNumber,
+    orgPath,
+    provenance
+  } = datasetParameters;
   const formatParameters = format && format.split(',');
   const renderFilterPills =
-    keywords || opendata || accessRights || formatParameters || last_x_days;
+    keywords ||
+    opendata ||
+    accessRights ||
+    formatParameters ||
+    last_x_days ||
+    organizationNumber ||
+    orgPath ||
+    provenance;
 
   const onClickSearch = (value: string) => {
     setFormatSearch(value);
@@ -204,6 +223,35 @@ const Filters: FC<Props> = ({
                 id='filter.last_x_days'
                 values={{ term: last_x_days }}
               />
+              <SC.CloseIcon />
+            </SC.FilterPill>
+          )}
+          {organizationNumber && publisher && (
+            <SC.FilterPill
+              key='filter-pill-organizationNumber'
+              onClick={() => handleRemoveFilter('organizationNumber')}
+            >
+              {translations.getTranslateText(publisher?.prefLabel) ??
+                publisher?.name}
+              <SC.CloseIcon />
+            </SC.FilterPill>
+          )}
+          {orgPath && publisher && (
+            <SC.FilterPill
+              key='filter-pill-orgPath'
+              onClick={() => handleRemoveFilter('orgPath')}
+            >
+              {translations.getTranslateText(publisher?.prefLabel) ??
+                publisher?.name}
+              <SC.CloseIcon />
+            </SC.FilterPill>
+          )}
+          {provenance && (
+            <SC.FilterPill
+              key='filter-pill-provenance'
+              onClick={() => handleRemoveFilter('provenance')}
+            >
+              {provenance}
               <SC.CloseIcon />
             </SC.FilterPill>
           )}

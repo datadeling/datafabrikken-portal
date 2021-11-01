@@ -41,15 +41,20 @@ import withReport, {
   Props as ReportProps
 } from '../../../../../components/with-report';
 import withErrorBoundary from '../../../../../components/with-error-boundary';
+import withOrganization, {
+  Props as OrganizationProps
+} from '../../../../../components/with-organization';
 import ErrorPage from '../../../../../components/error-page';
 import StatisticsRegular from '../../../../../components/statistics-regular';
 import translations from '../../../../../services/translations';
+import { GetDatasetsParams } from '../../../../../components/with-datasets/redux/actions';
 
 interface Props
   extends RouteComponentProps,
     DatasetsProps,
     ReportProps,
-    ReferenceDataProps {}
+    ReferenceDataProps,
+    OrganizationProps {}
 
 const DatasetsPage: FC<Props> = ({
   datasetsAggregations,
@@ -65,7 +70,9 @@ const DatasetsPage: FC<Props> = ({
   referenceData: { themes = [] },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
   datasetsReport,
-  reportActions: { getDatasetsReportRequested: getReport }
+  reportActions: { getDatasetsReportRequested: getReport },
+  organization,
+  organizationActions: { getOrganizationRequested: getOrganization }
 }) => {
   const [isDropdownFiltersOpen, setIsDropdownFiltersOpen] = useState(false);
 
@@ -83,7 +90,7 @@ const DatasetsPage: FC<Props> = ({
   const { format } = datasetsAggregations;
 
   const pageParameter = getParameter('page');
-  const datasetParams = getAllParameters();
+  const datasetParams: GetDatasetsParams = getAllParameters();
 
   useEffect(() => {
     if (Object.keys(datasetParams).length > 0) {
@@ -102,6 +109,12 @@ const DatasetsPage: FC<Props> = ({
     }
     if (datasetsReport == null) {
       getReport({});
+    }
+    if (datasetParams.organizationNumber || datasetParams.orgPath) {
+      getOrganization(
+        datasetParams.organizationNumber ??
+          datasetParams?.orgPath?.split('/').pop()
+      );
     }
   }, []);
 
@@ -211,6 +224,7 @@ const DatasetsPage: FC<Props> = ({
                   handleClearParameters={() => clearParameters(history)}
                   formatAggregations={format}
                   datasetParameters={datasetParams}
+                  publisher={organization}
                 />
               </SC.Filters>
             </SC.Aside>
@@ -315,5 +329,6 @@ export default compose<FC>(
   withDatasets,
   withReferenceData,
   withReport,
+  withOrganization,
   withErrorBoundary(ErrorPage)
 )(DatasetsPage);

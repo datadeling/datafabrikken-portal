@@ -26,10 +26,10 @@ export interface GetDatasetsParams {
   referencesSource?: string;
   keywords?: string;
   last_x_days?: string;
-  id?: any;
-  orgPath?: any;
+  id?: string;
+  orgPath?: string;
   spatial?: any;
-  provenance?: any;
+  provenance?: string;
   accessService?: any;
   subject?: any;
   subjectExists?: any;
