@@ -1,4 +1,10 @@
-import React, { FC, FormEvent, useCallback, useState } from 'react';
+import React, {
+  ChangeEventHandler,
+  FC,
+  FormEvent,
+  useCallback,
+  useState
+} from 'react';
 
 import SC from './styled';
 import { getParameter } from '../../utils/location-helper';
@@ -7,7 +13,7 @@ interface Props {
   placeholder: string;
   onSubmit?: (e: FormEvent<HTMLFormElement>) => void;
   onClear: () => void;
-  onChange?: (input: string) => void;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   hideSearchIcon?: boolean;
 }
 
@@ -34,10 +40,10 @@ const SearchBar: FC<Props> = ({
         placeholder={placeholder}
         type='search'
         value={searchQuery}
-        onChange={({ currentTarget }) => {
-          setSearchQuery(currentTarget.value ?? '');
+        onChange={event => {
+          setSearchQuery(event.currentTarget.value ?? '');
           if (onChange) {
-            onChange(currentTarget.value ?? '');
+            onChange(event);
           }
         }}
       />
