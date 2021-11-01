@@ -7,7 +7,7 @@ import {
   SORT_ORGANIZATIONS
 } from './action-types';
 
-import { sortOrganizations } from './utils';
+import { filterEmptyCountByType, sortOrganizations } from './utils';
 
 import type { Actions } from '../../../types';
 
@@ -25,6 +25,7 @@ export default function reducer(
     case GET_ORGANIZATIONS_SUCCEEDED:
       return state
         .set('organizations', fromJS(action.payload.organizations))
+        .update('organizations', filterEmptyCountByType('datasetCount'))
         .update('organizations', sortOrganizations(['prefLabel']));
     case SORT_ORGANIZATIONS:
       return state.update(
