@@ -3,6 +3,12 @@ import translations from '../../../services/translations';
 
 import { SortOrder } from '../../../types/enums';
 
+export const filterEmptyCountByType =
+  (type: string) => (organizations: List<any>) =>
+    organizations.filter((organization: Map<string, any>) =>
+      organization.get(type)
+    );
+
 export const sortOrganizations =
   (selector: string[], order: SortOrder = SortOrder.ASC) =>
   (organizations: List<any>) =>
