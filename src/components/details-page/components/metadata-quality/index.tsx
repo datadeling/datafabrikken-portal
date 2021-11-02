@@ -9,9 +9,12 @@ import Translation from '../../../translation';
 import withAssessment, {
   Props as AssessmentProps
 } from '../../../with-assessment';
+import InternalLink from '../../../link-internal';
+import { PATHNAME } from '../../../../enums';
 
 interface ExternalProps {
   entityId?: string;
+  orgId?: string;
 }
 
 interface Props extends ExternalProps, AssessmentProps {}
@@ -61,6 +64,7 @@ export const calculateRatingPercentage = (
 
 const MetadataQuality: FC<Props> = ({
   entityId,
+  orgId,
   assessment,
   assessmentActions: { getAssessmentRequested: getAssessment }
 }) => {
@@ -72,10 +76,12 @@ const MetadataQuality: FC<Props> = ({
   return (
     assessment && (
       <SC.MetadataQuality>
-        <p>
+        <InternalLink
+          to={`${PATHNAME.ORGANIZATION}/${orgId}${PATHNAME.METADATAQUALITY}/${entityId}`}
+        >
           <Translation id='metadataQualityPage.metadataQuality' />{' '}
           {calculateRatingPercentage(assessment.rating)}%
-        </p>
+        </InternalLink>
         <SC.RatingIcon>{determineRatingIcon(assessment.rating)}</SC.RatingIcon>
       </SC.MetadataQuality>
     )

@@ -37,6 +37,9 @@ const routes = {
   ORGANIZATIONS: lazy(() => import('../pages/organizations-page')),
   [PATHNAME.METADATAQUALITY]: lazy(
     () => import('../pages/metadata-quality-datasets-page')
+  ),
+  METADATAQUALITY_DATASET: lazy(
+    () => import('../pages/metadata-quality-dataset-page')
   )
 };
 
@@ -125,6 +128,11 @@ const Routes: FC = () => (
       exact
       path={`${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}`}
       component={routes[PATHNAME.METADATAQUALITY]}
+    />
+    <Route
+      exact
+      path={`${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}/:datasetId`}
+      component={routes.METADATAQUALITY_DATASET}
     />
     <Route
       exact
