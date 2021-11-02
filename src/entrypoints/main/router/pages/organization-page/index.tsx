@@ -65,228 +65,219 @@ const OrganizationPage: FC<Props> = ({
     };
   }, []);
 
-  return (
+  return organization || isLoadingOrganization ? (
     <Root>
-      {organization || isLoadingOrganization ? (
-        <>
-          {(organization?.prefLabel || organization?.name) && (
-            <SC.Banner>
-              <SC.Title>
-                <Translation
-                  id='metadataQualityPage.organizationPageTitle'
-                  values={{
-                    organizationName:
-                      translations.getTranslateText(organization?.prefLabel) ??
-                      organization?.name ??
-                      ''
-                  }}
-                />
-              </SC.Title>
-            </SC.Banner>
-          )}
-          <SC.Content>
-            <SC.Container>
-              <SC.Section>
-                {organization && rating?.organization && (
-                  <SC.OrganizationInformation>
-                    {showOrganizationLogo && organization.organizationId && (
-                      <img
-                        src={`https://orglogo.difi.no/api/logo/org/${organization.organizationId}`}
-                        alt={`${organization.name} logo`}
-                        onError={() => setShowOrganizationLogo(false)}
-                      />
-                    )}
-                    <KeyValueList $highlighted>
-                      <KeyValueListItem
-                        property={translations.translate(
-                          'metadataQualityPage.organisationName'
-                        )}
-                        value={organization.name}
-                      />
-                      <KeyValueListItem
-                        property={translations.translate(
-                          'metadataQualityPage.organisationNumber'
-                        )}
-                        value={organization.organizationId.replace(
-                          /\B(?=(\d{3})+(?!\d))/g,
-                          ' '
-                        )}
-                      />
-                      <KeyValueListItem
-                        property={translations.translate(
-                          'metadataQualityPage.organisationForm'
-                        )}
-                        value={rating.organization.orgType}
-                      />
-                      {rating.organization.industryCode && (
-                        <KeyValueListItem
-                          property={translations.translate(
-                            'metadataQualityPage.organisationBusinessCodes'
-                          )}
-                          value={rating.organization.industryCode}
-                        />
-                      )}
-                      {rating.organization.sectorCode && (
-                        <KeyValueListItem
-                          property={translations.translate(
-                            'metadataQualityPage.organisationInstitutionalSectorCode'
-                          )}
-                          value={rating.organization.sectorCode}
-                        />
-                      )}
-                      {rating.organization.homepage && (
-                        <KeyValueListItem
-                          property={translations.translate(
-                            'metadataQualityPage.organisationHomePage'
-                          )}
-                          value={
-                            <ExternalLink
-                              href={`//${rating.organization.homepage.replace(
-                                /\/$/,
-                                ''
-                              )}`}
-                            >
-                              {rating.organization.homepage.replace(/\/$/, '')}
-                            </ExternalLink>
-                          }
-                        />
-                      )}
-
-                      <KeyValueListItem
-                        property={translations.translate(
-                          'metadataQualityPage.organisationMoreInfo'
-                        )}
-                        value={
-                          <ExternalLink
-                            href={`https://data.brreg.no/enhetsregisteret/oppslag/enheter/${organization.organizationId}`}
-                          >
-                            <Translation
-                              id='metadataQualityPage.organisationInEnhetsregisteret'
-                              values={{
-                                organizationName: organization.name ?? ''
-                              }}
-                            />
-                          </ExternalLink>
-                        }
-                      />
-                    </KeyValueList>
-                  </SC.OrganizationInformation>
-                )}
-              </SC.Section>
-              <SC.Section />
-              {rating && (
-                <SC.Section>
-                  <SC.CataloguesStatistics>
-                    {organization?.organizationId ? (
-                      <StatisticsRegularLink
-                        to={
-                          organization?.organizationId
-                            ? `${PATHNAME.FIND_DATA}${
-                                PATHNAME.DATASETS
-                              }${patchSearchQuery(
-                                Filter.ORGANIZATION_NUMBER,
-                                organization.organizationId
-                              )}`
-                            : ''
-                        }
-                        icon={<SC.DatasetIcon />}
-                        count={rating.datasets?.totalCount ?? 0}
-                        description={
-                          translations.translate(
-                            'metadataQualityPage.descriptionsTotal'
-                          ) as string
-                        }
-                      />
-                    ) : (
-                      <StatisticsRegular
-                        icon={<SC.DatasetIcon />}
-                        count={rating.datasets?.totalCount ?? 0}
-                        description={
-                          translations.translate(
-                            'metadataQualityPage.descriptionsTotal'
-                          ) as string
-                        }
-                      />
-                    )}
-
-                    <StatisticsRegularLink
-                      to={`${PATHNAME.FIND_DATA}${
-                        PATHNAME.DATASETS
-                      }${patchMultipleSearchQuery({
-                        [Filter.ORGPATH]: organization?.orgPath,
-                        [Filter.LASTXDAYS]: '7'
-                      })}`}
-                      icon={<SC.NewIcon />}
-                      count={rating.datasets?.newCount ?? 0}
-                      description={
-                        translations.translate(
-                          'metadataQualityPage.newDescriptions',
-                          {
-                            term: translations.translate(
-                              'metadataQualityPage.lastWeek'
-                            ) as string
-                          }
-                        ) as string
-                      }
-                    />
-                    <StatisticsRegularLink
-                      to={`${PATHNAME.FIND_DATA}${
-                        PATHNAME.DATASETS
-                      }${patchMultipleSearchQuery({
-                        [Filter.ORGPATH]: organization?.orgPath,
-                        [Filter.PROVENANCE]: 'NASJONAL'
-                      })}`}
-                      icon={<SC.AuthoritativeIcon />}
-                      count={rating.datasets?.authoritativeCount ?? 0}
-                      description={
-                        translations.translate(
-                          'metadataQualityPage.datasetIs',
-                          {
-                            term: translations.translate(
-                              'metadataQualityPage.authoritativeSources'
-                            ) as string
-                          }
-                        ) as string
-                      }
-                    />
-                    <StatisticsRegularLink
-                      to={`${PATHNAME.FIND_DATA}${
-                        PATHNAME.DATASETS
-                      }${patchMultipleSearchQuery({
-                        [Filter.ORGPATH]: organization?.orgPath,
-                        [Filter.OPENDATA]: 'true'
-                      })}`}
-                      icon={<SC.AccessOpenIcon />}
-                      count={rating.datasets?.openCount ?? 0}
-                      description={
-                        translations.translate(
-                          'metadataQualityPage.datasetIs',
-                          {
-                            term: translations.translate(
-                              'metadataQualityPage.open'
-                            ) as string
-                          }
-                        ) as string
-                      }
-                    />
-
-                    <StatisticsRegular
-                      icon={determineRatingIcon(rating.datasets?.quality)}
-                      count={`${rating.datasets?.quality?.percentage || 0} %`}
-                      description={determineRatingTranslation(
-                        rating.datasets?.quality
-                      )}
-                    />
-                  </SC.CataloguesStatistics>
-                </SC.Section>
-              )}
-            </SC.Container>
-          </SC.Content>
-        </>
-      ) : (
-        <ErrorPage errorCode='404' />
+      {(organization?.prefLabel || organization?.name) && (
+        <SC.Banner>
+          <SC.Title>
+            <Translation
+              id='metadataQualityPage.organizationPageTitle'
+              values={{
+                organizationName:
+                  translations.getTranslateText(organization?.prefLabel) ??
+                  organization?.name ??
+                  ''
+              }}
+            />
+          </SC.Title>
+        </SC.Banner>
       )}
+      <SC.Content>
+        <SC.Container>
+          <SC.Section>
+            {organization && rating?.organization && (
+              <SC.OrganizationInformation>
+                {showOrganizationLogo && organization.organizationId && (
+                  <img
+                    src={`https://orglogo.difi.no/api/logo/org/${organization.organizationId}`}
+                    alt={`${organization.name} logo`}
+                    onError={() => setShowOrganizationLogo(false)}
+                  />
+                )}
+                <KeyValueList $highlighted>
+                  <KeyValueListItem
+                    property={translations.translate(
+                      'metadataQualityPage.organisationName'
+                    )}
+                    value={organization.name}
+                  />
+                  <KeyValueListItem
+                    property={translations.translate(
+                      'metadataQualityPage.organisationNumber'
+                    )}
+                    value={organization.organizationId.replace(
+                      /\B(?=(\d{3})+(?!\d))/g,
+                      ' '
+                    )}
+                  />
+                  <KeyValueListItem
+                    property={translations.translate(
+                      'metadataQualityPage.organisationForm'
+                    )}
+                    value={rating.organization.orgType}
+                  />
+                  {rating.organization.industryCode && (
+                    <KeyValueListItem
+                      property={translations.translate(
+                        'metadataQualityPage.organisationBusinessCodes'
+                      )}
+                      value={rating.organization.industryCode}
+                    />
+                  )}
+                  {rating.organization.sectorCode && (
+                    <KeyValueListItem
+                      property={translations.translate(
+                        'metadataQualityPage.organisationInstitutionalSectorCode'
+                      )}
+                      value={rating.organization.sectorCode}
+                    />
+                  )}
+                  {rating.organization.homepage && (
+                    <KeyValueListItem
+                      property={translations.translate(
+                        'metadataQualityPage.organisationHomePage'
+                      )}
+                      value={
+                        <ExternalLink
+                          href={`//${rating.organization.homepage.replace(
+                            /\/$/,
+                            ''
+                          )}`}
+                        >
+                          {rating.organization.homepage.replace(/\/$/, '')}
+                        </ExternalLink>
+                      }
+                    />
+                  )}
+
+                  <KeyValueListItem
+                    property={translations.translate(
+                      'metadataQualityPage.organisationMoreInfo'
+                    )}
+                    value={
+                      <ExternalLink
+                        href={`https://data.brreg.no/enhetsregisteret/oppslag/enheter/${organization.organizationId}`}
+                      >
+                        <Translation
+                          id='metadataQualityPage.organisationInEnhetsregisteret'
+                          values={{
+                            organizationName: organization.name ?? ''
+                          }}
+                        />
+                      </ExternalLink>
+                    }
+                  />
+                </KeyValueList>
+              </SC.OrganizationInformation>
+            )}
+          </SC.Section>
+          <SC.Section />
+          {rating && (
+            <SC.Section>
+              <SC.CataloguesStatistics>
+                {organization?.organizationId ? (
+                  <StatisticsRegularLink
+                    to={
+                      organization?.organizationId
+                        ? `${PATHNAME.FIND_DATA}${
+                            PATHNAME.DATASETS
+                          }${patchSearchQuery(
+                            Filter.ORGANIZATION_NUMBER,
+                            organization.organizationId
+                          )}`
+                        : ''
+                    }
+                    icon={<SC.DatasetIcon />}
+                    count={rating.datasets?.totalCount ?? 0}
+                    description={
+                      translations.translate(
+                        'metadataQualityPage.descriptionsTotal'
+                      ) as string
+                    }
+                  />
+                ) : (
+                  <StatisticsRegular
+                    icon={<SC.DatasetIcon />}
+                    count={rating.datasets?.totalCount ?? 0}
+                    description={
+                      translations.translate(
+                        'metadataQualityPage.descriptionsTotal'
+                      ) as string
+                    }
+                  />
+                )}
+
+                <StatisticsRegularLink
+                  to={`${PATHNAME.FIND_DATA}${
+                    PATHNAME.DATASETS
+                  }${patchMultipleSearchQuery({
+                    [Filter.ORGPATH]: organization?.orgPath,
+                    [Filter.LASTXDAYS]: '7'
+                  })}`}
+                  icon={<SC.NewIcon />}
+                  count={rating.datasets?.newCount ?? 0}
+                  description={
+                    translations.translate(
+                      'metadataQualityPage.newDescriptions',
+                      {
+                        term: translations.translate(
+                          'metadataQualityPage.lastWeek'
+                        ) as string
+                      }
+                    ) as string
+                  }
+                />
+                <StatisticsRegularLink
+                  to={`${PATHNAME.FIND_DATA}${
+                    PATHNAME.DATASETS
+                  }${patchMultipleSearchQuery({
+                    [Filter.ORGPATH]: organization?.orgPath,
+                    [Filter.PROVENANCE]: 'NASJONAL'
+                  })}`}
+                  icon={<SC.AuthoritativeIcon />}
+                  count={rating.datasets?.authoritativeCount ?? 0}
+                  description={
+                    translations.translate('metadataQualityPage.datasetIs', {
+                      term: translations.translate(
+                        'metadataQualityPage.authoritativeSources'
+                      ) as string
+                    }) as string
+                  }
+                />
+                <StatisticsRegularLink
+                  to={`${PATHNAME.FIND_DATA}${
+                    PATHNAME.DATASETS
+                  }${patchMultipleSearchQuery({
+                    [Filter.ORGPATH]: organization?.orgPath,
+                    [Filter.OPENDATA]: 'true'
+                  })}`}
+                  icon={<SC.AccessOpenIcon />}
+                  count={rating.datasets?.openCount ?? 0}
+                  description={
+                    translations.translate('metadataQualityPage.datasetIs', {
+                      term: translations.translate(
+                        'metadataQualityPage.open'
+                      ) as string
+                    }) as string
+                  }
+                />
+
+                <StatisticsRegularLink
+                  to={`${PATHNAME.ORGANIZATION}/${organizationId}${PATHNAME.METADATAQUALITY}`}
+                  icon={determineRatingIcon(rating.datasets?.quality)}
+                  count={`${rating.datasets?.quality?.percentage || 0} %`}
+                  description={determineRatingTranslation(
+                    rating.datasets?.quality
+                  )}
+                />
+              </SC.CataloguesStatistics>
+            </SC.Section>
+          )}
+        </SC.Container>
+      </SC.Content>
     </Root>
+  ) : (
+    <ErrorPage errorCode='404' />
   );
 };
 

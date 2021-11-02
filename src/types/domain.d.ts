@@ -166,7 +166,7 @@ export interface ESPage {
   totalPages: number;
 }
 
-export interface Paged<T> {
+export interface EsPaged<T> {
   aggregations: any;
   hits: T[];
   page: ESPage;
@@ -518,4 +518,12 @@ export interface OrganizationSummary {
   conceptCount: number;
   dataserviceCount: number;
   informationmodelCount: number;
+}
+
+export interface Paged<T> {
+  content: T[];
+  totalPages: number;
+  totalElements: number;
+  size: number;
+  number: number;
 }

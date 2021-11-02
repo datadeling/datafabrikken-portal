@@ -11,7 +11,7 @@ import {
   searchDatasets
 } from '../../../services/api/search-fulltext-api/datasets';
 
-import type { Dataset, Paged } from '../../../types';
+import type { Dataset, EsPaged } from '../../../types';
 
 function* getPagedDatasetsRequested({
   payload: { params = {} }
@@ -22,7 +22,7 @@ function* getPagedDatasetsRequested({
       paramsToSearchBody(params)
     );
     if (data) {
-      yield put(actions.getPagedDatasetsSucceeded(data as Paged<Dataset>));
+      yield put(actions.getPagedDatasetsSucceeded(data as EsPaged<Dataset>));
     } else {
       yield put(actions.getPagedDatasetsFailed(''));
     }
@@ -41,7 +41,9 @@ function* getDatasetsRelationsRequested({
     );
 
     if (data) {
-      yield put(actions.getDatasetsRelationsSucceeded(data as Paged<Dataset>));
+      yield put(
+        actions.getDatasetsRelationsSucceeded(data as EsPaged<Dataset>)
+      );
     } else {
       yield put(actions.getDatasetsRelationsFailed(''));
     }
