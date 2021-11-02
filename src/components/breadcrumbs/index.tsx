@@ -106,6 +106,10 @@ const routes = [
   {
     path: `${PATHNAME.ORGANIZATION}`,
     breadcrumb: () => <Translation id='header.organizations' />
+  },
+  {
+    path: `${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}`,
+    breadcrumb: () => <Translation id='header.metadataquality' />
   }
 ];
 

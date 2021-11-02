@@ -34,7 +34,10 @@ const routes = {
   ),
   [PATHNAME.TEXT_FORMAT]: lazy(() => import('../pages/article-page')),
   [PATHNAME.ORGANIZATION]: lazy(() => import('../pages/organization-page')),
-  ORGANIZATIONS: lazy(() => import('../pages/organizations-page'))
+  ORGANIZATIONS: lazy(() => import('../pages/organizations-page')),
+  [PATHNAME.METADATAQUALITY]: lazy(
+    () => import('../pages/metadata-quality-datasets-page')
+  )
 };
 
 const Routes: FC = () => (
@@ -115,13 +118,18 @@ const Routes: FC = () => (
     />
     <Route
       exact
-      path={`${PATHNAME.ORGANIZATION}/:organizationId`}
-      component={routes[PATHNAME.ORGANIZATION]}
+      path={`${PATHNAME.ORGANIZATION}`}
+      component={routes.ORGANIZATIONS}
     />
     <Route
       exact
-      path={`${PATHNAME.ORGANIZATION}`}
-      component={routes.ORGANIZATIONS}
+      path={`${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}`}
+      component={routes[PATHNAME.METADATAQUALITY]}
+    />
+    <Route
+      exact
+      path={`${PATHNAME.ORGANIZATION}/:organizationId/`}
+      component={routes[PATHNAME.ORGANIZATION]}
     />
     {(ENV === Environment.DEVELOPMENT || ENV === Environment.STAGING) && (
       <Route

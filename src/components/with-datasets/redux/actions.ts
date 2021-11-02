@@ -12,7 +12,7 @@ import {
   RESET_DATASETS_RELATIONS
 } from './action-types';
 
-import type { Dataset, Paged } from '../../../types';
+import type { Dataset, EsPaged } from '../../../types';
 
 export interface GetDatasetsParams {
   page?: number;
@@ -49,7 +49,7 @@ export function getPagedDatasetsRequested(params?: GetDatasetsParams) {
   };
 }
 
-export function getPagedDatasetsSucceeded(pagedDatasets: Paged<Dataset>) {
+export function getPagedDatasetsSucceeded(pagedDatasets: EsPaged<Dataset>) {
   return {
     type: GET_DATASETS_SUCCEEDED,
     payload: {
@@ -90,7 +90,7 @@ export function loadMoreDatasetsRequested(
   };
 }
 
-export function loadMoreDatasetsSucceeded(pagedAssessments: Paged<Dataset>) {
+export function loadMoreDatasetsSucceeded(pagedAssessments: EsPaged<Dataset>) {
   return {
     type: LOAD_MORE_DATASETS_SUCCEEDED,
     payload: pagedAssessments
@@ -115,7 +115,7 @@ export function getDatasetsRelationsRequested(params?: GetDatasetsParams) {
   };
 }
 
-export function getDatasetsRelationsSucceeded(pagedDatasets: Paged<Dataset>) {
+export function getDatasetsRelationsSucceeded(pagedDatasets: EsPaged<Dataset>) {
   return {
     type: GET_DATASETS_RELATIONS_SUCCEEDED,
     payload: {
