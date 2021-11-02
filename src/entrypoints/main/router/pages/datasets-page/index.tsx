@@ -45,7 +45,10 @@ import withOrganization, {
   Props as OrganizationProps
 } from '../../../../../components/with-organization';
 import ErrorPage from '../../../../../components/error-page';
-import StatisticsRegular from '../../../../../components/statistics-regular';
+import {
+  StatisticsRegularLink,
+  StatisticsRegularButton
+} from '../../../../../components/statistics-regular';
 import translations from '../../../../../services/translations';
 import { GetDatasetsParams } from '../../../../../components/with-datasets/redux/actions';
 
@@ -289,7 +292,7 @@ const DatasetsPage: FC<Props> = ({
           </SC.Row>
         ) : (
           <SC.ReportsRow>
-            <StatisticsRegular
+            <StatisticsRegularButton
               onClick={() => getPagedDatasets({})}
               icon={<SC.DatasetIcon />}
               count={datasetsReport?.totalObjects ?? ''}
@@ -299,7 +302,7 @@ const DatasetsPage: FC<Props> = ({
                 ) as string
               }
             />
-            <StatisticsRegular
+            <StatisticsRegularLink
               to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}?last_x_days=7`}
               icon={<SC.NewIcon />}
               count={datasetsReport?.newLastWeek ?? ''}
@@ -307,7 +310,7 @@ const DatasetsPage: FC<Props> = ({
                 translations.translate('findDataPage.newDatasets') as string
               }
             />
-            <StatisticsRegular
+            <StatisticsRegularLink
               to={`${PATHNAME.ORGANIZATION}`}
               icon={<SC.DatasetIcon />}
               count={datasetsReport?.organizationCount ?? 0}
