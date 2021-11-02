@@ -3,7 +3,10 @@ import { compose } from 'redux';
 import { RouteComponentProps } from 'react-router-dom';
 
 import SC from './styled';
-import StatisticsRegular from '../../../../../components/statistics-regular';
+import {
+  StatisticsRegular,
+  StatisticsRegularLink
+} from '../../../../../components/statistics-regular';
 
 import Translation from '../../../../../components/translation';
 import translations from '../../../../../services/translations';
@@ -174,25 +177,39 @@ const OrganizationPage: FC<Props> = ({
               {rating && (
                 <SC.Section>
                   <SC.CataloguesStatistics>
-                    <StatisticsRegular
-                      to={
-                        organization?.organizationId &&
-                        `${PATHNAME.FIND_DATA}${
-                          PATHNAME.DATASETS
-                        }${patchSearchQuery(
-                          Filter.ORGANIZATION_NUMBER,
-                          organization.organizationId
-                        )}`
-                      }
-                      icon={<SC.DatasetIcon />}
-                      count={rating.datasets?.totalCount ?? 0}
-                      description={
-                        translations.translate(
-                          'metadataQualityPage.descriptionsTotal'
-                        ) as string
-                      }
-                    />
-                    <StatisticsRegular
+                    {organization?.organizationId ? (
+                      <StatisticsRegularLink
+                        to={
+                          organization?.organizationId
+                            ? `${PATHNAME.FIND_DATA}${
+                                PATHNAME.DATASETS
+                              }${patchSearchQuery(
+                                Filter.ORGANIZATION_NUMBER,
+                                organization.organizationId
+                              )}`
+                            : ''
+                        }
+                        icon={<SC.DatasetIcon />}
+                        count={rating.datasets?.totalCount ?? 0}
+                        description={
+                          translations.translate(
+                            'metadataQualityPage.descriptionsTotal'
+                          ) as string
+                        }
+                      />
+                    ) : (
+                      <StatisticsRegular
+                        icon={<SC.DatasetIcon />}
+                        count={rating.datasets?.totalCount ?? 0}
+                        description={
+                          translations.translate(
+                            'metadataQualityPage.descriptionsTotal'
+                          ) as string
+                        }
+                      />
+                    )}
+
+                    <StatisticsRegularLink
                       to={`${PATHNAME.FIND_DATA}${
                         PATHNAME.DATASETS
                       }${patchMultipleSearchQuery({
@@ -212,7 +229,7 @@ const OrganizationPage: FC<Props> = ({
                         ) as string
                       }
                     />
-                    <StatisticsRegular
+                    <StatisticsRegularLink
                       to={`${PATHNAME.FIND_DATA}${
                         PATHNAME.DATASETS
                       }${patchMultipleSearchQuery({
@@ -232,7 +249,7 @@ const OrganizationPage: FC<Props> = ({
                         ) as string
                       }
                     />
-                    <StatisticsRegular
+                    <StatisticsRegularLink
                       to={`${PATHNAME.FIND_DATA}${
                         PATHNAME.DATASETS
                       }${patchMultipleSearchQuery({

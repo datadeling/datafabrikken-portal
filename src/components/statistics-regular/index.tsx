@@ -1,24 +1,18 @@
 import React, { FC, ReactElement } from 'react';
 import SC from './styled';
 
-interface StatisticsProps {
+interface StatisticsRegularProps {
   icon: ReactElement;
   count: string | number;
   description: string | ReactElement;
-  onClick?: () => void;
 }
 
-interface ExternalProps extends StatisticsProps {
-  to?: string;
-}
-
-const Statistics: FC<StatisticsProps> = ({
+const StatisticsRegular: FC<StatisticsRegularProps> = ({
   icon,
   count,
-  description,
-  onClick
+  description
 }) => (
-  <SC.StatisticsContainer onClick={onClick}>
+  <SC.StatisticsContainer>
     <SC.IconWithCount>
       {icon}
       {count}
@@ -27,13 +21,34 @@ const Statistics: FC<StatisticsProps> = ({
   </SC.StatisticsContainer>
 );
 
-const StatisticsRegular: FC<ExternalProps> = ({ to, ...props }) =>
-  to ? (
-    <SC.LinkWrapper to={to}>
-      <Statistics {...props} />
-    </SC.LinkWrapper>
-  ) : (
-    <Statistics {...props} />
-  );
+interface ExternalLinkProps extends StatisticsRegularProps {
+  to: string;
+}
 
-export default StatisticsRegular;
+const StatisticsRegularLink: FC<ExternalLinkProps> = ({
+  to,
+  icon,
+  count,
+  description
+}) => (
+  <SC.LinkWrapper to={to}>
+    <StatisticsRegular icon={icon} count={count} description={description} />
+  </SC.LinkWrapper>
+);
+
+interface ExternalButtonProps extends StatisticsRegularProps {
+  onClick?: () => void;
+}
+
+const StatisticsRegularButton: FC<ExternalButtonProps> = ({
+  onClick,
+  icon,
+  count,
+  description
+}) => (
+  <SC.ButtonWrapper onClick={onClick}>
+    <StatisticsRegular icon={icon} count={count} description={description} />
+  </SC.ButtonWrapper>
+);
+
+export { StatisticsRegular, StatisticsRegularLink, StatisticsRegularButton };
