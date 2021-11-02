@@ -72,6 +72,13 @@ const AuthoritativeIcon = styled(authoritativeIconBase)`
   }
 `;
 
+const PublisherContainer = styled.span`
+  & > a {
+    margin-left: ${theme.spacing('S4')};
+    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
+  }
+`;
+
 export default {
   Container,
   Banner,
@@ -80,5 +87,6 @@ export default {
   Title,
   ContentSections,
   DetailsIntro,
-  AuthoritativeIcon
+  AuthoritativeIcon,
+  PublisherContainer
 };

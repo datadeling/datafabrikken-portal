@@ -93,12 +93,13 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
           {isAuthoritative && <SC.AuthoritativeIcon />}
         </SC.Title>
         <SC.SubBanner>
-          <InternalLink to={`${PATHNAME.ORGANIZATION}/${publisher?.id}`}>
-            <Translation id={publisherLabel[entity]} />
-            {': '}
-            <Translation text={publisher?.prefLabel} />
-          </InternalLink>
-          <MetadataQuality entityId={entityId} />
+          <SC.PublisherContainer>
+            <Translation id={`${publisherLabel[entity]}`} />:
+            <InternalLink to={`${PATHNAME.ORGANIZATION}/${publisher?.id}`}>
+              <Translation text={publisher?.prefLabel} />
+            </InternalLink>
+          </SC.PublisherContainer>
+          <MetadataQuality entityId={entityId} orgId={publisher?.id} />
         </SC.SubBanner>
       </SC.Banner>
       <SC.Content>

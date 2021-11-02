@@ -14,6 +14,8 @@ import CommunityCategoryBreadCrumb from './community-category-breadcrumb';
 import CommunityTopicBreadCrumb from './community-topic-breadcrumb';
 import CommunityTagBreadCrumb from './community-tag-breadcrumb';
 import OrganizationPageBreadcrumb from './organization-breadcrumb';
+import MetadataDatasetBreadcrumb from './metadata-dataset-breadcrumb';
+
 import SC from './styled';
 
 interface Props {}
@@ -110,6 +112,10 @@ const routes = [
   {
     path: `${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}`,
     breadcrumb: () => <Translation id='header.metadataquality' />
+  },
+  {
+    path: `${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}/:datasetId`,
+    breadcrumb: () => <MetadataDatasetBreadcrumb />
   }
 ];
 
