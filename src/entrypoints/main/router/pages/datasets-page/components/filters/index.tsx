@@ -30,7 +30,7 @@ interface ExternalProps {
   handleClearParameters: () => void;
   formatAggregations: any;
   datasetParameters: GetDatasetsParams;
-  publisher?: Publisher | null;
+  publisher?: Publisher;
 }
 
 interface Props extends ExternalProps, TranslationProps {}

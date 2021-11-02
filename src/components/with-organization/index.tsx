@@ -11,11 +11,11 @@ import type {
 } from '../../types';
 
 export interface Props {
-  organization: Publisher | null;
+  organization?: Publisher;
   isLoadingOrganization: boolean;
   isLoadingRating: boolean;
-  enhetsregisteretOrganization: EnhetsregisteretOrganization | null;
-  rating: OrganizationCountsAndRating | null;
+  enhetsregisteretOrganization?: EnhetsregisteretOrganization;
+  rating?: OrganizationCountsAndRating;
   organizationActions: typeof actions;
 }
 
@@ -23,14 +23,14 @@ const withOrganization = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
-    organization: state.OrganizationReducer.get('organization')?.toJS() ?? null,
+    organization: state.OrganizationReducer.get('organization')?.toJS(),
     isLoadingOrganization: state.OrganizationReducer.get(
       'isLoadingOrganization'
     ),
-    enhetsregisteretOrganization:
-      state.OrganizationReducer.get('enhetsregisteretOrganization')?.toJS() ??
-      null,
-    rating: state.OrganizationReducer.get('rating')?.toJS() ?? null,
+    enhetsregisteretOrganization: state.OrganizationReducer.get(
+      'enhetsregisteretOrganization'
+    )?.toJS(),
+    rating: state.OrganizationReducer.get('rating')?.toJS(),
     isLoadingRating: state.OrganizationReducer.get('isLoadingRating')
   });
 
