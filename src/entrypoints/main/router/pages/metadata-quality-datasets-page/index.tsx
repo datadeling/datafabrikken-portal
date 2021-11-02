@@ -79,7 +79,7 @@ const DatasetsPage: FC<Props> = ({
     }
   });
 
-  return (
+  return organization && assessments ? (
     <Root>
       <SC.Banner>
         <SC.Container>
@@ -282,6 +282,8 @@ const DatasetsPage: FC<Props> = ({
         </SC.Container>
       </SC.Content>
     </Root>
+  ) : (
+    <ErrorPage errorCode='404' />
   );
 };
 
