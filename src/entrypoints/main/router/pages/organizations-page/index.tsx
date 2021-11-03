@@ -14,6 +14,7 @@ import withOrganizations, {
 import { OrganizationSummary } from '../../../../../types';
 import { SortOrder, Entity } from '../../../../../types/enums';
 import SearchBar from '../../../../../components/search-bar';
+import LoadingSpinner from '../../../../../components/icons/spinner-icon';
 
 interface SortState {
   selector: string[];
@@ -131,48 +132,53 @@ const OrganizationsPage: FC<Props> = ({
           </SC.Title>
         </SC.Container>
       </SC.Header>
-
-      <SC.Content>
-        <SC.Container>
-          <SC.SearchBarContainer>
-            <SearchBar
-              placeholder={
-                translations.translate('searchOrganization') as string
-              }
-              onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                setSearchQuery(event.currentTarget.value ?? '')
-              }
-              onClear={() => setSearchQuery('')}
-              onSubmit={e => e.preventDefault()}
-            />
-          </SC.SearchBarContainer>
-          <SC.SortRow className='col-12'>
-            <SC.Labels>
-              <SC.SortLabel />
-              <SC.TitleSortButton
-                type='button'
-                onClick={applySort(['prefLabel'])}
-              >
-                <Translation id='organizationsPage.organization' />
-                {renderCaret(['prefLabel'])}
-              </SC.TitleSortButton>
-            </SC.Labels>
-            <SC.Counts>
-              <SC.SortButton
-                type='button'
-                onClick={applySort(['datasetCount'])}
-                data-tip={translations.translate(
-                  'organizationsPage.datasetsDescription'
-                )}
-              >
-                <Translation id='organizationsPage.numberDatasets' />
-                {renderCaret(['datasetCount'])}
-              </SC.SortButton>
-            </SC.Counts>
-          </SC.SortRow>
-          {renderSearchHits(searchQuery)}
-        </SC.Container>
-      </SC.Content>
+      {organizations.length ? (
+        <SC.Content>
+          <SC.Container>
+            <SC.SearchBarContainer>
+              <SearchBar
+                placeholder={
+                  translations.translate('searchOrganization') as string
+                }
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  setSearchQuery(event.currentTarget.value ?? '')
+                }
+                onClear={() => setSearchQuery('')}
+                onSubmit={e => e.preventDefault()}
+              />
+            </SC.SearchBarContainer>
+            <SC.SortRow className='col-12'>
+              <SC.Labels>
+                <SC.SortLabel />
+                <SC.TitleSortButton
+                  type='button'
+                  onClick={applySort(['prefLabel'])}
+                >
+                  <Translation id='organizationsPage.organization' />
+                  {renderCaret(['prefLabel'])}
+                </SC.TitleSortButton>
+              </SC.Labels>
+              <SC.Counts>
+                <SC.SortButton
+                  type='button'
+                  onClick={applySort(['datasetCount'])}
+                  data-tip={translations.translate(
+                    'organizationsPage.datasetsDescription'
+                  )}
+                >
+                  <Translation id='organizationsPage.numberDatasets' />
+                  {renderCaret(['datasetCount'])}
+                </SC.SortButton>
+              </SC.Counts>
+            </SC.SortRow>
+            {renderSearchHits(searchQuery)}
+          </SC.Container>
+        </SC.Content>
+      ) : (
+        <SC.SpinnerContainer>
+          <LoadingSpinner />
+        </SC.SpinnerContainer>
+      )}
     </Root>
   );
 };
