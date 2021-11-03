@@ -111,6 +111,15 @@ const AccessOpenIcon = styled(AccessOpenIconBase)`
   }
 `;
 
+const SpinnerContainer = styled.div`
+  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
 export default {
   Container,
   Content,
@@ -122,5 +131,6 @@ export default {
   DatasetIcon,
   NewIcon,
   AuthoritativeIcon,
-  AccessOpenIcon
+  AccessOpenIcon,
+  SpinnerContainer
 };

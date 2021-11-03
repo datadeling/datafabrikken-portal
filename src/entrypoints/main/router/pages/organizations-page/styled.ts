@@ -155,6 +155,15 @@ const SortButton = styled.button`
 
 const TitleSortButton = styled(SortButton)``;
 
+const SpinnerContainer = styled.div`
+  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+`;
+
 export default {
   Container,
   Content,
@@ -171,5 +180,6 @@ export default {
   TitleSortButton,
   CaretUp,
   CaretDown,
-  CaretBoth
+  CaretBoth,
+  SpinnerContainer
 };

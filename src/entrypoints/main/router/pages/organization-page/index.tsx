@@ -29,6 +29,7 @@ import {
 } from '../../../../../utils/location-helper';
 import { PATHNAME } from '../../../../../enums';
 import { Filter } from '../../../../../types/enums';
+import LoadingSpinner from '../../../../../components/icons/spinner-icon';
 
 interface RouteParams {
   organizationId: string;
@@ -36,10 +37,20 @@ interface RouteParams {
 
 interface Props extends OrganizationProps, RouteComponentProps<RouteParams> {}
 
+const renderPlaceholder = (isLoading: boolean) =>
+  isLoading ? (
+    <SC.SpinnerContainer>
+      <LoadingSpinner />
+    </SC.SpinnerContainer>
+  ) : (
+    <ErrorPage errorCode='404' />
+  );
+
 const OrganizationPage: FC<Props> = ({
   organization,
   isLoadingOrganization,
   rating,
+  isLoadingRating,
   organizationActions: {
     getOrganizationRequested: getOrganization,
     getOrganizationRatingRequested: getRating,
@@ -56,7 +67,7 @@ const OrganizationPage: FC<Props> = ({
       getOrganization(organizationId);
     }
 
-    if (rating?.organization?.organizationId !== organizationId) {
+    if (rating?.organization.organizationId !== organizationId) {
       getRating(organizationId);
     }
 
@@ -65,27 +76,27 @@ const OrganizationPage: FC<Props> = ({
     };
   }, []);
 
-  return organization || isLoadingOrganization ? (
+  return organization && rating ? (
     <Root>
-      {(organization?.prefLabel || organization?.name) && (
-        <SC.Banner>
-          <SC.Title>
+      <SC.Banner>
+        <SC.Title>
+          {(organization.prefLabel || organization.name) && (
             <Translation
               id='metadataQualityPage.organizationPageTitle'
               values={{
                 organizationName:
-                  translations.getTranslateText(organization?.prefLabel) ??
-                  organization?.name ??
+                  translations.getTranslateText(organization.prefLabel) ??
+                  organization.name ??
                   ''
               }}
             />
-          </SC.Title>
-        </SC.Banner>
-      )}
+          )}
+        </SC.Title>
+      </SC.Banner>
       <SC.Content>
         <SC.Container>
           <SC.Section>
-            {organization && rating?.organization && (
+            {rating.organization && (
               <SC.OrganizationInformation>
                 {showOrganizationLogo && organization.organizationId && (
                   <img
@@ -172,112 +183,110 @@ const OrganizationPage: FC<Props> = ({
             )}
           </SC.Section>
           <SC.Section />
-          {rating && (
-            <SC.Section>
-              <SC.CataloguesStatistics>
-                {organization?.organizationId ? (
-                  <StatisticsRegularLink
-                    to={
-                      organization?.organizationId
-                        ? `${PATHNAME.FIND_DATA}${
-                            PATHNAME.DATASETS
-                          }${patchSearchQuery(
-                            Filter.ORGANIZATION_NUMBER,
-                            organization.organizationId
-                          )}`
-                        : ''
-                    }
-                    icon={<SC.DatasetIcon />}
-                    count={rating.datasets?.totalCount ?? 0}
-                    description={
-                      translations.translate(
-                        'metadataQualityPage.descriptionsTotal'
-                      ) as string
-                    }
-                  />
-                ) : (
-                  <StatisticsRegular
-                    icon={<SC.DatasetIcon />}
-                    count={rating.datasets?.totalCount ?? 0}
-                    description={
-                      translations.translate(
-                        'metadataQualityPage.descriptionsTotal'
-                      ) as string
-                    }
-                  />
-                )}
-
+          <SC.Section>
+            <SC.CataloguesStatistics>
+              {organization.organizationId ? (
                 <StatisticsRegularLink
-                  to={`${PATHNAME.FIND_DATA}${
-                    PATHNAME.DATASETS
-                  }${patchMultipleSearchQuery({
-                    [Filter.ORGPATH]: organization?.orgPath,
-                    [Filter.LASTXDAYS]: '7'
-                  })}`}
-                  icon={<SC.NewIcon />}
-                  count={rating.datasets?.newCount ?? 0}
+                  to={
+                    organization.organizationId
+                      ? `${PATHNAME.FIND_DATA}${
+                          PATHNAME.DATASETS
+                        }${patchSearchQuery(
+                          Filter.ORGANIZATION_NUMBER,
+                          organization.organizationId
+                        )}`
+                      : ''
+                  }
+                  icon={<SC.DatasetIcon />}
+                  count={rating.datasets?.totalCount ?? 0}
                   description={
                     translations.translate(
-                      'metadataQualityPage.newDescriptions',
-                      {
-                        term: translations.translate(
-                          'metadataQualityPage.lastWeek'
-                        ) as string
-                      }
+                      'metadataQualityPage.descriptionsTotal'
                     ) as string
                   }
                 />
-                <StatisticsRegularLink
-                  to={`${PATHNAME.FIND_DATA}${
-                    PATHNAME.DATASETS
-                  }${patchMultipleSearchQuery({
-                    [Filter.ORGPATH]: organization?.orgPath,
-                    [Filter.PROVENANCE]: 'NASJONAL'
-                  })}`}
-                  icon={<SC.AuthoritativeIcon />}
-                  count={rating.datasets?.authoritativeCount ?? 0}
+              ) : (
+                <StatisticsRegular
+                  icon={<SC.DatasetIcon />}
+                  count={rating.datasets?.totalCount ?? 0}
                   description={
-                    translations.translate('metadataQualityPage.datasetIs', {
-                      term: translations.translate(
-                        'metadataQualityPage.authoritativeSources'
-                      ) as string
-                    }) as string
+                    translations.translate(
+                      'metadataQualityPage.descriptionsTotal'
+                    ) as string
                   }
                 />
-                <StatisticsRegularLink
-                  to={`${PATHNAME.FIND_DATA}${
-                    PATHNAME.DATASETS
-                  }${patchMultipleSearchQuery({
-                    [Filter.ORGPATH]: organization?.orgPath,
-                    [Filter.OPENDATA]: 'true'
-                  })}`}
-                  icon={<SC.AccessOpenIcon />}
-                  count={rating.datasets?.openCount ?? 0}
-                  description={
-                    translations.translate('metadataQualityPage.datasetIs', {
-                      term: translations.translate(
-                        'metadataQualityPage.open'
-                      ) as string
-                    }) as string
-                  }
-                />
+              )}
 
-                <StatisticsRegularLink
-                  to={`${PATHNAME.ORGANIZATION}/${organizationId}${PATHNAME.METADATAQUALITY}`}
-                  icon={determineRatingIcon(rating.datasets?.quality)}
-                  count={`${rating.datasets?.quality?.percentage || 0} %`}
-                  description={determineRatingTranslation(
-                    rating.datasets?.quality
-                  )}
-                />
-              </SC.CataloguesStatistics>
-            </SC.Section>
-          )}
+              <StatisticsRegularLink
+                to={`${PATHNAME.FIND_DATA}${
+                  PATHNAME.DATASETS
+                }${patchMultipleSearchQuery({
+                  [Filter.ORGPATH]: organization.orgPath,
+                  [Filter.LASTXDAYS]: '7'
+                })}`}
+                icon={<SC.NewIcon />}
+                count={rating.datasets?.newCount ?? 0}
+                description={
+                  translations.translate(
+                    'metadataQualityPage.newDescriptions',
+                    {
+                      term: translations.translate(
+                        'metadataQualityPage.lastWeek'
+                      ) as string
+                    }
+                  ) as string
+                }
+              />
+              <StatisticsRegularLink
+                to={`${PATHNAME.FIND_DATA}${
+                  PATHNAME.DATASETS
+                }${patchMultipleSearchQuery({
+                  [Filter.ORGPATH]: organization.orgPath,
+                  [Filter.PROVENANCE]: 'NASJONAL'
+                })}`}
+                icon={<SC.AuthoritativeIcon />}
+                count={rating.datasets?.authoritativeCount ?? 0}
+                description={
+                  translations.translate('metadataQualityPage.datasetIs', {
+                    term: translations.translate(
+                      'metadataQualityPage.authoritativeSources'
+                    ) as string
+                  }) as string
+                }
+              />
+              <StatisticsRegularLink
+                to={`${PATHNAME.FIND_DATA}${
+                  PATHNAME.DATASETS
+                }${patchMultipleSearchQuery({
+                  [Filter.ORGPATH]: organization.orgPath,
+                  [Filter.OPENDATA]: 'true'
+                })}`}
+                icon={<SC.AccessOpenIcon />}
+                count={rating.datasets?.openCount ?? 0}
+                description={
+                  translations.translate('metadataQualityPage.datasetIs', {
+                    term: translations.translate(
+                      'metadataQualityPage.open'
+                    ) as string
+                  }) as string
+                }
+              />
+
+              <StatisticsRegularLink
+                to={`${PATHNAME.ORGANIZATION}/${organizationId}${PATHNAME.METADATAQUALITY}`}
+                icon={determineRatingIcon(rating.datasets?.quality)}
+                count={`${rating.datasets?.quality?.percentage || 0} %`}
+                description={determineRatingTranslation(
+                  rating.datasets?.quality
+                )}
+              />
+            </SC.CataloguesStatistics>
+          </SC.Section>
         </SC.Container>
       </SC.Content>
     </Root>
   ) : (
-    <ErrorPage errorCode='404' />
+    renderPlaceholder(isLoadingOrganization || isLoadingRating)
   );
 };
 
