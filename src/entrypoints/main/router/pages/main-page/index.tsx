@@ -94,23 +94,23 @@ const MainPage: FC<Props> = ({
                         <ContentBoxSC.ContentBoxHeader.Title>
                           {module?.field_title}
                         </ContentBoxSC.ContentBoxHeader.Title>
-                        <ContextBoxBody>
-                          <Markdown allowHtml>
-                            {module?.field_body?.processed}
-                          </Markdown>
-                          {module?.field_link && (
-                            <Link
-                              as={RouterLink}
-                              to={module?.field_link?.uri.replace(
-                                'internal:',
-                                ''
-                              )}
-                            >
-                              {module?.field_link?.title}
-                            </Link>
-                          )}
-                        </ContextBoxBody>
                       </ContentBoxHeader>
+                      <ContextBoxBody>
+                        <Markdown allowHtml>
+                          {module?.field_body?.processed}
+                        </Markdown>
+                        {module?.field_link && (
+                          <Link
+                            as={RouterLink}
+                            to={module?.field_link?.uri.replace(
+                              'internal:',
+                              ''
+                            )}
+                          >
+                            {module?.field_link?.title}
+                          </Link>
+                        )}
+                      </ContextBoxBody>
                     </ContentBox>
                   </SC.Row>
                 )}

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { theme, Colour } from '../../../../../../../app/theme';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const DatasetDistribution = styled(ExpansionPanel)`
   overflow: hidden;
   border-radius: 0;
@@ -32,6 +34,13 @@ const DatasetDistribution = styled(ExpansionPanel)`
   }
 
   & > ${SC.ExpansionPanel.Body} {
+  }
+
+  & h3 {
+    font-size: ${theme.fontSize('FS12')};
+    ${onMobileView} {
+      font-size: ${theme.fontSize('FS10')};
+    }
   }
 `;
 

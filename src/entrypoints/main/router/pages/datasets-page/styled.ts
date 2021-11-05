@@ -59,6 +59,9 @@ const Title = styled.h1`
 
 const SearchList = styled.section`
   padding: 0 ${theme.spacing('S10')};
+  ${onMobileView} {
+    padding: 0;
+  }
 `;
 
 const SearchContainer = styled.div`
@@ -67,6 +70,9 @@ const SearchContainer = styled.div`
   justify-content: center;
   margin-bottom: ${theme.spacing('S24')};
   padding: 0 ${theme.spacing('S10')};
+  ${onMobileView} {
+    padding: 0;
+  }
 `;
 
 const DropdownFilters = styled(DropdownMenuBase)`
@@ -79,6 +85,7 @@ const DropdownFilters = styled(DropdownMenuBase)`
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 0;
     }
   }
   & > ${DropdownMenuSC.DropdownMenu.Trigger} {

@@ -37,12 +37,18 @@ const FilterSection = styled.section`
 const FilterTypeTitle = styled.h4`
   font-size: ${theme.fontSize('FS14')};
   margin-bottom: ${theme.spacing('S6')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS12')};
+  }
 `;
 
 const FilterGroup = styled.h5`
   font-size: ${theme.fontSize('FS12')};
   padding-top: ${theme.spacing('S10')};
   padding-bottom: ${theme.spacing('S6')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS10')};
+  }
 `;
 
 const CollapseButton = styled(ButtonBase)<buttonProps>`

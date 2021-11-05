@@ -5,6 +5,8 @@ interface Props {
   $boxStyle?: boolean;
 }
 
+const onMobileView = '@media (max-width: 900px)';
+
 const ContentSection = styled.section<Props>`
   margin-top: ${theme.spacing('S40')};
   font-size: ${theme.fontSize('FS12')};
@@ -16,11 +18,19 @@ const ContentSection = styled.section<Props>`
       border-radius: 5px;
       padding: ${theme.spacing('S32')};
     `}
+
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS10')};
+    margin-top: ${theme.spacing('S12')};
+  }
 `;
 
 const Title = styled.h2`
   flex-grow: 1;
-  font-size: 32px;
+  font-size: ${theme.fontSize('FS20')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS14')};
+  }
 `;
 
 const Header = styled.div`
