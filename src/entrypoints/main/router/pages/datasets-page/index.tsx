@@ -199,16 +199,18 @@ const DatasetsPage: FC<Props> = ({
           </Trigger>
           <Menu>
             <Themes onFilterTheme={handleFilterTheme} />
-            <Filters
-              handleCheckboxChange={handleCheckboxChange}
-              handleMultiSelectFilter={handleMultiSelectFilter}
-              handleRemoveFilter={(parameter: string) =>
-                removeParameter(history, parameter)
-              }
-              handleClearParameters={() => clearParameters(history)}
-              formatAggregations={format}
-              datasetParameters={datasetParams}
-            />
+            {search && (
+              <Filters
+                handleCheckboxChange={handleCheckboxChange}
+                handleMultiSelectFilter={handleMultiSelectFilter}
+                handleRemoveFilter={(parameter: string) =>
+                  removeParameter(history, parameter)
+                }
+                handleClearParameters={() => clearParameters(history)}
+                formatAggregations={format}
+                datasetParameters={datasetParams}
+              />
+            )}
           </Menu>
         </SC.DropdownFilters>
         <SC.Themes>

@@ -6,6 +6,8 @@ import QualityIconGood from '../../../../images/smiley-good.inline.svg';
 import QualityIconOk from '../../../../images/smiley-ok.inline.svg';
 import QualityIconPoor from '../../../../images/smiley-poor.inline.svg';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const MetadataQuality = styled.div`
   display: flex;
   align-items: center;
@@ -25,6 +27,11 @@ const RatingIcon = styled.div`
     stroke: ${theme.colour(Colour.NEUTRAL, 'N0')};
     stroke-width: 1px;
     fill: transparent;
+  }
+
+  ${onMobileView} {
+    height: 20px;
+    width: 20px;
   }
 `;
 

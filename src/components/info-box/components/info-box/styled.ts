@@ -48,6 +48,11 @@ const InfoBoxHeader = styled.div`
 const InfoBoxRow = styled.div`
   display: flex;
   padding: ${theme.spacing('S24')};
+
+  ${onMobileView} {
+    flex-direction: column;
+    padding: ${theme.spacing('S10')};
+  }
 `;
 
 const IconWrapper = styled.div`

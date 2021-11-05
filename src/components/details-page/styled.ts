@@ -40,6 +40,7 @@ const SubBanner = styled.div`
     & > * {
       margin-top: ${theme.spacing('S2')};
     }
+    font-size: ${theme.fontSize('FS10')};
   }
 `;
 
@@ -60,6 +61,9 @@ const ContentSections = styled.div`
 
 const DetailsIntro = styled.div`
   font-size: ${theme.fontSize('FS12')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS10')};
+  }
 `;
 
 const AuthoritativeIcon = styled(authoritativeIconBase)`
