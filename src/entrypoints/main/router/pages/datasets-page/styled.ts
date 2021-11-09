@@ -175,6 +175,9 @@ const NoHits = styled.div`
   & > h3 {
     font-size: ${theme.fontSize('FS16')};
   }
+  & > p {
+    margin-top: ${theme.spacing('S4')};
+  }
 `;
 
 const NoDatasetsFoundIcon = styled(ErrorSC.Error404Icon)``;
