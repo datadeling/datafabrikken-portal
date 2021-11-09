@@ -34,6 +34,8 @@
     "noHits": "Ingen resultater funnet",
     "noHitsSubtitle": "Prøv å fjerne et filter, eller",
     "noHitsLink": "start søket på nytt",
+    "noHitsCommunity": "Du kan også ",
+    "noHitsCommunityLink": "etterspørre data i Datalandsbyen",
     "totalNumDatasets": "Datasettbeskrivelser totalt",
     "newDatasets": "Nye siste 7 dager",
     "numOrganizationsPublished": "Virksomheter har publisert datasett"

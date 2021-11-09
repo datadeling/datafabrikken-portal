@@ -287,6 +287,14 @@ const DatasetsPage: FC<Props> = ({
                     <Translation id='findDataPage.noHitsLink' />
                   </InternalLink>
                 </p>
+                <p>
+                  <Translation id='findDataPage.noHitsCommunity' />{' '}
+                  <InternalLink
+                    to={`${PATHNAME.COMMUNITY}/6/etterspør-datasett-og-api-er`}
+                  >
+                    <Translation id='findDataPage.noHitsCommunityLink' />
+                  </InternalLink>
+                </p>
               </SC.NoHits>
             )}
           </SC.Row>
