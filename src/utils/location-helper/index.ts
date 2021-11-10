@@ -118,3 +118,30 @@ export function patchMultipleSearchQuery(filter: Record<string, any>) {
 
   return qs.stringify({ ...query, ...filter }, { addQueryPrefix: true });
 }
+
+export const setRadioFilterValue = (
+  history: any,
+  selected: string,
+  deselected: string[]
+) => {
+  const { pathname, search } = location;
+
+  const currentParams = qs.parse(search, { ignoreQueryPrefix: true }) || {};
+  const skipParams = Object.keys(currentParams).reduce(
+    (accumulator: any, key) => {
+      if (!deselected.includes(key)) {
+        accumulator[key] = currentParams[key];
+      }
+      return accumulator;
+    },
+    {}
+  );
+  const updatedParams = qs.stringify(
+    { ...skipParams, [selected]: true },
+    {
+      skipNulls: true,
+      addQueryPrefix: true
+    }
+  );
+  history.push(`${pathname}${updatedParams}`);
+};

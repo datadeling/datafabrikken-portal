@@ -28,7 +28,8 @@ import {
   getParameter,
   removeParameter,
   setMultiselectFilterValue,
-  setParameter
+  setParameter,
+  setRadioFilterValue
 } from '../../../../../utils/location-helper';
 
 import Themes from './components/themes';
@@ -147,14 +148,6 @@ const DatasetsPage: FC<Props> = ({
     setMultiselectFilterValue(history, name, value, checked);
   };
 
-  const handleCheckboxChange = ({
-    target: { checked, name }
-  }: ChangeEvent<HTMLInputElement>) => {
-    checked
-      ? setParameter(history, { [name]: 'true' })
-      : removeParameter(history, name);
-  };
-
   const handleMultiSelectFilter = (
     checked: boolean,
     name: string,
@@ -201,7 +194,9 @@ const DatasetsPage: FC<Props> = ({
             <Themes onFilterTheme={handleFilterTheme} />
             {search && (
               <Filters
-                handleCheckboxChange={handleCheckboxChange}
+                handleRadioChange={(selected, deselected) =>
+                  setRadioFilterValue(history, selected, deselected)
+                }
                 handleMultiSelectFilter={handleMultiSelectFilter}
                 handleRemoveFilter={(parameter: string) =>
                   removeParameter(history, parameter)
@@ -221,7 +216,9 @@ const DatasetsPage: FC<Props> = ({
             <SC.Aside>
               <SC.Filters>
                 <Filters
-                  handleCheckboxChange={handleCheckboxChange}
+                  handleRadioChange={(selected, deselected) =>
+                    setRadioFilterValue(history, selected, deselected)
+                  }
                   handleMultiSelectFilter={handleMultiSelectFilter}
                   handleRemoveFilter={(parameter: string) =>
                     removeParameter(history, parameter)
