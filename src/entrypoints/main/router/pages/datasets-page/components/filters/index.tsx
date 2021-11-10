@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FC, memo, useState } from 'react';
+import React, { FC, memo, useState } from 'react';
 
 import { compose } from 'redux';
 import { Collapse } from 'react-collapse';
@@ -18,9 +18,10 @@ import FilterSearchField from '../filter-search-field';
 import { GetDatasetsParams } from '../../../../../../../components/with-datasets/redux/actions';
 import { Publisher } from '../../../../../../../types';
 import translations from '../../../../../../../services/translations';
+import RadioOptions from '../../../../../../../components/radio-options';
 
 interface ExternalProps {
-  handleCheckboxChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleRadioChange: (selected: string, deselected: string[]) => void;
   handleMultiSelectFilter: (
     checked: boolean,
     name: string,
@@ -42,7 +43,7 @@ type BucketItem = {
 };
 
 const Filters: FC<Props> = ({
-  handleCheckboxChange,
+  handleRadioChange,
   handleMultiSelectFilter,
   handleRemoveFilter,
   handleClearParameters,
@@ -265,19 +266,21 @@ const Filters: FC<Props> = ({
         <SC.FilterTypeTitle>
           <Translation id='filter.accessRights' />
         </SC.FilterTypeTitle>
-        <FilterCheckbox
-          label='filter.openData'
-          filterId='opendata'
-          filterName='opendata'
-          isChecked={!!opendata}
-          handleCheckboxChange={handleCheckboxChange}
-        />
-        <FilterCheckbox
-          label='filter.restrictedAccessRights'
-          filterId='accessRights'
-          filterName='accessRights'
-          isChecked={!!accessRights}
-          handleCheckboxChange={handleCheckboxChange}
+        <RadioOptions
+          title='filter.accessRights'
+          options={[
+            {
+              value: 'opendata',
+              label: 'filter.openData',
+              checked: !!opendata
+            },
+            {
+              value: 'accessRights',
+              label: 'filter.restrictedAccessRights',
+              checked: !!accessRights
+            }
+          ]}
+          onChange={handleRadioChange}
         />
       </SC.FilterSection>
       {datasetFormats && (
