@@ -112,11 +112,12 @@ const SortRow = styled.div`
   text-decoration: none;
 
   ${onMobileView} {
+    padding: ${theme.spacing('S4')} ${theme.spacing('S10')};
     & > ${Labels} {
-      flex: 0 0 50%;
+      flex: 0 0 65%;
     }
     & > ${Counts} {
-      flex: 0 0 50%;
+      flex: 0 0 35%;
     }
   }
 `;
@@ -150,6 +151,10 @@ const SortButton = styled.button`
 
   &:hover > svg > path {
     fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  }
+
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS8')};
   }
 `;
 
