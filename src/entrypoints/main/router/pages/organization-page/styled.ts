@@ -50,6 +50,10 @@ const OrganizationInformation = styled.div`
     max-width: 300px;
     margin-bottom: ${theme.spacing('S16')};
   }
+
+  ${onMobileView} {
+    padding: ${theme.spacing('S8')} ${theme.spacing('S10')};
+  }
 `;
 
 const CataloguesStatistics = styled.div`
