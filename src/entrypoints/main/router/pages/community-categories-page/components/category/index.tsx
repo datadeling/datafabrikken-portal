@@ -18,6 +18,7 @@ import MegaphoneIcon from '../../../../../../../images/icon-megaphone.inline.svg
 import ThumbsIcon from '../../../../../../../images/icon-thumbs.inline.svg';
 import PostIcon from '../../../../../../../images/icon-post.inline.svg';
 import TopicIcon from '../../../../../../../images/icon-topic.inline.svg';
+import InsightIcon from '../../../../../../../images/icon-community-insight.inline.svg';
 
 import { CommunityCategory } from '../../../../../../../types';
 
@@ -49,6 +50,8 @@ const getCategoryIcon = (id: number) => {
     case 6:
     case 7:
       return <MegaphoneIcon />;
+    case 8:
+      return <InsightIcon />;
     default:
       return <TextCloudIcon />;
   }
