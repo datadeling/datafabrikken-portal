@@ -21,6 +21,14 @@ const Category = styled.div`
 const CategoryIcon = styled.div`
   display: flex;
   min-width: 44px;
+  max-width: 44px;
+
+  & > svg > path,
+  circle,
+  rect {
+    stroke: ${theme.colour(Colour.BLUE, 'B14')};
+    fill: transparent;
+  }
 `;
 
 const TitleContainer = styled.div`
