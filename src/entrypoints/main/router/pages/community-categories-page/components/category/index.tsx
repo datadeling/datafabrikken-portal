@@ -5,7 +5,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import Truncate from 'react-truncate';
 
 import parse from 'html-react-parser';
-import { htmlToText } from 'html-to-text';
 
 import { compose } from 'redux';
 import Link from '../../../../../../../components/link';
@@ -31,7 +30,6 @@ import {
   Props as TranslationProps
 } from '../../../../../../../providers/translations';
 import { formatDateTime } from '../../../../../../../utils/date';
-import { CommunityPlaceholder } from '../../../../../../../types/enums';
 import { postSorter } from '../../../../../../../utils/community/utils';
 
 interface ExternalProps {
@@ -118,14 +116,7 @@ const Category: FC<Props> = ({
               to={`${PATHNAME.COMMUNITY}/${slug}/${lastPost.topic.slug}`}
             >
               <Truncate lines={2} width={280} trimWhitespace>
-                {htmlToText(
-                  lastPost.content.replaceAll(
-                    CommunityPlaceholder.CALENDAR_EVENT_TITLE,
-                    `${translationsService.translate(
-                      'community.calendarEvent'
-                    )}`
-                  )
-                )}
+                {lastPost.topic.title}
               </Truncate>
             </Link>
           </SC.Post>
