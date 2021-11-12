@@ -39,6 +39,10 @@ const UserInfo = styled.div`
 
 const Content = styled.div`
   padding-top: ${theme.spacing('S20')};
+
+  & > p {
+    margin-bottom: ${theme.spacing('S10')};
+  }
 `;
 
 export default {
