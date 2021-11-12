@@ -19,6 +19,7 @@ import organizationsCatalogSaga from '../../../components/with-organizations-cat
 import reportSaga from '../../../components/with-report/redux/saga';
 import organizationsSaga from '../../../components/with-organizations/redux/saga';
 import assessmentsSaga from '../../../components/with-assessments/redux/saga';
+import datasetPreviewSaga from '../../../components/with-dataset-preview/redux/saga';
 
 export default function* saga() {
   yield all([
@@ -40,6 +41,7 @@ export default function* saga() {
     organizationsCatalogSaga(),
     reportSaga(),
     organizationsSaga(),
-    assessmentsSaga()
+    assessmentsSaga(),
+    datasetPreviewSaga()
   ]);
 }

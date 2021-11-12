@@ -17,7 +17,6 @@
     "communityAbout": "Om Datalandsbyen",
     "organizations": "Virksomheter",
     "metadataquality": "Metadatakvalitet"
-
   },
   "footer": {
     "title": "Følg med på Datafabrikken",
@@ -39,7 +38,6 @@
     "totalNumDatasets": "Datasettbeskrivelser totalt",
     "newDatasets": "Nye siste 7 dager",
     "numOrganizationsPublished": "Virksomheter har publisert datasett"
-
   },
   "news": {
     "title": "Siste nytt om Datafabrikken"
@@ -220,7 +218,10 @@
       "referenceDefaultCode": "Andre relasjoner",
       "referenceDefault": "Relasjon",
       "type": "Type",
-      "dataService": "Datatjeneste"
+      "dataService": "Datatjeneste",
+      "preview": "Forhåndsvisning",
+      "previewFailure": "Beklager, det ser ut at distribusjonen ikke finnes eller inneholder ugyldig data.",
+      "previewLoading": "Laster inn forhåndsvisning"
     },
     "issued": "Utgitt",
     "quality": "Kvalitet på innhold",
@@ -281,7 +282,6 @@
     "sample": "Eksempeldata",
     "landingPage": "Mer informasjon",
     "landingPageDesc": "Landingsside for dette datasettet"
-
   },
   "community": {
     "posted": "svarte",
