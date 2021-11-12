@@ -51,10 +51,11 @@ const Section = styled.div`
   display: flex;
 `;
 
-const DownloadButton = styled.a`
+const DownloadLink = styled.a`
   display: flex;
   align-items: center;
   padding: ${theme.spacing('S12')};
+  margin-right: ${theme.spacing('S8')};
   background-color: ${theme.colour(Colour.BLUE, 'B20')};
   & > svg {
     height: 25px;
@@ -71,4 +72,28 @@ const DownloadButton = styled.a`
   }
 `;
 
-export default { DatasetDistribution, Section, DownloadLink: DownloadButton };
+const PreviewLink = styled.a`
+  display: flex;
+  align-items: center;
+  padding: ${theme.spacing('S12')};
+  background-color: ${theme.colour(Colour.BLUE, 'B20')};
+  & > svg {
+    transform: scale(1.25);
+    margin-left: ${theme.spacing('S4')};
+
+    * {
+      animation-play-state: paused !important;
+    }
+  }
+
+  &:hover > svg * {
+    animation-play-state: running !important;
+  }
+`;
+
+export default {
+  DatasetDistribution,
+  Section,
+  DownloadLink,
+  PreviewLink
+};

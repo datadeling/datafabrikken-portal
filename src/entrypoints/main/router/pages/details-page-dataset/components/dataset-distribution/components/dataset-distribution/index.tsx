@@ -1,4 +1,4 @@
-import React, { memo, FC } from 'react';
+import React, { memo, FC, useState } from 'react';
 import { compose } from 'redux';
 import {
   ExpansionPanelBody,
@@ -15,6 +15,9 @@ import SC from './styled';
 import { Distribution, License } from '../../../../../../../../../types';
 import translations from '../../../../../../../../../services/translations';
 import DownloadIcon from '../../../../../../../../../components/icons/download-icon';
+import PreviewIcon from '../../../../../../../../../components/icons/preview-icon';
+
+import Preview from '../preview';
 
 interface ExternalProps {
   distribution: Partial<Distribution>;
@@ -23,6 +26,12 @@ interface ExternalProps {
 interface Props extends ExternalProps {}
 
 const DatasetDistribution: FC<Props> = ({ distribution }) => {
+  const [showPreview, setShowPreview] = useState(false);
+
+  const handleShowPreview = (show: boolean) => {
+    setShowPreview(show);
+  };
+
   const { title } = distribution;
   const { description } = distribution;
   const licenses = distribution.license ?? [];
@@ -118,7 +127,20 @@ const DatasetDistribution: FC<Props> = ({ distribution }) => {
               {translations.translate('dataset.distribution.download')}
               <DownloadIcon />
             </SC.DownloadLink>
+
+            <SC.PreviewLink onClick={() => handleShowPreview(true)}>
+              {translations.translate('dataset.distribution.preview')}
+              <PreviewIcon />
+            </SC.PreviewLink>
           </SC.Section>
+        )}
+        {downloadURL && showPreview && (
+          <Preview
+            downloadURL={downloadURL}
+            rowCount={100}
+            isOpen={showPreview}
+            onClose={() => handleShowPreview(false)}
+          />
         )}
       </ExpansionPanelBody>
     </SC.DatasetDistribution>

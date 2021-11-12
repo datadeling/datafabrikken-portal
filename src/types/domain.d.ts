@@ -527,3 +527,17 @@ export interface Paged<T> {
   size: number;
   number: number;
 }
+
+export interface DatasetPreview {
+  table: PreviewTable;
+  plain: string;
+}
+
+export interface PreviewTable {
+  header: PreviewTableRow;
+  rows: PreviewTableRow[];
+}
+
+export interface PreviewTableRow {
+  columns: string[];
+}
