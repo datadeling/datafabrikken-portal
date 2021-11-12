@@ -87,6 +87,7 @@ const Teaser = styled.div`
     display: inline;
     font-weight: ${theme.fontWeight('FW300')};
     color: ${theme.colour(Colour.BLUE, 'B52')};
+    border-bottom: 0px;
   }
 
   & > a > svg {
@@ -94,13 +95,16 @@ const Teaser = styled.div`
     position: relative;
     top: 5px;
   }
+
+  & > a > span > span > span {
+    border-bottom: 3px solid rgb(158, 190, 255);
+  }
 `;
 
 const UserInfo = styled.div`
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: ${theme.spacing('S10')};
 
   ${onMobileView} {
     font-size: ${theme.fontSize('FS8')};

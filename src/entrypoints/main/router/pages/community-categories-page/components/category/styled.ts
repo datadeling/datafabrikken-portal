@@ -102,12 +102,17 @@ const Post = styled.div`
     display: inline;
     font-weight: ${theme.fontWeight('FW300')};
     color: ${theme.colour(Colour.BLUE, 'B52')};
+    border-bottom: 0;
   }
 
   & > a > svg {
     width: 20px;
     position: relative;
     top: 5px;
+  }
+
+  & > a > span > span > span {
+    border-bottom: 3px solid rgb(158, 190, 255);
   }
 `;
 
