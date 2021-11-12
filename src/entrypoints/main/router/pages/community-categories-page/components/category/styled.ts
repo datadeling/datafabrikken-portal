@@ -114,7 +114,6 @@ const Post = styled.div`
 const UserInfo = styled.div`
   display: inline-flex;
   flex-wrap: wrap;
-  margin-bottom: ${theme.spacing('S10')};
 `;
 
 const PostDate = styled.span`
