@@ -2,8 +2,12 @@ import React, {
   ChangeEventHandler,
   FC,
   FormEvent,
+  KeyboardEventHandler,
+  MouseEventHandler,
+  useState,
   useCallback,
-  useState
+  FormEventHandler,
+  useEffect
 } from 'react';
 
 import SC from './styled';
@@ -11,9 +15,11 @@ import { getParameter } from '../../utils/location-helper';
 
 interface Props {
   placeholder: string;
-  onSubmit?: (e: FormEvent<HTMLFormElement>) => void;
   onClear: () => void;
+  onSubmit?: FormEventHandler<HTMLFormElement>;
   onChange?: ChangeEventHandler<HTMLInputElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLInputElement>;
+  onClick?: MouseEventHandler<HTMLInputElement>;
   hideSearchIcon?: boolean;
 }
 
@@ -22,9 +28,15 @@ const SearchBar: FC<Props> = ({
   onSubmit,
   onClear,
   onChange,
+  onKeyDown,
+  onClick,
   hideSearchIcon
 }) => {
   const [searchQuery, setSearchQuery] = useState<string>(getParameter('q'));
+
+  useEffect(() => {
+    setSearchQuery(getParameter('q'));
+  }, [getParameter('q')]);
 
   const clearSearchField = useCallback((e: FormEvent) => {
     e.preventDefault();
@@ -33,7 +45,12 @@ const SearchBar: FC<Props> = ({
   }, []);
 
   return (
-    <SC.SearchBar onSubmit={onSubmit}>
+    <SC.SearchBar
+      onSubmit={(e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        onSubmit && onSubmit(e);
+      }}
+    >
       <SC.SearchField
         id='searchBox'
         autoComplete='off'
@@ -46,6 +63,8 @@ const SearchBar: FC<Props> = ({
             onChange(event);
           }
         }}
+        onKeyDown={onKeyDown}
+        onClick={onClick}
       />
       {searchQuery && (
         <SC.ClearButton type='button' onClick={clearSearchField}>
