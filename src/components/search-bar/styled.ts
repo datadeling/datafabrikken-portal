@@ -8,9 +8,11 @@ import ClearSVG from '../../images/icon-clear.inline.svg';
 const onMobileView = '@media (max-width: 900px)';
 
 const SearchBar = styled.form`
+  position: relative;
   background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
   flex: 0 1 60%;
+  box-sizing: border-box;
   border: 1px solid ${theme.colour(Colour.NEUTRAL, 'N70')};
   border-radius: 5px;
   align-items: center;

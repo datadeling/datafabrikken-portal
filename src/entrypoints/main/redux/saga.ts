@@ -20,6 +20,7 @@ import reportSaga from '../../../components/with-report/redux/saga';
 import organizationsSaga from '../../../components/with-organizations/redux/saga';
 import assessmentsSaga from '../../../components/with-assessments/redux/saga';
 import datasetPreviewSaga from '../../../components/with-dataset-preview/redux/saga';
+import suggestionsSaga from '../../../components/with-suggestions/redux/saga';
 import ConceptsSaga from '../../../components/with-concepts/redux/saga';
 
 export default function* saga() {
@@ -44,6 +45,7 @@ export default function* saga() {
     organizationsSaga(),
     assessmentsSaga(),
     datasetPreviewSaga(),
-    ConceptsSaga()
+    ConceptsSaga(),
+    suggestionsSaga()
   ]);
 }

@@ -144,7 +144,6 @@ const OrganizationsPage: FC<Props> = ({
                   setSearchQuery(event.currentTarget.value ?? '')
                 }
                 onClear={() => setSearchQuery('')}
-                onSubmit={e => e.preventDefault()}
               />
             </SC.SearchBarContainer>
             <SC.SortRow className='col-12'>

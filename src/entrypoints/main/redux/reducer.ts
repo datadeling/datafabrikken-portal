@@ -20,6 +20,7 @@ import ReportReducer from '../../../components/with-report/redux/reducer';
 import OrganizationsReducer from '../../../components/with-organizations/redux/reducer';
 import AssessmentsReducer from '../../../components/with-assessments/redux/reducer';
 import DatasetPreviewReducer from '../../../components/with-dataset-preview/redux/reducer';
+import SuggestionsReducer from '../../../components/with-suggestions/redux/reducer';
 import ConceptsReducer from '../../../components/with-concepts/redux/reducer';
 
 export default combineReducers({
@@ -43,5 +44,6 @@ export default combineReducers({
   OrganizationsReducer,
   AssessmentsReducer,
   DatasetPreviewReducer,
-  ConceptsReducer
+  ConceptsReducer,
+  SuggestionsReducer
 });

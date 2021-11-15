@@ -1,11 +1,4 @@
-import React, {
-  ChangeEvent,
-  FC,
-  FormEvent,
-  memo,
-  useEffect,
-  useState
-} from 'react';
+import React, { ChangeEvent, FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 import { RouteComponentProps, useLocation, useHistory } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
@@ -21,7 +14,6 @@ import { Menu, Trigger } from '../../../../../components/dropdown-menu';
 import Translation from '../../../../../components/translation';
 import Root from '../../../../../components/root';
 import SearchHit from '../../../../../components/search-hit';
-import SearchBar from '../../../../../components/search-bar';
 import {
   clearParameters,
   getAllParameters,
@@ -52,6 +44,8 @@ import {
 } from '../../../../../components/statistics-regular';
 import translations from '../../../../../services/translations';
 import { GetDatasetsParams } from '../../../../../components/with-datasets/redux/actions';
+import { resetSearchSuggestions } from '../../../../../components/with-suggestions/redux/actions';
+import AutosuggestSearchbar from '../../../../../components/autosuggest-searchbar';
 
 interface Props
   extends RouteComponentProps,
@@ -120,12 +114,14 @@ const DatasetsPage: FC<Props> = ({
           datasetParams?.orgPath?.split('/').pop()
       );
     }
+    return () => {
+      resetSearchSuggestions();
+    };
   }, []);
 
-  const searchSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const searchSubmit = (searchValue?: string) => {
     setParameter(history, {
-      q: e.currentTarget.searchBox.value || null,
+      q: searchValue || null,
       page: null
     });
   };
@@ -164,7 +160,7 @@ const DatasetsPage: FC<Props> = ({
         </SC.Title>
         <SC.Row reverse>
           <SC.SearchContainer>
-            <SearchBar
+            <AutosuggestSearchbar
               placeholder='Søk etter datasett'
               onSubmit={searchSubmit}
               onClear={searchClear}
