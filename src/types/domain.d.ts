@@ -310,7 +310,7 @@ export interface CommunityPagination {
 }
 interface DatasetReference {
   referenceType: ReferenceType;
-  source: { uri: string };
+  source?: { uri?: string };
   prefLabel: Partial<TextLanguage>;
 }
 
