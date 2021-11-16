@@ -168,10 +168,10 @@ const DatasetDetailsPage: FC<Props> = ({
 
   const referencedResourcesUnResolved =
     dataset?.references?.filter(
-      ({ source: { uri: datasetRefererenceUri } }) =>
+      ({ source }) =>
         !referencedDatasets.some(
           ({ uri: referencedDatasetsUri }) =>
-            referencedDatasetsUri === datasetRefererenceUri
+            referencedDatasetsUri === source?.uri
         )
     ) ?? [];
 
@@ -199,7 +199,11 @@ const DatasetDetailsPage: FC<Props> = ({
   useEffect(() => {
     if (isMounted) {
       const datasetUris =
-        dataset?.references?.map(({ source: { uri } }) => uri) ?? [];
+        dataset?.references?.reduce(
+          (accumulator, { source }) =>
+            source?.uri ? [...accumulator, source.uri] : accumulator,
+          [] as string[]
+        ) ?? [];
       if (datasetUris && datasetUris.length > 0) {
         getDatasets({ uris: datasetUris });
       }
@@ -564,51 +568,53 @@ const DatasetDetailsPage: FC<Props> = ({
         >
           <KeyValueList>
             {referencedDatasets?.map(
-              ({ id, uri, title: datasetTitle }, index) => (
-                <KeyValueListItem
-                  key={`${id}-${index}`}
-                  property={translations.getTranslateText(
-                    referenceTypes?.find(
-                      ({ uri: referenceUri }) =>
-                        referenceUri ===
-                        datasetReferenceTypes.find(
-                          ({ source }) => source.uri === uri
-                        )?.referenceType?.uri
-                    )?.prefLabel
-                  )}
-                  value={
-                    <InternalLink
-                      to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}${PATHNAME.DATASET_DETAILS}/${id}`}
-                    >
-                      {translations.getTranslateText(datasetTitle)}
-                    </InternalLink>
-                  }
-                />
-              )
+              ({ id, uri, title: datasetTitle }, index) =>
+                id &&
+                uri &&
+                datasetTitle && (
+                  <KeyValueListItem
+                    key={`${id}-${index}`}
+                    property={translations.getTranslateText(
+                      referenceTypes?.find(
+                        ({ uri: referenceUri }) =>
+                          referenceUri ===
+                          datasetReferenceTypes.find(
+                            ({ source }) => source?.uri === uri
+                          )?.referenceType?.uri
+                      )?.prefLabel
+                    )}
+                    value={
+                      <InternalLink
+                        to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}${PATHNAME.DATASET_DETAILS}/${id}`}
+                      >
+                        {translations.getTranslateText(datasetTitle)}
+                      </InternalLink>
+                    }
+                  />
+                )
             )}
             {referencedResourcesUnResolved?.map(
               (
-                {
-                  source: { uri },
-                  referenceType: { uri: referenceTypeUri } = {}
-                },
+                { source, referenceType: { uri: referenceTypeUri } = {} },
                 index
-              ) => (
-                <KeyValueListItem
-                  key={`${uri}-${index}`}
-                  property={translations.getTranslateText(
-                    referenceTypes?.find(
-                      ({ uri: referenceTypesUri }) =>
-                        referenceTypesUri === referenceTypeUri
-                    )?.prefLabel
-                  )}
-                  value={
-                    <ExternalLink href={uri} rel='noopener noreferrer'>
-                      {uri}
-                    </ExternalLink>
-                  }
-                />
-              )
+              ) =>
+                source?.uri &&
+                referenceTypeUri && (
+                  <KeyValueListItem
+                    key={`${source.uri}-${index}`}
+                    property={translations.getTranslateText(
+                      referenceTypes?.find(
+                        ({ uri: referenceTypesUri }) =>
+                          referenceTypesUri === referenceTypeUri
+                      )?.prefLabel
+                    )}
+                    value={
+                      <ExternalLink href={source.uri} rel='noopener noreferrer'>
+                        {source.uri}
+                      </ExternalLink>
+                    }
+                  />
+                )
             )}
           </KeyValueList>
         </ContentSection>
