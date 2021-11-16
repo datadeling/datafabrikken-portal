@@ -530,7 +530,12 @@ export interface Paged<T> {
 
 export interface DatasetPreview {
   table: PreviewTable;
-  plain: string;
+  plain: PreviewPlain;
+}
+
+export interface PreviewPlain {
+  value: string;
+  contentType: string;
 }
 
 export interface PreviewTable {

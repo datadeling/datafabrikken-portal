@@ -4,6 +4,8 @@ import { compose } from 'redux';
 
 import DataGrid from 'react-data-grid';
 
+import xmlFormat from 'xml-formatter';
+
 import withDatasetPreview, {
   Props as DatasetPreviewProps
 } from '../../../../../../../../../components/with-dataset-preview';
@@ -22,6 +24,9 @@ interface ExternalProps {
 }
 
 interface Props extends ExternalProps, DatasetPreviewProps {}
+
+const isXML = (contentType: string) => contentType.includes('xml');
+const isJSON = (contentType: string) => contentType.includes('json');
 
 const Preview: FC<Props> = ({
   downloadURL,
@@ -61,6 +66,11 @@ const Preview: FC<Props> = ({
     );
   };
 
+  const beautifyJSON = (jsonString: string) => {
+    const jsonObject = JSON.parse(jsonString);
+    return JSON.stringify(jsonObject, null, 2);
+  };
+
   const updateScrolling = () => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
   };
@@ -92,9 +102,21 @@ const Preview: FC<Props> = ({
             <SpinnerIcon />
           </SC.Center>
         )}
-        {datasetPreview && !isLoadingDatasetPreview && (
+        {datasetPreview?.table && !isLoadingDatasetPreview && (
           <DataGrid columns={getColumns()} rows={getRows()} />
         )}
+        {datasetPreview?.plain &&
+          !datasetPreview?.table &&
+          !isLoadingDatasetPreview &&
+          isXML(datasetPreview.plain.contentType) && (
+            <SC.Plain> {xmlFormat(datasetPreview.plain.value)}</SC.Plain>
+          )}
+        {datasetPreview?.plain &&
+          !datasetPreview?.table &&
+          !isLoadingDatasetPreview &&
+          isJSON(datasetPreview.plain.contentType) && (
+            <SC.Plain>{beautifyJSON(datasetPreview.plain.value)} </SC.Plain>
+          )}
         {!(datasetPreview || isLoadingDatasetPreview) && (
           <SC.Center>
             <span>

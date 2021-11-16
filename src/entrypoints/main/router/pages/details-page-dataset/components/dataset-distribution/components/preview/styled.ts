@@ -71,11 +71,17 @@ const Center = styled.div`
   }
 `;
 
+const Plain = styled.pre`
+  height: 100%;
+  overflow: scroll;
+`;
+
 export default {
   Modal,
   Container,
   Header,
   ClearIcon,
   CloseButton,
-  Center
+  Center,
+  Plain
 };
