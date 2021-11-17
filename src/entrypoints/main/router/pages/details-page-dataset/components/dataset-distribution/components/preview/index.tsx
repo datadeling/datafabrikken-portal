@@ -17,6 +17,8 @@ import SpinnerIcon from '../../../../../../../../../components/icons/spinner-ico
 import SC from './styled';
 
 interface ExternalProps {
+  title: string;
+  subtitle: string;
   downloadURL: string;
   rowCount: number;
   isOpen: boolean;
@@ -29,6 +31,8 @@ const isXML = (contentType: string) => contentType.includes('xml');
 const isJSON = (contentType: string) => contentType.includes('json');
 
 const Preview: FC<Props> = ({
+  title,
+  subtitle,
   downloadURL,
   rowCount,
   isOpen,
@@ -39,14 +43,22 @@ const Preview: FC<Props> = ({
 }) => {
   const getColumns = (): any => {
     const {
-      table: { header }
+      table: { header, rows }
     } = datasetPreview;
 
     return header?.columns.map((column: string, index) => ({
       key: `column-${index}`,
       name: column,
       resizable: true,
-      sortable: true
+      sortable: true,
+      width:
+        rows.reduce(
+          (length, row) =>
+            row.columns[index]?.length > length
+              ? row.columns[index].length
+              : length,
+          column.length
+        ) * 10
     }));
   };
 
@@ -93,10 +105,17 @@ const Preview: FC<Props> = ({
     <SC.Modal show={isOpen}>
       <SC.Container>
         <SC.Header>
-          <SC.CloseButton onClick={() => handleOnClose()}>
-            <SC.ClearIcon /> Lukk
-          </SC.CloseButton>
+          <SC.TitleHeader>
+            <SC.Title>{title}</SC.Title>
+            <SC.Subtitle>{subtitle}</SC.Subtitle>
+          </SC.TitleHeader>
+          <SC.ButtonContainer>
+            <SC.CloseButton onClick={() => handleOnClose()}>
+              <SC.ClearIcon /> Lukk
+            </SC.CloseButton>
+          </SC.ButtonContainer>
         </SC.Header>
+
         {isLoadingDatasetPreview && (
           <SC.Center>
             <SpinnerIcon />

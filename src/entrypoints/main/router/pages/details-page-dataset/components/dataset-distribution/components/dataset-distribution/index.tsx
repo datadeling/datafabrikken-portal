@@ -12,7 +12,11 @@ import Detail from '../detail';
 
 import SC from './styled';
 
-import { Distribution, License } from '../../../../../../../../../types';
+import {
+  Distribution,
+  License,
+  TextLanguage
+} from '../../../../../../../../../types';
 import translations from '../../../../../../../../../services/translations';
 import DownloadIcon from '../../../../../../../../../components/icons/download-icon';
 import PreviewIcon from '../../../../../../../../../components/icons/preview-icon';
@@ -20,12 +24,13 @@ import PreviewIcon from '../../../../../../../../../components/icons/preview-ico
 import Preview from '../preview';
 
 interface ExternalProps {
+  datasetTitle: Partial<TextLanguage>;
   distribution: Partial<Distribution>;
 }
 
 interface Props extends ExternalProps {}
 
-const DatasetDistribution: FC<Props> = ({ distribution }) => {
+const DatasetDistribution: FC<Props> = ({ datasetTitle, distribution }) => {
   const [showPreview, setShowPreview] = useState(false);
 
   const handleShowPreview = (show: boolean) => {
@@ -136,6 +141,13 @@ const DatasetDistribution: FC<Props> = ({ distribution }) => {
         )}
         {downloadURL && showPreview && (
           <Preview
+            title={translations.getTranslateText(datasetTitle) ?? ''}
+            subtitle={
+              translations.getTranslateText(title) ??
+              translations.getTranslateText(description) ??
+              accessURL?.toLowerCase() ??
+              ''
+            }
             downloadURL={downloadURL}
             rowCount={100}
             isOpen={showPreview}

@@ -267,6 +267,7 @@ const DatasetDetailsPage: FC<Props> = ({
           {distributions.map((distribution, index) => (
             <DatasetDistribution
               key={`${distribution.uri || 'distribution'}-${index}`}
+              datasetTitle={title}
               distribution={distribution}
             />
           ))}
