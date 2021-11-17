@@ -114,6 +114,7 @@ export interface Dataset {
   references?: DatasetReference[];
   temporal?: TemporalRestriction[];
   contactPoint: Partial<ContactPoint>[];
+  subject?: Partial<Concept>[];
 }
 
 interface ContactPoint {
@@ -545,4 +546,24 @@ export interface PreviewTable {
 
 export interface PreviewTableRow {
   columns: string[];
+}
+
+export interface Concept {
+  id: string;
+  type: EntityEnum.CONCEPT;
+  uri: string;
+  identifier: string;
+  prefLabel: Partial<TextLanguage>;
+  altLabel?: Partial<TextLanguage>[];
+  hiddenLabel?: Partial<TextLanguage>[];
+  definition?: ConceptDefinition;
+  publisher: Partial<Publisher>;
+  example: Partial<TextLanguage>;
+  subject?: Partial<TextLanguage>;
+  application?: Partial<TextLanguage>[];
+  harvest?: Partial<Harvest>;
+  contactPoint?: Partial<ConceptContactPoint>;
+  validFromIncluding?: string;
+  validToIncluding?: string;
+  seeAlso?: string[];
 }
