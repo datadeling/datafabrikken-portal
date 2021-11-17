@@ -4,9 +4,11 @@ import ClearIconBase from '../../../../../../../../../images/icon-clear.inline.s
 
 import { theme, Colour } from '../../../../../../../app/theme';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const Modal = styled.div<{ show?: boolean }>`
   z-index: 9999999;
-  display: ${({ show }) => (show ? 'block' : 'none')};
+  display: ${({ show }) => (show ? 'flex' : 'none')};
   position: fixed;
   top: 0;
   left: 0;
@@ -31,12 +33,42 @@ const Container = styled.div`
   & > div:last-child {
     flex-grow: 1;
   }
+
+  ${onMobileView} {
+    padding: 1rem;
+  }
 `;
 
 const Header = styled.div`
   display: flex;
-  justify-content: flex-end;
-  padding-bottom: 2rem;
+  margin-bottom: ${theme.spacing('S4')};
+  ${onMobileView} {
+    flex-direction: column;
+  }
+`;
+
+const TitleHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: calc(100%);
+`;
+
+const Title = styled.h2`
+  flex-grow: 1;
+  margin-bottom: ${theme.spacing('S4')};
+  font-size: ${theme.fontSize('FS20')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS14')};
+  }
+`;
+
+const Subtitle = styled.h3`
+  font-size: ${theme.fontSize('FS18')};
+  margin-bottom: ${theme.spacing('S4')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS12')};
+  }
 `;
 
 const ClearIcon = styled(ClearIconBase)`
@@ -49,6 +81,12 @@ const ClearIcon = styled(ClearIconBase)`
   }
 `;
 
+const ButtonContainer = styled.div`
+  ${onMobileView} {
+    order: -1;
+  }
+`;
+
 const CloseButton = styled.button`
   display: flex;
   align-items: center;
@@ -56,8 +94,8 @@ const CloseButton = styled.button`
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
   border: none;
   padding: ${theme.spacing('S10')};
-  min-width: 100px;
   cursor: pointer;
+  white-space: nowrap;
 `;
 
 const Center = styled.div`
@@ -79,7 +117,11 @@ const Plain = styled.pre`
 export default {
   Modal,
   Container,
+  ButtonContainer,
   Header,
+  Title,
+  TitleHeader,
+  Subtitle,
   ClearIcon,
   CloseButton,
   Center,
