@@ -43,6 +43,10 @@ import withErrorBoundary from '../../../../../components/with-error-boundary';
 import { ItemWithRelationType } from '../../../../../types';
 import Topic from '../../../../../components/community/topic';
 import Translation from '../../../../../components/translation';
+import withConcepts, {
+  Props as ConceptProps
+} from '../../../../../components/with-concepts';
+import env from '../../../../../env';
 
 interface RouteParams {
   datasetId?: string;
@@ -55,6 +59,7 @@ interface Props
     PublicServicesProps,
     DataServicesProps,
     CommunityProps,
+    ConceptProps,
     RouteComponentProps<RouteParams> {}
 
 const DatasetDetailsPage: FC<Props> = ({
@@ -66,6 +71,8 @@ const DatasetDetailsPage: FC<Props> = ({
   isLoadingDataset,
   topics,
   referenceData: { referencetypes: referenceTypes },
+  concepts,
+  conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
   datasetsActions: {
     getPagedDatasetsRequested: getDatasets,
@@ -193,6 +200,7 @@ const DatasetDetailsPage: FC<Props> = ({
       resetDataServicesRelations();
       resetPublicServicesRelations();
       resetTopics();
+      resetConcepts();
     };
   }, [datasetId, getDataset]);
 
@@ -206,6 +214,16 @@ const DatasetDetailsPage: FC<Props> = ({
         ) ?? [];
       if (datasetUris && datasetUris.length > 0) {
         getDatasets({ uris: datasetUris });
+      }
+
+      const conceptIdentifiers =
+        dataset?.subject?.map(({ identifier }) => identifier).filter(Boolean) ??
+        [];
+      if (conceptIdentifiers.length > 0) {
+        getConcepts({
+          identifiers: conceptIdentifiers as string[],
+          size: 1000
+        });
       }
 
       if (dataset?.uri) {
@@ -558,6 +576,34 @@ const DatasetDetailsPage: FC<Props> = ({
         </ContentSection>
       )}
 
+      {concepts.length > 0 && (
+        <ContentSection
+          id='concept-references'
+          title={translations.translate(
+            'detailsPage.sectionTitles.dataset.conceptReferences'
+          )}
+        >
+          <KeyValueList $highlighted>
+            {concepts.map(
+              ({ id, prefLabel, definition }, index) =>
+                id && (
+                  <KeyValueListItem
+                    key={`${id}-${index}`}
+                    property={
+                      <ExternalLink
+                        href={`${env.FDK_PORTAL_HOST}${PATHNAME.FDK_CONCEPTS}/${id}`}
+                      >
+                        {translations.getTranslateText(prefLabel)}
+                      </ExternalLink>
+                    }
+                    value={translations.getTranslateText(definition?.text)}
+                  />
+                )
+            )}
+          </KeyValueList>
+        </ContentSection>
+      )}
+
       {(referencedDatasets.length > 0 ||
         referencedResourcesUnResolved.length > 0) && (
         <ContentSection
@@ -803,5 +849,6 @@ export default compose<FC<Props>>(
   withDataServices,
   withPublicServices,
   withCommunityTopicSearch,
+  withConcepts,
   withErrorBoundary(ErrorPage)
 )(DatasetDetailsPage);

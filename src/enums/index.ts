@@ -18,6 +18,7 @@ export enum PATHNAME {
   DATASET_DETAILS = '/datasett',
   FDK_PUBLIC_SERVICES = '/public-services',
   FDK_DATA_SERVICES = '/dataservices',
+  FDK_CONCEPTS = '/concepts',
   ORGANIZATION = '/virksomheter',
   METADATAQUALITY = '/metadatakvalitet'
 }
