@@ -121,7 +121,7 @@ const CommunityTopicsPage: FC<Props> = ({
     }
 
     return () => {};
-  }, [pathname]);
+  }, [pathname, sortByDateAsc]);
 
   return (
     <Root>
