@@ -20,8 +20,8 @@ const Category = styled.div`
 
 const CategoryIcon = styled.div`
   display: flex;
-  min-width: 44px;
-  max-width: 44px;
+  min-width: 50px;
+  max-width: 50px;
 
   & > svg > path,
   circle,

@@ -19,6 +19,7 @@ import ThumbsIcon from '../../../../../../../images/icon-thumbs.inline.svg';
 import PostIcon from '../../../../../../../images/icon-post.inline.svg';
 import TopicIcon from '../../../../../../../images/icon-topic.inline.svg';
 import InsightIcon from '../../../../../../../images/icon-community-insight.inline.svg';
+import LawIcon from '../../../../../../../images/icon-law.inline.svg';
 
 import { CommunityCategory } from '../../../../../../../types';
 
@@ -39,19 +40,22 @@ interface ExternalProps {
 
 interface Props extends ExternalProps, TranslationProps {}
 
-const getCategoryIcon = (id: number) => {
-  switch (id) {
-    case 2:
+const getCategoryIcon = (slug: string) => {
+  const slugName = slug.split('/').pop();
+
+  switch (slugName) {
+    case 'gode-eksempler-på-bruk':
       return <LightBulbIcon />;
-    case 3:
+    case 'møter-og-arrangementer':
       return <CalendarIcon />;
-    case 4:
+    case 'tilbakemeldinger-og-nyheter':
       return <ThumbsIcon />;
-    case 6:
-    case 7:
+    case 'etterspør-datasett-og-api-er':
       return <MegaphoneIcon />;
-    case 8:
+    case 'innsynsløsning-utredning-av-tekniske-og-juridiske-muligheter':
       return <InsightIcon />;
+    case 'juss-og-data':
+      return <LawIcon />;
     default:
       return <TextCloudIcon />;
   }
@@ -59,7 +63,6 @@ const getCategoryIcon = (id: number) => {
 
 const Category: FC<Props> = ({
   category: {
-    cid,
     slug,
     name,
     description,
@@ -74,7 +77,7 @@ const Category: FC<Props> = ({
   return (
     <SC.Category>
       <SC.TitleContainer>
-        <SC.CategoryIcon>{getCategoryIcon(cid)}</SC.CategoryIcon>
+        <SC.CategoryIcon>{getCategoryIcon(slug)}</SC.CategoryIcon>
         <SC.TitleColumn>
           <SC.Title>
             <Link as={RouterLink} to={`${PATHNAME.COMMUNITY}/${slug}`}>
