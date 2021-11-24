@@ -15,9 +15,11 @@ const SearchBar = styled.form`
   box-sizing: border-box;
   border: 1px solid ${theme.colour(Colour.NEUTRAL, 'N70')};
   border-radius: 5px;
+  min-width: 600px;
   align-items: center;
   ${onMobileView} {
     & {
+      min-width: 0;
       flex: 1;
     }
   }

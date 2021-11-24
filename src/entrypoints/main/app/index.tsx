@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { CookiesProvider } from 'react-cookie';
 import { Provider as ReduxProvider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
-import { ParallaxProvider } from 'react-scroll-parallax';
 
 import GlobalStyles from './styles';
 import { defaultTheme as theme } from './theme';
@@ -18,11 +17,9 @@ const App: FC = () => (
 
     <CookiesProvider>
       <TranslationsProvider>
-        <ParallaxProvider>
-          <ReduxProvider store={store}>
-            <Router />
-          </ReduxProvider>
-        </ParallaxProvider>
+        <ReduxProvider store={store}>
+          <Router />
+        </ReduxProvider>
       </TranslationsProvider>
     </CookiesProvider>
   </ThemeProvider>

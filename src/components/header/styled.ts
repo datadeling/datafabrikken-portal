@@ -10,12 +10,11 @@ import BetaLogoBase from '../../images/tag-beta-desktop.inline.svg';
 const onMobileView = '@media (max-width: 900px)';
 
 const Header = styled.header`
-  background-color: ${theme.colour(Colour.BLUE, 'B52')};
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
   align-items: center;
   height: 80px;
-  background: ${theme.colour(Colour.BLUE, 'B52')};
+  background: ${theme.colour(Colour.BLUE, 'B54')};
   position: fixed;
   top: 0;
   width: 100%;

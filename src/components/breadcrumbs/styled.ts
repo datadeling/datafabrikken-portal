@@ -6,7 +6,7 @@ import LinkSC from '../link/styled';
 const onMobileView = '@media (max-width: 900px)';
 
 const Root = styled.div`
-  background-color: ${theme.colour(Colour.BLUE, 'B52')};
+  background-color: ${theme.colour(Colour.BLUE, 'B54')};
   margin-top: 80px;
   ${onMobileView} {
     & {

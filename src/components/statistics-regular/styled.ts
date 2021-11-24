@@ -9,7 +9,7 @@ const StatisticsContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  background-color: ${theme.colour(Colour.BLUE, 'B52')};
+  background-color: ${theme.colour(Colour.BLUE, 'B54')};
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   padding: ${theme.spacing('S8')};
 `;

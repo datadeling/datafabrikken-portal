@@ -105,7 +105,7 @@ const SortRow = styled.div`
   flex-wrap: wrap;
   align-items: center;
   padding: ${theme.spacing('S8')} ${theme.spacing('S10')};
-  background-color: ${theme.colour(Colour.BLUE, 'B52')};
+  background-color: ${theme.colour(Colour.BLUE, 'B54')};
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   font-size: ${theme.fontSize('FS10')};
   font-weight: ${theme.fontWeight('FW500')};
