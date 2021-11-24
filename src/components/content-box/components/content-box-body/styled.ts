@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { theme } from '../../../../entrypoints/main/app/theme';
+import { theme, Colour } from '../../../../entrypoints/main/app/theme';
 
 import LinkSC from '../../../link/styled';
 
@@ -14,6 +14,10 @@ const ContentBoxBody = styled.div`
   }
   ${LinkSC.Link} {
     font-size: ${theme.fontSize('FS10')};
+  }
+
+  & > div > p > a {
+    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
   }
 `;
 

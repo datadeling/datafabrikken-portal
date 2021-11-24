@@ -91,7 +91,7 @@ const FilterPill = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: ${theme.colour(Colour.BLUE, 'B52')};
+    background-color: ${theme.colour(Colour.BLUE, 'B54')};
     border: 1px solid ${theme.colour(Colour.NEUTRAL, 'N0')};
   }
 `;

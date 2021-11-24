@@ -19,7 +19,7 @@ const Container = styled(ContainerSC.Container)`
 `;
 
 const Header = styled.section`
-  background-color: ${theme.colour(Colour.BLUE, 'B52')};
+  background-color: ${theme.colour(Colour.BLUE, 'B54')};
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   padding-bottom: ${theme.spacing('S20')};
 `;

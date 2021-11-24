@@ -6,11 +6,22 @@ const onMobileView = '@media (max-width: 900px)';
 const Topic = styled.div`
   display: flex;
   flex-direction: row;
+  color: ${theme.colour(Colour.BLUE, 'B52')};
   background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   justify-content: space-between;
   align-items: center;
   padding: ${theme.spacing('S10')} ${theme.spacing('S16')};
   margin: 10px 0px;
+
+  ${onMobileView} {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: ${theme.spacing('S10')} ${theme.spacing('S10')};
+
+    & > div:first-child {
+      padding-bottom: ${theme.spacing('S4')};
+    }
+  }
 `;
 
 const Info = styled.div`
@@ -33,6 +44,9 @@ const Info = styled.div`
 
 const Title = styled.h3`
   font-size: ${theme.fontSize('FS14')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS10')};
+  }
 `;
 
 const SubTitle = styled.div`
@@ -76,8 +90,13 @@ const Statistics = styled.ul`
   }
 
   ${onMobileView} {
-    display: none;
-  } ;
+    & > li {
+      flex: 0 0 50%;
+      & > svg {
+        transform: scale(0.8);
+      }
+    }
+  }
 `;
 
 export default { Topic, Info, Title, SubTitle, UserTime, Tags, Statistics };

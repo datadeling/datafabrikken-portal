@@ -73,8 +73,8 @@ const IconWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  min-height: 300px;
-  max-height: 300px;
+  min-height: 250px;
+  max-height: 250px;
   overflow: hidden;
 
   & img {

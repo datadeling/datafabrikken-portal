@@ -13,9 +13,10 @@ import InternalLink from '../../link-internal';
 
 interface Props {
   topic: CommunityTopic;
+  hideUserInfoAndTags?: boolean;
 }
 
-const Topic: FC<Props> = ({ topic }) => {
+const Topic: FC<Props> = ({ topic, hideUserInfoAndTags = false }) => {
   const topicOwner = topic?.posts?.[0]?.user;
   return (
     <SC.Topic>
@@ -27,17 +28,19 @@ const Topic: FC<Props> = ({ topic }) => {
             {topic.title}
           </InternalLink>
         </SC.Title>
-        <SC.SubTitle>
-          <SC.UserTime>
-            <User user={topicOwner} />
-            {new Date(topic.timestamp).toLocaleDateString()}
-          </SC.UserTime>
-          <SC.Tags>
-            {topic?.tags?.map((tag, index) => (
-              <Tag key={`tag_${index}`} {...tag} />
-            ))}
-          </SC.Tags>
-        </SC.SubTitle>
+        {!hideUserInfoAndTags && (
+          <SC.SubTitle>
+            <SC.UserTime>
+              <User user={topicOwner} />
+              {new Date(topic.timestamp).toLocaleDateString()}
+            </SC.UserTime>
+            <SC.Tags>
+              {topic?.tags?.map((tag, index) => (
+                <Tag key={`tag_${index}`} {...tag} />
+              ))}
+            </SC.Tags>
+          </SC.SubTitle>
+        )}
       </SC.Info>
       <SC.Statistics>
         <li>

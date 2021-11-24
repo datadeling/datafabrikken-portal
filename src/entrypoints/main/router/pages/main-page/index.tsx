@@ -1,24 +1,28 @@
 import React, { memo, FC, useEffect } from 'react';
 import { compose } from 'redux';
-import { Link as RouterLink, RouteComponentProps } from 'react-router-dom';
-import { InView } from 'react-intersection-observer';
+import {
+  Link as RouterLink,
+  RouteComponentProps,
+  useHistory
+} from 'react-router-dom';
+
+import lottie from 'lottie-web';
 
 import Root from '../../../../../components/root';
-import Container from '../../../../../components/container';
-import ParallaxContainer from '../../../../../components/parallax-container';
 import {
   ContentBox,
   ContentBoxHeader,
   ContextBoxBody,
   SC as ContentBoxSC
 } from '../../../../../components/content-box';
-import Link, { Variant } from '../../../../../components/link';
+import Link from '../../../../../components/link';
 import {
   InfoBox,
   InfoBoxBody,
   InfoBoxTitle,
   InfoBoxImage,
-  SC as InfoBoxSC
+  SC as InfoBoxSC,
+  InfoBoxIcon
 } from '../../../../../components/info-box';
 import withNews, {
   Props as CmsNewsProps
@@ -32,130 +36,264 @@ import { dateStringToDate, formatDate } from '../../../../../utils/date';
 
 import SC from './styled';
 import Markdown from '../../../../../components/markdown';
+import AutosuggestSearchbar from '../../../../../components/autosuggest-searchbar';
+import Translation from '../../../../../components/translation';
+import withDatasets, {
+  Props as DatasetsProps
+} from '../../../../../components/with-datasets';
+import withCommunityTopics, {
+  Props as CommunityTopicsProps
+} from '../../../../../components/with-community-topics';
+import {
+  withTranslations,
+  Props as TranslationProps
+} from '../../../../../providers/translations';
+import Topic from '../../../../../components/community/topic';
 
-const articleId = 'a8ba0c51-4693-401c-b2c8-61dfe144cc83';
+import TopicsIllustration from '../../../../../images/illustration-topics.inline.svg';
+import MonitorIllustration from '../../../../../images/illustration-monitor.inline.svg';
+import RoadSignIllustration from '../../../../../images/illustration-roadsign.inline.svg';
+import UnboxingIllustration from '../../../../../images/illustration-unboxing.inline.svg';
 
-interface Props extends RouteComponentProps, CmsNewsProps, CmsPageProps {}
+import ArrowDownIcon from '../../../../../images/icon-arrow-down.inline.svg';
+
+import factoryLottieJson from '../../../../../images/factory.lottie.json';
+
+const articleId = 'bb81d27f-acf1-4fc6-9bc3-f289bf79207f';
+interface Props
+  extends RouteComponentProps,
+    CmsNewsProps,
+    CmsPageProps,
+    DatasetsProps,
+    CommunityTopicsProps,
+    TranslationProps {}
+
+const isAbsoluteUrl = (url: string) => {
+  const r = new RegExp('^(?:[a-z]+:)?//', 'i');
+  return r.test(url) ?? false;
+};
 
 const MainPage: FC<Props> = ({
   cmsNews,
   cmsNewsActions: { getNewsRequested: getNews },
   cmsPage,
-  cmsPageActions: { getCmsPageRequested: getCmsPage, resetCmsPage }
+  cmsPageActions: { getCmsPageRequested: getCmsPage, resetCmsPage },
+  totalDatasets,
+  datasetsActions: {
+    getPagedDatasetsRequested: getPagedDatasets,
+    resetPagedDatasets
+  },
+  communityTopics,
+  communityTopicsActions: { getPopularTopicsRequested: getPopularTopics },
+  translationsService
 }) => {
+  const history = useHistory();
+
+  const searchSubmit = (searchString?: string) => {
+    history.push({
+      pathname: `${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}`,
+      search: `?q=${searchString || null}`
+    });
+  };
+
+  let animationRef: any = null;
+
+  const initAnimation = () => {
+    lottie.loadAnimation({
+      container: animationRef,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: factoryLottieJson
+    });
+  };
+
   useEffect(() => {
-    getNews({ pageLimit: 2 });
+    initAnimation();
+    getNews({ pageLimit: 3 });
     getCmsPage(articleId);
+    getPagedDatasets();
+    getPopularTopics();
     return () => {
       resetCmsPage();
+      resetPagedDatasets();
     };
   }, []);
   const modules = cmsPage?.field_modules ?? [];
   const firstElement = modules?.shift();
+  const secondElement = modules?.shift();
   return (
-    <ParallaxContainer>
-      <Root>
-        <Container>
-          <SC.Banner>
-            <SC.Row animate>
-              <ContentBox>
-                <ContentBoxHeader>
-                  <ContentBoxSC.ContentBoxHeader.Title>
-                    {firstElement?.field_title}
-                  </ContentBoxSC.ContentBoxHeader.Title>
-                </ContentBoxHeader>
-                <ContextBoxBody>
-                  <Markdown allowHtml>
-                    {firstElement?.field_body?.processed}
-                  </Markdown>
-                  {firstElement?.field_link && (
-                    <Link
-                      variant={Variant.PRIMARY}
-                      as={RouterLink}
-                      to={firstElement?.field_link?.uri.replace(
-                        'internal:',
-                        ''
-                      )}
-                    >
-                      {firstElement?.field_link?.title}
-                    </Link>
-                  )}
-                </ContextBoxBody>
-              </ContentBox>
-            </SC.Row>
-          </SC.Banner>
+    <Root>
+      <SC.Container>
+        <SC.BannerSection>
+          <SC.Row>
+            <ContentBox>
+              <ContentBoxHeader>
+                <ContentBoxSC.ContentBoxHeader.Title>
+                  {firstElement?.field_title}
+                </ContentBoxSC.ContentBoxHeader.Title>
+              </ContentBoxHeader>
+              <ContextBoxBody>
+                <Markdown allowHtml>
+                  {firstElement?.field_body?.processed}
+                </Markdown>
+                <AutosuggestSearchbar
+                  maxSuggestions={6}
+                  placeholder={`${translationsService.translate(
+                    'main.findData',
+                    {
+                      totalDatasets
+                    }
+                  )}`}
+                  onClear={() => {}}
+                  onSubmit={searchSubmit}
+                />
+              </ContextBoxBody>
+            </ContentBox>
+            <div
+              ref={ref => {
+                animationRef = ref;
+              }}
+            />
+          </SC.Row>
+          <SC.ArrowDown>
+            <ArrowDownIcon />
+          </SC.ArrowDown>
+        </SC.BannerSection>
+        <SC.MainContentSection>
           <SC.MainContent>
-            {modules.map((module: any) => (
-              <InView key={module.id} triggerOnce threshold={0.1}>
-                {({ inView, ref }) => (
-                  <SC.Row ref={ref} animate={inView}>
+            <SC.Row>
+              <SC.Topics>
+                <SC.IllustrationBox>
+                  <TopicsIllustration />
+                  <SC.IllustrationContent>
                     <ContentBox>
                       <ContentBoxHeader>
                         <ContentBoxSC.ContentBoxHeader.Title>
-                          {module?.field_title}
+                          {secondElement?.field_title}
                         </ContentBoxSC.ContentBoxHeader.Title>
                       </ContentBoxHeader>
                       <ContextBoxBody>
                         <Markdown allowHtml>
-                          {module?.field_body?.processed}
+                          {secondElement?.field_body?.processed}
                         </Markdown>
-                        {module?.field_link && (
-                          <Link
-                            as={RouterLink}
-                            to={module?.field_link?.uri.replace(
-                              'internal:',
-                              ''
-                            )}
-                          >
-                            {module?.field_link?.title}
-                          </Link>
-                        )}
                       </ContextBoxBody>
                     </ContentBox>
-                  </SC.Row>
-                )}
-              </InView>
+                  </SC.IllustrationContent>
+                </SC.IllustrationBox>
+
+                {communityTopics
+                  .filter(topic => !topic.deleted)
+                  .slice(0, 3)
+                  .map((topic, index) => (
+                    <Topic
+                      key={`topic-${index}`}
+                      topic={topic}
+                      hideUserInfoAndTags
+                    />
+                  ))}
+                <Link as={RouterLink} to={PATHNAME.COMMUNITY}>
+                  <Translation id='main.seeAllPostsCommunity' />
+                </Link>
+              </SC.Topics>
+            </SC.Row>
+            <SC.Row>
+              {modules.slice(0, 2).map((module: any, index: number) => (
+                <InfoBox
+                  key={module.id}
+                  {...(isAbsoluteUrl(
+                    module?.field_link?.uri?.replace('internal:', '')
+                  )
+                    ? { href: module.field_link?.uri, target: '_blank' }
+                    : {
+                        as: RouterLink,
+                        to: module?.field_link?.uri?.replace('internal:', '')
+                      })}
+                >
+                  <InfoBoxIcon>
+                    {index === 0 ? (
+                      <MonitorIllustration />
+                    ) : (
+                      <RoadSignIllustration />
+                    )}
+                  </InfoBoxIcon>
+                  <InfoBoxTitle>
+                    <h2>{module.field_link?.title}</h2>
+                  </InfoBoxTitle>
+                  <InfoBoxBody>
+                    <Markdown allowHtml>
+                      {module.field_body?.processed}
+                    </Markdown>
+                  </InfoBoxBody>
+                </InfoBox>
+              ))}
+            </SC.Row>
+            {modules.slice(2, 3).map((module: any) => (
+              <SC.Row>
+                <SC.Teaser>
+                  <SC.IllustrationBox>
+                    <UnboxingIllustration />
+                    <SC.IllustrationContent>
+                      <ContentBox>
+                        <ContentBoxHeader>
+                          <ContentBoxSC.ContentBoxHeader.Title>
+                            {module?.field_title}
+                          </ContentBoxSC.ContentBoxHeader.Title>
+                        </ContentBoxHeader>
+                        <ContextBoxBody>
+                          <Markdown allowHtml>
+                            {module?.field_body?.processed}
+                          </Markdown>
+                        </ContextBoxBody>
+                      </ContentBox>
+                    </SC.IllustrationContent>
+                  </SC.IllustrationBox>
+                </SC.Teaser>
+              </SC.Row>
             ))}
-            <InView triggerOnce threshold={0.1}>
-              {({ inView, ref }) => (
-                <SC.NewsRow ref={ref} animate={inView}>
-                  {cmsNews?.map(
-                    ({
-                      id,
-                      created,
-                      title,
-                      field_ingress: ingress,
-                      field_image_some: image_some
-                    }) => (
-                      <InfoBox
-                        key={id}
-                        as={RouterLink}
-                        to={`${PATHNAME.NEWS}/${id}`}
-                      >
-                        {image_some && (
-                          <InfoBoxImage
-                            src={image_some.thumbnail.download_urls.canonical}
-                            alt={image_some.thumbnail.meta.alt}
-                          />
-                        )}
-                        <InfoBoxSC.InfoBox.Date>
-                          {created && formatDate(dateStringToDate(created))}
-                        </InfoBoxSC.InfoBox.Date>
-                        <InfoBoxTitle>
-                          <h2>{title}</h2>
-                        </InfoBoxTitle>
-                        <InfoBoxBody>{ingress}</InfoBoxBody>
-                      </InfoBox>
-                    )
-                  )}
-                </SC.NewsRow>
+            <SC.NewsRow>
+              {cmsNews?.map(
+                ({
+                  id,
+                  created,
+                  title,
+                  field_ingress: ingress,
+                  field_image_some: image_some
+                }) => (
+                  <InfoBox
+                    key={id}
+                    as={RouterLink}
+                    to={`${PATHNAME.NEWS}/${id}`}
+                  >
+                    {image_some && (
+                      <InfoBoxImage
+                        src={image_some.thumbnail.download_urls.canonical}
+                        alt={image_some.thumbnail.meta.alt}
+                      />
+                    )}
+                    <InfoBoxSC.InfoBox.Date>
+                      {created && formatDate(dateStringToDate(created))}
+                    </InfoBoxSC.InfoBox.Date>
+                    <InfoBoxTitle>
+                      <h2>{title}</h2>
+                    </InfoBoxTitle>
+                    <InfoBoxBody>{ingress}</InfoBoxBody>
+                  </InfoBox>
+                )
               )}
-            </InView>
+            </SC.NewsRow>
           </SC.MainContent>
-        </Container>
-      </Root>
-    </ParallaxContainer>
+        </SC.MainContentSection>
+      </SC.Container>
+    </Root>
   );
 };
 
-export default compose<FC>(memo, withNews, withPage)(MainPage);
+export default compose<FC>(
+  memo,
+  withNews,
+  withPage,
+  withDatasets,
+  withCommunityTopics,
+  withTranslations
+)(MainPage);

@@ -16,7 +16,7 @@ const Container = styled(ContainerSC.Container)``;
 const Banner = styled.section`
   display: flex;
   flex-direction: column;
-  background-color: ${theme.colour(Colour.BLUE, 'B52')};
+  background-color: ${theme.colour(Colour.BLUE, 'B54')};
   margin-bottom: ${theme.spacing('S32')};
 `;
 
@@ -123,7 +123,7 @@ const Table = styled.table`
     color: ${theme.colour(Colour.NEUTRAL, 'N0')};
     font-weight: ${theme.fontWeight('FW700')};
 
-    background: ${theme.colour(Colour.BLUE, 'B52')};
+    background: ${theme.colour(Colour.BLUE, 'B54')};
   }
 
   tbody {

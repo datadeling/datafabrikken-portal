@@ -27,6 +27,10 @@
     "expanded": "Skjul beskrivelsen",
     "collapsed": "Vis hele beskrivelsen"
   },
+  "main": {
+    "findData": "Søk blant {totalDatasets} datasett",
+    "seeAllPostsCommunity": "Se alle innlegg i Datalandsbyen"
+  },
   "findDataPage": {
     "title": "Finn data",
     "findData": "Søk etter datasett",
