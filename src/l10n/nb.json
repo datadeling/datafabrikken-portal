@@ -16,7 +16,8 @@
     "community": "Datalandsbyen",
     "communityAbout": "Om Datalandsbyen",
     "organizations": "Virksomheter",
-    "metadataquality": "Metadatakvalitet"
+    "metadataquality": "Metadatakvalitet",
+    "courses": "Kurs"
   },
   "footer": {
     "title": "Følg med på Datafabrikken",
@@ -411,5 +412,28 @@
     "datasetsDescription": "datasettbeskrivelser",
     "organization": "Virksomhet",
     "numberDatasets": "Antall Datasett"
+  },
+  "coursesPage": {
+    "title": "Kurs og veiledere",
+    "subtitle": "For å lykkes med datadrevet innovasjon er mange avhengig av å løfte egen og ansattes kompetanse. Benytt våre veiledere og kurs som guide til å vurdere, få tilgang og ta i bruk data for dine formål.",
+    "accessSection": "## Tilgang til data\nFor å ta i bruk data må du ha tilgang til å bruke dem. Offentlige data deles inn i tre ulike kategorier:\n* Allmenn tilgang – data som kan benyttes fritt av alle\n* Betinget tilgang – data som ikke ligger åpent tilgjengelig og dermed krever [hva?]\n* Ikke-allmenn tilgang – data som er unntatt offentlighet og krever behandlingsgrunnlag og databehandleravtale for å tas i bruk [??]\n### Tilgang til offentlige dokumenter\nAlle innbyggere kan gratis og anonymt søke i postjournalene til offentlige virksomheter og be om innsyn i dokumenter. En postjournal er et register over all arkivført post og korrespondanse i en offentlig virksomhet. Dokumentene som ikke er offentlig tilgjengelige utleveres etter en innsynsbegjæring.\n> Når du skal be om tilgang til data, må du ha klart for deg hvilke data du har behov for, om datatilbyder har lov til å dele dem og om du har lov til å behandle dem.\n### Be om innsyn\nInnbyggere, næringsliv og sivilsamfunnet for øvrig har mulighet til å be om innsyn i informasjon som offentlige virksomheter forvalter. Vi vil utarbeide en enkel veileder som hjelper deg i gang med dette.\nDu kan også søke om tilgang til offentlige data, datasett eller uttrekk fra datasett. Du søker om tilgang til datasett direkte fra tilbyder. Offentlighetsloven gjelder også for tilgang til datasett.",
+    "publicDataSection": "## Offentlige data\nPå samme måte som du kan be om innsyn i offentlige dokumenter kan du søke om tilgang til offentlige data, datasett eller uttrekk fra datasett. Du søker om tilgang til datasett direkte fra tilbyder. For tilgang til datasett gjelder offentlighetsloven.\nBoks: Lær mer om deling av data hos Datatilsynet\nAll behandling av personopplysninger må ha et rettslig grunnlag for å være lov. Virksomheten må derfor identifisere om det finnes et behandlingsgrunnlag før opplysningene hentes inn.",
+    "restrictedDataSection": "## Data med ikke-allmenn tilgang\nData som inneholder personopplysninger faller under kategorien ikke-allmenn tilgang. Slike data omfattes av de begrensningene som kan utledes fra taushetsplikt i lov.\n### Dele data med ikke-allmenn tilgang\nFor å kunne dele data som inneholder personopplysninger må du som datatilbyder ha hjemmel til å dele dataene. Dette kalles utleveringshjemmel. [Noen ord om hva som skal til for å få utleveringshjemmel?]\n### Bruke data med ikke-allmenn tilgang\nFor å behandle personopplysninger må du ha et rettslig grunnlag. Dette kalles behandlingsgrunnlag. Uten behandlingsgrunnlag er behandlingen ulovlig. Behandlingsgrunnlaget må legges frem for datatilbyder før utlevering kan skje.\n### Avtale om roller og ansvar\nRoller og ansvar mellom datatilbyder og datakonsument må avklares. Dette gjøres i en databehandleravtale for å sikre at personopplysningene blir behandlet i samsvar med regelverket.\nDatatilbyder og databehandler (konsumenten) må inngå nødvendige avtaler for følgende:\n* Vilkår for deling\n* Vilkår for bruk av API\n* Serviceavtale (SLA)\n* Avtale med evt. tredjepart som behandler data på veiene av deg\n>Før du kan motta data, må du sørge for at samarbeidet med datatilbyder er formalisert, og at de tekniske løsningene for utveksling er på plass.",
+    "technicalSolutinsSection": "## Tekniske løsninger\nNår man skal etablere tekniske løsninger for utveksling av data er det viktig å sørge for å benytte standardiserte tjenester og grensesnitt. Dette bidrar til at løsningene følger beste praksis, er skalerbare og er kjent for eventuelle samarbeidspartnere (tredjepart).\nData kan utveksles i sanntid via API, sendes som meldinger eller lastes opp som filer. Du velger selv hvordan data skal utveksles basert på behovet for oppdatering av dataene og , og hva datatilbyder kan tilby fra sin side.\nBoks: Nasjonal verktøykasse for deling av data\nI Nasjonal verktøykasse for deling av data finner du beskrivelser av hva du må gjøre for å få tilgang til data og motta data, samt hvilke verktøy du kan bruke i disse stegene.",
+    "boxes": {
+      "legalTitle": "Juridiske rammer for bruk av data",
+      "legal": "Data gjort tilgjengelig igjennom Datafabrikken kan deles inn i tre kategorier med ulike vilkår for bruk. Lær mer om hva de forskjellige kategoriene betyr.",
+      "eInnsynTitle": "Gå til eInnsyn",
+      "eInnsyn": "eInnsyn gir innbyggere mulighet til å søke og be om innsyn i dokumenter/postjournaler fra alle statlige, kommunale og fylkeskommunale organ som er publisert med eInnsyn.",
+      "learnMoreTitle": "Lær mer om deling av data hos Datatilsynet",
+      "learnMore": "All behandling av personopplysninger må ha et rettslig grunnlag for å være lov. Virksomheten må derfor identifisere om det finnes et behandlingsgrunnlag før opplysningene hentes inn.",
+      "roleGuideTitle": "Veileder for roller og ansvar",
+      "roleGuide": "Prinsipper og retningslinjer for tilbyder og konsument av data. Sikre at delingsprosessene er skalerbare, profesjonelle og effektive – og i tråd med gjeldende rett.",
+      "dataHandlingTitle": "Databehanderavtale sjekkliste",
+      "dataHandling": "Deres oppgave er å fremme deling og bruk av data ved å spre kunnskap og utvikle regelverket på området. Lær mer om sammenhengen mellom juss og teknologi.",
+      "nationalToolboxTitle": "Nasjonal verktøykasse for deling av data",
+      "nationalToolbox": "I Nasjonal verktøykasse for deling av data finner du beskrivelser av hva du må gjøre for å få tilgang til data og motta data, samt hvilke verktøy du kan bruke i disse stegene."
+
+    }
   }
 }

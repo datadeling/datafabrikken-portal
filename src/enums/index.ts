@@ -20,7 +20,8 @@ export enum PATHNAME {
   FDK_DATA_SERVICES = '/dataservices',
   FDK_CONCEPTS = '/concepts',
   ORGANIZATION = '/virksomheter',
-  METADATAQUALITY = '/metadatakvalitet'
+  METADATAQUALITY = '/metadatakvalitet',
+  COURSES = '/kurs'
 }
 
 export enum PARAGRAPH {

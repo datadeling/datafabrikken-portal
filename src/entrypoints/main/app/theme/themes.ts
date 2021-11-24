@@ -15,6 +15,7 @@ export default {
       N70: '#121619'
     },
     [Colour.BLUE]: {
+      B02: '#f5f8ff',
       B04: '#ebf1ff',
       B14: '#9ebeff',
       B18: '#75a3ff',
