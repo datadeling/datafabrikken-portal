@@ -40,7 +40,8 @@ const routes = {
   ),
   METADATAQUALITY_DATASET: lazy(
     () => import('../pages/metadata-quality-dataset-page')
-  )
+  ),
+  [PATHNAME.COURSES]: lazy(() => import('../pages/courses-page'))
 };
 
 const Routes: FC = () => (
@@ -146,6 +147,7 @@ const Routes: FC = () => (
         component={routes[PATHNAME.TEXT_FORMAT]}
       />
     )}
+    <Route exact path={PATHNAME.COURSES} component={routes[PATHNAME.COURSES]} />
     <Route render={() => <ErrorPage errorCode='404' />} />
   </Switch>
 );

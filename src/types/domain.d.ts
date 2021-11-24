@@ -568,6 +568,23 @@ export interface Concept {
   seeAlso?: string[];
 }
 
+export interface CourseProvider {
+  logo: string;
+  subtitle: string;
+}
+
+export interface Course {
+  image: string;
+  type?: string;
+  link: string;
+  title: string;
+  description: string;
+  time?: string;
+  modules?: string;
+  provider?: CourseProvider;
+  inverted?: boolean;
+}
+
 export interface SearchSuggestion {
   index: EntityEnum;
   prefLabel?: Partial<TextLanguage>;
