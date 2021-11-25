@@ -33,7 +33,7 @@ const highlightStyle = css`
 const Suggestion = styled.li<{ $highlighted: boolean }>`
   color: ${theme.colour(Colour.BLUE, 'B52')};
   font-size: ${theme.fontSize('FS14')};
-  padding: ${theme.spacing('S10')};
+  padding: ${theme.spacing('S4')} ${theme.spacing('S10')};
   cursor: pointer;
 
   &:hover,
@@ -62,6 +62,11 @@ const SuggestionDivider = styled.hr`
 
 const AutosuggestContainer = styled.div`
   position: relative;
+  flex: 0 1 60%;
+
+  ${onMobileView} {
+    flex-basis: 100%;
+  }
 
   &:not(:focus-within) {
     border-radius: 5px;
