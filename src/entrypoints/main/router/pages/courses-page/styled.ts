@@ -57,19 +57,19 @@ const Subtitle = styled.p`
 const Body = styled(ContainerSC.Container)`
   font-size: ${theme.fontSize('FS12')};
   line-height: ${theme.fontSize('FS20')};
+  margin-bottom: ${theme.spacing('S10')};
 
   ${onMobileView} {
     font-size: ${theme.fontSize('FS10')};
     padding: 0 ${theme.spacing('S20')};
   }
-  margin-bottom: ${theme.spacing('S10')};
   & h2,
   h3,
   h4,
   h5,
   h6 {
-    margin-bottom: ${theme.spacing('S6')};
-    margin-top: ${theme.spacing('S16')};
+    margin-bottom: ${theme.spacing('S4')};
+    margin-top: ${theme.spacing('S8')};
   }
   & h2 {
     font-size: ${theme.fontSize('FS20')};
@@ -107,16 +107,7 @@ const Body = styled(ContainerSC.Container)`
       font-style: italic;
     }
   }
-  & div {
-    & > div {
-      margin-bottom: ${theme.spacing('S10')};
-      & > * > a {
-        align-items: center;
-        border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
-        display: inline-flex;
-      }
-    }
-  }
+
   & ol,
   ul {
     margin-left: ${theme.spacing('S8')};
@@ -160,15 +151,6 @@ const Body = styled(ContainerSC.Container)`
   }
 `;
 
-const LinkBoxContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  ${onMobileView} {
-    flex-direction: column;
-  }
-`;
-
 export default {
   Container,
   CourseSection,
@@ -177,6 +159,5 @@ export default {
   Title,
   Subtitle,
   CourseCardContainer,
-  Body,
-  LinkBoxContainer
+  Body
 };

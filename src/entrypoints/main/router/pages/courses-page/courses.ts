@@ -80,7 +80,7 @@ export const courses: Course[] = [
     image:
       'https://digitalnorway.com/content/uploads/2020/06/culisc10011087-768x525.jpg',
     type: 'Introkurs',
-    link: 'https://digitalnorway.com/kurs/innforing-i-gdpr/',
+    link: 'https://digitalnorway.com/kurs/industrielle-data%e2%80%af/',
     title: 'Industrielle data',
     description:
       'Grunnleggende innføring på 20 minutter: Hva er industrielle data?',
@@ -109,7 +109,7 @@ export const courses: Course[] = [
     image:
       'https://www.mn.uio.no/math/studier/evu/fra-data-til-innsikt/bilder/data-innsikt-690x517.jpg',
     type: 'Videreutdanning',
-    link: 'https://digitalnorway.com/kurs/innforing-i-gdpr/',
+    link: 'https://www.mn.uio.no/math/studier/evu/fra-data-til-innsikt/index.html',
     title: 'Fra data til innsikt',
     description:
       'Velkommen til en aktuell videreutdanning innen data science. Programmet er for deg som er i jobb og ønsker å lære mer om hvilke muligheter data gir deg og din bedrift. Det består av fire kurs på 2,5 studiepoeng hver.'
@@ -117,7 +117,7 @@ export const courses: Course[] = [
   {
     image: 'https://digitalnorway.com/content/uploads/2020/06/ki_kurs.jpg',
     type: 'Introkurs',
-    link: 'https://digitalnorway.com/kurs/innforing-i-gdpr/',
+    link: 'https://www.elementsofai.com/no',
     title: 'Elements of AI ',
     description:
       '“Elements of AI” er et gratis nettkurs utviklet av Reaktor, Helsingfors Universitet og Feed. NTNU tilbyr kurset på norsk. Kurset passer for deg som vil lære om hva kunstig intelligens (KI) er, hvordan KI utvikles, og hva teknologien kan (og ikke kan) brukes til.'

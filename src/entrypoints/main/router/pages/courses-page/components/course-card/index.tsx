@@ -29,8 +29,18 @@ const CourseCard: FC<Props> = ({
       </h3>
       <p>{description}</p>
       <SC.CourseFacts>
-        <span>{time}</span>
-        <span>{modules}</span>
+        {time && (
+          <SC.Fact>
+            <SC.ClockIcon />
+            {time}
+          </SC.Fact>
+        )}
+        {modules && (
+          <SC.Fact>
+            <SC.BoxIcon />
+            {modules}
+          </SC.Fact>
+        )}
       </SC.CourseFacts>
     </SC.CourseContent>
     {provider && (
