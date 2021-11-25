@@ -2,6 +2,7 @@ import React, {
   ChangeEvent,
   FC,
   KeyboardEvent,
+  memo,
   useEffect,
   useState
 } from 'react';
@@ -16,6 +17,7 @@ import withcachedSuggestions, {
 
 interface ExternalProps {
   placeholder: string;
+  maxSuggestions?: number;
   onSubmit?: (searchString?: string) => void;
   onClear: () => void;
 }
@@ -47,6 +49,7 @@ const highlightSearchString = (
 
 const AutosuggestSearchBar: FC<Props> = ({
   placeholder,
+  maxSuggestions,
   onSubmit,
   onClear,
   cachedSuggestions,
@@ -58,7 +61,8 @@ const AutosuggestSearchBar: FC<Props> = ({
   const [focusedSuggestionIndex, setFocusedSuggestionIndex] = useState(-1);
   const [openSuggestions, setOpenSuggestions] = useState(true);
   const [searchString, setSearchString] = useState('');
-  const searchSuggestions = cachedSuggestions?.[searchString] ?? [];
+  const searchSuggestions =
+    cachedSuggestions?.[searchString]?.slice(0, maxSuggestions) ?? [];
 
   useEffect(
     () => () => {
@@ -151,6 +155,7 @@ const AutosuggestSearchBar: FC<Props> = ({
   );
 };
 
-export default compose<FC<ExternalProps>>(withcachedSuggestions)(
-  AutosuggestSearchBar
-);
+export default compose<FC<ExternalProps>>(
+  withcachedSuggestions,
+  memo
+)(AutosuggestSearchBar);
