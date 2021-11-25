@@ -25,7 +25,7 @@ const routes = {
   [PATHNAME.COMMUNITY_ABOUT]: lazy(() => import('../pages/article-page')),
   [PATHNAME.DATA_SOURCES]: lazy(() => import('../pages/article-page')),
   [PATHNAME.GUIDEANCE_AND_COMPETENCE]: lazy(
-    () => import('../pages/article-page')
+    () => import('../pages/courses-page')
   ),
   [PATHNAME.CONTACT]: lazy(() => import('../pages/contact-page')),
   ARTICLE: lazy(() => import('../pages/article-page')),
@@ -40,8 +40,7 @@ const routes = {
   ),
   METADATAQUALITY_DATASET: lazy(
     () => import('../pages/metadata-quality-dataset-page')
-  ),
-  [PATHNAME.COURSES]: lazy(() => import('../pages/courses-page'))
+  )
 };
 
 const Routes: FC = () => (
@@ -147,7 +146,6 @@ const Routes: FC = () => (
         component={routes[PATHNAME.TEXT_FORMAT]}
       />
     )}
-    <Route exact path={PATHNAME.COURSES} component={routes[PATHNAME.COURSES]} />
     <Route render={() => <ErrorPage errorCode='404' />} />
   </Switch>
 );
