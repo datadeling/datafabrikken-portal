@@ -116,10 +116,6 @@ const routes = [
   {
     path: `${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}/:datasetId`,
     breadcrumb: () => <MetadataDatasetBreadcrumb />
-  },
-  {
-    path: PATHNAME.COURSES,
-    breadcrumb: () => <Translation id='header.courses' />
   }
 ];
 

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 import { Colour, theme, Unit } from '../../../app/theme';
 import ContainerSC from '../../../../../components/container/styled';
+import { SC as InfoBoxSC } from '../../../../../components/info-box';
 
 const onMobileView = '@media (max-width: 900px)';
 
@@ -143,6 +144,18 @@ const Body = styled(ContainerSC.Container)`
       padding: 0 ${theme.spacing('S4')};
       font-size: ${theme.fontSize('FS12')};
       line-height: ${theme.fontSize('FS20')};
+    }
+  }
+
+  & ${InfoBoxSC.InfoBox.InfoBox} {
+    background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+
+    & ${InfoBoxSC.InfoBox.ContentWrapper} {
+      margin: 0;
+      & * {
+        margin: 0;
+        padding: 0;
+      }
     }
   }
 `;
