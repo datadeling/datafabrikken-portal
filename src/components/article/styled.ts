@@ -54,7 +54,7 @@ const Body = styled.div`
   h4,
   h5,
   h6 {
-    margin-bottom: ${theme.spacing('S10')};
+    margin-bottom: ${theme.spacing('S4')};
   }
   & > h2 {
     font-size: ${theme.fontSize('FS20')};
@@ -121,9 +121,13 @@ const Quote = styled.div`
   font-style: italic;
   line-height: 1.5;
   padding: ${theme.spacing('S6')} ${theme.spacing('S10')};
-  margin: ${theme.spacing('S16')} 0;
+  margin-bottom: ${theme.spacing('S16')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS14')};
+  }
+
+  & p {
+    padding: 0;
   }
 `;
 
