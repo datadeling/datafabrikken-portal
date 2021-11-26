@@ -30,29 +30,26 @@ const routes = [
     breadcrumb: () => <Translation id='header.about' />
   },
   {
-    path: `${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}`,
-    breadcrumb: () => <Translation id='findDataPage.findData' />
+    path: `${PATHNAME.FIND_DATA}`,
+    breadcrumb: () => <Translation id='header.findData' />
   },
   {
-    path: `${PATHNAME.FIND_DATA}${PATHNAME.DATA_SOURCES}${PATHNAME.PRIVATE_SECTOR}`,
+    path: `${PATHNAME.DATA_SOURCES}${PATHNAME.PRIVATE_SECTOR}`,
     breadcrumb: () => <ArticleBreadCrumb />
   },
   {
-    path: `${PATHNAME.FIND_DATA}${PATHNAME.DATA_SOURCES}`,
+    path: `${PATHNAME.DATA_SOURCES}`,
     breadcrumb: 'Oversikt over datakilder'
   },
   {
-    path: `${PATHNAME.FIND_DATA}${PATHNAME.GUIDEANCE_AND_COMPETENCE}${PATHNAME.LEGAL_FRAMEWORK}`,
+    path: `${PATHNAME.GUIDEANCE_AND_COMPETENCE}${PATHNAME.LEGAL_FRAMEWORK}`,
     breadcrumb: () => <ArticleBreadCrumb />
   },
   {
-    path: `${PATHNAME.FIND_DATA}${PATHNAME.GUIDEANCE_AND_COMPETENCE}`,
+    path: `${PATHNAME.GUIDEANCE_AND_COMPETENCE}`,
     breadcrumb: 'Veiledere og kompetanse'
   },
-  {
-    path: PATHNAME.FIND_DATA,
-    breadcrumb: () => <Translation id='header.findData' />
-  },
+
   {
     path: PATHNAME.NEWS,
     breadcrumb: () => <Translation id='header.news' />
@@ -70,7 +67,7 @@ const routes = [
     breadcrumb: () => <Translation id='header.community' />
   },
   {
-    path: `${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}${PATHNAME.DATASET_DETAILS}/:id`,
+    path: `${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/:id`,
     breadcrumb: () => <DatasetBreadcrumb />
   },
   {

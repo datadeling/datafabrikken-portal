@@ -189,9 +189,7 @@ const OrganizationPage: FC<Props> = ({
                 <StatisticsRegularLink
                   to={
                     organization.organizationId
-                      ? `${PATHNAME.FIND_DATA}${
-                          PATHNAME.DATASETS
-                        }${patchSearchQuery(
+                      ? `${PATHNAME.FIND_DATA}${patchSearchQuery(
                           Filter.ORGANIZATION_NUMBER,
                           organization.organizationId
                         )}`
@@ -218,9 +216,7 @@ const OrganizationPage: FC<Props> = ({
               )}
 
               <StatisticsRegularLink
-                to={`${PATHNAME.FIND_DATA}${
-                  PATHNAME.DATASETS
-                }${patchMultipleSearchQuery({
+                to={`${PATHNAME.FIND_DATA}${patchMultipleSearchQuery({
                   [Filter.ORGPATH]: organization.orgPath,
                   [Filter.LASTXDAYS]: '7'
                 })}`}
@@ -238,9 +234,7 @@ const OrganizationPage: FC<Props> = ({
                 }
               />
               <StatisticsRegularLink
-                to={`${PATHNAME.FIND_DATA}${
-                  PATHNAME.DATASETS
-                }${patchMultipleSearchQuery({
+                to={`${PATHNAME.FIND_DATA}${patchMultipleSearchQuery({
                   [Filter.ORGPATH]: organization.orgPath,
                   [Filter.PROVENANCE]: 'NASJONAL'
                 })}`}
@@ -255,9 +249,7 @@ const OrganizationPage: FC<Props> = ({
                 }
               />
               <StatisticsRegularLink
-                to={`${PATHNAME.FIND_DATA}${
-                  PATHNAME.DATASETS
-                }${patchMultipleSearchQuery({
+                to={`${PATHNAME.FIND_DATA}${patchMultipleSearchQuery({
                   [Filter.ORGPATH]: organization.orgPath,
                   [Filter.OPENDATA]: 'true'
                 })}`}

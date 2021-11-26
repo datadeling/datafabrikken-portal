@@ -12,8 +12,7 @@ const { ENV } = env;
 const routes = {
   [PATHNAME.MAIN]: lazy(() => import('../pages/main-page')),
   [PATHNAME.ABOUT]: lazy(() => import('../pages/article-page')),
-  [PATHNAME.FIND_DATA]: lazy(() => import('../pages/find-data-page')),
-  [PATHNAME.DATASETS]: lazy(() => import('../pages/datasets-page')),
+  [PATHNAME.FIND_DATA]: lazy(() => import('../pages/datasets-page')),
   [PATHNAME.NEWS]: lazy(() => import('../pages/news-page')),
   NEWS_ARTICLE: lazy(() => import('../pages/news-article-page')),
   [PATHNAME.COMMUNITY]: lazy(
@@ -50,13 +49,8 @@ const Routes: FC = () => (
     <Route exact path={PATHNAME.ABOUT} component={routes[PATHNAME.ABOUT]} />
     <Route
       exact
-      path={PATHNAME.FIND_DATA}
+      path={`${PATHNAME.FIND_DATA}`}
       component={routes[PATHNAME.FIND_DATA]}
-    />
-    <Route
-      exact
-      path={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}`}
-      component={routes[PATHNAME.DATASETS]}
     />
     <Route
       exact
@@ -92,7 +86,7 @@ const Routes: FC = () => (
     />
     <Route
       exact
-      path={`${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}${PATHNAME.DATASET_DETAILS}/:datasetId`}
+      path={`${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/:datasetId`}
       component={routes[PATHNAME.DATASET_DETAILS]}
     />
     <Route
