@@ -18,7 +18,10 @@ interface Props {
 const RadioOptions: FC<Props> = ({ title, options, onChange }) => (
   <SC.RadioContainer>
     {options.map(({ value, label, checked }, index) => (
-      <SC.Label htmlFor={`radio-${index}-${value}`}>
+      <SC.Label
+        htmlFor={`radio-${index}-${value}`}
+        key={`radio-${index}-${value}-label-key`}
+      >
         <SC.IconContainer $checked={checked}>
           <SC.RadioIcon>
             <circle cx='12' cy='12' r='4' />
@@ -28,6 +31,7 @@ const RadioOptions: FC<Props> = ({ title, options, onChange }) => (
         <SC.RadioButton
           type='radio'
           id={`radio-${index}-${value}`}
+          key={`radio-${index}-${value}-key`}
           name={title}
           value={value}
           onChange={() =>
