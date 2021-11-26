@@ -91,7 +91,7 @@ const MainPage: FC<Props> = ({
 
   const searchSubmit = (searchString?: string) => {
     history.push({
-      pathname: `${PATHNAME.FIND_DATA}${PATHNAME.DATASETS}`,
+      pathname: PATHNAME.FIND_DATA,
       search: `?q=${searchString || null}`
     });
   };
