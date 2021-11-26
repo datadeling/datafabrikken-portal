@@ -55,7 +55,7 @@ const CourseContent = styled.div<{ $inverted: boolean }>`
 
 const CourseFacts = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   margin: ${theme.spacing('S8')} 0;
 `;
 
@@ -75,23 +75,26 @@ const CourseProvider = styled.div<{ $inverted: boolean }>`
 
 const WigglyLine = styled(WigglyLineBase)<{ $inverted: boolean }>`
   margin-bottom: -1px;
-  stroke: ${({ $inverted }) =>
-    $inverted
-      ? theme.colour(Colour.BLUE, 'B44')
-      : theme.colour(Colour.NEUTRAL, 'N0')};
-  fill: ${({ $inverted }) =>
-    $inverted
-      ? theme.colour(Colour.BLUE, 'B44')
-      : theme.colour(Colour.NEUTRAL, 'N0')};
   background-color: ${({ $inverted }) =>
     $inverted
       ? theme.colour(Colour.NEUTRAL, 'N0')
       : theme.colour(Colour.BLUE, 'B44')};
+  & > path {
+    stroke: ${({ $inverted }) =>
+      $inverted
+        ? theme.colour(Colour.BLUE, 'B44')
+        : theme.colour(Colour.NEUTRAL, 'N0')};
+    fill: ${({ $inverted }) =>
+      $inverted
+        ? theme.colour(Colour.BLUE, 'B44')
+        : theme.colour(Colour.NEUTRAL, 'N0')};
+  }
 `;
 
 const Fact = styled.span`
   display: flex;
   align-items: center;
+  margin-right: ${theme.spacing('S12')};
 `;
 
 const IconBaseStyle = css`
