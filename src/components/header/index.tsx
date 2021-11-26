@@ -44,11 +44,6 @@ const Header: FC<Props> = () => {
         </SC.Logo>
         <SC.NavigationLinks>
           <li>
-            <SC.Link to={PATHNAME.MAIN}>
-              <Translation id='header.home' />
-            </SC.Link>
-          </li>
-          <li>
             <SC.Link to={PATHNAME.ABOUT}>
               <Translation id='header.about' />
             </SC.Link>
@@ -61,6 +56,11 @@ const Header: FC<Props> = () => {
           <li>
             <SC.Link to={PATHNAME.NEWS}>
               <Translation id='header.news' />
+            </SC.Link>
+          </li>
+          <li>
+            <SC.Link to={PATHNAME.COURSES}>
+              <Translation id='header.courses' />
             </SC.Link>
           </li>
           <li>

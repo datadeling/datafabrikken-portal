@@ -12,11 +12,10 @@ import Root from '../../../../../components/root';
 import { courses } from './courses';
 import CourseCard from './components/course-card';
 import { Variant } from '../../../../../components/container';
-import { renderModule } from '../../../../../components/article';
 
 interface Props extends CmsArticleProps {}
 
-const cmsId = '9199dbc8-7f33-4876-9c98-306864651933';
+const cmsId = '29c9f124-25d4-4fa8-9869-45a38da394ed';
 
 const CoursesPage: FC<Props> = ({
   cmsPage,
@@ -46,14 +45,6 @@ const CoursesPage: FC<Props> = ({
           </SC.CourseCardContainer>
         </SC.Container>
       </SC.CourseSection>
-      <SC.Content>
-        <SC.Container>
-          <SC.Body variant={Variant.WIDTH_720}>
-            {cmsPage?.field_modules &&
-              cmsPage.field_modules.map((module: any) => renderModule(module))}
-          </SC.Body>
-        </SC.Container>
-      </SC.Content>
     </Root>
   );
 };
