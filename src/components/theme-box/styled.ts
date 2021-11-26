@@ -9,6 +9,7 @@ type Props = {
 };
 
 const ThemeIcon = styled.div`
+  cursor: pointer;
   align-items: center;
   display: flex;
   flex: 0 0 20%;
@@ -22,6 +23,7 @@ const ThemeIcon = styled.div`
 `;
 
 const ThemeBox = styled.div<Props>`
+  cursor: pointer;
   background-color: ${({ checked }) =>
     checked
       ? theme.colour(Colour.BLUE, 'B20')
@@ -59,6 +61,7 @@ const ThemeBox = styled.div<Props>`
 `;
 
 const Label = styled.label`
+  cursor: pointer;
   align-items: center;
   display: flex;
   padding: 0.5em;

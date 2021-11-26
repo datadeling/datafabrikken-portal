@@ -13,6 +13,7 @@ import ThemeRegionsIcon from '../../../../../../../images/theme-regions.inline.s
 import ThemeTransportationIcon from '../../../../../../../images/theme-transportation.inline.svg';
 import ThemeEducationIcon from '../../../../../../../images/theme-education.inline.svg';
 import ThemeFinanceIcon from '../../../../../../../images/theme-finance.inline.svg';
+import ThemeTechIcon from '../../../../../../../images/theme-science.inline.svg';
 
 import SC from './styled';
 
@@ -114,6 +115,14 @@ const Themes: FC<Props> = ({ onFilterTheme }) => (
         label='Utdanning, kultur og sport'
       >
         <ThemeEducationIcon />
+      </ThemeBox>
+      <ThemeBox
+        handleChange={onFilterTheme}
+        filterName='theme'
+        value='TECH'
+        label='Vitenskap og Teknologi'
+      >
+        <ThemeTechIcon />
       </ThemeBox>
       <ThemeBox
         handleChange={onFilterTheme}
