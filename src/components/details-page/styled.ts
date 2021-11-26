@@ -53,8 +53,10 @@ const ContentSections = styled.div`
   display: flex;
   flex-direction: column;
   flex: 0 0 80%;
+  max-width: 80%;
   ${onMobileView} {
     flex: 0 0 100%;
+    max-width: 100%;
   }
   margin-bottom: ${theme.spacing('S32')};
 `;
