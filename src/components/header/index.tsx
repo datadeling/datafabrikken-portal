@@ -118,6 +118,14 @@ const Header: FC<Props> = () => {
               </li>
               <li>
                 <SC.Link
+                  to={PATHNAME.COURSES}
+                  onClick={() => closeDropdownMenu()}
+                >
+                  <Translation id='header.courses' />
+                </SC.Link>
+              </li>
+              <li>
+                <SC.Link
                   to={PATHNAME.CONTACT}
                   onClick={() => closeDropdownMenu()}
                 >

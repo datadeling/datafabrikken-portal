@@ -7,6 +7,7 @@ import CubeIconBase from '../../../../../../../images/cube.inline.svg';
 
 const Card = styled.div`
   display: flex;
+  min-width: 300px;
   flex: 1 1 30%;
   flex-direction: column;
   margin: ${theme.spacing('S8')};
@@ -39,7 +40,7 @@ const CourseContent = styled.div<{ $inverted: boolean }>`
   background-color: ${({ $inverted }) =>
     $inverted
       ? theme.colour(Colour.NEUTRAL, 'N0')
-      : theme.colour(Colour.BLUE, 'B44')};
+      : theme.colour(Colour.BLUE, 'B48')};
   color: ${({ $inverted }) =>
     $inverted
       ? theme.colour(Colour.BLUE, 'B52')
@@ -65,7 +66,7 @@ const CourseProvider = styled.div<{ $inverted: boolean }>`
   padding: ${theme.spacing('S16')};
   background-color: ${({ $inverted }) =>
     $inverted
-      ? theme.colour(Colour.BLUE, 'B44')
+      ? theme.colour(Colour.BLUE, 'B48')
       : theme.colour(Colour.NEUTRAL, 'N0')};
   color: ${({ $inverted }) =>
     $inverted
@@ -78,15 +79,15 @@ const WigglyLine = styled(WigglyLineBase)<{ $inverted: boolean }>`
   background-color: ${({ $inverted }) =>
     $inverted
       ? theme.colour(Colour.NEUTRAL, 'N0')
-      : theme.colour(Colour.BLUE, 'B44')};
+      : theme.colour(Colour.BLUE, 'B48')};
   & > path {
     stroke: ${({ $inverted }) =>
       $inverted
-        ? theme.colour(Colour.BLUE, 'B44')
+        ? theme.colour(Colour.BLUE, 'B48')
         : theme.colour(Colour.NEUTRAL, 'N0')};
     fill: ${({ $inverted }) =>
       $inverted
-        ? theme.colour(Colour.BLUE, 'B44')
+        ? theme.colour(Colour.BLUE, 'B48')
         : theme.colour(Colour.NEUTRAL, 'N0')};
   }
 `;
