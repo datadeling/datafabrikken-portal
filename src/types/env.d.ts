@@ -2,6 +2,8 @@ import type { Environment } from './enums';
 
 export interface EnvironmentVariables {
   ENV: Environment;
+  OIDC_ISSUER: string;
+  OIDC_CLIENT_SECRET: string;
   SEARCH_FULLTEXT_HOST: string;
   REFERENCE_DATA_HOST: string;
   FDK_PORTAL_HOST: string;

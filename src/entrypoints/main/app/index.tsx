@@ -11,17 +11,20 @@ import TranslationsProvider from '../../../providers/translations';
 
 import store from '../redux/store';
 
+import AuthProvider from '../../../providers/auth';
+
 const App: FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
-
-    <CookiesProvider>
-      <TranslationsProvider>
-        <ReduxProvider store={store}>
-          <Router />
-        </ReduxProvider>
-      </TranslationsProvider>
-    </CookiesProvider>
+    <AuthProvider>
+      <CookiesProvider>
+        <TranslationsProvider>
+          <ReduxProvider store={store}>
+            <Router />
+          </ReduxProvider>
+        </TranslationsProvider>
+      </CookiesProvider>
+    </AuthProvider>
   </ThemeProvider>
 );
 
