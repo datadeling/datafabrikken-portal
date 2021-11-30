@@ -289,6 +289,10 @@ const ArrowDown = styled.div`
       transform: translate(8px, 7px);
     }
   }
+
+  ${onMobileView} {
+    display: none;
+  }
 `;
 
 export default {
