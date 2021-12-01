@@ -19,6 +19,7 @@ export default validateEnv(
       'https://organization-bff.staging.fellesdatakatalog.digdir.no',
     ORGANIZATION_CATALOGUE_HOST:
       'https://organization-catalogue.staging.fellesdatakatalog.digdir.no',
-    REPORT_API_HOST: 'https://reports-bff.staging.fellesdatakatalog.digdir.no'
+    REPORT_API_HOST: 'https://reports-bff.staging.fellesdatakatalog.digdir.no',
+    FDK_DATASET_PREVIEW_API_KEY: ''
   }
 );
