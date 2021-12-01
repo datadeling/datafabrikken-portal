@@ -13,4 +13,5 @@ export interface EnvironmentVariables {
   ORGANIZATION_HOST: string;
   ORGANIZATION_CATALOGUE_HOST: string;
   REPORT_API_HOST: string;
+  FDK_DATASET_PREVIEW_API_KEY: string;
 }
