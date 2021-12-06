@@ -304,7 +304,7 @@ const DatasetsPage: FC<Props> = ({
               }
             />
             <StatisticsRegularLink
-              to={`${PATHNAME.FIND_DATA}}?last_x_days=7`}
+              to={`${PATHNAME.FIND_DATA}?last_x_days=7`}
               icon={<SC.NewIcon />}
               count={datasetsReport?.newLastWeek ?? ''}
               description={
