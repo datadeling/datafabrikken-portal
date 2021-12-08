@@ -27,13 +27,19 @@ const TitleContainer = styled.div`
 `;
 
 const Title = styled.div`
+  display: flex;
   margin-bottom: ${theme.spacing('S12')};
-  & > a {
+  & > svg:first-of-type {
+    position: relative;
+    min-width: 25px;
+    top: 5px;
+  }
+  & > div > a {
     display: inline;
     font-size: ${theme.fontSize('FS12')};
     color: ${theme.colour(Colour.BLUE, 'B52')};
   }
-  & > a > svg {
+  & > div > a > svg {
     width: 20px;
     position: relative;
     top: 5px;

@@ -15,6 +15,7 @@ import Translation from '../../../../../../../components/translation';
 import EyeIcon from '../../../../../../../images/icon-eye.inline.svg';
 import LikeIcon from '../../../../../../../images/icon-like.inline.svg';
 import PostIcon from '../../../../../../../images/icon-post.inline.svg';
+import PinnedIcon from '../../../../../../../images/icon-pinned.inline.svg';
 
 import { CommunityTopic } from '../../../../../../../types';
 
@@ -51,6 +52,7 @@ const Topic: FC<Props> = ({
     user,
     timestampISO,
     tags,
+    pinned,
     category: { slug: categorySlug }
   },
   translationsService
@@ -58,12 +60,15 @@ const Topic: FC<Props> = ({
   <SC.Topic>
     <SC.TitleContainer>
       <SC.Title>
-        <Link
-          as={RouterLink}
-          to={`${PATHNAME.COMMUNITY}/${categorySlug}/${slug}`}
-        >
-          {parse(title)}
-        </Link>
+        {pinned === 1 && <PinnedIcon />}
+        <div>
+          <Link
+            as={RouterLink}
+            to={`${PATHNAME.COMMUNITY}/${categorySlug}/${slug}`}
+          >
+            {parse(title)}
+          </Link>
+        </div>
       </SC.Title>
       <SC.UserInfo>
         <User user={user} />
