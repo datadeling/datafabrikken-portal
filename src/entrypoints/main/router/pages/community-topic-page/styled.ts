@@ -10,6 +10,7 @@ const Page = styled.article`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
+
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
   }
