@@ -11,6 +11,7 @@ export interface Props {
   datasets: Dataset[];
   datasetsRelations: Dataset[];
   totalDatasets: number;
+  totalPages: number;
   datasetsPage: number;
   datasetPageSize: number;
   hasMoreDatasets: boolean;
@@ -26,6 +27,7 @@ const withDatasets = (Component: ComponentType<any>) => {
       state.DatasetsReducer.get('datasetsAggregations')?.toJS() ?? [],
     datasets: state.DatasetsReducer.get('datasets')?.toJS() ?? [],
     totalDatasets: state.DatasetsReducer.get('totalDatasets'),
+    totalPages: state.DatasetsReducer.get('totalPages'),
     datasetsPage: state.DatasetsReducer.get('datasetsPage'),
     datasetPageSize: state.DatasetsReducer.get('datasetPageSize'),
     hasMoreDatasets: state.DatasetsReducer.get('hasMoreDatasets'),
