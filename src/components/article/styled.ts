@@ -49,29 +49,29 @@ const Body = styled.div`
     font-size: ${theme.fontSize('FS10')};
   }
   margin-bottom: ${theme.spacing('S10')};
-  & > h2,
+  & > div > h2,
   h3,
   h4,
   h5,
   h6 {
     margin-bottom: ${theme.spacing('S4')};
   }
-  & > h2 {
+  & > div > h2 {
     font-size: ${theme.fontSize('FS20')};
   }
-  & > h3 {
+  & > div > h3 {
     font-size: ${theme.fontSize('FS16')};
   }
-  & > h4 {
+  & > div > h4 {
     font-size: ${theme.fontSize('FS14')};
   }
-  & > h5 {
+  & > div > h5 {
     font-size: ${theme.fontSize('FS12')};
   }
-  & > h6 {
+  & > div > h6 {
     font-size: ${theme.fontSize('FS10')};
   }
-  & > p {
+  & > div > p {
     margin-bottom: ${theme.spacing('S20')};
     & > a {
       border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
@@ -103,14 +103,14 @@ const Body = styled.div`
       }
     }
   }
-  & > ol,
+  & > div > ol,
   ul {
     margin-left: 2em;
   }
-  & > ul {
+  & > div > ul {
     list-style: disc;
   }
-  & > ol {
+  & > div > ol {
     list-style: decimal;
   }
 `;
