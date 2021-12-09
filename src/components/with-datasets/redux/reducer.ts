@@ -35,6 +35,7 @@ export default function reducer(
         .set('datasetsAggregations', fromJS([]))
         .set('datasets', fromJS([]))
         .set('totalDatasets', 0)
+        .set('totalPages', 0)
         .set('datasetsPage', 0)
         .set('datasetPageSize', 0)
         .set('hasMoreDatasets', false)
@@ -48,6 +49,7 @@ export default function reducer(
         )
         .set('datasets', fromJS(action.payload.pagedDatasets.hits))
         .set('totalDatasets', action.payload.pagedDatasets.page.totalElements)
+        .set('totalPages', action.payload.pagedDatasets.page.totalPages)
         .set('datasetsPage', action.payload.pagedDatasets.page.currentPage)
         .set('datasetPageSize', action.payload.pagedDatasets.page.size)
         .set(
@@ -63,6 +65,7 @@ export default function reducer(
         .set('datasetsAggregations', fromJS([]))
         .set('datasets', fromJS([]))
         .set('totalDatasets', 0)
+        .set('totalPages', 0)
         .set('datasetsPage', 0)
         .set('datasetPageSize', 0)
         .set('hasMoreDatasets', false)

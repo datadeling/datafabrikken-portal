@@ -57,8 +57,7 @@ interface Props
 const DatasetsPage: FC<Props> = ({
   datasetsAggregations,
   datasets,
-  totalDatasets,
-  datasetPageSize,
+  totalPages,
   datasetsPage,
   isLoadingDatasets,
   datasetsActions: {
@@ -248,11 +247,10 @@ const DatasetsPage: FC<Props> = ({
                     />
                   )
                 )}
-
-                {totalDatasets / datasetPageSize > 1 && (
+                {totalPages > 1 && (
                   <SC.Pagination>
                     <ReactPaginate
-                      pageCount={totalDatasets / datasetPageSize}
+                      pageCount={totalPages}
                       pageRangeDisplayed={2}
                       marginPagesDisplayed={1}
                       previousLabel='forrige'
