@@ -21,14 +21,14 @@ const Themes = styled.div`
   & > a {
     display: inline-flex;
     align-items: center;
-    color: ${theme.colour(Colour.BLUE, 'B36')};
+    color: ${theme.colour(Colour.BLUE, 'B38')};
     background: ${theme.colour(Colour.NEUTRAL, 'N02')};
     text-decoration: none;
     cursor: pointer;
 
     &.open-data {
       color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-      background: ${theme.colour(Colour.BLUE, 'B36')};
+      background: ${theme.colour(Colour.BLUE, 'B38')};
     }
 
     &.public-data {
@@ -40,13 +40,13 @@ const Themes = styled.div`
       background: ${theme.colour(Colour.NEUTRAL, 'N0')};
 
       & > svg > path {
-        fill: ${theme.colour(Colour.BLUE, 'B36')};
+        fill: ${theme.colour(Colour.BLUE, 'B38')};
       }
     }
 
     &:hover {
       color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-      background: ${theme.colour(Colour.BLUE, 'B36')};
+      background: ${theme.colour(Colour.BLUE, 'B38')};
 
       & > svg > path {
         fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
@@ -60,7 +60,7 @@ const Themes = styled.div`
       margin-right: 5px;
 
       & > path {
-        fill: ${theme.colour(Colour.BLUE, 'B36')};
+        fill: ${theme.colour(Colour.BLUE, 'B38')};
       }
     }
   }

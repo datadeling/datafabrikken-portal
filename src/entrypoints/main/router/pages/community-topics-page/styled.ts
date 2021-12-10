@@ -111,7 +111,7 @@ const Pagination = styled.div`
       padding: 0.5em 1em;
     }
     & > li.active > a {
-      background-color: ${theme.colour(Colour.BLUE, 'B36')};
+      background-color: ${theme.colour(Colour.BLUE, 'B38')};
     }
   }
   ${onMobileView} {

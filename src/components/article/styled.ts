@@ -73,6 +73,7 @@ const Body = styled.div`
   }
   & > div > p {
     margin-bottom: ${theme.spacing('S20')};
+    padding-bottom: 0;
     & > a {
       border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
     }
@@ -143,6 +144,10 @@ const ImageText = styled.span`
   font-size: 0.9rem;
 `;
 
+const InfoBoxWrapper = styled.div`
+  margin-bottom: ${theme.spacing('S20')};
+`;
+
 export default {
   Article,
   Container,
@@ -153,5 +158,6 @@ export default {
   Quote,
   ImageWrapper,
   Image,
-  ImageText
+  ImageText,
+  InfoBoxWrapper
 };

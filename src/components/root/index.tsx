@@ -15,7 +15,7 @@ const Root: FC<PropsWithChildren<Props>> = ({
 }) => (
   <SC.Root $invertColor={invertColor}>
     {children}
-    <ScrollToTop />
+    <ScrollToTop invertColor={invertColor} />
     <Footer />
   </SC.Root>
 );

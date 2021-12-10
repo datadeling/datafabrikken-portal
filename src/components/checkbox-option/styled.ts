@@ -41,7 +41,7 @@ const StyledCheckbox = styled.div<styledCheckboxProps>`
   height: 25px;
   transition: all 150ms;
   ${CheckboxContainer} > label > input:focus + & {
-    box-shadow: 0 0 0 3px ${theme.colour(Colour.BLUE, 'B36')};
+    box-shadow: 0 0 0 3px ${theme.colour(Colour.BLUE, 'B38')};
   }
   ${Icon} {
     visibility: ${({ $checked }) => ($checked ? 'visible' : 'hidden')};

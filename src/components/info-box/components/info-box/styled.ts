@@ -12,16 +12,16 @@ type infoBoxProps = {
 const InfoBox = styled.a<infoBoxProps>`
   background-color: ${({ $invertColor }) =>
     $invertColor
-      ? theme.colour(Colour.NEUTRAL, 'N02')
+      ? theme.colour(Colour.NEUTRAL, 'N0')
       : theme.colour(Colour.BLUE, 'B48')};
   color: ${({ $invertColor }) =>
     $invertColor
       ? theme.colour(Colour.BLUE, 'B52')
       : theme.colour(Colour.NEUTRAL, 'N0')};
-  box-shadow: 0 2px 8px
+  box-shadow: 0 12px 48px
     ${({ $invertColor }) =>
       $invertColor
-        ? theme.colour(Colour.NEUTRAL, 'N30')
+        ? theme.colour(Colour.BLUE, 'B38', 15)
         : theme.colour(Colour.NEUTRAL, 'N60')};
   display: flex;
   flex-direction: column;
@@ -58,17 +58,17 @@ const InfoBoxRow = styled.div`
 const IconWrapper = styled.div`
   align-items: flex-start;
   display: flex;
-  flex: 0 0 25%;
-  padding: ${theme.spacing('S10')};
-  ${onMobileView} {
-    padding: ${theme.spacing('S10')} 0;
-  }
+  flex: 0 0 20%;
+
   & > svg {
     flex-basis: 90%;
-    fill: ${theme.colour(Colour.BLUE, 'B20')};
     ${onMobileView} {
       flex-basis: 40%;
     }
+  }
+
+  ${onMobileView} {
+    margin-bottom: ${theme.spacing('S10')};
   }
 `;
 
@@ -89,7 +89,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Date = styled.span`
-  color: ${theme.colour(Colour.BLUE, 'B20')};
+  color: ${theme.colour(Colour.BLUE, 'B14')};
   font-size: ${theme.fontSize('FS10')};
   margin-bottom: ${theme.spacing('S6')};
 `;

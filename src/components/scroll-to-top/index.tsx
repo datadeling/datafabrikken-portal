@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import UpIcon from '../icons/up-icon';
 
 import SC from './styled';
 import Translation from '../translation';
 
-export default function ScrollToTop() {
+interface Props {
+  invertColor?: boolean;
+}
+
+const ScrollToTop: FC<Props> = ({ invertColor }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   const scrollToTop = () => {
@@ -30,7 +34,7 @@ export default function ScrollToTop() {
   }, []);
 
   return (
-    <SC.ScrollToTop>
+    <SC.ScrollToTop $invertColor={invertColor}>
       {isVisible && (
         <SC.ScrollButton onClick={scrollToTop}>
           <Translation id='toTop' />
@@ -39,4 +43,6 @@ export default function ScrollToTop() {
       )}
     </SC.ScrollToTop>
   );
-}
+};
+
+export default ScrollToTop;

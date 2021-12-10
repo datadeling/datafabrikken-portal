@@ -7,11 +7,11 @@ const Tag = styled(Link)`
   background-color: ${theme.colour(Colour.BLUE, 'B04')};
   border-radius: 50px;
   font-weight: ${theme.fontWeight('FW400')};
-  color: ${theme.colour(Colour.BLUE, 'B36')};
+  color: ${theme.colour(Colour.BLUE, 'B38')};
   white-space: nowrap;
 
   &:hover {
-    background-color: ${theme.colour(Colour.BLUE, 'B36')};
+    background-color: ${theme.colour(Colour.BLUE, 'B38')};
     color: ${theme.colour(Colour.NEUTRAL, 'N0')};
     text-decoration: none;
   }
