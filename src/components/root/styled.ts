@@ -9,7 +9,7 @@ type RootProps = {
 const Root = styled.main<RootProps>`
   background-color: ${({ $invertColor }) =>
     $invertColor
-      ? theme.colour(Colour.NEUTRAL, 'N0')
+      ? theme.colour(Colour.BLUE, 'B02')
       : theme.colour(Colour.BLUE, 'B54')};
   color: ${({ $invertColor }) =>
     $invertColor

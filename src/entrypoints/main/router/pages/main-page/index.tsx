@@ -50,10 +50,10 @@ import {
 } from '../../../../../providers/translations';
 import Topic from '../../../../../components/community/topic';
 
-import TopicsIllustration from '../../../../../images/illustration-topics.inline.svg';
-import MonitorIllustration from '../../../../../images/illustration-monitor.inline.svg';
-import RoadSignIllustration from '../../../../../images/illustration-roadsign.inline.svg';
-import UnboxingIllustration from '../../../../../images/illustration-unboxing.inline.svg';
+import CommunityIllustration from '../../../../../images/illustration-community-large.inline.svg';
+import CourseIllustration from '../../../../../images/illustration-course.inline.svg';
+import GuideIllustration from '../../../../../images/illustration-guide.inline.svg';
+import BoxOfDataIllustration from '../../../../../images/illustration-box-of-data.inline.svg';
 
 import ArrowDownIcon from '../../../../../images/icon-arrow-down.inline.svg';
 
@@ -165,7 +165,7 @@ const MainPage: FC<Props> = ({
             <SC.Row>
               <SC.Topics>
                 <SC.IllustrationBox>
-                  <TopicsIllustration />
+                  <CommunityIllustration />
                   <SC.IllustrationContent>
                     <ContentBox>
                       <ContentBoxHeader>
@@ -212,9 +212,9 @@ const MainPage: FC<Props> = ({
                 >
                   <InfoBoxIcon>
                     {index === 0 ? (
-                      <MonitorIllustration />
+                      <CourseIllustration />
                     ) : (
-                      <RoadSignIllustration />
+                      <GuideIllustration />
                     )}
                   </InfoBoxIcon>
                   <InfoBoxTitle>
@@ -232,7 +232,7 @@ const MainPage: FC<Props> = ({
               <SC.Row>
                 <SC.Teaser>
                   <SC.IllustrationBox>
-                    <UnboxingIllustration />
+                    <BoxOfDataIllustration />
                     <SC.IllustrationContent>
                       <ContentBox>
                         <ContentBoxHeader>

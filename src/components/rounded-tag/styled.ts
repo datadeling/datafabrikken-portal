@@ -26,11 +26,11 @@ const RoundedTag = styled(Link)<Props>`
       case Variant.SECONDARY:
         return css`
           background-color: ${theme.colour(Colour.BLUE, 'B04')};
-          color: ${theme.colour(Colour.BLUE, 'B36')};
+          color: ${theme.colour(Colour.BLUE, 'B38')};
         `;
       default:
         return css`
-          background-color: ${theme.colour(Colour.BLUE, 'B36')};
+          background-color: ${theme.colour(Colour.BLUE, 'B38')};
         `;
     }
   }}

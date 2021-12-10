@@ -108,7 +108,7 @@ const MainContentSection = styled.section`
   width: 100%;
 
   background: linear-gradient(
-    ${theme.colour(Colour.BLUE, 'B50')},
+    ${theme.colour(Colour.BLUE, 'B48')},
     ${theme.colour(Colour.BLUE, 'B54')}
   );
 `;
@@ -249,7 +249,7 @@ const ArrowDown = styled.div`
   position: absolute;
   bottom: ${theme.spacing('S24')};
   left: calc(50% - 26px);
-  background-color: ${theme.colour(Colour.BLUE, 'B50')};
+  background-color: ${theme.colour(Colour.BLUE, 'B48')};
   border-radius: 50%;
   width: 52px;
   height: 52px;

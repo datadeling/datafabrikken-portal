@@ -10,11 +10,16 @@ import {
 } from '../../utils/drupal-values';
 
 import { Variant as ContainerVariant } from '../container';
-import { InfoBox, InfoBoxBody, InfoBoxTitle } from '../info-box';
+import { InfoBox, InfoBoxIcon, InfoBoxBody, InfoBoxTitle } from '../info-box';
 import Markdown from '../markdown';
 
 import SC from './styled';
 import { CmsArticle } from '../../types';
+
+import SearchForDataIllustration from '../../images/illustration-search-for-data.inline.svg';
+import ContactIllustration from '../../images/illustration-contact.inline.svg';
+import CommunityIllustration from '../../images/illustration-community.inline.svg';
+import CourseIllustration from '../../images/illustration-course.inline.svg';
 
 interface Props {
   article: Partial<CmsArticle>;
@@ -50,21 +55,58 @@ export const renderModule = (module: any) => {
       const infoBoxUrl = module?.field_link?.uri?.replace('internal:', '');
       const r = new RegExp('^(?:[a-z]+:)?//', 'i');
       const isAbsoluteUrl = r.test(infoBoxUrl) ?? false;
+
+      const renderInfoBoxIcon = () => {
+        if (infoBoxUrl?.includes('finn-data')) {
+          return (
+            <InfoBoxIcon>
+              <SearchForDataIllustration />
+            </InfoBoxIcon>
+          );
+        }
+        if (infoBoxUrl?.includes('kontakt')) {
+          return (
+            <InfoBoxIcon>
+              <ContactIllustration />
+            </InfoBoxIcon>
+          );
+        }
+        if (infoBoxUrl?.includes('nyttige-kurs')) {
+          return (
+            <InfoBoxIcon>
+              <CourseIllustration />
+            </InfoBoxIcon>
+          );
+        }
+        if (infoBoxUrl?.includes('datalandsbyen')) {
+          return (
+            <InfoBoxIcon>
+              <CommunityIllustration />
+            </InfoBoxIcon>
+          );
+        }
+
+        return null;
+      };
+
       return (
-        <InfoBox
-          key={module.id}
-          {...(isAbsoluteUrl
-            ? { href: module.field_link?.uri, target: '_blank' }
-            : { as: RouterLink, to: infoBoxUrl })}
-          invertColor
-        >
-          <InfoBoxTitle>
-            <h2>{module.field_link?.title}</h2>
-          </InfoBoxTitle>
-          <InfoBoxBody truncate={false}>
-            <Markdown allowHtml>{module.field_body?.processed}</Markdown>
-          </InfoBoxBody>
-        </InfoBox>
+        <SC.InfoBoxWrapper>
+          <InfoBox
+            key={module.id}
+            {...(isAbsoluteUrl
+              ? { href: module.field_link?.uri, target: '_blank' }
+              : { as: RouterLink, to: infoBoxUrl })}
+            invertColor
+          >
+            {renderInfoBoxIcon()}
+            <InfoBoxTitle invertColor>
+              <h2>{module.field_link?.title}</h2>
+            </InfoBoxTitle>
+            <InfoBoxBody truncate={false}>
+              <Markdown allowHtml>{module.field_body?.processed}</Markdown>
+            </InfoBoxBody>
+          </InfoBox>
+        </SC.InfoBoxWrapper>
       );
     }
     default:
