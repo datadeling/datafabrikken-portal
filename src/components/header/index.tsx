@@ -37,7 +37,6 @@ const Header: FC<Props> = () => {
       <SC.SkipLink href='#main'>
         <Translation id='header.mainContent' />
       </SC.SkipLink>
-      <SC.BetaIcon />
       <SC.Nav role='navigation'>
         <SC.Logo href='/'>
           <Translation id='title' />
