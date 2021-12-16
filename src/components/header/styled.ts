@@ -5,8 +5,6 @@ import { theme, Colour } from '../../entrypoints/main/app/theme';
 
 import DropdownMenuBase from '../dropdown-menu';
 
-import BetaLogoBase from '../../images/tag-beta-desktop.inline.svg';
-
 const onMobileView = '@media (max-width: 900px)';
 
 const Header = styled.header`
@@ -124,17 +122,6 @@ const Logo = styled.a`
   }
 `;
 
-const BetaIcon = styled(BetaLogoBase)`
-  position: absolute;
-  left: 0;
-  top: 0;
-  @media (max-width: 900px) {
-    transform: scale(0.7);
-    left: -11px;
-    top: -11px;
-  }
-`;
-
 const DropdownMenu = styled(DropdownMenuBase)`
   display: none;
   margin-left: auto;
@@ -231,7 +218,6 @@ export default {
   Link,
   SkipLink,
   Logo,
-  BetaIcon,
   DropdownMenu,
   MenuButton,
   Menu,
