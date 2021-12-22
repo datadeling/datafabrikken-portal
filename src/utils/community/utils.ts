@@ -1,8 +1,10 @@
 import {
+  CommunityCalendarDate,
   CommunityCategory,
   CommunityPost,
   CommunityTopic
 } from '../../types/domain.d';
+import { CommunityTemplateTag } from '../../types/enums';
 
 export const categorySorter = (
   { order: orderFirst }: CommunityCategory,
@@ -59,3 +61,42 @@ export const compareTopics = (
   }
   return 0;
 };
+
+export const pruneNodebbTemplateTags = (
+  raw_text: string,
+  translationsService: any
+) =>
+  raw_text.replace(
+    /(?:\|\s)(?:\[{2})(.*?)(?:\]{2}:)(.*?)(?:\s\|)/g,
+    (_substring, tagCapture, valueCapture) => {
+      if (tagCapture === CommunityTemplateTag.CALENDAR_EVENT_TITLE) {
+        return `${translationsService.translate(
+          'community.calendarEvent'
+        )}${valueCapture}`;
+      }
+      return valueCapture;
+    }
+  );
+
+export const parseCalendarDate = (
+  raw_text: string
+): CommunityCalendarDate | null => {
+  const matches = raw_text.match(
+    /moment:time-date-view,\sutc,\s(\d+),\s(\d+),\s(true|false)/m
+  );
+
+  if (matches) {
+    const start: number = +matches[1];
+    const end: number = +matches[2];
+    return {
+      startDate: new Date(start),
+      endDate: new Date(end),
+      allDay: matches[3] === 'true'
+    };
+  }
+
+  return null;
+};
+
+export const isCalendarPost = (post: string) =>
+  post.includes('plugin-calendar-event-name');

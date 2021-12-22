@@ -33,7 +33,7 @@ import {
   formatDateTime
 } from '../../../../../../../utils/date';
 import Tag from '../../../../../../../components/community/tag';
-import { CommunityPlaceholder } from '../../../../../../../types/enums';
+import { pruneNodebbTemplateTags } from '../../../../../../../utils/community/utils';
 
 interface ExternalProps {
   topic: CommunityTopic;
@@ -125,10 +125,7 @@ const Topic: FC<Props> = ({
           >
             <Truncate lines={2} width={280} trimWhitespace>
               {htmlToText(
-                teaser.content.replaceAll(
-                  CommunityPlaceholder.CALENDAR_EVENT_TITLE,
-                  `${translationsService.translate('community.calendarEvent')}`
-                )
+                pruneNodebbTemplateTags(teaser.content, translationsService)
               )}
             </Truncate>
           </Link>
