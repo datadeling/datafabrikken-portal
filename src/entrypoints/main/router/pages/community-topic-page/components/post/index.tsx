@@ -4,8 +4,6 @@ import { compose } from 'redux';
 
 import parse from 'html-react-parser';
 
-import env from '../../../../../../../env';
-
 import { CommunityPost } from '../../../../../../../types';
 
 import Translation from '../../../../../../../components/translation';
@@ -13,7 +11,16 @@ import Translation from '../../../../../../../components/translation';
 import SC from './styled';
 import User from '../../../../../../../components/community/user';
 import { formatDateTime } from '../../../../../../../utils/date';
-import { CommunityPlaceholder } from '../../../../../../../types/enums';
+import { CommunityTemplateTag } from '../../../../../../../types/enums';
+
+import CalendarDate from '../../../../../../../components/community/calendar-date';
+
+import env from '../../../../../../../env';
+
+import {
+  isCalendarPost,
+  parseCalendarDate
+} from '../../../../../../../utils/community/utils';
 
 interface ExternalProps {
   post: CommunityPost;
@@ -21,27 +28,45 @@ interface ExternalProps {
 
 interface Props extends ExternalProps {}
 
-const { COMMUNITY_API_HOST } = env;
+const Post: FC<Props> = ({ post: { content, user, timestampISO } }) => {
+  const parsePost = () => {
+    const { COMMUNITY_API_HOST } = env;
+    return parse(
+      content.replaceAll('src="/assets/', `src="${COMMUNITY_API_HOST}/assets/`),
+      {
+        replace: (domNode: any) => {
+          if (
+            domNode.attribs &&
+            domNode.attribs.class === 'plugin-calendar-event-date'
+          ) {
+            const timeElement: any = domNode.children[3];
+            return (
+              <CalendarDate
+                {...parseCalendarDate(timeElement.attribs.title ?? '')}
+              />
+            );
+          }
+          return domNode;
+        }
+      }
+    );
+  };
 
-const Post: FC<Props> = ({ post: { content, user, timestampISO } }) => (
-  <SC.Post>
-    <SC.UserInfo>
-      <User user={user} />
-      {formatDateTime(new Date(timestampISO))}
-    </SC.UserInfo>
-    <SC.Content>
-      {content === CommunityPlaceholder.POST_DELETED ? (
-        <Translation id='community.postDeleted' />
-      ) : (
-        parse(
-          content.replaceAll(
-            'src="/assets/',
-            `src="${COMMUNITY_API_HOST}/assets/`
-          )
-        )
-      )}
-    </SC.Content>
-  </SC.Post>
-);
+  return (
+    <SC.Post $calendarPost={isCalendarPost(content)}>
+      <SC.UserInfo>
+        <User user={user} />
+        {formatDateTime(new Date(timestampISO))}
+      </SC.UserInfo>
+      <SC.Content>
+        {content === `[[${CommunityTemplateTag.POST_DELETED}]]` ? (
+          <Translation id='community.postDeleted' />
+        ) : (
+          parsePost()
+        )}
+      </SC.Content>
+    </SC.Post>
+  );
+};
 
 export default compose<FC<ExternalProps>>(memo)(Post);

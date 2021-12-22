@@ -309,6 +309,11 @@ export interface CommunityPagination {
   currentPage: number;
   pageCount: number;
 }
+export interface CommunityCalendarDate {
+  startDate?: Date;
+  endDate?: Date;
+  allDay?: boolean;
+}
 interface DatasetReference {
   referenceType: ReferenceType;
   source?: { uri?: string };

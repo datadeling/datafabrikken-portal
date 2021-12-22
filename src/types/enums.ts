@@ -38,10 +38,10 @@ export enum GoogleAnalyticsTrackingId {
   COMMUNITY = 'G-WVFGGM6DCG'
 }
 
-export enum CommunityPlaceholder {
-  FORMER_USER = '[[global:former_user]]',
-  POST_DELETED = '[[topic:post_is_deleted]]',
-  CALENDAR_EVENT_TITLE = '[[calendar:event_title]]'
+export enum CommunityTemplateTag {
+  FORMER_USER = 'global:former_user',
+  POST_DELETED = 'topic:post_is_deleted',
+  CALENDAR_EVENT_TITLE = 'calendar:event_title'
 }
 
 export enum MediaTypeOrExtentType {

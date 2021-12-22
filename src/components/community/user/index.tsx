@@ -7,7 +7,7 @@ import env from '../../../env';
 import SC from './styled';
 
 import type { CommunityUser } from '../../../types';
-import { CommunityPlaceholder } from '../../../types/enums';
+import { CommunityTemplateTag } from '../../../types/enums';
 
 const { COMMUNITY_API_HOST } = env;
 
@@ -18,7 +18,7 @@ interface Props {
 const User: FC<Props> = ({ user }) => {
   const userName = () => {
     const name = user.displayname ?? user.username;
-    return name === CommunityPlaceholder.FORMER_USER ? (
+    return name === `[[${CommunityTemplateTag.FORMER_USER}]]` ? (
       <Translation id='community.formerUser' />
     ) : (
       name
