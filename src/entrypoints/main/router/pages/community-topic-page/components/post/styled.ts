@@ -57,7 +57,8 @@ const Content = styled.div`
   & div.plugin-calendar-event-responses-lists,
   & div.plugin-calendar-event-date,
   & div.plugin-calendar-event-repeats,
-  & div.plugin-calendar-event-mandatory {
+  & div.plugin-calendar-event-mandatory,
+  & div.plugin-calendar-event-reminders {
     display: none;
   }
 
