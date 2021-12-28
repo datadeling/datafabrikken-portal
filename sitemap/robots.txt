@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://datafabrikken.norge.no/sitemap.xml

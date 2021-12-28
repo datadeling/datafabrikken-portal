@@ -40,7 +40,8 @@
     "clean:coverage": "rm -rf coverage",
     "bundle:analyse": "run-s build:webpack:stats",
     "commit": "git-cz",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "sitemap": "NODE_PATH=./src npx -s sh ts-node --project tsconfig.sitemap.json ./sitemap-builder.ts"
   },
   "config": {
     "commitizen": {
