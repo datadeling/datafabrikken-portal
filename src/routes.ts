@@ -25,7 +25,8 @@ export default {
   [`${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle/:topicSlugId/:topicSlugTitle`]:
     'community-topic-page',
   [PATHNAME.CONTACT]: 'contact-page',
-  [PATHNAME.ORGANIZATION]: 'organization-page',
+  [PATHNAME.ORGANIZATION]: 'organizations-page',
+  [`${PATHNAME.ORGANIZATION}/:organizationId`]: 'organization-page',
   [`${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}`]:
     'metadata-quality-datasets-page',
   [`${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}/:datasetId`]:
