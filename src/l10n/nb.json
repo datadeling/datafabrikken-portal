@@ -17,7 +17,7 @@
     "communityAbout": "Om Datalandsbyen",
     "organizations": "Virksomheter",
     "metadataquality": "Metadatakvalitet",
-    "courses": "Nyttige kurs"
+    "courses": "Kurs"
   },
   "footer": {
     "title": "Følg med på Datafabrikken",
@@ -416,6 +416,15 @@
     "datasetsDescription": "datasettbeskrivelser",
     "organization": "Virksomhet",
     "numberDatasets": "Antall Datasett"
+  },
+  "coursesPage": {
+    "courseIsProvidedBy": "Kurset leveres av",
+    "introCourse": "Introkurs",
+    "advancedTraining": "Dybdekurs",
+    "continuingEducation": "Videreutdanning",
+    "minutes": "minuter",
+    "modules": "moduler",
+    "providerLogo": "Tilbyderlogo",
+    "free": "Gratis"
   }
-
 }

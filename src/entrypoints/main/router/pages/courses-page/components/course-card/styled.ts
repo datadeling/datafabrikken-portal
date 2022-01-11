@@ -1,22 +1,8 @@
 import styled, { css } from 'styled-components';
 import { Colour, theme } from '../../../../../app/theme';
 
-import WigglyLineBase from '../../../../../../../images/course-wiggly-line.inline.svg';
 import ClockIconBase from '../../../../../../../images/icon-clock-sm.inline.svg';
 import CubeIconBase from '../../../../../../../images/cube.inline.svg';
-
-const Card = styled.div`
-  display: flex;
-  min-width: 300px;
-  flex: 1 1 30%;
-  flex-direction: column;
-  margin: ${theme.spacing('S8')};
-  border-radius: 2px;
-  overflow: hidden;
-  box-shadow: 2.9px 2.9px 3.6px rgba(0, 0, 0, 0.049),
-    8.1px 7.9px 10px rgba(0, 0, 0, 0.07),
-    19.6px 19px 24.1px rgba(0, 0, 0, 0.091), 65px 63px 80px rgba(0, 0, 0, 0.14);
-`;
 
 const Image = styled.img`
   max-width: 100%;
@@ -30,21 +16,14 @@ const ProviderLogo = styled.img`
   margin: ${theme.spacing('S4')} 0;
 `;
 
-const CourseContent = styled.div<{ $inverted: boolean }>`
+const CourseContent = styled.div`
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
   padding: ${theme.spacing('S16')};
   line-height: ${theme.fontSize('FS16')};
-
-  background-color: ${({ $inverted }) =>
-    $inverted
-      ? theme.colour(Colour.NEUTRAL, 'N0')
-      : theme.colour(Colour.BLUE, 'B48')};
-  color: ${({ $inverted }) =>
-    $inverted
-      ? theme.colour(Colour.BLUE, 'B52')
-      : theme.colour(Colour.NEUTRAL, 'N0')};
+  background-color: ${theme.colour(Colour.BLUE, 'B48')};
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
 
   & > h3 {
     color: ${theme.colour(Colour.BLUE, 'B14')};
@@ -60,36 +39,12 @@ const CourseFacts = styled.div`
   margin: ${theme.spacing('S8')} 0;
 `;
 
-const CourseProvider = styled.div<{ $inverted: boolean }>`
+const CourseProvider = styled.div`
   display: flex;
   flex-direction: column;
   padding: ${theme.spacing('S16')};
-  background-color: ${({ $inverted }) =>
-    $inverted
-      ? theme.colour(Colour.BLUE, 'B48')
-      : theme.colour(Colour.NEUTRAL, 'N0')};
-  color: ${({ $inverted }) =>
-    $inverted
-      ? theme.colour(Colour.NEUTRAL, 'N0')
-      : theme.colour(Colour.BLUE, 'B52')};
-`;
-
-const WigglyLine = styled(WigglyLineBase)<{ $inverted: boolean }>`
-  margin-bottom: -1px;
-  background-color: ${({ $inverted }) =>
-    $inverted
-      ? theme.colour(Colour.NEUTRAL, 'N0')
-      : theme.colour(Colour.BLUE, 'B48')};
-  & > path {
-    stroke: ${({ $inverted }) =>
-      $inverted
-        ? theme.colour(Colour.BLUE, 'B48')
-        : theme.colour(Colour.NEUTRAL, 'N0')};
-    fill: ${({ $inverted }) =>
-      $inverted
-        ? theme.colour(Colour.BLUE, 'B48')
-        : theme.colour(Colour.NEUTRAL, 'N0')};
-  }
+  background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  color: ${theme.colour(Colour.BLUE, 'B52')};
 `;
 
 const Fact = styled.span`
@@ -117,15 +72,60 @@ const BoxIcon = styled(CubeIconBase)`
   ${IconBaseStyle};
 `;
 
+const Tags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  line-height: ${theme.fontSize('FS12')};
+`;
+
+const Card = styled.div`
+  display: flex;
+  min-width: 300px;
+  flex: 0 1 30%;
+  flex-direction: column;
+  margin-right: ${theme.spacing('S16')};
+  margin-bottom: ${theme.spacing('S16')};
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 2.9px 2.9px 3.6px rgba(0, 0, 0, 0.049),
+    8.1px 7.9px 10px rgba(0, 0, 0, 0.07),
+    19.6px 19px 24.1px rgba(0, 0, 0, 0.091), 65px 63px 80px rgba(0, 0, 0, 0.14);
+
+  &:hover {
+    cursor: pointer;
+
+    & > ${CourseContent} {
+      background-color: ${theme.colour(Colour.BLUE, 'B16')};
+      color: ${theme.colour(Colour.BLUE, 'B48')};
+
+      & > h3 {
+        color: ${theme.colour(Colour.BLUE, 'B48')};
+        & > a {
+          border-color: ${theme.colour(Colour.BLUE, 'B48')};
+        }
+      }
+
+      & > ${CourseFacts} svg > path {
+        stroke: ${theme.colour(Colour.BLUE, 'B48')};
+      }
+
+      & > ${Tags} > div:first-child {
+        color: ${theme.colour(Colour.BLUE, 'B48')};
+        background-color: ${theme.colour(Colour.BLUE, 'B14')};
+      }
+    }
+  }
+`;
+
 export default {
   Card,
   CourseContent,
-  WigglyLine,
   CourseProvider,
   CourseFacts,
   Fact,
   Image,
   ProviderLogo,
   ClockIcon,
-  BoxIcon
+  BoxIcon,
+  Tags
 };

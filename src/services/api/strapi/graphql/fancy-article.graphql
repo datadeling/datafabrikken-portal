@@ -1,0 +1,5 @@
+query GetFancyArticle($id: ID!) {
+  fancyArticle(id: $id) {
+    title
+  }
+}

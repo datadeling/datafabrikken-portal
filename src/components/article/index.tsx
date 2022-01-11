@@ -71,7 +71,7 @@ export const renderModule = (module: any) => {
             </InfoBoxIcon>
           );
         }
-        if (infoBoxUrl?.includes('nyttige-kurs')) {
+        if (infoBoxUrl?.includes('kurs')) {
           return (
             <InfoBoxIcon>
               <CourseIllustration />

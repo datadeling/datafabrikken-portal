@@ -14,7 +14,7 @@ const Container = styled(ContainerSC.Container)`
 
 const CourseSection = styled.section`
   padding: ${theme.spacing('S32')} 0px;
-  background-color: ${theme.colour(Colour.BLUE, 'B52')};
+  background-color: ${theme.colour(Colour.BLUE, 'B54')};
   display: flex;
 `;
 
@@ -47,6 +47,7 @@ const Title = styled.h1`
 const Subtitle = styled.p`
   font-size: ${theme.fontSize('FS16')};
   line-height: ${theme.fontSize('FS24')};
+  max-width: 800px;
 
   ${onMobileView} {
     font-size: ${theme.fontSize('FS14')};
