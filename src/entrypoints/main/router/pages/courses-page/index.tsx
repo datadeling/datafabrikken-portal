@@ -1,45 +1,35 @@
-import React, { memo, FC, useEffect } from 'react';
+import React, { memo, FC } from 'react';
 import { compose } from 'redux';
 
 import SC from './styled';
 import ErrorPage from '../../../../../components/error-page';
 import withErrorBoundary from '../../../../../components/with-error-boundary';
-import withPage, {
-  Props as CmsArticleProps
-} from '../../../../../components/with-cms-page';
 import Root from '../../../../../components/root';
-
-import { courses } from './courses';
 import CourseCard from './components/course-card';
-import { Variant } from '../../../../../components/container';
 
-interface Props extends CmsArticleProps {}
+import { useGetCoursesQuery } from '../../../../../services/api/generated/cms/graphql';
 
-const cmsId = '29c9f124-25d4-4fa8-9869-45a38da394ed';
+interface Props {}
 
-const CoursesPage: FC<Props> = ({
-  cmsPage,
-  cmsPageActions: { getCmsPageRequested: getCmsPage, resetCmsPage }
-}) => {
-  useEffect(() => {
-    getCmsPage(cmsId);
-    return () => {
-      resetCmsPage();
-    };
-  }, []);
+const CoursesPage: FC<Props> = () => {
+  const { data } = useGetCoursesQuery();
+  const { courses, topArticle } = data ?? {};
 
   return (
     <Root>
       <SC.Header>
-        <SC.Container variant={Variant.WIDTH_720}>
-          <SC.Title>{cmsPage?.title}</SC.Title>
-          <SC.Subtitle>{cmsPage?.field_ingress}</SC.Subtitle>
+        <SC.Container>
+          <SC.Title>{topArticle?.title}</SC.Title>
+          <SC.Subtitle>
+            {topArticle?.content?.[0]?.__typename ===
+              'ComponentBasicParagraph' && topArticle.content[0].content}
+          </SC.Subtitle>
         </SC.Container>
       </SC.Header>
       <SC.CourseSection>
         <SC.Container>
           <SC.CourseCardContainer>
-            {courses.map(course => (
+            {courses?.map(course => (
               <CourseCard course={course} />
             ))}
           </SC.CourseCardContainer>
@@ -49,8 +39,4 @@ const CoursesPage: FC<Props> = ({
   );
 };
 
-export default compose<FC>(
-  memo,
-  withPage,
-  withErrorBoundary(ErrorPage)
-)(CoursesPage);
+export default compose<FC>(memo, withErrorBoundary(ErrorPage))(CoursesPage);

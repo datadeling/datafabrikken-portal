@@ -101,3 +101,13 @@ export enum SortOrder {
   ASC,
   DSC
 }
+
+export enum CourseType {
+  INTRO_COURSE = 'INTRO_COURSE',
+  ADVANCED_TRAINING = 'ADVANCED_TRAINING',
+  CONTINUING_EDUCATION = 'CONTINUING_EDUCATION'
+}
+
+export enum CourseProvider {
+  DIGITAL_NORWAY = 'DIGITAL_NORWAY'
+}

@@ -1,0 +1,28 @@
+query GetCourses {
+  topArticle: fancyArticle(id: 5) {
+    title
+    content {
+      ... on ComponentBasicParagraph {
+        __typename
+        content
+      }
+    }
+  }
+  courses {
+    title
+    featureImage {
+      url
+    }
+    description
+    type
+    link
+    primaryTargetGroup
+    durationInMinutes
+    numberOfModules
+    free
+    provider
+    locale
+    published_at
+    updated_at
+  }
+}

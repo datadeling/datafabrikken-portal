@@ -14,4 +14,5 @@ export interface EnvironmentVariables {
   ORGANIZATION_CATALOGUE_HOST: string;
   REPORT_API_HOST: string;
   FDK_DATASET_PREVIEW_API_KEY: string;
+  STRAPI_API_HOST: string;
 }
