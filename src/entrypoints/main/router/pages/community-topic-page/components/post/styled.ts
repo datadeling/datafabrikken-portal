@@ -65,6 +65,10 @@ const Content = styled.div`
   & div.plugin-calendar-event-name {
     font-size: ${theme.fontSize('FS16')};
   }
+
+  & a {
+    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
+  }
 `;
 
 export default {
