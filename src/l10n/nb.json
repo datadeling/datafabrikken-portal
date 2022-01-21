@@ -50,7 +50,7 @@
   "owner": "Utgiver",
   "openData": "Åpne data",
   "accessRights": {
-    "limitedAccess": "Begrenset tilgang"
+    "limitedAccess": "Ikke åpne data"
   },
   "filter": {
     "title": "Filter",
@@ -58,7 +58,7 @@
     "closeFilters": "Lukk søkefilter",
     "accessRights": "Tilgang",
     "openData": "åpne data",
-    "restrictedAccessRights": "begrenset tilgang",
+    "restrictedAccessRights": "ikke åpne data",
     "format": "Format",
     "search": "Søk",
     "searchFormat": "Søk på format",
@@ -74,9 +74,9 @@
   },
   "detailsPage": {
     "openData": "Åpne data",
-    "publicData": "Kan deles offentlig",
-    "restrictedData": "Begrenset offentlighet",
-    "nonPublicData": "Unntatt offentlighet",
+    "publicData": "Allmenn tilgang",
+    "restrictedData": "Betinget tilgang",
+    "nonPublicData": "Ikke-allmenn tilgang",
     "intro": {
       "lastPublishedInfo": "{entity} publisert i Felles datakatalog {lastPublished}",
       "entity": {
@@ -276,12 +276,12 @@
     "leagalBasisForAccessDefaultText": "Hjemmel",
     "accessRights": {
       "authorityCode": {
-        "public": "Offentlig",
-        "restricted": "Begrenset offentlighet",
-        "nonPublic": "Unntatt offentlighet",
-        "publicDetailsLabel": "Datasettet kan deles offentlig",
-        "restrictedDetailsLabel": "Datasettet har begrenset offentlighet",
-        "nonPublicDetailsLabel": "Datasettet er unntatt offentlighet"
+        "public": "Allmenn tilgang",
+        "restricted": "Betinget tilgang",
+        "nonPublic": "Ikke-allmenn tilgang",
+        "publicDetailsLabel": "Datasettet har allmenn tilgang",
+        "restrictedDetailsLabel": "Datasettet har betinget tilgang",
+        "nonPublicDetailsLabel": "Datasettet har ikke-allmenn tilgang"
       }
     },
     "sample": "Eksempeldata",
