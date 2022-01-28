@@ -208,10 +208,11 @@ export interface CommunityCategory {
   pagination: CommunityPagination;
 }
 export interface CommunityPost {
-  pid: number;
-  tid: number;
+  pid: string;
+  toPid?: string;
+  tid: string;
   content: string;
-  uid: number;
+  uid: string;
   timestamp: number;
   deleted: boolean;
   upvotes: number;
@@ -288,11 +289,11 @@ export interface CommunityTag {
 }
 
 export interface CommunityUser {
-  uid: number;
+  uid: string;
   username: string;
   displayname: string;
   userslug: string;
-  picture: string;
+  picture?: string;
   'icon:text': string;
   'icon:bgColor': string;
 }

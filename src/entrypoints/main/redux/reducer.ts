@@ -22,6 +22,7 @@ import AssessmentsReducer from '../../../components/with-assessments/redux/reduc
 import DatasetPreviewReducer from '../../../components/with-dataset-preview/redux/reducer';
 import SuggestionsReducer from '../../../components/with-suggestions/redux/reducer';
 import ConceptsReducer from '../../../components/with-concepts/redux/reducer';
+import { commentsApi } from '../../../services/api/user-feedback-api/comments';
 
 export default combineReducers({
   CmsPageReducer,
@@ -45,5 +46,6 @@ export default combineReducers({
   AssessmentsReducer,
   DatasetPreviewReducer,
   ConceptsReducer,
-  SuggestionsReducer
+  SuggestionsReducer,
+  [commentsApi.reducerPath]: commentsApi.reducer
 });

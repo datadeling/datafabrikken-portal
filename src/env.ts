@@ -21,6 +21,8 @@ export default validateEnv(
       'https://organization-catalogue.staging.fellesdatakatalog.digdir.no',
     REPORT_API_HOST: 'https://reports-bff.staging.fellesdatakatalog.digdir.no',
     FDK_DATASET_PREVIEW_API_KEY: '',
-    STRAPI_API_HOST: 'https://cms.datafabrikken.norge.no'
+    STRAPI_API_HOST: 'https://cms.datafabrikken.norge.no',
+    FDK_USER_FEEDBACK_SERVICE_BASE_URI:
+      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/user-feedback-service-staging'
   }
 );

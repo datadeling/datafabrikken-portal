@@ -46,6 +46,7 @@ import {
   ItemWithRelationType,
   MediaTypeOrExtent
 } from '../../../../../types';
+import CommentSection from '../../../../../components/community/comments';
 import Topic from '../../../../../components/community/topic';
 import Translation from '../../../../../components/translation';
 import withConcepts, {
@@ -923,6 +924,18 @@ const DatasetDetailsPage: FC<Props> = ({
             </InternalLink>
           </span>
         )}
+      </ContentSection>
+      <ContentSection
+        id='comment-section'
+        title={
+          translations.translate('community.comments.sectionTitle', {
+            entityType: translations.translate(
+              `community.comments.entityTypes.${entity}`
+            ) as string
+          }) as string
+        }
+      >
+        <CommentSection entityId={datasetId ?? ''} />
       </ContentSection>
     </DetailsPage>
   ) : (

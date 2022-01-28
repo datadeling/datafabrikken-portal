@@ -15,4 +15,5 @@ export interface EnvironmentVariables {
   REPORT_API_HOST: string;
   FDK_DATASET_PREVIEW_API_KEY: string;
   STRAPI_API_HOST: string;
+  FDK_USER_FEEDBACK_SERVICE_BASE_URI: string;
 }
