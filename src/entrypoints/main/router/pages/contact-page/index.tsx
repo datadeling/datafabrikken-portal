@@ -1,29 +1,57 @@
-import React, { FC, memo, useEffect } from 'react';
+import React, { FC, memo } from 'react';
 import { compose } from 'redux';
 
-import withPage, {
-  Props as CmsArticleProps
-} from '../../../../../components/with-cms-page';
-
-import Article from '../../../../../components/article';
 import Root from '../../../../../components/root';
+import env from '../../../../../env';
+import {
+  ComponentBasicContact,
+  useGetContactsQuery
+} from '../../../../../services/api/generated/cms/graphql';
+import SC from './styled';
 
-const articleId = '382bcca1-3b63-4a03-9719-bfb1810464e0';
+const { STRAPI_API_HOST } = env;
 
-interface Props extends CmsArticleProps {}
+const FindDataPage: FC = () => {
+  const { data: { contactPage } = {} } = useGetContactsQuery();
 
-const FindDataPage: FC<Props> = ({
-  cmsPage,
-  cmsPageActions: { getCmsPageRequested: getCmsPage, resetCmsPage }
-}) => {
-  useEffect(() => {
-    getCmsPage(articleId);
-    return () => {
-      resetCmsPage();
-    };
-  }, []);
+  const ingress =
+    contactPage?.content?.[0]?.__typename === 'ComponentBasicParagraph'
+      ? contactPage.content[0].content
+      : undefined;
 
-  return <Root invertColor>{cmsPage && <Article article={cmsPage} />}</Root>;
+  const contacts = (contactPage?.content?.filter(
+    contact => contact && contact.__typename === 'ComponentBasicContact'
+  ) ?? []) as Partial<ComponentBasicContact>[];
+
+  return (
+    <Root>
+      <SC.Header>
+        <SC.Container>
+          <SC.Title>{contactPage?.title}</SC.Title>
+          {ingress && <SC.Ingress>{ingress}</SC.Ingress>}
+        </SC.Container>
+      </SC.Header>
+      <SC.Container>
+        <SC.ContactCardContainer>
+          {contacts.map(({ image, name, jobTitle, phoneNumber, email }) => (
+            <SC.ContactCard>
+              {image?.[0]?.url && (
+                <SC.ContactImage src={`${STRAPI_API_HOST}${image[0].url}`} />
+              )}
+              <SC.TopInfo>
+                <SC.ContactName>{name}</SC.ContactName>
+                <p>{jobTitle}</p>
+              </SC.TopInfo>
+              <p>{phoneNumber}</p>
+              <SC.ContactEmail href={`mailto:${email}`}>
+                {email}
+              </SC.ContactEmail>
+            </SC.ContactCard>
+          ))}
+        </SC.ContactCardContainer>
+      </SC.Container>
+    </Root>
+  );
 };
 
-export default compose<FC>(memo, withPage)(FindDataPage);
+export default compose<FC>(memo)(FindDataPage);

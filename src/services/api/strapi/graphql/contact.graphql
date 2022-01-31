@@ -1,0 +1,20 @@
+query GetContacts {
+  contactPage: fancyArticle(id: 6) {
+    title
+    content {
+      ... on ComponentBasicParagraph {
+        __typename
+        content
+      }
+      ... on ComponentBasicContact {
+        __typename
+        image { url }
+        name
+        email
+        jobTitle
+        phoneNumber
+
+      }
+    }
+  }
+}

@@ -17,8 +17,6 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** Input type for dynamic zone content of ComponentBasicSection */
-  ComponentBasicSectionContentDynamicZoneInput: any;
   /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: any;
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
@@ -202,6 +200,22 @@ export type ComponentBasicImageInput = {
   style?: Maybe<Enum_Componentbasicimage_Style>;
 };
 
+export type ComponentBasicInfobox = {
+  __typename?: 'ComponentBasicInfobox';
+  content?: Maybe<Scalars['String']>;
+  id: Scalars['ID'];
+  illustration: Enum_Componentbasicinfobox_Illustration;
+  link?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
+};
+
+export type ComponentBasicInfoboxInput = {
+  content?: Maybe<Scalars['String']>;
+  illustration: Enum_Componentbasicinfobox_Illustration;
+  link?: Maybe<Scalars['String']>;
+  title: Scalars['String'];
+};
+
 export type ComponentBasicParagraph = {
   __typename?: 'ComponentBasicParagraph';
   content?: Maybe<Scalars['String']>;
@@ -226,20 +240,11 @@ export type ComponentBasicQuoteInput = {
 
 export type ComponentBasicSection = {
   __typename?: 'ComponentBasicSection';
-  content?: Maybe<Array<Maybe<ComponentBasicSectionContentDynamicZone>>>;
   id: Scalars['ID'];
 };
 
-export type ComponentBasicSectionContentDynamicZone =
-  | ComponentBasicContact
-  | ComponentBasicImage
-  | ComponentBasicParagraph
-  | ComponentBasicQuote;
-
 export type ComponentBasicSectionInput = {
-  content?: Maybe<
-    Array<Scalars['ComponentBasicSectionContentDynamicZoneInput']>
-  >;
+  _?: Maybe<Scalars['String']>;
 };
 
 export type Course = {
@@ -442,6 +447,15 @@ export enum Enum_Componentbasicimage_Style {
   Left = 'left',
   None = 'none',
   Right = 'right'
+}
+
+export enum Enum_Componentbasicinfobox_Illustration {
+  Chat = 'CHAT',
+  Checklist = 'CHECKLIST',
+  Contact = 'CONTACT',
+  Course = 'COURSE',
+  Search = 'SEARCH',
+  Veileder = 'VEILEDER'
 }
 
 export enum Enum_Course_Primarytargetgroup {
@@ -791,6 +805,7 @@ export type Morph =
   | ArticleGroupBy
   | ComponentBasicContact
   | ComponentBasicImage
+  | ComponentBasicInfobox
   | ComponentBasicParagraph
   | ComponentBasicQuote
   | ComponentBasicSection
@@ -2076,6 +2091,14 @@ export type EditComponentBasicImageInput = {
   style?: Maybe<Enum_Componentbasicimage_Style>;
 };
 
+export type EditComponentBasicInfoboxInput = {
+  content?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  illustration?: Maybe<Enum_Componentbasicinfobox_Illustration>;
+  link?: Maybe<Scalars['String']>;
+  title?: Maybe<Scalars['String']>;
+};
+
 export type EditComponentBasicParagraphInput = {
   content?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
@@ -2088,9 +2111,6 @@ export type EditComponentBasicQuoteInput = {
 };
 
 export type EditComponentBasicSectionInput = {
-  content?: Maybe<
-    Array<Scalars['ComponentBasicSectionContentDynamicZoneInput']>
-  >;
   id?: Maybe<Scalars['ID']>;
 };
 
@@ -2272,6 +2292,43 @@ export type UpdateUserPayload = {
   user?: Maybe<UsersPermissionsUser>;
 };
 
+export type GetContactsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetContactsQuery = { __typename?: 'Query' } & {
+  contactPage?: Maybe<
+    { __typename?: 'FancyArticle' } & Pick<FancyArticle, 'title'> & {
+        content?: Maybe<
+          Array<
+            Maybe<
+              | ({ __typename: 'ComponentBasicContact' } & Pick<
+                  ComponentBasicContact,
+                  'name' | 'email' | 'jobTitle' | 'phoneNumber'
+                > & {
+                    image?: Maybe<
+                      Array<
+                        Maybe<
+                          { __typename?: 'UploadFile' } & Pick<
+                            UploadFile,
+                            'url'
+                          >
+                        >
+                      >
+                    >;
+                  })
+              | { __typename?: 'ComponentBasicImage' }
+              | ({ __typename: 'ComponentBasicParagraph' } & Pick<
+                  ComponentBasicParagraph,
+                  'content'
+                >)
+              | { __typename?: 'ComponentBasicQuote' }
+              | { __typename?: 'ComponentBasicSection' }
+            >
+          >
+        >;
+      }
+  >;
+};
+
 export type GetCoursesQueryVariables = Exact<{ [key: string]: never }>;
 
 export type GetCoursesQuery = { __typename?: 'Query' } & {
@@ -2330,6 +2387,77 @@ export type GetFancyArticleQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export const GetContactsDocument = gql`
+  query GetContacts {
+    contactPage: fancyArticle(id: 6) {
+      title
+      content {
+        ... on ComponentBasicParagraph {
+          __typename
+          content
+        }
+        ... on ComponentBasicContact {
+          __typename
+          image {
+            url
+          }
+          name
+          email
+          jobTitle
+          phoneNumber
+        }
+      }
+    }
+  }
+`;
+
+/**
+ * __useGetContactsQuery__
+ *
+ * To run a query within a React component, call `useGetContactsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetContactsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetContactsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetContactsQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetContactsQuery,
+    GetContactsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetContactsQuery, GetContactsQueryVariables>(
+    GetContactsDocument,
+    options
+  );
+}
+export function useGetContactsLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetContactsQuery,
+    GetContactsQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetContactsQuery, GetContactsQueryVariables>(
+    GetContactsDocument,
+    options
+  );
+}
+export type GetContactsQueryHookResult = ReturnType<typeof useGetContactsQuery>;
+export type GetContactsLazyQueryHookResult = ReturnType<
+  typeof useGetContactsLazyQuery
+>;
+export type GetContactsQueryResult = Apollo.QueryResult<
+  GetContactsQuery,
+  GetContactsQueryVariables
+>;
 export const GetCoursesDocument = gql`
   query GetCourses {
     topArticle: fancyArticle(id: 5) {
