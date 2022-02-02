@@ -26,7 +26,7 @@ const SpinnerIcon = styled(SpinnerBase)`
   }
 
   & .path {
-    stroke: ${theme.colour(Colour.BLUE, 'B20')};
+    stroke: ${theme.colour(Colour.BLUE, 'B16')};
     stroke-width: 6px;
     stroke-linecap: round;
     animation: dash 1.5s ease-in-out infinite;

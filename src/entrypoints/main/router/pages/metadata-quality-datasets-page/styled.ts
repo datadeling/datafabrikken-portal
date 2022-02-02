@@ -13,7 +13,7 @@ const Banner = styled.section`
 `;
 
 const Content = styled.section`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   color: ${theme.colour(Colour.BLUE, 'B52')};
   padding-top: ${theme.spacing('S32')};
 `;
@@ -126,7 +126,7 @@ const Table = styled.table`
     cursor: pointer;
 
     &:hover {
-      background: ${theme.colour(Colour.BLUE, 'B20')};
+      background: ${theme.colour(Colour.BLUE, 'B16')};
     }
   }
 `;
@@ -143,7 +143,7 @@ const LoadMoreButton = styled.button`
   appearance: none;
   background: none;
   border: none;
-  border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B20')};
+  border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B16')};
   cursor: pointer;
 
   &:hover {
@@ -153,9 +153,9 @@ const LoadMoreButton = styled.button`
   & > svg {
     height: 20px;
     width: 20px;
-    stroke: ${theme.colour(Colour.BLUE, 'B20')};
+    stroke: ${theme.colour(Colour.BLUE, 'B16')};
     & > path {
-      fill: ${theme.colour(Colour.BLUE, 'B20')};
+      fill: ${theme.colour(Colour.BLUE, 'B16')};
     }
   }
 

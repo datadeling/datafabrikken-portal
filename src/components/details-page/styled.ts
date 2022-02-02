@@ -45,7 +45,7 @@ const SubBanner = styled.div`
 `;
 
 const Content = styled.section`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
 `;
 
@@ -81,7 +81,7 @@ const AuthoritativeIcon = styled(authoritativeIconBase)`
 const PublisherContainer = styled.span`
   & > a {
     margin-left: ${theme.spacing('S4')};
-    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
+    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
   }
 `;
 

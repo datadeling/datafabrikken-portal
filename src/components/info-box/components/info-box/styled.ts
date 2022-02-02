@@ -89,7 +89,7 @@ const ContentWrapper = styled.div`
 `;
 
 const Date = styled.span`
-  color: ${theme.colour(Colour.BLUE, 'B14')};
+  color: ${theme.colour(Colour.BLUE, 'B16')};
   font-size: ${theme.fontSize('FS10')};
   margin-bottom: ${theme.spacing('S6')};
 `;

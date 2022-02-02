@@ -54,7 +54,7 @@ const IconWithCount = styled.h3`
     & > path,
     circle,
     rect {
-      stroke: ${theme.colour(Colour.BLUE, 'B20')};
+      stroke: ${theme.colour(Colour.BLUE, 'B16')};
       fill: transparent;
     }
   }

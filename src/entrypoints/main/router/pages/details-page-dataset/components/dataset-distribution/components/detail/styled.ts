@@ -6,7 +6,7 @@ const onMobileView = '@media (max-width: 900px)';
 const Detail = styled.div`
   display: flex;
   padding: ${theme.spacing('S10')};
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   border-top: 1px solid ${theme.colour(Colour.NEUTRAL, 'N15')};
   word-break: break-word;
 

@@ -26,7 +26,7 @@ const CourseContent = styled.div`
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
 
   & > h3 {
-    color: ${theme.colour(Colour.BLUE, 'B14')};
+    color: ${theme.colour(Colour.BLUE, 'B16')};
     font-size: ${theme.fontSize('FS14')};
     line-height: ${theme.fontSize('FS20')};
     margin: ${theme.spacing('S8')} 0;
@@ -111,7 +111,7 @@ const Card = styled.div`
 
       & > ${Tags} > div:first-child {
         color: ${theme.colour(Colour.BLUE, 'B48')};
-        background-color: ${theme.colour(Colour.BLUE, 'B14')};
+        background-color: ${theme.colour(Colour.BLUE, 'B16')};
       }
     }
   }

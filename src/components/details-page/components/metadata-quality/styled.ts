@@ -13,7 +13,7 @@ const MetadataQuality = styled.div`
   align-items: center;
 
   & a {
-    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
+    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
   }
 `;
 

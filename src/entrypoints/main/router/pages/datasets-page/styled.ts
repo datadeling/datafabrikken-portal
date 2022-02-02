@@ -100,7 +100,7 @@ const DropdownFilters = styled(DropdownMenuBase)`
 const DropdownFilterButton = styled.button`
   align-items: center;
   appearance: none;
-  background-color: ${theme.colour(Colour.BLUE, 'B20')};
+  background-color: ${theme.colour(Colour.BLUE, 'B16')};
   border: none;
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
   cursor: pointer;
