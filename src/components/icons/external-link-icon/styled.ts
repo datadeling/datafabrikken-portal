@@ -31,6 +31,12 @@ const ExternalLinkIcon = styled(ExternalLinkIconBase)`
       transform: translate(7px, 9px);
     }
   }
+  & * {
+    animation-play-state: paused !important;
+  }
+  &:hover * {
+    animation-play-state: running !important;
+  }
   & > g * {
     stroke: currentColor;
   }

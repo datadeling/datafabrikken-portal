@@ -192,9 +192,11 @@ const MainPage: FC<Props> = ({
                       hideUserInfoAndTags
                     />
                   ))}
-                <Link as={RouterLink} to={PATHNAME.COMMUNITY}>
-                  <Translation id='main.seeAllPostsCommunity' />
-                </Link>
+                <SC.LinkWrapper>
+                  <Link as={RouterLink} to={PATHNAME.COMMUNITY}>
+                    <Translation id='main.seeAllPostsCommunity' />
+                  </Link>
+                </SC.LinkWrapper>
               </SC.Topics>
             </SC.Row>
             <SC.Row>
@@ -217,9 +219,7 @@ const MainPage: FC<Props> = ({
                       <GuideIllustration />
                     )}
                   </InfoBoxIcon>
-                  <InfoBoxTitle>
-                    <h2>{module.field_link?.title}</h2>
-                  </InfoBoxTitle>
+                  <InfoBoxTitle>{module.field_link?.title}</InfoBoxTitle>
                   <InfoBoxBody>
                     <Markdown allowHtml>
                       {module.field_body?.processed}
@@ -274,9 +274,7 @@ const MainPage: FC<Props> = ({
                     <InfoBoxSC.InfoBox.Date>
                       {created && formatDate(dateStringToDate(created))}
                     </InfoBoxSC.InfoBox.Date>
-                    <InfoBoxTitle>
-                      <h2>{title}</h2>
-                    </InfoBoxTitle>
+                    <InfoBoxTitle>{title}</InfoBoxTitle>
                     <InfoBoxBody>{ingress}</InfoBoxBody>
                   </InfoBox>
                 )

@@ -1,6 +1,5 @@
 import React, { FC, memo } from 'react';
 import { compose } from 'redux';
-import ExternalLink from '../../../../../../../components/link-external';
 import SC from './styled';
 import env from '../../../../../../../env';
 import { CourseType, CourseProvider } from '../../../../../../../types/enums';
@@ -8,6 +7,7 @@ import RoundedTag, {
   Variant
 } from '../../../../../../../components/rounded-tag';
 import Translation from '../../../../../../../components/translation';
+import ExternalLinkIcon from '../../../../../../../components/icons/external-link-icon';
 import {
   withTranslations,
   Props as TranslationsProps
@@ -62,10 +62,8 @@ const CourseCard: FC<Props> = ({
     }
   })();
 
-  const handleOnClick = () => window.open(link, '_blank');
-
   return (
-    <SC.Card onClick={handleOnClick}>
+    <SC.Card href={link} target='_blank' rel='noreferrer'>
       <SC.Image src={`${STRAPI_API_HOST}${featureImage?.url}`} />
       <SC.CourseContent>
         <SC.Tags>
@@ -83,9 +81,8 @@ const CourseCard: FC<Props> = ({
           )}
         </SC.Tags>
         <h3>
-          <ExternalLink href={link} openInNewTab>
-            {title}
-          </ExternalLink>
+          {title}
+          <ExternalLinkIcon />
         </h3>
         <p>{description}</p>
         <SC.CourseFacts>

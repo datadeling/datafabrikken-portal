@@ -9,6 +9,40 @@ const onMobileView = '@media (max-width: 900px)';
 type infoBoxProps = {
   $invertColor?: boolean;
 };
+
+const ImageWrapper = styled.div`
+  min-height: 250px;
+  max-height: 250px;
+  overflow: hidden;
+
+  & img {
+    max-width: calc(100%);
+  }
+`;
+
+const IconWrapper = styled.div`
+  align-items: flex-start;
+  display: flex;
+  flex: 0 0 20%;
+
+  & > svg {
+    flex-basis: 90%;
+    ${onMobileView} {
+      flex-basis: 40%;
+    }
+  }
+
+  ${onMobileView} {
+    margin-bottom: ${theme.spacing('S10')};
+  }
+`;
+
+const Date = styled.span`
+  color: ${theme.colour(Colour.BLUE, 'B16')};
+  font-size: ${theme.fontSize('FS10')};
+  margin-bottom: ${theme.spacing('S6')};
+`;
+
 const InfoBox = styled.a<infoBoxProps>`
   background-color: ${({ $invertColor }) =>
     $invertColor
@@ -30,10 +64,32 @@ const InfoBox = styled.a<infoBoxProps>`
   margin-bottom: ${theme.spacing('S20')};
 
   &:hover {
+    cursor: pointer;
+    background-color: ${theme.colour(Colour.BLUE, 'B16')};
+    color: ${theme.colour(Colour.BLUE, 'B52')};
+
+    ${Date} {
+      color: ${theme.colour(Colour.BLUE, 'B52')};
+    }
+
+    ${ImageWrapper} {
+      opacity: 0.5;
+    }
+
     ${InfoBoxTitleSC.Title} {
+      text-decoration: none;
+      color: ${theme.colour(Colour.BLUE, 'B52')};
+
+      & > svg {
+        color: ${theme.colour(Colour.BLUE, 'B52')};
+      }
       & > svg * {
         animation-play-state: running !important;
       }
+    }
+
+    & ${IconWrapper} * {
+      stroke: ${theme.colour(Colour.BLUE, 'B52')};
     }
   }
   ${onMobileView} {
@@ -55,43 +111,10 @@ const InfoBoxRow = styled.div`
   }
 `;
 
-const IconWrapper = styled.div`
-  align-items: flex-start;
-  display: flex;
-  flex: 0 0 20%;
-
-  & > svg {
-    flex-basis: 90%;
-    ${onMobileView} {
-      flex-basis: 40%;
-    }
-  }
-
-  ${onMobileView} {
-    margin-bottom: ${theme.spacing('S10')};
-  }
-`;
-
-const ImageWrapper = styled.div`
-  min-height: 250px;
-  max-height: 250px;
-  overflow: hidden;
-
-  & img {
-    max-width: calc(100%);
-  }
-`;
-
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;
-`;
-
-const Date = styled.span`
-  color: ${theme.colour(Colour.BLUE, 'B16')};
-  font-size: ${theme.fontSize('FS10')};
-  margin-bottom: ${theme.spacing('S6')};
 `;
 
 export default {

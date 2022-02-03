@@ -3,15 +3,29 @@ import { theme, Colour } from '../../../entrypoints/main/app/theme';
 
 const onMobileView = '@media (max-width: 900px)';
 
-const Topic = styled.div`
+const Topic = styled.a`
   display: flex;
   flex-direction: row;
-  color: ${theme.colour(Colour.BLUE, 'B52')};
+  color: ${theme.colour(Colour.BLUE, 'B38')};
   background-color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   justify-content: space-between;
   align-items: center;
   padding: ${theme.spacing('S10')} ${theme.spacing('S16')};
-  margin: 10px 0px;
+  margin-top: ${theme.spacing('S10')};
+
+  &:hover {
+    cursor: pointer;
+    background-color: ${theme.colour(Colour.BLUE, 'B16')};
+    color: ${theme.colour(Colour.BLUE, 'B52')};
+    & a {
+      text-decoration: none;
+      color: ${theme.colour(Colour.BLUE, 'B52')};
+    }
+
+    & svg {
+      color: ${theme.colour(Colour.BLUE, 'B52')};
+    }
+  }
 
   ${onMobileView} {
     flex-direction: column;
@@ -44,6 +58,10 @@ const Info = styled.div`
 
 const Title = styled.h3`
   font-size: ${theme.fontSize('FS14')};
+  & > svg {
+    width: 25px;
+    vertical-align: middle;
+  }
   ${onMobileView} {
     font-size: ${theme.fontSize('FS10')};
   }
@@ -77,15 +95,20 @@ const Tags = styled.div`
 
 const Statistics = styled.ul`
   display: flex;
-  flex: 0 0 30%;
   list-style-type: none;
+  flex: 0 0 20%;
+  justify-content: space-between;
+  color: ${theme.colour(Colour.NEUTRAL, 'N70')};
 
   & > li {
     display: inline-flex;
-    flex: 0 0 33%;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    & > svg {
-      margin-right: ${theme.spacing('S4')};
+    & > span {
+      height: 30px;
+      display: inline-flex;
+      align-items: center;
     }
   }
 

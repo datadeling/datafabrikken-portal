@@ -30,6 +30,10 @@ const CourseContent = styled.div`
     font-size: ${theme.fontSize('FS14')};
     line-height: ${theme.fontSize('FS20')};
     margin: ${theme.spacing('S8')} 0;
+    & > svg {
+      width: 25px;
+      vertical-align: middle;
+    }
   }
 `;
 
@@ -78,7 +82,7 @@ const Tags = styled.div`
   line-height: ${theme.fontSize('FS12')};
 `;
 
-const Card = styled.div`
+const Card = styled.a`
   display: flex;
   min-width: 300px;
   flex: 0 1 30%;
@@ -94,23 +98,28 @@ const Card = styled.div`
   &:hover {
     cursor: pointer;
 
-    & > ${CourseContent} {
-      background-color: ${theme.colour(Colour.BLUE, 'B16')};
-      color: ${theme.colour(Colour.BLUE, 'B48')};
+    background-color: ${theme.colour(Colour.BLUE, 'B16')};
 
+    & > ${Image}, & > ${CourseProvider} {
+      opacity: 0.5;
+    }
+
+    & > ${CourseContent} {
+      color: ${theme.colour(Colour.BLUE, 'B52')};
+      background-color: ${theme.colour(Colour.BLUE, 'B16')};
       & > h3 {
-        color: ${theme.colour(Colour.BLUE, 'B48')};
+        color: ${theme.colour(Colour.BLUE, 'B52')};
         & > a {
-          border-color: ${theme.colour(Colour.BLUE, 'B48')};
+          border-color: ${theme.colour(Colour.BLUE, 'B52')};
         }
       }
 
       & > ${CourseFacts} svg > path {
-        stroke: ${theme.colour(Colour.BLUE, 'B48')};
+        stroke: ${theme.colour(Colour.BLUE, 'B52')};
       }
 
       & > ${Tags} > div:first-child {
-        color: ${theme.colour(Colour.BLUE, 'B48')};
+        color: ${theme.colour(Colour.BLUE, 'B52')};
         background-color: ${theme.colour(Colour.BLUE, 'B16')};
       }
     }

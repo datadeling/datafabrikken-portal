@@ -20,7 +20,6 @@ const Content = styled.section`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
-  font-weight: ${theme.fontWeight('FW400')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
     word-break: break-word;
@@ -143,12 +142,8 @@ const LoadMoreButton = styled.button`
   appearance: none;
   background: none;
   border: none;
-  border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B16')};
+  text-decoration: underline;
   cursor: pointer;
-
-  &:hover {
-    border-bottom: 2px solid transparent;
-  }
 
   & > svg {
     height: 20px;

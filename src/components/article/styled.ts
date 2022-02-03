@@ -75,7 +75,7 @@ const Body = styled.div`
     margin-bottom: ${theme.spacing('S20')};
     padding-bottom: 0;
     & > a {
-      border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
+      text-decoration: underline;
     }
     & > a.arrow {
       align-items: center;
@@ -99,7 +99,7 @@ const Body = styled.div`
       margin-bottom: ${theme.spacing('S10')};
       & > * > a {
         align-items: center;
-        border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
+        text-decoration: underline;
         display: inline-flex;
       }
     }
@@ -117,7 +117,8 @@ const Body = styled.div`
 `;
 
 const Quote = styled.div`
-  border-left: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
+  //border-left: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
+  text-decoration: underline;
   font-size: ${theme.fontSize('FS20')};
   font-style: italic;
   line-height: 1.5;

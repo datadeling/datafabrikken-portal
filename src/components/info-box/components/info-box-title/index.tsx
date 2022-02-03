@@ -15,8 +15,10 @@ const InfoBoxTitle: FC<PropsWithChildren<Props>> = ({
   invertColor
 }) => (
   <SC.Title as={as} $invertColor={invertColor}>
-    {children}
-    <LinkIcon />
+    <h2>
+      {children}
+      <LinkIcon />
+    </h2>
   </SC.Title>
 );
 

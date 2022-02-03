@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import Tag from '../tag';
 import User from '../user';
 
@@ -8,8 +10,8 @@ import type { CommunityTopic } from '../../../types';
 import EyeIcon from '../../../images/icon-eye.inline.svg';
 import LikeIcon from '../../../images/icon-like.inline.svg';
 import PostIcon from '../../../images/icon-post.inline.svg';
+import LinkIcon from '../../icons/link-icon';
 import { PATHNAME } from '../../../enums';
-import InternalLink from '../../link-internal';
 
 interface Props {
   topic: CommunityTopic;
@@ -19,14 +21,14 @@ interface Props {
 const Topic: FC<Props> = ({ topic, hideUserInfoAndTags = false }) => {
   const topicOwner = topic?.posts?.[0]?.user;
   return (
-    <SC.Topic>
+    <SC.Topic
+      as={Link}
+      to={`${PATHNAME.COMMUNITY}/${topic.category.slug}/${topic.slug}`}
+    >
       <SC.Info>
         <SC.Title>
-          <InternalLink
-            to={`${PATHNAME.COMMUNITY}/${topic.category.slug}/${topic.slug}`}
-          >
-            {topic.title}
-          </InternalLink>
+          {topic.title}
+          <LinkIcon />
         </SC.Title>
         {!hideUserInfoAndTags && (
           <SC.SubTitle>
@@ -44,16 +46,21 @@ const Topic: FC<Props> = ({ topic, hideUserInfoAndTags = false }) => {
       </SC.Info>
       <SC.Statistics>
         <li>
-          <LikeIcon />
+          <span>
+            <LikeIcon />
+          </span>
           {topic.votes}
         </li>
         <li>
-          <PostIcon />
+          <span>
+            <PostIcon />
+          </span>
           {topic.postcount}
         </li>
         <li>
-          <EyeIcon />
-
+          <span>
+            <EyeIcon />
+          </span>
           {topic.viewcount}
         </li>
       </SC.Statistics>

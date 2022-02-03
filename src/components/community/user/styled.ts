@@ -42,12 +42,8 @@ const NameWrapper = styled.div`
 
 const Name = styled.span<{ $colour: string }>`
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
-  border-bottom: 2px solid ${({ $colour }) => $colour};
+  text-decoration: underline;
   margin-right: 5px;
-
-  &:hover {
-    border-bottom: 0;
-  }
 `;
 
 export default { User, Icon, NameWrapper, Name, Picture };

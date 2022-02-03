@@ -67,7 +67,7 @@ const Content = styled.div`
   }
 
   & a {
-    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
+    text-decoration: underline;
   }
 `;
 

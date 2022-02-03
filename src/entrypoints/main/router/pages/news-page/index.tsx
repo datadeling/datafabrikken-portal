@@ -60,9 +60,7 @@ const NewsPage: FC<Props> = ({
                   <InfoBoxSC.InfoBox.Date>
                     {created && formatDate(dateStringToDate(created))}
                   </InfoBoxSC.InfoBox.Date>
-                  <InfoBoxTitle>
-                    <h2>{title}</h2>
-                  </InfoBoxTitle>
+                  <InfoBoxTitle>{title}</InfoBoxTitle>
                   <InfoBoxBody>{ingress}</InfoBoxBody>
                 </InfoBox>
               )

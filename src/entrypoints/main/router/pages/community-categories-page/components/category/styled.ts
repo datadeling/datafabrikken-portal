@@ -120,7 +120,7 @@ const Post = styled.div`
   }
 
   & > a > span > span > span {
-    border-bottom: 3px solid rgb(158, 190, 255);
+    text-decoration: underline;
   }
 `;
 

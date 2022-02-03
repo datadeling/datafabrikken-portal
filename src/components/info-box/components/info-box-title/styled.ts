@@ -7,17 +7,16 @@ type infoBoxTitleProps = {
 };
 
 const Title = styled.div<infoBoxTitleProps>`
-  align-items: flex-start;
-  display: inline-flex;
   font-size: ${theme.fontSize('FS16')};
   margin-bottom: ${theme.spacing('S8')};
   color: ${({ $invertColor }) =>
     $invertColor
       ? theme.colour(Colour.BLUE, 'B38')
-      : theme.colour(Colour.NEUTRAL, 'N0')};
+      : theme.colour(Colour.BLUE, 'B16')};
 
-  & > svg {
-    flex: 0 0 30px;
+  & > h2 > svg {
+    width: 25px;
+    vertical-align: middle;
   }
 `;
 

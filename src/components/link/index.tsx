@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 
 import LinkIcon from '../icons/link-icon';
+import ExternalLinkIcon from '../icons/external-link-icon';
 
 import SC from './styled';
 import { Variant } from './enums';
@@ -28,7 +29,8 @@ const Link: FC<PropsWithChildren<Props>> = ({
 }) => (
   <SC.Link $variant={variant} $external={external} {...props}>
     {children}
-    {showIcon && <LinkIcon />}
+    {showIcon && !external && <LinkIcon />}
+    {showIcon && external && <ExternalLinkIcon />}
   </SC.Link>
 );
 

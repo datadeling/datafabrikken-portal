@@ -1,8 +1,7 @@
 import styled from 'styled-components';
-import { Colour, theme } from '../../entrypoints/main/app/theme';
 
 const ExternalLink = styled.a`
-  border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B16')};
+  text-decoration: underline;
 
   & > svg {
     height: 20px;
@@ -14,8 +13,6 @@ const ExternalLink = styled.a`
   }
 
   &:hover {
-    border-bottom: 2px solid transparent;
-
     & > svg * {
       animation-play-state: running !important;
     }
