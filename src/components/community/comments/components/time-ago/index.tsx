@@ -15,7 +15,7 @@ const timeAgoString = (startTime: number, cutOff?: number): string => {
   const months = Math.floor(days / 30);
   const years = Math.floor(months / 12);
 
-  if (cutOff != null && millis > cutOff) {
+  if (cutOff && millis > cutOff) {
     return new Date(startTime).toLocaleString([], {
       year: 'numeric',
       month: 'numeric',

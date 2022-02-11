@@ -113,7 +113,7 @@ const CommentCard: FC<Props> = ({
             </Buttons.UnderlineButton>
           )}
 
-          {currentUser != null && !replies && !isReply && (
+          {currentUser && !replies && !isReply && (
             <Buttons.UnderlineButton
               onClick={() => {
                 setCurrentMode(Mode.REPLY);
@@ -135,7 +135,6 @@ const CommentCard: FC<Props> = ({
               >
                 <Translation id='community.comments.buttons.edit' />
               </Buttons.UnderlineButton>
-              <SC.Spacing4 />
               <Buttons.UnderlineButton
                 onClick={() =>
                   deleteComment({
@@ -164,7 +163,7 @@ const CommentCard: FC<Props> = ({
         </ul>
       )}
 
-      {currentUser != null && hasReplies && !isReply && (
+      {currentUser && hasReplies && !isReply && (
         <SC.CommentActions>
           {currentMode === Mode.REPLY ? (
             <Composer

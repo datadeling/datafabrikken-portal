@@ -61,6 +61,7 @@ const ButtonContainer = styled.span`
     flex-basis: 40%;
     & > button {
       margin-top: ${theme.spacing('S16')};
+      magin-left: ${theme.spacing('S4')};
     }
   }
 `;
@@ -77,15 +78,11 @@ const CommentIcon = styled(CommentIconBase)`
     stroke: ${theme.colour(Colour.NEUTRAL, 'N70')};
   }
 `;
-const Spacing4 = styled.div`
-  margin: ${theme.spacing('S4')};
-`;
 
 export default {
   CommentCard,
   CommentInfo,
   CommentActions,
   ButtonContainer,
-  CommentIcon,
-  Spacing4
+  CommentIcon
 };
