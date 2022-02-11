@@ -36,9 +36,9 @@ const CommentSection: FC<Props> = ({ entityId, authService }) => {
     })
   });
 
-  const rootComments = postsWithoutFirst.filter(post => post.toPid == null);
+  const rootComments = postsWithoutFirst.filter(post => !post.toPid);
   const replies = postsWithoutFirst.reduce((prev, post) => {
-    if (post.toPid != null) {
+    if (post.toPid) {
       return post.toPid in prev
         ? { ...prev, [post.toPid]: [...prev[post.toPid], post] }
         : { ...prev, [post.toPid]: [post] };
@@ -51,7 +51,7 @@ const CommentSection: FC<Props> = ({ entityId, authService }) => {
     : rootComments.slice(0, maxVisibleComments);
   const authenticated =
     authService.isAuthenticated() && !authService.isTokenExpired();
-  const isLoggedIn = authenticated && currentUser != null;
+  const isLoggedIn = authenticated && currentUser;
 
   return (
     <>
