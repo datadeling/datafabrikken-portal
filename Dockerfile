@@ -25,8 +25,8 @@ USER app:app
 COPY --chown=app:app nginx.conf /etc/nginx/conf.d/default.conf
 COPY --chown=app:app --from=build /app/dist ./
 COPY --chown=app:app entrypoint.sh config.template.js ./
-COPY --chown=app:app /sitemap/robots.txt ./
-COPY --chown=app:app /sitemap/sitemap.xml ./
+COPY --chown=app:app /public/robots.txt ./
+COPY --chown=app:app /public/sitemap.xml ./
 RUN dos2unix entrypoint.sh && chmod +x entrypoint.sh
 ENTRYPOINT [ "./entrypoint.sh" ]
 EXPOSE 8080
