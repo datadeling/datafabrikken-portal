@@ -22,7 +22,34 @@
   },
   "footer": {
     "title": "Følg med på Datafabrikken",
-    "byLine": "Datafabrikken er et samarbeid mellom DigitalNorway og Digitaliseringsdirektoratet."
+    "byLine": "Datafabrikken er et samarbeid mellom DigitalNorway og Digitaliseringsdirektoratet.",
+    "contact": {
+      "text": "Generelle henvendelser sendes til:"
+    },
+    "linkSection": {
+      "headings": {
+        "about": "Om Datafabrikken",
+        "usage": "Bruk av data",
+        "site": "Om nettstedet"
+      },
+      "links": {
+        "home": "Hjem",
+        "about": "Om Datafabrikken",
+        "communityAbout": "Om Datalandsbyen",
+        "news": "Siste nytt",
+
+        "findData": "Finn data",
+        "courses": "Kurs",
+        "guides": "Veiledere",
+        "community": "Datalandsbyen",
+        "organizations": "Virksomheter",
+
+        "contact": "Kontaktinformasjon",
+        "privacy": "Personvernerklæring",
+        "cookies": "Informasjonskapsler",
+        "sitemap": "Nettstedkart"
+      }
+    }
   },
   "truncatedText": {
     "expanded": "Skjul beskrivelsen",

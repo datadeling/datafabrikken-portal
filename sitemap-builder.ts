@@ -22,7 +22,7 @@ ${Object.keys(routes)
 </urlset>
 `;
 
-const buildPath = './sitemap/sitemap.xml';
+const buildPath = './public/sitemap.xml';
 
 fs.writeFileSync(buildPath, xml);
 
