@@ -40,9 +40,10 @@ const Background = styled.div`
 `;
 
 const AccessibleGif = styled.img`
-  visibility: collapse;
   height: 0px;
   width: 0px;
+  max-height: 0px !important;
+  max-width: 0px !important;
 `;
 
 const ButtonStyle = css`
