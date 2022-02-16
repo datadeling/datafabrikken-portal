@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
-import { Colour, theme } from '../../../../../app/theme';
+import { Colour, theme } from '../../entrypoints/main/app/theme';
 
-import ClockIconBase from '../../../../../../../images/icon-clock-sm.inline.svg';
-import CubeIconBase from '../../../../../../../images/cube.inline.svg';
+import ClockIconBase from '../../images/icon-clock-sm.inline.svg';
+import CubeIconBase from '../../images/cube.inline.svg';
 
 const Image = styled.img`
   max-width: 100%;
@@ -80,10 +80,7 @@ const Tags = styled.div`
 
 const Card = styled.div`
   display: flex;
-  min-width: 300px;
-  flex: 0 1 30%;
   flex-direction: column;
-  margin-right: ${theme.spacing('S16')};
   margin-bottom: ${theme.spacing('S16')};
   border-radius: 2px;
   overflow: hidden;

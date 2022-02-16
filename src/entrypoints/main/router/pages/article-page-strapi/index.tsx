@@ -5,7 +5,7 @@ import { articleIds } from './articles';
 import SC from './styled';
 import Root from '../../../../../components/root';
 import { useGetFancyArticleQuery } from '../../../../../services/api/generated/cms/graphql';
-import { isComponentBasicParagraph } from '../../../../../utils/strapi';
+import { isBasicParagraph } from '../../../../../utils/strapi';
 import Markdown from '../../../../../components/markdown';
 import ArticleSC from '../../../../../components/article/styled';
 import { Variant as ContainerVariant } from '../../../../../components/container';
@@ -28,7 +28,7 @@ export const ArticlePageStrapi: FC<RouteComponentProps> = ({
         <ArticleSC.Body>
           {data?.fancyArticle?.content?.map(
             paragraph =>
-              isComponentBasicParagraph(paragraph) && (
+              isBasicParagraph(paragraph) && (
                 <Markdown>{paragraph?.content ?? ''}</Markdown>
               )
           )}

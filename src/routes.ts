@@ -32,6 +32,7 @@ export default {
   [`${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}/:datasetId`]:
     'metadata-quality-dataset-page',
   [PATHNAME.COURSES]: 'courses-page',
+  [PATHNAME.GUIDANCE]: 'guidance-page',
   [`${PATHNAME.GUIDANCE}/tilby-data`]: 'article-page-strapi',
   [`${PATHNAME.GUIDANCE}/bruke-data`]: 'article-page-strapi'
 };

@@ -12,7 +12,7 @@
     "about": "Om Datafabrikken",
     "findData": "Finn data",
     "news": "Siste nytt",
-    "contact": "Kontakt",
+    "guidance": "Veiledning",
     "community": "Datalandsbyen",
     "communityAbout": "Om Datalandsbyen",
     "organizations": "Virksomheter",
@@ -40,7 +40,7 @@
 
         "findData": "Finn data",
         "courses": "Kurs",
-        "guides": "Veiledere",
+        "guidance": "Veiledere",
         "community": "Datalandsbyen",
         "organizations": "Virksomheter",
 
@@ -445,14 +445,21 @@
     "organization": "Virksomhet",
     "numberDatasets": "Antall Datasett"
   },
-  "coursesPage": {
+  "infoCard": {
     "courseIsProvidedBy": "Kurset leveres av",
     "introCourse": "Introkurs",
     "advancedTraining": "Dybdekurs",
     "continuingEducation": "Videreutdanning",
-    "minutes": "minuter",
+    "minutes": "minutter",
     "modules": "moduler",
     "providerLogo": "Tilbyderlogo",
     "free": "Gratis"
+  },
+  "guidancePage": {
+    "radio": {
+      "all": "Alle ressurser",
+      "provider": "Vis ressurser for datatilbydere",
+      "consumer": "Vis ressurser for datakonsumenter"
+    }
   }
 }

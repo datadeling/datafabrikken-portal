@@ -63,8 +63,8 @@ const Header: FC<Props> = () => {
             </SC.Link>
           </li>
           <li>
-            <SC.Link to={PATHNAME.CONTACT}>
-              <Translation id='header.contact' />
+            <SC.Link to={PATHNAME.GUIDANCE}>
+              <Translation id='header.guidance' />
             </SC.Link>
           </li>
           <li>
@@ -125,10 +125,10 @@ const Header: FC<Props> = () => {
               </li>
               <li>
                 <SC.Link
-                  to={PATHNAME.CONTACT}
+                  to={PATHNAME.GUIDANCE}
                   onClick={() => closeDropdownMenu()}
                 >
-                  <Translation id='header.contact' />
+                  <Translation id='header.guidance' />
                 </SC.Link>
               </li>
               <li>
