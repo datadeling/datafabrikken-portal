@@ -1,28 +1,26 @@
 import React, { FC, memo } from 'react';
 import { compose } from 'redux';
-import ExternalLink from '../../../../../../../components/link-external';
+import ExternalLink from '../link-external';
 import SC from './styled';
-import env from '../../../../../../../env';
-import { CourseType, CourseProvider } from '../../../../../../../types/enums';
-import RoundedTag, {
-  Variant
-} from '../../../../../../../components/rounded-tag';
-import Translation from '../../../../../../../components/translation';
+import env from '../../env';
+import { CourseType, CourseProvider } from '../../types/enums';
+import RoundedTag, { Variant } from '../rounded-tag';
+import Translation from '../translation';
 import {
   withTranslations,
   Props as TranslationsProps
-} from '../../../../../../../providers/translations';
+} from '../../providers/translations';
 
 const { STRAPI_API_HOST } = env;
 
 interface ExternalProps {
-  course: any;
+  infoObject: any;
 }
 
 interface Props extends ExternalProps, TranslationsProps {}
 
-const CourseCard: FC<Props> = ({
-  course: {
+const InfoCard: FC<Props> = ({
+  infoObject: {
     featureImage,
     free,
     type,
@@ -41,7 +39,7 @@ const CourseCard: FC<Props> = ({
         return {
           logo: 'https://digitalnorway.com/content/uploads/2020/06/digital-norway-logo-positive.svg',
           subtitle: `${translationsService.translate(
-            'coursesPage.courseIsProvidedBy'
+            'infoCard.courseIsProvidedBy'
           )} DigitalNorway`
         };
       default:
@@ -52,11 +50,11 @@ const CourseCard: FC<Props> = ({
   const courseType = (() => {
     switch (type) {
       case CourseType.INTRO_COURSE:
-        return translationsService.translate('coursesPage.introCourse');
+        return translationsService.translate('infoCard.introCourse');
       case CourseType.ADVANCED_TRAINING:
-        return translationsService.translate('coursesPage.advancedTraining');
+        return translationsService.translate('infoCard.advancedTraining');
       case CourseType.CONTINUING_EDUCATION:
-        return translationsService.translate('coursesPage.continuingEducation');
+        return translationsService.translate('infoCard.continuingEducation');
       default:
         return null;
     }
@@ -66,7 +64,9 @@ const CourseCard: FC<Props> = ({
 
   return (
     <SC.Card onClick={handleOnClick}>
-      <SC.Image src={`${STRAPI_API_HOST}${featureImage?.url}`} />
+      {featureImage?.url && (
+        <SC.Image src={`${STRAPI_API_HOST}${featureImage.url}`} />
+      )}
       <SC.CourseContent>
         <SC.Tags>
           {type && (
@@ -77,7 +77,7 @@ const CourseCard: FC<Props> = ({
           {free && (
             <RoundedTag as='div' variant={Variant.SECONDARY}>
               <span>
-                <Translation id='coursesPage.free' />
+                <Translation id='infoCard.free' />
               </span>
             </RoundedTag>
           )}
@@ -92,21 +92,25 @@ const CourseCard: FC<Props> = ({
           {durationInMinutes && (
             <SC.Fact
               title={`${durationInMinutes} ${translationsService.translate(
-                'coursesPage.minuter'
+                'infoCard.minutes'
               )}`}
             >
               <SC.ClockIcon />
-              {durationInMinutes}
+              {`${durationInMinutes} ${translationsService.translate(
+                'infoCard.minutes'
+              )}`}
             </SC.Fact>
           )}
           {numberOfModules && (
             <SC.Fact
               title={`${numberOfModules} ${translationsService.translate(
-                'coursesPage.moduler'
+                'infoCard.modules'
               )}`}
             >
               <SC.BoxIcon />
-              {numberOfModules}
+              {`${numberOfModules} ${translationsService.translate(
+                'infoCard.modules'
+              )}`}
             </SC.Fact>
           )}
         </SC.CourseFacts>
@@ -116,9 +120,7 @@ const CourseCard: FC<Props> = ({
           <SC.CourseProvider>
             <SC.ProviderLogo
               src={providerInfo.logo}
-              alt={`${translationsService.translate(
-                'coursesPage.providerLogo'
-              )}`}
+              alt={`${translationsService.translate('infoCard.providerLogo')}`}
             />
             {providerInfo.subtitle}
           </SC.CourseProvider>
@@ -128,4 +130,4 @@ const CourseCard: FC<Props> = ({
   );
 };
 
-export default compose<FC<ExternalProps>>(memo, withTranslations)(CourseCard);
+export default compose<FC<ExternalProps>>(memo, withTranslations)(InfoCard);

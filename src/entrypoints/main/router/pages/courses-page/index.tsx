@@ -5,7 +5,7 @@ import SC from './styled';
 import ErrorPage from '../../../../../components/error-page';
 import withErrorBoundary from '../../../../../components/with-error-boundary';
 import Root from '../../../../../components/root';
-import CourseCard from './components/course-card';
+import CourseCard from '../../../../../components/info-card';
 
 import { useGetCoursesQuery } from '../../../../../services/api/generated/cms/graphql';
 
@@ -30,7 +30,7 @@ const CoursesPage: FC<Props> = () => {
         <SC.Container>
           <SC.CourseCardContainer>
             {courses?.map(course => (
-              <CourseCard course={course} />
+              <CourseCard infoObject={course} />
             ))}
           </SC.CourseCardContainer>
         </SC.Container>

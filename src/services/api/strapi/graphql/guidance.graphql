@@ -1,0 +1,34 @@
+query GetGuidance {
+  topArticle: fancyArticle(id: 8) {
+    title
+    content {
+      ... on ComponentBasicParagraph {
+        __typename
+        content
+      }
+            ... on ComponentBasicInfobox {
+        __typename
+        title
+        content
+        illustration {
+          url
+          alternativeText
+        }
+        link
+      }
+    }
+  }
+  guides {
+    title
+    featureImage {
+      url
+    }
+    description
+    link
+    primaryTargetGroup
+    durationInMinutes
+    locale
+    published_at
+    updated_at
+  }
+}

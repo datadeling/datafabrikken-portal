@@ -204,14 +204,14 @@ export type ComponentBasicInfobox = {
   __typename?: 'ComponentBasicInfobox';
   content?: Maybe<Scalars['String']>;
   id: Scalars['ID'];
-  illustration: Enum_Componentbasicinfobox_Illustration;
+  illustration?: Maybe<UploadFile>;
   link?: Maybe<Scalars['String']>;
   title: Scalars['String'];
 };
 
 export type ComponentBasicInfoboxInput = {
   content?: Maybe<Scalars['String']>;
-  illustration: Enum_Componentbasicinfobox_Illustration;
+  illustration?: Maybe<Scalars['ID']>;
   link?: Maybe<Scalars['String']>;
   title: Scalars['String'];
 };
@@ -447,15 +447,6 @@ export enum Enum_Componentbasicimage_Style {
   Left = 'left',
   None = 'none',
   Right = 'right'
-}
-
-export enum Enum_Componentbasicinfobox_Illustration {
-  Chat = 'CHAT',
-  Checklist = 'CHECKLIST',
-  Contact = 'CONTACT',
-  Course = 'COURSE',
-  Search = 'SEARCH',
-  Veileder = 'VEILEDER'
 }
 
 export enum Enum_Course_Primarytargetgroup {
@@ -2095,7 +2086,7 @@ export type EditComponentBasicImageInput = {
 export type EditComponentBasicInfoboxInput = {
   content?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
-  illustration?: Maybe<Enum_Componentbasicinfobox_Illustration>;
+  illustration?: Maybe<Scalars['ID']>;
   link?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
 };
@@ -2406,6 +2397,61 @@ export type GetFancyArticleQuery = { __typename?: 'Query' } & {
   >;
 };
 
+export type GetGuidanceQueryVariables = Exact<{ [key: string]: never }>;
+
+export type GetGuidanceQuery = { __typename?: 'Query' } & {
+  topArticle?: Maybe<
+    { __typename?: 'FancyArticle' } & Pick<FancyArticle, 'title'> & {
+        content?: Maybe<
+          Array<
+            Maybe<
+              | { __typename?: 'ComponentBasicContact' }
+              | { __typename?: 'ComponentBasicImage' }
+              | ({ __typename: 'ComponentBasicInfobox' } & Pick<
+                  ComponentBasicInfobox,
+                  'title' | 'content' | 'link'
+                > & {
+                    illustration?: Maybe<
+                      { __typename?: 'UploadFile' } & Pick<
+                        UploadFile,
+                        'url' | 'alternativeText'
+                      >
+                    >;
+                  })
+              | ({ __typename: 'ComponentBasicParagraph' } & Pick<
+                  ComponentBasicParagraph,
+                  'content'
+                >)
+              | { __typename?: 'ComponentBasicQuote' }
+              | { __typename?: 'ComponentBasicSection' }
+            >
+          >
+        >;
+      }
+  >;
+  guides?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Guide' } & Pick<
+          Guide,
+          | 'title'
+          | 'description'
+          | 'link'
+          | 'primaryTargetGroup'
+          | 'durationInMinutes'
+          | 'locale'
+          | 'published_at'
+          | 'updated_at'
+        > & {
+            featureImage?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+          }
+      >
+    >
+  >;
+};
+
 export const GetContactsDocument = gql`
   query GetContacts {
     contactPage: fancyArticle(id: 6) {
@@ -2618,4 +2664,88 @@ export type GetFancyArticleLazyQueryHookResult = ReturnType<
 export type GetFancyArticleQueryResult = Apollo.QueryResult<
   GetFancyArticleQuery,
   GetFancyArticleQueryVariables
+>;
+export const GetGuidanceDocument = gql`
+  query GetGuidance {
+    topArticle: fancyArticle(id: 8) {
+      title
+      content {
+        ... on ComponentBasicParagraph {
+          __typename
+          content
+        }
+        ... on ComponentBasicInfobox {
+          __typename
+          title
+          content
+          illustration {
+            url
+            alternativeText
+          }
+          link
+        }
+      }
+    }
+    guides {
+      title
+      featureImage {
+        url
+      }
+      description
+      link
+      primaryTargetGroup
+      durationInMinutes
+      locale
+      published_at
+      updated_at
+    }
+  }
+`;
+
+/**
+ * __useGetGuidanceQuery__
+ *
+ * To run a query within a React component, call `useGetGuidanceQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetGuidanceQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetGuidanceQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetGuidanceQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    GetGuidanceQuery,
+    GetGuidanceQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<GetGuidanceQuery, GetGuidanceQueryVariables>(
+    GetGuidanceDocument,
+    options
+  );
+}
+export function useGetGuidanceLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    GetGuidanceQuery,
+    GetGuidanceQueryVariables
+  >
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<GetGuidanceQuery, GetGuidanceQueryVariables>(
+    GetGuidanceDocument,
+    options
+  );
+}
+export type GetGuidanceQueryHookResult = ReturnType<typeof useGetGuidanceQuery>;
+export type GetGuidanceLazyQueryHookResult = ReturnType<
+  typeof useGetGuidanceLazyQuery
+>;
+export type GetGuidanceQueryResult = Apollo.QueryResult<
+  GetGuidanceQuery,
+  GetGuidanceQueryVariables
 >;
