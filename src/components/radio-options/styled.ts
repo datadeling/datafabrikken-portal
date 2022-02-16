@@ -30,16 +30,9 @@ const RadioContainer = styled.div`
 const RadioIcon = styled.svg`
   fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
   stroke: ${theme.colour(Colour.NEUTRAL, 'N0')};
-  stroke-width: 2px;
 `;
 
-type iconProps = {
-  $checked: boolean;
-};
-
-const IconContainer = styled.div<iconProps>`
-  border: 1px solid;
-  border-radius: 50%;
+const IconContainer = styled.div`
   margin-right: ${theme.spacing('S4')};
   min-width: 25px;
   width: 25px;
@@ -47,9 +40,6 @@ const IconContainer = styled.div<iconProps>`
   transition: all 150ms;
   ${RadioContainer}> input:focus + & {
     box-shadow: 0 0 0 3px ${theme.colour(Colour.BLUE, 'B38')};
-  }
-  ${RadioIcon} {
-    visibility: ${({ $checked }) => ($checked ? 'visible' : 'hidden')};
   }
 `;
 

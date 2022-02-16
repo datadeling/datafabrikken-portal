@@ -7,8 +7,10 @@ const onMobileView = '@media (max-width: 900px)';
 
 const Container = styled(ContainerSC.Container)`
   flex-direction: row;
-  flex-wrap: wrap;
   justify-content: space-between;
+  ${onMobileView} {
+    flex-direction: column;
+  }
 `;
 
 const Footer = styled.footer`
@@ -26,18 +28,15 @@ const Footer = styled.footer`
   & > span {
     text-align: center;
   }
-  ${onMobileView} {
-    & {
-      margin-left: calc(12px + (32 - 12) * ((100vw - 320px) / (900 - 320)));
-      margin-right: calc(12px + (32 - 12) * ((100vw - 320px) / (900 - 320)));
-    }
-  }
 `;
 
 const ByLine = styled.div`
   display: flex;
   flex-direction: column;
   flex-basis: 30%;
+  ${onMobileView} {
+    flex-basis: 100%;
+  }
 
   & > p {
     margin-bottom: ${theme.spacing('S12')};
@@ -58,8 +57,15 @@ const PlainLink = styled.a`
 
 const LinkSection = styled.div`
   display: flex;
+  flex-wrap: wrap;
   flex-basis: 50%;
-  justify-content: space-around;
+  gap: ${theme.spacing('S12')};
+
+  justify-content: space-between;
+  ${onMobileView} {
+    flex-basis: 100%;
+    flex-direction: column;
+  }
 `;
 
 const LinkTitle = styled.h3`
@@ -71,6 +77,10 @@ const LinkTitle = styled.h3`
 
 const LinkList = styled.ul`
   line-height: 2.5;
+  ${onMobileView} {
+    line-height: 1.5;
+    margin-bottom: ${theme.spacing('S12')};
+  }
 `;
 
 const LinkItem = styled(Link)`
