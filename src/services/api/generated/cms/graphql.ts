@@ -564,6 +564,7 @@ export type FancyArticleConnectionUpdated_At = {
 export type FancyArticleContentDynamicZone =
   | ComponentBasicContact
   | ComponentBasicImage
+  | ComponentBasicInfobox
   | ComponentBasicParagraph
   | ComponentBasicQuote
   | ComponentBasicSection;
@@ -2316,6 +2317,7 @@ export type GetContactsQuery = { __typename?: 'Query' } & {
                     >;
                   })
               | { __typename?: 'ComponentBasicImage' }
+              | { __typename?: 'ComponentBasicInfobox' }
               | ({ __typename: 'ComponentBasicParagraph' } & Pick<
                   ComponentBasicParagraph,
                   'content'
@@ -2339,6 +2341,7 @@ export type GetCoursesQuery = { __typename?: 'Query' } & {
             Maybe<
               | { __typename?: 'ComponentBasicContact' }
               | { __typename?: 'ComponentBasicImage' }
+              | { __typename?: 'ComponentBasicInfobox' }
               | ({ __typename: 'ComponentBasicParagraph' } & Pick<
                   ComponentBasicParagraph,
                   'content'
@@ -2383,7 +2386,23 @@ export type GetFancyArticleQueryVariables = Exact<{
 
 export type GetFancyArticleQuery = { __typename?: 'Query' } & {
   fancyArticle?: Maybe<
-    { __typename?: 'FancyArticle' } & Pick<FancyArticle, 'title'>
+    { __typename?: 'FancyArticle' } & Pick<FancyArticle, 'title'> & {
+        content?: Maybe<
+          Array<
+            Maybe<
+              | { __typename?: 'ComponentBasicContact' }
+              | { __typename?: 'ComponentBasicImage' }
+              | { __typename?: 'ComponentBasicInfobox' }
+              | ({ __typename: 'ComponentBasicParagraph' } & Pick<
+                  ComponentBasicParagraph,
+                  'content'
+                >)
+              | { __typename?: 'ComponentBasicQuote' }
+              | { __typename?: 'ComponentBasicSection' }
+            >
+          >
+        >;
+      }
   >;
 };
 
@@ -2540,6 +2559,12 @@ export const GetFancyArticleDocument = gql`
   query GetFancyArticle($id: ID!) {
     fancyArticle(id: $id) {
       title
+      content {
+        ... on ComponentBasicParagraph {
+          __typename
+          content
+        }
+      }
     }
   }
 `;

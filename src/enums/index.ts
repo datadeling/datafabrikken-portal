@@ -21,7 +21,8 @@ export enum PATHNAME {
   FDK_CONCEPTS = '/concepts',
   ORGANIZATION = '/virksomheter',
   METADATAQUALITY = '/metadatakvalitet',
-  COURSES = '/kurs'
+  COURSES = '/kurs',
+  GUIDANCE = '/veiledere'
 }
 
 export enum PARAGRAPH {
