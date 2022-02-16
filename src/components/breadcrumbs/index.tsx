@@ -17,6 +17,7 @@ import OrganizationPageBreadcrumb from './organization-breadcrumb';
 import MetadataDatasetBreadcrumb from './metadata-dataset-breadcrumb';
 
 import SC from './styled';
+import { StrapiArticleBreadcrumb } from './strapi-article-breadcrumb';
 
 interface Props {}
 
@@ -117,6 +118,14 @@ const routes = [
   {
     path: PATHNAME.COURSES,
     breadcrumb: () => <Translation id='header.courses' />
+  },
+  {
+    path: PATHNAME.GUIDANCE,
+    breadcrumb: () => <Translation id='header.guidance' />
+  },
+  {
+    path: `${PATHNAME.GUIDANCE}/:articleTitle`,
+    breadcrumb: () => <StrapiArticleBreadcrumb />
   }
 ];
 

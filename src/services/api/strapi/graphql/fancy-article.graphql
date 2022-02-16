@@ -1,5 +1,11 @@
 query GetFancyArticle($id: ID!) {
   fancyArticle(id: $id) {
     title
+    content {
+      ... on ComponentBasicParagraph {
+        __typename
+        content
+      }
+    }
   }
 }
