@@ -22,7 +22,7 @@ export enum PATHNAME {
   ORGANIZATION = '/virksomheter',
   METADATAQUALITY = '/metadatakvalitet',
   COURSES = '/kurs',
-  GUIDANCE = '/veiledere'
+  GUIDANCE = '/veiledning'
 }
 
 export enum PARAGRAPH {
