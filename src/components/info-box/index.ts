@@ -3,6 +3,8 @@ import InfoBoxTitleSC from './components/info-box-title/styled';
 
 export { default as InfoBox } from './components/info-box';
 
+export { default as InfoBoxStrapi } from './components/info-box-strapi';
+
 export { default as InfoBoxTitle } from './components/info-box-title';
 
 export { default as InfoBoxBody } from './components/info-box-body';

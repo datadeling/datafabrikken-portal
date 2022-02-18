@@ -47,9 +47,15 @@ const InfoBoxHeader = styled.div`
 
 const InfoBoxRow = styled.div`
   display: flex;
+  flex: 1 1;
+  justify-content: space-between;
+  align-items: center;
+  gap: ${theme.spacing('S12')};
+
   padding: ${theme.spacing('S24')};
 
   ${onMobileView} {
+    gap: 0;
     flex-direction: column;
     padding: ${theme.spacing('S10')};
   }
@@ -60,11 +66,10 @@ const IconWrapper = styled.div`
   display: flex;
   flex: 0 0 20%;
 
-  & > svg {
-    flex-basis: 90%;
-    ${onMobileView} {
-      flex-basis: 40%;
-    }
+  & > svg,
+  img {
+    height: 100px;
+    width: 100px;
   }
 
   ${onMobileView} {
@@ -73,18 +78,21 @@ const IconWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+  width: 100%;
   min-height: 250px;
   max-height: 250px;
   overflow: hidden;
 
   & img {
-    max-width: calc(100%);
+    max-width: 100%;
+    min-width: 100%;
   }
 `;
 
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex: 1;
 `;
 

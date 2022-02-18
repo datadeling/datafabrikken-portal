@@ -35,7 +35,6 @@ const Row = styled.div`
       & > ${InfoBoxSC.IconWrapper} {
         & svg {
           fill: none;
-          min-width: 120px;
         }
       }
     }
@@ -92,6 +91,7 @@ const BannerSection = styled.section`
   }
 
   ${onMobileView} {
+    height: auto;
     & > ${Row} {
       flex-direction: column;
 
