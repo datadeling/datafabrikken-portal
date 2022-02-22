@@ -81,7 +81,7 @@ const NavigationLinks = styled.ul`
     margin-left: ${theme.spacing('S24')};
   }
 
-  ${onMobileView} {
+  @media (max-width: 1050px) {
     & {
       display: none;
     }
@@ -126,7 +126,7 @@ const DropdownMenu = styled(DropdownMenuBase)`
   display: none;
   margin-left: auto;
 
-  ${onMobileView} {
+  @media (max-width: 1050px) {
     & {
       display: flex;
     }
