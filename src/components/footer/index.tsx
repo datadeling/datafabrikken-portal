@@ -71,7 +71,11 @@ const Footer: FC<Props> = () => (
                 <Translation id='footer.linkSection.links.courses' />
               </SC.LinkItem>
             </li>
-
+            <li>
+              <SC.LinkItem to={PATHNAME.GUIDANCE}>
+                <Translation id='footer.linkSection.links.guidance' />
+              </SC.LinkItem>
+            </li>
             <li>
               <SC.LinkItem to={PATHNAME.COMMUNITY}>
                 <Translation id='footer.linkSection.links.community' />
