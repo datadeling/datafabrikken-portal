@@ -39,7 +39,9 @@ const GuidancePage: FC<Props> = () => {
         <SC.Container>
           <SC.Title>{topArticle?.title}</SC.Title>
           <SC.Subtitle>
-            {isBasicParagraph(ingressParagraph) && ingressParagraph.content}
+            {isBasicParagraph(ingressParagraph) && (
+              <Markdown>{ingressParagraph.content ?? ''}</Markdown>
+            )}
           </SC.Subtitle>
         </SC.Container>
       </SC.Header>
