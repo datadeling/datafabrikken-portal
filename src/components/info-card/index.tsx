@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import ExternalLink from '../link-external';
 import SC from './styled';
 import env from '../../env';
-import { CourseType, CourseProvider } from '../../types/enums';
+import { CourseType } from '../../types/enums';
 import RoundedTag, { Variant } from '../rounded-tag';
 import Translation from '../translation';
 import {
@@ -15,6 +15,7 @@ const { STRAPI_API_HOST } = env;
 
 interface ExternalProps {
   infoObject: any;
+  provider?: any;
 }
 
 interface Props extends ExternalProps, TranslationsProps {}
@@ -28,25 +29,11 @@ const InfoCard: FC<Props> = ({
     title,
     description,
     durationInMinutes,
-    numberOfModules,
-    provider
+    numberOfModules
   },
+  provider,
   translationsService
 }) => {
-  const providerInfo = (() => {
-    switch (provider) {
-      case CourseProvider.DIGITAL_NORWAY:
-        return {
-          logo: 'https://digitalnorway.com/content/uploads/2020/06/digital-norway-logo-positive.svg',
-          subtitle: `${translationsService.translate(
-            'infoCard.courseIsProvidedBy'
-          )} DigitalNorway`
-        };
-      default:
-        return null;
-    }
-  })();
-
   const courseType = (() => {
     switch (type) {
       case CourseType.INTRO_COURSE:
@@ -115,16 +102,19 @@ const InfoCard: FC<Props> = ({
           )}
         </SC.CourseFacts>
       </SC.CourseContent>
-      {providerInfo && (
-        <>
-          <SC.CourseProvider>
-            <SC.ProviderLogo
-              src={providerInfo.logo}
-              alt={`${translationsService.translate('infoCard.providerLogo')}`}
-            />
-            {providerInfo.subtitle}
-          </SC.CourseProvider>
-        </>
+      {provider?.logo?.url && (
+        <SC.CourseProvider>
+          <SC.ProviderLogo
+            src={`${STRAPI_API_HOST}${provider.logo.url}`}
+            alt={
+              provider.logo?.alternativeText ??
+              translationsService.translate('infoCard.providerLogo')
+            }
+          />
+          {`${translationsService.translate('infoCard.courseIsProvidedBy')} ${
+            provider.title
+          }`}
+        </SC.CourseProvider>
       )}
     </SC.Card>
   );

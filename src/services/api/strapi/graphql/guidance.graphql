@@ -18,6 +18,7 @@ query GetGuidance {
       }
     }
   }
+
   guides {
     title
     featureImage {
@@ -30,5 +31,17 @@ query GetGuidance {
     locale
     published_at
     updated_at
+    language
+    contentType
+    providerId
+  }
+
+  providers {
+    id
+    title
+    logo {
+      url
+      alternativeText
+    }
   }
 }

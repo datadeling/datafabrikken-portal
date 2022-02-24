@@ -255,12 +255,13 @@ export type Course = {
   featureImage?: Maybe<UploadFile>;
   free: Scalars['Boolean'];
   id: Scalars['ID'];
+  language?: Maybe<Scalars['String']>;
   link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Course>>>;
   numberOfModules?: Maybe<Scalars['Int']>;
   primaryTargetGroup?: Maybe<Enum_Course_Primarytargetgroup>;
-  provider: Enum_Course_Provider;
+  providerId?: Maybe<Scalars['Int']>;
   published_at?: Maybe<Scalars['DateTime']>;
   title: Scalars['String'];
   type?: Maybe<Enum_Course_Type>;
@@ -288,24 +289,28 @@ export type CourseAggregatorAvg = {
   __typename?: 'CourseAggregatorAvg';
   durationInMinutes?: Maybe<Scalars['Float']>;
   numberOfModules?: Maybe<Scalars['Float']>;
+  providerId?: Maybe<Scalars['Float']>;
 };
 
 export type CourseAggregatorMax = {
   __typename?: 'CourseAggregatorMax';
   durationInMinutes?: Maybe<Scalars['Float']>;
   numberOfModules?: Maybe<Scalars['Float']>;
+  providerId?: Maybe<Scalars['Float']>;
 };
 
 export type CourseAggregatorMin = {
   __typename?: 'CourseAggregatorMin';
   durationInMinutes?: Maybe<Scalars['Float']>;
   numberOfModules?: Maybe<Scalars['Float']>;
+  providerId?: Maybe<Scalars['Float']>;
 };
 
 export type CourseAggregatorSum = {
   __typename?: 'CourseAggregatorSum';
   durationInMinutes?: Maybe<Scalars['Float']>;
   numberOfModules?: Maybe<Scalars['Float']>;
+  providerId?: Maybe<Scalars['Float']>;
 };
 
 export type CourseConnection = {
@@ -351,6 +356,12 @@ export type CourseConnectionId = {
   key?: Maybe<Scalars['ID']>;
 };
 
+export type CourseConnectionLanguage = {
+  __typename?: 'CourseConnectionLanguage';
+  connection?: Maybe<CourseConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
 export type CourseConnectionLink = {
   __typename?: 'CourseConnectionLink';
   connection?: Maybe<CourseConnection>;
@@ -375,10 +386,10 @@ export type CourseConnectionPrimaryTargetGroup = {
   key?: Maybe<Scalars['String']>;
 };
 
-export type CourseConnectionProvider = {
-  __typename?: 'CourseConnectionProvider';
+export type CourseConnectionProviderId = {
+  __typename?: 'CourseConnectionProviderId';
   connection?: Maybe<CourseConnection>;
-  key?: Maybe<Scalars['String']>;
+  key?: Maybe<Scalars['Int']>;
 };
 
 export type CourseConnectionPublished_At = {
@@ -413,11 +424,12 @@ export type CourseGroupBy = {
   featureImage?: Maybe<Array<Maybe<CourseConnectionFeatureImage>>>;
   free?: Maybe<Array<Maybe<CourseConnectionFree>>>;
   id?: Maybe<Array<Maybe<CourseConnectionId>>>;
+  language?: Maybe<Array<Maybe<CourseConnectionLanguage>>>;
   link?: Maybe<Array<Maybe<CourseConnectionLink>>>;
   locale?: Maybe<Array<Maybe<CourseConnectionLocale>>>;
   numberOfModules?: Maybe<Array<Maybe<CourseConnectionNumberOfModules>>>;
   primaryTargetGroup?: Maybe<Array<Maybe<CourseConnectionPrimaryTargetGroup>>>;
-  provider?: Maybe<Array<Maybe<CourseConnectionProvider>>>;
+  providerId?: Maybe<Array<Maybe<CourseConnectionProviderId>>>;
   published_at?: Maybe<Array<Maybe<CourseConnectionPublished_At>>>;
   title?: Maybe<Array<Maybe<CourseConnectionTitle>>>;
   type?: Maybe<Array<Maybe<CourseConnectionType>>>;
@@ -430,12 +442,13 @@ export type CourseInput = {
   durationInMinutes?: Maybe<Scalars['Int']>;
   featureImage?: Maybe<Scalars['ID']>;
   free: Scalars['Boolean'];
+  language?: Maybe<Scalars['String']>;
   link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   numberOfModules?: Maybe<Scalars['Int']>;
   primaryTargetGroup?: Maybe<Enum_Course_Primarytargetgroup>;
-  provider: Enum_Course_Provider;
+  providerId?: Maybe<Scalars['Int']>;
   published_at?: Maybe<Scalars['DateTime']>;
   title: Scalars['String'];
   type?: Maybe<Enum_Course_Type>;
@@ -454,16 +467,16 @@ export enum Enum_Course_Primarytargetgroup {
   DataProvider = 'DATA_PROVIDER'
 }
 
-export enum Enum_Course_Provider {
-  DigitalNorway = 'DIGITAL_NORWAY',
-  ElementsOfAi = 'ELEMENTS_OF_AI',
-  Uio = 'UIO'
-}
-
 export enum Enum_Course_Type {
   AdvancedTraining = 'ADVANCED_TRAINING',
   ContinuingEducation = 'CONTINUING_EDUCATION',
   IntroCourse = 'INTRO_COURSE'
+}
+
+export enum Enum_Guide_Contenttype {
+  Text = 'TEXT',
+  TextAndVideo = 'TEXT_AND_VIDEO',
+  Video = 'VIDEO'
 }
 
 export enum Enum_Guide_Primarytargetgroup {
@@ -608,15 +621,18 @@ export type FileInput = {
 
 export type Guide = {
   __typename?: 'Guide';
+  contentType?: Maybe<Enum_Guide_Contenttype>;
   created_at: Scalars['DateTime'];
   description: Scalars['String'];
   durationInMinutes?: Maybe<Scalars['Int']>;
   featureImage?: Maybe<UploadFile>;
   id: Scalars['ID'];
+  language?: Maybe<Scalars['String']>;
   link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Guide>>>;
   primaryTargetGroup?: Maybe<Enum_Guide_Primarytargetgroup>;
+  providerId?: Maybe<Scalars['Int']>;
   published_at?: Maybe<Scalars['DateTime']>;
   title: Scalars['String'];
   updated_at: Scalars['DateTime'];
@@ -642,21 +658,25 @@ export type GuideAggregator = {
 export type GuideAggregatorAvg = {
   __typename?: 'GuideAggregatorAvg';
   durationInMinutes?: Maybe<Scalars['Float']>;
+  providerId?: Maybe<Scalars['Float']>;
 };
 
 export type GuideAggregatorMax = {
   __typename?: 'GuideAggregatorMax';
   durationInMinutes?: Maybe<Scalars['Float']>;
+  providerId?: Maybe<Scalars['Float']>;
 };
 
 export type GuideAggregatorMin = {
   __typename?: 'GuideAggregatorMin';
   durationInMinutes?: Maybe<Scalars['Float']>;
+  providerId?: Maybe<Scalars['Float']>;
 };
 
 export type GuideAggregatorSum = {
   __typename?: 'GuideAggregatorSum';
   durationInMinutes?: Maybe<Scalars['Float']>;
+  providerId?: Maybe<Scalars['Float']>;
 };
 
 export type GuideConnection = {
@@ -664,6 +684,12 @@ export type GuideConnection = {
   aggregate?: Maybe<GuideAggregator>;
   groupBy?: Maybe<GuideGroupBy>;
   values?: Maybe<Array<Maybe<Guide>>>;
+};
+
+export type GuideConnectionContentType = {
+  __typename?: 'GuideConnectionContentType';
+  connection?: Maybe<GuideConnection>;
+  key?: Maybe<Scalars['String']>;
 };
 
 export type GuideConnectionCreated_At = {
@@ -696,6 +722,12 @@ export type GuideConnectionId = {
   key?: Maybe<Scalars['ID']>;
 };
 
+export type GuideConnectionLanguage = {
+  __typename?: 'GuideConnectionLanguage';
+  connection?: Maybe<GuideConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
 export type GuideConnectionLink = {
   __typename?: 'GuideConnectionLink';
   connection?: Maybe<GuideConnection>;
@@ -712,6 +744,12 @@ export type GuideConnectionPrimaryTargetGroup = {
   __typename?: 'GuideConnectionPrimaryTargetGroup';
   connection?: Maybe<GuideConnection>;
   key?: Maybe<Scalars['String']>;
+};
+
+export type GuideConnectionProviderId = {
+  __typename?: 'GuideConnectionProviderId';
+  connection?: Maybe<GuideConnection>;
+  key?: Maybe<Scalars['Int']>;
 };
 
 export type GuideConnectionPublished_At = {
@@ -734,28 +772,34 @@ export type GuideConnectionUpdated_At = {
 
 export type GuideGroupBy = {
   __typename?: 'GuideGroupBy';
+  contentType?: Maybe<Array<Maybe<GuideConnectionContentType>>>;
   created_at?: Maybe<Array<Maybe<GuideConnectionCreated_At>>>;
   description?: Maybe<Array<Maybe<GuideConnectionDescription>>>;
   durationInMinutes?: Maybe<Array<Maybe<GuideConnectionDurationInMinutes>>>;
   featureImage?: Maybe<Array<Maybe<GuideConnectionFeatureImage>>>;
   id?: Maybe<Array<Maybe<GuideConnectionId>>>;
+  language?: Maybe<Array<Maybe<GuideConnectionLanguage>>>;
   link?: Maybe<Array<Maybe<GuideConnectionLink>>>;
   locale?: Maybe<Array<Maybe<GuideConnectionLocale>>>;
   primaryTargetGroup?: Maybe<Array<Maybe<GuideConnectionPrimaryTargetGroup>>>;
+  providerId?: Maybe<Array<Maybe<GuideConnectionProviderId>>>;
   published_at?: Maybe<Array<Maybe<GuideConnectionPublished_At>>>;
   title?: Maybe<Array<Maybe<GuideConnectionTitle>>>;
   updated_at?: Maybe<Array<Maybe<GuideConnectionUpdated_At>>>;
 };
 
 export type GuideInput = {
+  contentType?: Maybe<Enum_Guide_Contenttype>;
   created_by?: Maybe<Scalars['ID']>;
   description: Scalars['String'];
   durationInMinutes?: Maybe<Scalars['Int']>;
   featureImage?: Maybe<Scalars['ID']>;
+  language?: Maybe<Scalars['String']>;
   link: Scalars['String'];
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   primaryTargetGroup?: Maybe<Enum_Guide_Primarytargetgroup>;
+  providerId?: Maybe<Scalars['Int']>;
   published_at?: Maybe<Scalars['DateTime']>;
   title: Scalars['String'];
   updated_by?: Maybe<Scalars['ID']>;
@@ -814,11 +858,12 @@ export type Morph =
   | CourseConnectionFeatureImage
   | CourseConnectionFree
   | CourseConnectionId
+  | CourseConnectionLanguage
   | CourseConnectionLink
   | CourseConnectionLocale
   | CourseConnectionNumberOfModules
   | CourseConnectionPrimaryTargetGroup
-  | CourseConnectionProvider
+  | CourseConnectionProviderId
   | CourseConnectionPublished_At
   | CourseConnectionTitle
   | CourseConnectionType
@@ -841,19 +886,33 @@ export type Morph =
   | GuideAggregatorMin
   | GuideAggregatorSum
   | GuideConnection
+  | GuideConnectionContentType
   | GuideConnectionCreated_At
   | GuideConnectionDescription
   | GuideConnectionDurationInMinutes
   | GuideConnectionFeatureImage
   | GuideConnectionId
+  | GuideConnectionLanguage
   | GuideConnectionLink
   | GuideConnectionLocale
   | GuideConnectionPrimaryTargetGroup
+  | GuideConnectionProviderId
   | GuideConnectionPublished_At
   | GuideConnectionTitle
   | GuideConnectionUpdated_At
   | GuideGroupBy
   | I18NLocale
+  | Provider
+  | ProviderAggregator
+  | ProviderConnection
+  | ProviderConnectionCreated_At
+  | ProviderConnectionId
+  | ProviderConnectionLocale
+  | ProviderConnectionLogo
+  | ProviderConnectionPublished_At
+  | ProviderConnectionTitle
+  | ProviderConnectionUpdated_At
+  | ProviderGroupBy
   | ServiceMessage
   | ServiceMessageAggregator
   | ServiceMessageConnection
@@ -925,6 +984,7 @@ export type Morph =
   | CreateCoursePayload
   | CreateFancyArticlePayload
   | CreateGuidePayload
+  | CreateProviderPayload
   | CreateRolePayload
   | CreateServiceMessagePayload
   | CreateUserPayload
@@ -933,6 +993,7 @@ export type Morph =
   | DeleteFancyArticlePayload
   | DeleteFilePayload
   | DeleteGuidePayload
+  | DeleteProviderPayload
   | DeleteRolePayload
   | DeleteServiceMessagePayload
   | DeleteUserPayload
@@ -940,6 +1001,7 @@ export type Morph =
   | UpdateCoursePayload
   | UpdateFancyArticlePayload
   | UpdateGuidePayload
+  | UpdateProviderPayload
   | UpdateRolePayload
   | UpdateServiceMessagePayload
   | UpdateUserPayload;
@@ -954,6 +1016,8 @@ export type Mutation = {
   createFancyArticleLocalization: FancyArticle;
   createGuide?: Maybe<CreateGuidePayload>;
   createGuideLocalization: Guide;
+  createProvider?: Maybe<CreateProviderPayload>;
+  createProviderLocalization: Provider;
   /** Create a new role */
   createRole?: Maybe<CreateRolePayload>;
   createServiceMessage?: Maybe<CreateServiceMessagePayload>;
@@ -966,6 +1030,7 @@ export type Mutation = {
   /** Delete one file */
   deleteFile?: Maybe<DeleteFilePayload>;
   deleteGuide?: Maybe<DeleteGuidePayload>;
+  deleteProvider?: Maybe<DeleteProviderPayload>;
   /** Delete an existing role */
   deleteRole?: Maybe<DeleteRolePayload>;
   deleteServiceMessage?: Maybe<DeleteServiceMessagePayload>;
@@ -982,6 +1047,7 @@ export type Mutation = {
   updateFancyArticle?: Maybe<UpdateFancyArticlePayload>;
   updateFileInfo: UploadFile;
   updateGuide?: Maybe<UpdateGuidePayload>;
+  updateProvider?: Maybe<UpdateProviderPayload>;
   /** Update an existing role */
   updateRole?: Maybe<UpdateRolePayload>;
   updateServiceMessage?: Maybe<UpdateServiceMessagePayload>;
@@ -1022,6 +1088,14 @@ export type MutationCreateGuideLocalizationArgs = {
   input: UpdateGuideInput;
 };
 
+export type MutationCreateProviderArgs = {
+  input?: Maybe<CreateProviderInput>;
+};
+
+export type MutationCreateProviderLocalizationArgs = {
+  input: UpdateProviderInput;
+};
+
 export type MutationCreateRoleArgs = {
   input?: Maybe<CreateRoleInput>;
 };
@@ -1056,6 +1130,10 @@ export type MutationDeleteFileArgs = {
 
 export type MutationDeleteGuideArgs = {
   input?: Maybe<DeleteGuideInput>;
+};
+
+export type MutationDeleteProviderArgs = {
+  input?: Maybe<DeleteProviderInput>;
 };
 
 export type MutationDeleteRoleArgs = {
@@ -1121,6 +1199,10 @@ export type MutationUpdateGuideArgs = {
   input?: Maybe<UpdateGuideInput>;
 };
 
+export type MutationUpdateProviderArgs = {
+  input?: Maybe<UpdateProviderInput>;
+};
+
 export type MutationUpdateRoleArgs = {
   input?: Maybe<UpdateRoleInput>;
 };
@@ -1140,6 +1222,101 @@ export type MutationUploadArgs = {
   ref?: Maybe<Scalars['String']>;
   refId?: Maybe<Scalars['ID']>;
   source?: Maybe<Scalars['String']>;
+};
+
+export type Provider = {
+  __typename?: 'Provider';
+  created_at: Scalars['DateTime'];
+  id: Scalars['ID'];
+  locale?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Provider>>>;
+  logo?: Maybe<UploadFile>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  title: Scalars['String'];
+  updated_at: Scalars['DateTime'];
+};
+
+export type ProviderLocalizationsArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type ProviderAggregator = {
+  __typename?: 'ProviderAggregator';
+  count?: Maybe<Scalars['Int']>;
+  totalCount?: Maybe<Scalars['Int']>;
+};
+
+export type ProviderConnection = {
+  __typename?: 'ProviderConnection';
+  aggregate?: Maybe<ProviderAggregator>;
+  groupBy?: Maybe<ProviderGroupBy>;
+  values?: Maybe<Array<Maybe<Provider>>>;
+};
+
+export type ProviderConnectionCreated_At = {
+  __typename?: 'ProviderConnectionCreated_at';
+  connection?: Maybe<ProviderConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProviderConnectionId = {
+  __typename?: 'ProviderConnectionId';
+  connection?: Maybe<ProviderConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ProviderConnectionLocale = {
+  __typename?: 'ProviderConnectionLocale';
+  connection?: Maybe<ProviderConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProviderConnectionLogo = {
+  __typename?: 'ProviderConnectionLogo';
+  connection?: Maybe<ProviderConnection>;
+  key?: Maybe<Scalars['ID']>;
+};
+
+export type ProviderConnectionPublished_At = {
+  __typename?: 'ProviderConnectionPublished_at';
+  connection?: Maybe<ProviderConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProviderConnectionTitle = {
+  __typename?: 'ProviderConnectionTitle';
+  connection?: Maybe<ProviderConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
+export type ProviderConnectionUpdated_At = {
+  __typename?: 'ProviderConnectionUpdated_at';
+  connection?: Maybe<ProviderConnection>;
+  key?: Maybe<Scalars['DateTime']>;
+};
+
+export type ProviderGroupBy = {
+  __typename?: 'ProviderGroupBy';
+  created_at?: Maybe<Array<Maybe<ProviderConnectionCreated_At>>>;
+  id?: Maybe<Array<Maybe<ProviderConnectionId>>>;
+  locale?: Maybe<Array<Maybe<ProviderConnectionLocale>>>;
+  logo?: Maybe<Array<Maybe<ProviderConnectionLogo>>>;
+  published_at?: Maybe<Array<Maybe<ProviderConnectionPublished_At>>>;
+  title?: Maybe<Array<Maybe<ProviderConnectionTitle>>>;
+  updated_at?: Maybe<Array<Maybe<ProviderConnectionUpdated_At>>>;
+};
+
+export type ProviderInput = {
+  created_by?: Maybe<Scalars['ID']>;
+  locale?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  logo?: Maybe<Scalars['ID']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  title: Scalars['String'];
+  updated_by?: Maybe<Scalars['ID']>;
 };
 
 export enum PublicationState {
@@ -1164,6 +1341,9 @@ export type Query = {
   guides?: Maybe<Array<Maybe<Guide>>>;
   guidesConnection?: Maybe<GuideConnection>;
   me?: Maybe<UsersPermissionsMe>;
+  provider?: Maybe<Provider>;
+  providers?: Maybe<Array<Maybe<Provider>>>;
+  providersConnection?: Maybe<ProviderConnection>;
   role?: Maybe<UsersPermissionsRole>;
   /** Retrieve all the existing roles. You can't apply filters on this query. */
   roles?: Maybe<Array<Maybe<UsersPermissionsRole>>>;
@@ -1272,6 +1452,28 @@ export type QueryGuidesArgs = {
 };
 
 export type QueryGuidesConnectionArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type QueryProviderArgs = {
+  id: Scalars['ID'];
+  publicationState?: Maybe<PublicationState>;
+};
+
+export type QueryProvidersArgs = {
+  limit?: Maybe<Scalars['Int']>;
+  locale?: Maybe<Scalars['String']>;
+  publicationState?: Maybe<PublicationState>;
+  sort?: Maybe<Scalars['String']>;
+  start?: Maybe<Scalars['Int']>;
+  where?: Maybe<Scalars['JSON']>;
+};
+
+export type QueryProvidersConnectionArgs = {
   limit?: Maybe<Scalars['Int']>;
   locale?: Maybe<Scalars['String']>;
   sort?: Maybe<Scalars['String']>;
@@ -1956,6 +2158,15 @@ export type CreateGuidePayload = {
   guide?: Maybe<Guide>;
 };
 
+export type CreateProviderInput = {
+  data?: Maybe<ProviderInput>;
+};
+
+export type CreateProviderPayload = {
+  __typename?: 'createProviderPayload';
+  provider?: Maybe<Provider>;
+};
+
 export type CreateRoleInput = {
   data?: Maybe<RoleInput>;
 };
@@ -2026,6 +2237,15 @@ export type DeleteGuideInput = {
 export type DeleteGuidePayload = {
   __typename?: 'deleteGuidePayload';
   guide?: Maybe<Guide>;
+};
+
+export type DeleteProviderInput = {
+  where?: Maybe<InputId>;
+};
+
+export type DeleteProviderPayload = {
+  __typename?: 'deleteProviderPayload';
+  provider?: Maybe<Provider>;
 };
 
 export type DeleteRoleInput = {
@@ -2112,12 +2332,13 @@ export type EditCourseInput = {
   durationInMinutes?: Maybe<Scalars['Int']>;
   featureImage?: Maybe<Scalars['ID']>;
   free?: Maybe<Scalars['Boolean']>;
+  language?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   numberOfModules?: Maybe<Scalars['Int']>;
   primaryTargetGroup?: Maybe<Enum_Course_Primarytargetgroup>;
-  provider?: Maybe<Enum_Course_Provider>;
+  providerId?: Maybe<Scalars['Int']>;
   published_at?: Maybe<Scalars['DateTime']>;
   title?: Maybe<Scalars['String']>;
   type?: Maybe<Enum_Course_Type>;
@@ -2155,14 +2376,17 @@ export type EditFileInput = {
 };
 
 export type EditGuideInput = {
+  contentType?: Maybe<Enum_Guide_Contenttype>;
   created_by?: Maybe<Scalars['ID']>;
   description?: Maybe<Scalars['String']>;
   durationInMinutes?: Maybe<Scalars['Int']>;
   featureImage?: Maybe<Scalars['ID']>;
+  language?: Maybe<Scalars['String']>;
   link?: Maybe<Scalars['String']>;
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   primaryTargetGroup?: Maybe<Enum_Guide_Primarytargetgroup>;
+  providerId?: Maybe<Scalars['Int']>;
   published_at?: Maybe<Scalars['DateTime']>;
   title?: Maybe<Scalars['String']>;
   updated_by?: Maybe<Scalars['ID']>;
@@ -2172,6 +2396,16 @@ export type EditLocaleInput = {
   code?: Maybe<Scalars['String']>;
   created_by?: Maybe<Scalars['ID']>;
   name?: Maybe<Scalars['String']>;
+  updated_by?: Maybe<Scalars['ID']>;
+};
+
+export type EditProviderInput = {
+  created_by?: Maybe<Scalars['ID']>;
+  locale?: Maybe<Scalars['String']>;
+  localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
+  logo?: Maybe<Scalars['ID']>;
+  published_at?: Maybe<Scalars['DateTime']>;
+  title?: Maybe<Scalars['String']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
 
@@ -2252,6 +2486,16 @@ export type UpdateGuideInput = {
 export type UpdateGuidePayload = {
   __typename?: 'updateGuidePayload';
   guide?: Maybe<Guide>;
+};
+
+export type UpdateProviderInput = {
+  data?: Maybe<EditProviderInput>;
+  where?: Maybe<InputId>;
+};
+
+export type UpdateProviderPayload = {
+  __typename?: 'updateProviderPayload';
+  provider?: Maybe<Provider>;
 };
 
 export type UpdateRoleInput = {
@@ -2357,13 +2601,28 @@ export type GetCoursesQuery = { __typename?: 'Query' } & {
           | 'durationInMinutes'
           | 'numberOfModules'
           | 'free'
-          | 'provider'
           | 'locale'
           | 'published_at'
           | 'updated_at'
+          | 'language'
+          | 'providerId'
         > & {
             featureImage?: Maybe<
               { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+          }
+      >
+    >
+  >;
+  providers?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Provider' } & Pick<Provider, 'id' | 'title'> & {
+            logo?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<
+                UploadFile,
+                'url' | 'alternativeText'
+              >
             >;
           }
       >
@@ -2442,9 +2701,26 @@ export type GetGuidanceQuery = { __typename?: 'Query' } & {
           | 'locale'
           | 'published_at'
           | 'updated_at'
+          | 'language'
+          | 'contentType'
+          | 'providerId'
         > & {
             featureImage?: Maybe<
               { __typename?: 'UploadFile' } & Pick<UploadFile, 'url'>
+            >;
+          }
+      >
+    >
+  >;
+  providers?: Maybe<
+    Array<
+      Maybe<
+        { __typename?: 'Provider' } & Pick<Provider, 'id' | 'title'> & {
+            logo?: Maybe<
+              { __typename?: 'UploadFile' } & Pick<
+                UploadFile,
+                'url' | 'alternativeText'
+              >
             >;
           }
       >
@@ -2546,10 +2822,19 @@ export const GetCoursesDocument = gql`
       durationInMinutes
       numberOfModules
       free
-      provider
       locale
       published_at
       updated_at
+      language
+      providerId
+    }
+    providers {
+      id
+      title
+      logo {
+        url
+        alternativeText
+      }
     }
   }
 `;
@@ -2698,6 +2983,17 @@ export const GetGuidanceDocument = gql`
       locale
       published_at
       updated_at
+      language
+      contentType
+      providerId
+    }
+    providers {
+      id
+      title
+      logo {
+        url
+        alternativeText
+      }
     }
   }
 `;
