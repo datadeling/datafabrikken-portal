@@ -11,8 +11,8 @@ const Image = styled.img`
 `;
 
 const ProviderLogo = styled.img`
-  height: 35px;
-  width: 210px;
+  max-height: 50px;
+  max-width: 250px;
   margin: ${theme.spacing('S4')} 0;
 `;
 

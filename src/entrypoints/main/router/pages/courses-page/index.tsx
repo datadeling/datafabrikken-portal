@@ -7,13 +7,30 @@ import withErrorBoundary from '../../../../../components/with-error-boundary';
 import Root from '../../../../../components/root';
 import CourseCard from '../../../../../components/info-card';
 
-import { useGetCoursesQuery } from '../../../../../services/api/generated/cms/graphql';
+import {
+  Provider,
+  useGetCoursesQuery
+} from '../../../../../services/api/generated/cms/graphql';
+import { isBasicParagraph, isProvider } from '../../../../../utils/strapi';
 
 interface Props {}
 
 const CoursesPage: FC<Props> = () => {
   const { data } = useGetCoursesQuery();
-  const { courses, topArticle } = data ?? {};
+  const { courses, providers, topArticle } = data ?? {};
+  const providersById =
+    providers?.reduce(
+      (previous, provider) =>
+        isProvider(provider)
+          ? {
+              ...previous,
+              [provider.id]: provider
+            }
+          : previous,
+      {} as Record<string, Provider>
+    ) ?? {};
+  // eslint-disable-next-line no-console
+  console.log({ data, providers });
 
   return (
     <Root>
@@ -21,8 +38,8 @@ const CoursesPage: FC<Props> = () => {
         <SC.Container>
           <SC.Title>{topArticle?.title}</SC.Title>
           <SC.Subtitle>
-            {topArticle?.content?.[0]?.__typename ===
-              'ComponentBasicParagraph' && topArticle.content[0].content}
+            {isBasicParagraph(topArticle?.content?.[0]) &&
+              topArticle?.content?.[0].content}
           </SC.Subtitle>
         </SC.Container>
       </SC.Header>
@@ -30,7 +47,12 @@ const CoursesPage: FC<Props> = () => {
         <SC.Container>
           <SC.CourseCardContainer>
             {courses?.map(course => (
-              <CourseCard infoObject={course} />
+              <CourseCard
+                infoObject={course}
+                provider={
+                  course?.providerId && providersById[course.providerId]
+                }
+              />
             ))}
           </SC.CourseCardContainer>
         </SC.Container>
