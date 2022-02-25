@@ -12,7 +12,8 @@ const Image = styled.img`
 
 const ProviderLogo = styled.img`
   max-height: 50px;
-  max-width: 250px;
+  object-fit: contain;
+  object-position: left;
   margin: ${theme.spacing('S4')} 0;
 `;
 
@@ -78,7 +79,7 @@ const Tags = styled.div`
   line-height: ${theme.fontSize('FS12')};
 `;
 
-const Card = styled.div`
+const Card = styled.a`
   display: flex;
   flex-direction: column;
   margin-bottom: ${theme.spacing('S16')};

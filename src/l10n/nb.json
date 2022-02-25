@@ -446,14 +446,19 @@
     "numberDatasets": "Antall Datasett"
   },
   "infoCard": {
-    "courseIsProvidedBy": "Kurset leveres av",
-    "introCourse": "Introkurs",
-    "advancedTraining": "Dybdekurs",
-    "continuingEducation": "Videreutdanning",
-    "minutes": "minutter",
+    "providerText": "Tilbys av ",
+    "INTRO_COURSE": "Introkurs",
+    "ADVANCED_TRAINING": "Dybdekurs",
+    "CONTINUING_EDUCATION": "Videreutdanning",
+    "minutes": "min",
     "modules": "moduler",
     "providerLogo": "Tilbyderlogo",
-    "free": "Gratis"
+    "free": "Gratis",
+    "contentType": {
+      "TEXT": "lesing",
+      "VIDEO": "video",
+      "TEXT_AND_VIDEO": "lesing og video"
+    }
   },
   "guidancePage": {
     "radio": {
