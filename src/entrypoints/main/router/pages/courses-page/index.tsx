@@ -29,8 +29,6 @@ const CoursesPage: FC<Props> = () => {
           : previous,
       {} as Record<string, Provider>
     ) ?? {};
-  // eslint-disable-next-line no-console
-  console.log({ data, providers });
 
   return (
     <Root>

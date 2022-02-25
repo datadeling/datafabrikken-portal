@@ -11,10 +11,15 @@ import Markdown from '../../../../../components/markdown';
 import {
   ComponentBasicInfobox,
   Enum_Guide_Primarytargetgroup,
+  Provider,
   useGetGuidanceQuery
 } from '../../../../../services/api/generated/cms/graphql';
 import { RadioOption } from '../../../../../components/radio-options';
-import { isBasicInfoBox, isBasicParagraph } from '../../../../../utils/strapi';
+import {
+  isBasicInfoBox,
+  isBasicParagraph,
+  isProvider
+} from '../../../../../utils/strapi';
 import { InfoBoxStrapi } from '../../../../../components/info-box';
 
 interface Props {}
@@ -23,7 +28,18 @@ const GuidancePage: FC<Props> = () => {
   const [selectedTargetGroup, setSelectedTargetGroup] =
     useState<Enum_Guide_Primarytargetgroup>();
   const { data: coursesData } = useGetGuidanceQuery();
-  const { guides, topArticle } = coursesData ?? {};
+  const { guides, topArticle, providers } = coursesData ?? {};
+  const providersById =
+    providers?.reduce(
+      (previous, provider) =>
+        isProvider(provider)
+          ? {
+              ...previous,
+              [provider.id]: provider
+            }
+          : previous,
+      {} as Record<string, Provider>
+    ) ?? {};
 
   const [ingressParagraph, coursesParagraph] =
     topArticle?.content?.filter(content => isBasicParagraph(content)) ?? [];
@@ -105,7 +121,12 @@ const GuidancePage: FC<Props> = () => {
                     guide.primaryTargetGroup === selectedTargetGroup)
               )
               ?.map(guide => (
-                <GuideCard infoObject={guide} />
+                <GuideCard
+                  infoObject={guide}
+                  provider={
+                    guide?.providerId && providersById[guide.providerId]
+                  }
+                />
               ))}
           </SC.GuideCardContainer>
         </SC.Container>
