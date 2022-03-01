@@ -32,7 +32,10 @@ const Post: FC<Props> = ({ post: { content, user, timestampISO } }) => {
   const parsePost = () => {
     const { COMMUNITY_API_HOST } = env;
     return parse(
-      content.replaceAll('src="/assets/', `src="${COMMUNITY_API_HOST}/assets/`),
+      content.replaceAll(
+        'src="/assets/',
+        `crossorigin="" src="${COMMUNITY_API_HOST}/assets/`
+      ),
       {
         replace: (domNode: any) => {
           if (
