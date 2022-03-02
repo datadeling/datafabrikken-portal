@@ -30,7 +30,7 @@ const Menu = styled.nav`
   }
 
   & > ul > li {
-    border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B14')};
+    border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B16')};
 
     &:hover {
       border-bottom: 2px solid transparent;

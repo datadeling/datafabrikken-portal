@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Colour, theme } from '../../entrypoints/main/app/theme';
 
 const ExternalLink = styled.a`
-  border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B14')};
+  border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B16')};
 
   & > svg {
     height: 20px;

@@ -46,7 +46,7 @@ const DatasetDistribution = styled(ExpansionPanel)`
 
 const Section = styled.div`
   padding: ${theme.spacing('S10')};
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   border-top: 1px solid #dfe1e2;
   display: flex;
 `;
@@ -56,7 +56,7 @@ const DownloadLink = styled.a`
   align-items: center;
   padding: ${theme.spacing('S12')};
   margin-right: ${theme.spacing('S8')};
-  background-color: ${theme.colour(Colour.BLUE, 'B20')};
+  background-color: ${theme.colour(Colour.BLUE, 'B16')};
   & > svg {
     height: 25px;
     width: 25px;
@@ -76,7 +76,7 @@ const PreviewLink = styled.a`
   display: flex;
   align-items: center;
   padding: ${theme.spacing('S12')};
-  background-color: ${theme.colour(Colour.BLUE, 'B20')};
+  background-color: ${theme.colour(Colour.BLUE, 'B16')};
   & > svg {
     transform: scale(1.25);
     margin-left: ${theme.spacing('S4')};

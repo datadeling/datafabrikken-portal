@@ -26,7 +26,7 @@ const CategoryIcon = styled.div`
   & > svg > path,
   circle,
   rect {
-    stroke: ${theme.colour(Colour.BLUE, 'B14')};
+    stroke: ${theme.colour(Colour.BLUE, 'B16')};
     fill: transparent;
   }
 `;

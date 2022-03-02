@@ -21,7 +21,7 @@ const Banner = styled.section`
 `;
 
 const Content = styled.section`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   color: ${theme.colour(Colour.BLUE, 'B52')};
   padding-top: ${theme.spacing('S32')};
 `;
@@ -200,7 +200,7 @@ const TableBody = styled.tbody``;
 
 const CheckIcon = styled(CheckSVG)`
   & > path {
-    fill: ${theme.colour(Colour.BLUE, 'B20')};
+    fill: ${theme.colour(Colour.BLUE, 'B16')};
   }
 `;
 

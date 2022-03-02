@@ -22,7 +22,7 @@ const Themes = styled.div`
     display: inline-flex;
     align-items: center;
     color: ${theme.colour(Colour.BLUE, 'B38')};
-    background: ${theme.colour(Colour.NEUTRAL, 'N02')};
+    background: ${theme.colour(Colour.BLUE, 'B02')};
     text-decoration: none;
     cursor: pointer;
 
@@ -32,7 +32,7 @@ const Themes = styled.div`
     }
 
     &.public-data {
-      background: ${theme.colour(Colour.NEUTRAL, 'N02')};
+      background: ${theme.colour(Colour.BLUE, 'B02')};
     }
 
     &.restricted-data,

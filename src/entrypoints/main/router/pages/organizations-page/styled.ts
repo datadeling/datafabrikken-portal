@@ -20,7 +20,7 @@ const Container = styled(ContainerSC.Container)`
 
 const Content = styled.div`
   padding: ${theme.spacing('S32')} 0px;
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
 `;
 
 const Header = styled.h1`
@@ -60,7 +60,7 @@ const SearchHit = styled(Link)`
   transition: all 200ms ease-in-out;
 
   &:hover {
-    background-color: ${theme.colour(Colour.BLUE, 'B20')};
+    background-color: ${theme.colour(Colour.BLUE, 'B16')};
     color: ${theme.colour(Colour.NEUTRAL, 'N0')} !important;
   }
 `;
@@ -161,7 +161,7 @@ const SortButton = styled.button`
 const TitleSortButton = styled(SortButton)``;
 
 const SpinnerContainer = styled.div`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   display: flex;
   justify-content: center;
   align-items: center;

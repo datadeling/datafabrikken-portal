@@ -7,7 +7,7 @@ const TextField = styled('div')`
 
 const SearchButton = styled('button')`
   display: flex;
-  background-color: ${theme.colour(Colour.BLUE, 'B20')};
+  background-color: ${theme.colour(Colour.BLUE, 'B16')};
   color: ${theme.colour(Colour.BLUE, 'B52')};
   border-radius: 0;
   align-items: center;

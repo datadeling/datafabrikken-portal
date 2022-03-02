@@ -24,7 +24,7 @@ const Link = styled(LinkBase)`
     height: 4px;
     width: 0;
     margin: 0 auto;
-    background-color: ${theme.colour(Colour.BLUE, 'B20')};
+    background-color: ${theme.colour(Colour.BLUE, 'B16')};
   }
   &:hover {
     &:after {
@@ -52,7 +52,7 @@ const ExternalLink = styled.a`
     height: 4px;
     width: 0;
     margin: 0 auto;
-    background-color: ${theme.colour(Colour.BLUE, 'B20')};
+    background-color: ${theme.colour(Colour.BLUE, 'B16')};
   }
   &:hover {
     &:after {
@@ -78,7 +78,7 @@ const Menu = styled.ul`
 
 const TopicIcon = styled(TopicIconBase)`
   path {
-    stroke: ${theme.colour(Colour.BLUE, 'B20')};
+    stroke: ${theme.colour(Colour.BLUE, 'B16')};
   }
 `;
 

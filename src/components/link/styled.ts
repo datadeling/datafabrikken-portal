@@ -21,7 +21,7 @@ const Link = styled.a<linkProps>`
       case Variant.PRIMARY:
         return css`
           padding: ${theme.spacing('S10')};
-          background-color: ${theme.colour(Colour.BLUE, 'B20')};
+          background-color: ${theme.colour(Colour.BLUE, 'B16')};
           color: ${theme.colour(Colour.BLUE, 'B52')};
         `;
       default:
