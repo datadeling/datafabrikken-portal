@@ -120,7 +120,7 @@
       "dataset": {
         "description": "Beskrivelse",
         "objective": "Formål",
-        "distributions": "Distribusjoner",
+        "distributions": "Datatjenester (API) og distribusjoner",
         "usage": "Bruk av datasettet",
         "sample": "Eksempeldata",
         "provenance": "Opphav og oppdatering",
@@ -252,6 +252,7 @@
       "referenceDefault": "Relasjon",
       "type": "Type",
       "dataService": "Datatjeneste",
+      "endpointDescription": "Endepunktsbeskrivelse",
       "preview": "Forhåndsvisning",
       "previewFailure": "Beklager, det ser ut at distribusjonen ikke finnes eller inneholder ugyldig data.",
       "previewLoading": "Laster inn forhåndsvisning"

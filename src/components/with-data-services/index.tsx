@@ -15,6 +15,7 @@ const withDataServices = (Component: ComponentType<any>) => {
   const WrappedComponent = (props: Props) => <Component {...props} />;
 
   const mapStateToProps = (state: any) => ({
+    dataServices: state.DataServicesReducer.get('dataServices').toJS(),
     dataServicesRelations: state.DataServicesReducer.get(
       'dataServicesRelations'
     )?.toJS()

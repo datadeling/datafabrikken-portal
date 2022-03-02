@@ -40,7 +40,12 @@ import InlineList from '../../../../../components/inline-list';
 import { PATHNAME } from '../../../../../enums';
 import InternalLink from '../../../../../components/link-internal';
 import withErrorBoundary from '../../../../../components/with-error-boundary';
-import { ItemWithRelationType } from '../../../../../types';
+import {
+  AccessService,
+  Distribution,
+  ItemWithRelationType,
+  MediaTypeOrExtent
+} from '../../../../../types';
 import Topic from '../../../../../components/community/topic';
 import Translation from '../../../../../components/translation';
 import withConcepts, {
@@ -81,7 +86,10 @@ const DatasetDetailsPage: FC<Props> = ({
     resetDatasetsRelations
   },
   referenceDataActions: { getReferenceDataRequested: getReferenceData },
+  dataServices,
   dataServicesActions: {
+    getDataServicesRequested: getDataServices,
+    resetDataServices,
     getDataServicesRelationsRequested: getDataServicesRelations,
     resetDataServicesRelations
   },
@@ -182,6 +190,30 @@ const DatasetDetailsPage: FC<Props> = ({
         )
     ) ?? [];
 
+  const mapAccessServices = (distribution: Distribution) => {
+    const accessServices: AccessService[] = [];
+    distribution?.accessService?.forEach(({ uri }) => {
+      if (uri) {
+        const dataService = dataServices.find(ds => ds.uri === uri);
+        dataService
+          ? accessServices.push({
+              description: dataService.title,
+              endpointDescription:
+                dataService.endpointDescription?.map(desc => ({ uri: desc })) ??
+                [],
+              uri: `${env.FDK_PORTAL_HOST}${PATHNAME.FDK_DATA_SERVICES}/${dataService.id}`
+            })
+          : accessServices.push({
+              description: { nb: uri },
+              uri,
+              endpointDescription: []
+            });
+      }
+    });
+
+    return accessServices;
+  };
+
   useEffect(() => {
     if (datasetId) {
       getDataset(datasetId);
@@ -201,6 +233,7 @@ const DatasetDetailsPage: FC<Props> = ({
       resetPublicServicesRelations();
       resetTopics();
       resetConcepts();
+      resetDataServices();
     };
   }, [datasetId, getDataset]);
 
@@ -224,6 +257,14 @@ const DatasetDetailsPage: FC<Props> = ({
           identifiers: conceptIdentifiers as string[],
           size: 1000
         });
+      }
+
+      const accessUris =
+        dataset?.distribution
+          ?.flatMap(({ accessService }) => accessService?.map(({ uri }) => uri))
+          ?.filter((accessUri): accessUri is string => !!accessUri) ?? [];
+      if (accessUris.length > 0) {
+        getDataServices({ uris: accessUris });
       }
 
       if (dataset?.uri) {
@@ -282,11 +323,55 @@ const DatasetDetailsPage: FC<Props> = ({
             'detailsPage.sectionTitles.dataset.distributions'
           )}
         >
+          {dataServicesRelations.map(
+            (
+              {
+                id,
+                title: dataserviceTitle,
+                uri,
+                type,
+                description: dataserviceDescription,
+                isOpenLicense,
+                fdkFormat,
+                endpointURL,
+                endpointDescription,
+                conformsTo
+              },
+              index
+            ) => (
+              <DatasetDistribution
+                key={`${uri || 'distribution-data-service'}-${index}`}
+                datasetTitle={title}
+                distribution={{
+                  title: dataserviceTitle,
+                  type,
+                  conformsTo,
+                  fdkFormat:
+                    (fdkFormat?.filter(
+                      format => format?.code
+                    ) as MediaTypeOrExtent[]) ?? [],
+                  description: dataserviceDescription,
+                  openLicense: isOpenLicense,
+                  accessURL: endpointURL
+                }}
+                accessServices={[
+                  {
+                    uri: `${env.FDK_PORTAL_HOST}${PATHNAME.FDK_DATA_SERVICES}/${id}`,
+                    description: dataserviceTitle,
+                    endpointDescription: []
+                  }
+                ]}
+                endpointDescriptions={endpointDescription}
+              />
+            )
+          )}
+
           {distributions.map((distribution, index) => (
             <DatasetDistribution
               key={`${distribution.uri || 'distribution'}-${index}`}
               datasetTitle={title}
               distribution={distribution}
+              accessServices={mapAccessServices(distribution)}
             />
           ))}
         </ContentSection>
@@ -737,9 +822,7 @@ const DatasetDetailsPage: FC<Props> = ({
         </ContentSection>
       )}
 
-      {(datasetsRelations.length > 0 ||
-        publicServicesRelations.length > 0 ||
-        dataServicesRelations.length > 0) && (
+      {(datasetsRelations.length > 0 || publicServicesRelations.length > 0) && (
         <ContentSection
           id='relationList'
           title={translations.translate(
@@ -750,7 +833,6 @@ const DatasetDetailsPage: FC<Props> = ({
             parentIdentifier={dataset?.uri}
             datasets={datasetsRelations}
             publicServices={publicServicesRelatedByWithRelationType}
-            dataServices={dataServicesRelations}
           />
         </ContentSection>
       )}
