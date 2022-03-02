@@ -91,9 +91,15 @@ const PreviewLink = styled.a`
   }
 `;
 
+const ColumnData = styled.ul``;
+
+const ColumnRow = styled.li``;
+
 export default {
   DatasetDistribution,
   Section,
   DownloadLink,
-  PreviewLink
+  PreviewLink,
+  ColumnData,
+  ColumnRow
 };

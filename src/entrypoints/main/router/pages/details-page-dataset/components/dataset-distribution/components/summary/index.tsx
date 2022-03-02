@@ -63,17 +63,28 @@ const getFormatText = (str: string) => {
 interface Props {
   title: string;
   formats: MediaTypeOrExtent[];
+  hasDataservice?: boolean;
 }
 
-const Summary: FC<Props> = ({ title, formats, ...props }) => (
+const Summary: FC<Props> = ({ title, formats, hasDataservice, ...props }) => (
   <SC.Summary {...props}>
     <SC.Title>{title}</SC.Title>
     <SC.Formats>
-      {formats.map(format => {
+      {hasDataservice && (
+        <RoundedTag as='div' variant={Variant.SECONDARY}>
+          <SC.DataserviceIcon />
+          API
+        </RoundedTag>
+      )}
+      {formats.map((format, index) => {
         const formatLabel = getFormatText(format.code);
         return (
           formatLabel && (
-            <RoundedTag as='div' variant={Variant.SECONDARY}>
+            <RoundedTag
+              as='div'
+              variant={Variant.SECONDARY}
+              key={`FormatTag-${formatLabel}-${index}`}
+            >
               {formatLabel}
             </RoundedTag>
           )

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { theme } from '../../../../../../../app/theme';
+import { theme, Colour } from '../../../../../../../app/theme';
+import DataserviceIconBase from '../../../../../../../../../images/dataservice-icon.inline.svg';
 
 const Summary = styled.div`
   display: flex;
@@ -23,8 +24,18 @@ const Formats = styled.div`
   margin-left: 12px;
 `;
 
+const DataserviceIcon = styled(DataserviceIconBase)`
+  width: 20px;
+  height: 20px;
+  margin-right: ${theme.spacing('S2')};
+  & path {
+    stroke: ${theme.colour(Colour.BLUE, 'B38')};
+  }
+`;
+
 export default {
   Summary,
   Title,
-  Formats
+  Formats,
+  DataserviceIcon
 };

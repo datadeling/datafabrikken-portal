@@ -13,6 +13,7 @@ import Detail from '../detail';
 import SC from './styled';
 
 import {
+  AccessService,
   Distribution,
   License,
   TextLanguage
@@ -26,11 +27,18 @@ import Preview from '../preview';
 interface ExternalProps {
   datasetTitle: Partial<TextLanguage>;
   distribution: Partial<Distribution>;
+  accessServices?: AccessService[];
+  endpointDescriptions?: string[];
 }
 
 interface Props extends ExternalProps {}
 
-const DatasetDistribution: FC<Props> = ({ datasetTitle, distribution }) => {
+const DatasetDistribution: FC<Props> = ({
+  datasetTitle,
+  distribution,
+  accessServices = [],
+  endpointDescriptions = []
+}) => {
   const [showPreview, setShowPreview] = useState(false);
 
   const handleShowPreview = (show: boolean) => {
@@ -62,6 +70,7 @@ const DatasetDistribution: FC<Props> = ({ datasetTitle, distribution }) => {
             ''
           }
           formats={formats}
+          hasDataservice={!!accessServices?.length}
         />
       </ExpansionPanelHead>
       <ExpansionPanelBody>
@@ -113,6 +122,53 @@ const DatasetDistribution: FC<Props> = ({ datasetTitle, distribution }) => {
                 {translations.getTranslateText(conformsToPrefLabel) ||
                   conformsToUri}
               </ExternalLink>
+            }
+          />
+        )}
+        {accessServices.length > 0 && (
+          <Detail
+            property='dataset.distribution.dataService'
+            value={
+              <SC.ColumnData>
+                {accessServices?.map(
+                  ({
+                    description: accessServiceDescription,
+                    uri: accessServiceUri
+                  }) => (
+                    <SC.ColumnRow key={`CR-${accessServiceUri}`}>
+                      <ExternalLink
+                        href={accessServiceUri}
+                        key={accessServiceUri}
+                        openInNewTab
+                      >
+                        {translations.getTranslateText(
+                          accessServiceDescription
+                        )}
+                      </ExternalLink>
+                    </SC.ColumnRow>
+                  )
+                )}
+              </SC.ColumnData>
+            }
+          />
+        )}
+        {endpointDescriptions.length > 0 && (
+          <Detail
+            property='dataset.distribution.endpointDescription'
+            value={
+              <SC.ColumnData>
+                {endpointDescriptions?.map(endpointDescription => (
+                  <SC.ColumnRow key={`CR-${endpointDescription}`}>
+                    <ExternalLink
+                      href={endpointDescription}
+                      key={endpointDescription}
+                      openInNewTab
+                    >
+                      {endpointDescription}
+                    </ExternalLink>
+                  </SC.ColumnRow>
+                ))}
+              </SC.ColumnData>
             }
           />
         )}
