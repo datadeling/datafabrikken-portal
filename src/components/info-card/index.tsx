@@ -1,10 +1,10 @@
 import React, { FC, memo } from 'react';
 import { compose } from 'redux';
-import ExternalLink from '../link-external';
 import SC from './styled';
 import env from '../../env';
 import RoundedTag, { Variant } from '../rounded-tag';
 import Translation from '../translation';
+import ExternalLinkIcon from '../icons/external-link-icon';
 import {
   withTranslations,
   Props as TranslationsProps
@@ -54,9 +54,8 @@ const InfoCard: FC<Props> = ({
         )}
       </SC.Tags>
       <h3>
-        <ExternalLink href={link} openInNewTab>
-          {title}
-        </ExternalLink>
+        {title}
+        <ExternalLinkIcon />
       </h3>
       <p>{description}</p>
       <SC.CourseFacts>

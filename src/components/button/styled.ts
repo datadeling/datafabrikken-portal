@@ -2,11 +2,9 @@ import styled, { css } from 'styled-components';
 
 import { theme, Colour } from '../../entrypoints/main/app/theme';
 
-type buttonProps = {
+const Button = styled.button<{
   $active: boolean;
-};
-
-const Button = styled.button<buttonProps>`
+}>`
   align-items: center;
   align-self: flex-start;
   cursor: pointer;

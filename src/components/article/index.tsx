@@ -99,9 +99,7 @@ export const renderModule = (module: any) => {
             invertColor
           >
             {renderInfoBoxIcon()}
-            <InfoBoxTitle invertColor>
-              <h2>{module.field_link?.title}</h2>
-            </InfoBoxTitle>
+            <InfoBoxTitle invertColor>{module.field_link?.title}</InfoBoxTitle>
             <InfoBoxBody truncate={false}>
               <Markdown allowHtml>{module.field_body?.processed}</Markdown>
             </InfoBoxBody>

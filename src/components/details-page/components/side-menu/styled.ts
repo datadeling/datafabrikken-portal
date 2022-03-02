@@ -30,10 +30,11 @@ const Menu = styled.nav`
   }
 
   & > ul > li {
-    border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B16')};
+    color: ${theme.colour(Colour.BLUE, 'B38')};
+    font-weight: ${theme.fontWeight('FW400')};
 
     &:hover {
-      border-bottom: 2px solid transparent;
+      text-decoration: underline;
     }
   }
 `;

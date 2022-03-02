@@ -9,6 +9,7 @@ type infoBoxBodyProps = {
 };
 const Body = styled.div<infoBoxBodyProps>`
   font-size: ${theme.fontSize('FS12')};
+  flex-grow: 1;
   line-height: 1.5;
   ${({ truncate }) =>
     truncate &&

@@ -30,7 +30,6 @@ const Title = styled.h1`
   display: flex;
   align-items: center;
   font-size: ${theme.fontSize('FS32')};
-  font-weight: ${theme.fontWeight('FW400')};
   margin-bottom: ${theme.spacing('S2')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};

@@ -12,7 +12,7 @@ const Title = styled.div<infoBoxTitleProps>`
   color: ${({ $invertColor }) =>
     $invertColor
       ? theme.colour(Colour.BLUE, 'B38')
-      : theme.colour(Colour.NEUTRAL, 'N0')};
+      : theme.colour(Colour.BLUE, 'B16')};
 
   & > h1,
   h2,
@@ -24,8 +24,8 @@ const Title = styled.div<infoBoxTitleProps>`
 
   & > svg {
     vertical-align: text-bottom;
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
   }
 `;
 

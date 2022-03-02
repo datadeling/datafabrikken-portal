@@ -186,10 +186,6 @@ const Topics = styled.div`
     margin: ${theme.spacing('S4')} 0;
   }
 
-  & > a {
-    margin: ${theme.spacing('S10')} 0 0 ${theme.spacing('S10')};
-  }
-
   & > ${IllustrationBox} {
     & > svg {
       min-width: 165px;
@@ -295,6 +291,8 @@ const ArrowDown = styled.div`
   }
 `;
 
+const LinkWrapper = styled.div``;
+
 export default {
   Container,
   Title,
@@ -303,6 +301,7 @@ export default {
   MainContent,
   IllustrationBox,
   IllustrationContent,
+  LinkWrapper,
   Row,
   NewsRow,
   Topics,

@@ -1,7 +1,5 @@
 import React, { memo, FC, PropsWithChildren } from 'react';
 
-import Footer from '../footer';
-
 import SC from './styled';
 import ScrollToTop from '../scroll-to-top';
 
@@ -16,7 +14,6 @@ const Root: FC<PropsWithChildren<Props>> = ({
   <SC.Root $invertColor={invertColor}>
     {children}
     <ScrollToTop invertColor={invertColor} />
-    <Footer />
   </SC.Root>
 );
 

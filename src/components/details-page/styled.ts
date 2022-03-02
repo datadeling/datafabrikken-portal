@@ -24,7 +24,6 @@ const Title = styled.h1`
   display: flex;
   align-items: center;
   font-size: ${theme.fontSize('FS32')};
-  font-weight: ${theme.fontWeight('FW400')};
   margin-bottom: ${theme.spacing('S2')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
@@ -34,6 +33,7 @@ const Title = styled.h1`
 const SubBanner = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   font-size: ${theme.fontSize('FS12')};
   ${onMobileView} {
     flex-direction: column;
@@ -54,11 +54,12 @@ const ContentSections = styled.div`
   flex-direction: column;
   flex: 0 0 80%;
   max-width: 80%;
+  margin-bottom: ${theme.spacing('S32')};
+
   ${onMobileView} {
     flex: 0 0 100%;
     max-width: 100%;
   }
-  margin-bottom: ${theme.spacing('S32')};
 `;
 
 const DetailsIntro = styled.div`
@@ -79,9 +80,12 @@ const AuthoritativeIcon = styled(authoritativeIconBase)`
 `;
 
 const PublisherContainer = styled.span`
+  display: flex;
+
   & > a {
     margin-left: ${theme.spacing('S4')};
-    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
+    text-decoration: underline;
+    color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   }
 `;
 

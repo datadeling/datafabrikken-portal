@@ -31,20 +31,21 @@ const ScrollToTop = styled.div<ScrollToTopProps>`
   margin-bottom: ${theme.spacing('S20')};
   margin-top: ${theme.spacing('S20')};
   z-index: 10;
+  font-weight: ${theme.fontWeight('FW400')};
 
   ${ScrollButton} {
     color: ${({ $invertColor }) =>
       $invertColor
         ? theme.colour(Colour.BLUE, 'B38')
-        : theme.colour(Colour.NEUTRAL, 'N0')};
+        : theme.colour(Colour.BLUE, 'B16')};
 
     & > svg {
-      margin-left: ${theme.spacing('S6')};
-      width: 26px;
+      margin-left: ${theme.spacing('S2')};
+      width: 20px;
       fill: ${({ $invertColor }) =>
         $invertColor
           ? theme.colour(Colour.BLUE, 'B38')
-          : theme.colour(Colour.NEUTRAL, 'N0')};
+          : theme.colour(Colour.BLUE, 'B16')};
     }
   }
 `;

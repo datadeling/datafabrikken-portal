@@ -11,10 +11,6 @@ const onMobileView = '@media (max-width: 900px)';
 const MetadataQuality = styled.div`
   display: flex;
   align-items: center;
-
-  & a {
-    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
-  }
 `;
 
 const RatingIcon = styled.div`

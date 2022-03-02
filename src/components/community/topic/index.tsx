@@ -1,4 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
+import { compose } from 'redux';
+import { Link } from 'react-router-dom';
 
 import Tag from '../tag';
 import User from '../user';
@@ -8,31 +10,51 @@ import type { CommunityTopic } from '../../../types';
 import EyeIcon from '../../../images/icon-eye.inline.svg';
 import LikeIcon from '../../../images/icon-like.inline.svg';
 import PostIcon from '../../../images/icon-post.inline.svg';
+import LinkIcon from '../../icons/link-icon';
+import PinnedIcon from '../../../images/icon-pinned.inline.svg';
 import { PATHNAME } from '../../../enums';
-import InternalLink from '../../link-internal';
 
-interface Props {
+import {
+  withTranslations,
+  Props as TranslationProps
+} from '../../../providers/translations';
+import { formatDate } from '../../../utils/date';
+
+interface ExternalProps {
   topic: CommunityTopic;
   hideUserInfoAndTags?: boolean;
 }
 
-const Topic: FC<Props> = ({ topic, hideUserInfoAndTags = false }) => {
-  const topicOwner = topic?.posts?.[0]?.user;
+interface Props extends ExternalProps, TranslationProps {}
+
+const Topic: FC<Props> = ({
+  topic,
+  hideUserInfoAndTags = false,
+  translationsService
+}) => {
+  const topicOwner = topic.user;
   return (
-    <SC.Topic>
+    <SC.Topic
+      as={Link}
+      to={`${PATHNAME.COMMUNITY}/${topic.category.slug}/${topic.slug}`}
+    >
+      {topic.pinned > 0 && (
+        <SC.Pinned
+          title={`${translationsService.translate('community.pinned')}`}
+        >
+          <PinnedIcon />
+        </SC.Pinned>
+      )}
       <SC.Info>
         <SC.Title>
-          <InternalLink
-            to={`${PATHNAME.COMMUNITY}/${topic.category.slug}/${topic.slug}`}
-          >
-            {topic.title}
-          </InternalLink>
+          {topic.title}
+          <LinkIcon />
         </SC.Title>
         {!hideUserInfoAndTags && (
           <SC.SubTitle>
             <SC.UserTime>
               <User user={topicOwner} />
-              {new Date(topic.timestamp).toLocaleDateString()}
+              {formatDate(new Date(topic.timestamp))}
             </SC.UserTime>
             <SC.Tags>
               {topic?.tags?.map((tag, index) => (
@@ -43,17 +65,34 @@ const Topic: FC<Props> = ({ topic, hideUserInfoAndTags = false }) => {
         )}
       </SC.Info>
       <SC.Statistics>
-        <li>
-          <LikeIcon />
-          {topic.votes}
+        <li
+          title={`${
+            topic.votes < 0 ? 0 : topic.votes
+          } ${translationsService.translate('community.votes')}`}
+        >
+          <span>
+            <LikeIcon />
+          </span>
+          {topic.votes < 0 ? 0 : topic.votes}
         </li>
-        <li>
-          <PostIcon />
+        <li
+          title={`${topic.postcount} ${translationsService.translate(
+            'community.posts'
+          )}`}
+        >
+          <span>
+            <PostIcon />
+          </span>
           {topic.postcount}
         </li>
-        <li>
-          <EyeIcon />
-
+        <li
+          title={`${topic.viewcount} ${translationsService.translate(
+            'community.views'
+          )}`}
+        >
+          <span>
+            <EyeIcon />
+          </span>
           {topic.viewcount}
         </li>
       </SC.Statistics>
@@ -61,4 +100,4 @@ const Topic: FC<Props> = ({ topic, hideUserInfoAndTags = false }) => {
   );
 };
 
-export default Topic;
+export default compose<FC<ExternalProps>>(memo, withTranslations)(Topic);

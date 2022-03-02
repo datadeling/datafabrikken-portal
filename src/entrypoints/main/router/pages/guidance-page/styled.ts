@@ -42,7 +42,7 @@ const Content = styled.section`
   color: ${theme.colour(Colour.BLUE, 'B52')};
 `;
 
-const Header = styled.h1`
+const Header = styled.section`
   margin-bottom: ${theme.spacing('S10')};
 `;
 

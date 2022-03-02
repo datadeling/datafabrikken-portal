@@ -1,12 +1,18 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { Colour, theme } from '../../entrypoints/main/app/theme';
 
-const RouterLink = styled(Link)`
-  border-bottom: 2px solid ${theme.colour(Colour.BLUE, 'B16')};
+const InternalLink = styled(Link)`
+  text-decoration: underline;
+  & > svg {
+    width: 20px;
+    vertical-align: text-bottom;
+  }
+
   &:hover {
-    border-bottom: 2px solid transparent;
+    & > svg {
+      animation-play-state: running !important;
+    }
   }
 `;
 
-export default { RouterLink };
+export default { InternalLink };

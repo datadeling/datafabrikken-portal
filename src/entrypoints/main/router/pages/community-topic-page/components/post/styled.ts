@@ -22,7 +22,7 @@ const Post = styled.div<{ $calendarPost: boolean }>`
         `
       : css`
           &:first-child {
-            padding-top: 0;
+            padding: 0 0 ${theme.spacing('S24')} 0;
             background: ${theme.colour(Colour.NEUTRAL, 'N0')};
           }
         `}
@@ -67,7 +67,7 @@ const Content = styled.div`
   }
 
   & a {
-    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
+    text-decoration: underline;
   }
 `;
 

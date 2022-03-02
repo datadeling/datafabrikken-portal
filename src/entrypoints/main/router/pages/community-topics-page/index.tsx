@@ -21,7 +21,9 @@ import Root from '../../../../../components/root';
 import Container from '../../../../../components/container';
 import CommunityMenu from '../../../../../components/community/menu';
 
-import Topic from './components/topic';
+import Topic from '../../../../../components/community/topic';
+
+import SortButton from '../../../../../components/button-sort';
 
 import SC from './styled';
 import env from '../../../../../env';
@@ -167,20 +169,22 @@ const CommunityTopicsPage: FC<Props> = ({
                   <Translation id='community.sort.sortByDate' />
                 </SC.SortLabel>
                 <SC.SortButtonWrapper>
-                  <SC.SortButton
+                  <SortButton
                     onClick={() => handleSort(true)}
                     active={sortByDateAsc}
+                    arrowDown={false}
                   >
                     <Translation id='community.sort.ascending' />
-                  </SC.SortButton>
+                  </SortButton>
                 </SC.SortButtonWrapper>
                 <SC.SortButtonWrapper>
-                  <SC.SortButton
+                  <SortButton
                     onClick={() => handleSort(false)}
                     active={!sortByDateAsc}
+                    arrowDown
                   >
                     <Translation id='community.sort.descending' />
-                  </SC.SortButton>
+                  </SortButton>
                 </SC.SortButtonWrapper>
               </SC.Sort>
             )}
@@ -190,7 +194,7 @@ const CommunityTopicsPage: FC<Props> = ({
             <Topic key={`topic-${index}`} topic={topic} />
           ))}
 
-          {isCategory && communityCategory && (
+          {isCategory && communityCategory && getActiveTopics().length > 0 && (
             <SC.Pagination>
               <ReactPaginate
                 pageCount={communityCategory.pagination.pageCount}

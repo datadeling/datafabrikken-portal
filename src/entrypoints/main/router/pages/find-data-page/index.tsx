@@ -65,9 +65,7 @@ export const renderModule = (module: any) => {
               <Icon />
             </InfoBoxIcon>
           )}
-          <InfoBoxTitle>
-            <h2>{module.field_link?.title}</h2>
-          </InfoBoxTitle>
+          <InfoBoxTitle>{module.field_link?.title}</InfoBoxTitle>
           <InfoBoxBody>
             <Markdown allowHtml>{module.field_body?.processed}</Markdown>
           </InfoBoxBody>
