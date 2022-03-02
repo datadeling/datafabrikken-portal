@@ -90,7 +90,7 @@ const ButtonContainer = styled.div`
 const CloseButton = styled.button`
   display: flex;
   align-items: center;
-  background-color: ${theme.colour(Colour.BLUE, 'B20')};
+  background-color: ${theme.colour(Colour.BLUE, 'B16')};
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
   border: none;
   padding: ${theme.spacing('S10')};

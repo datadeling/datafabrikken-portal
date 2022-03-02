@@ -74,7 +74,7 @@ const IconWrapper = styled.div`
   }
   & > svg {
     flex-basis: 100%;
-    fill: ${theme.colour(Colour.BLUE, 'B20')};
+    fill: ${theme.colour(Colour.BLUE, 'B16')};
   }
 `;
 

@@ -10,7 +10,7 @@ const Post = styled.div<{ $calendarPost: boolean }>`
   font-size: ${theme.fontSize('FS10')};
   color: ${theme.colour(Colour.BLUE, 'B52')};
   padding: ${theme.spacing('S24')};
-  background: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background: ${theme.colour(Colour.BLUE, 'B02')};
   margin-bottom: ${theme.spacing('S10')};
 
   ${({ $calendarPost }) =>
@@ -67,7 +67,7 @@ const Content = styled.div`
   }
 
   & a {
-    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B14')};
+    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
   }
 `;
 

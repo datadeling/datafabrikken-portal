@@ -29,7 +29,7 @@ const ContentSection: FC<PropsWithChildren<Props>> = ({
       <TruncatedText
         visibleLines={4}
         lineHeight={20}
-        backgroundColour={theme.colour(Colour.NEUTRAL, 'N02')}
+        backgroundColour={theme.colour(Colour.BLUE, 'B02')}
       >
         {children}
       </TruncatedText>

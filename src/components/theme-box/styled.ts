@@ -15,7 +15,7 @@ const ThemeIcon = styled.div`
   flex: 0 0 20%;
   margin-right: ${theme.spacing('S6')};
   & > svg {
-    fill: ${theme.colour(Colour.BLUE, 'B20')};
+    fill: ${theme.colour(Colour.BLUE, 'B16')};
   }
   ${onMobileView} {
     flex: 0 0 10%;
@@ -26,7 +26,7 @@ const ThemeBox = styled.div<Props>`
   cursor: pointer;
   background-color: ${({ checked }) =>
     checked
-      ? theme.colour(Colour.BLUE, 'B20')
+      ? theme.colour(Colour.BLUE, 'B16')
       : theme.colour(Colour.BLUE, 'B48')};
   color: ${({ checked }) =>
     checked

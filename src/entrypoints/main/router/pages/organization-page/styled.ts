@@ -10,7 +10,7 @@ import AccessOpenIconBase from '../../../../../images/dataset-open.inline.svg';
 const onMobileView = '@media (max-width: 900px)';
 
 const Container = styled(ContainerSC.Container)`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   padding-top: ${theme.spacing('S50')};
   ${onMobileView} {
     padding-top: ${theme.spacing('S10')};
@@ -18,7 +18,7 @@ const Container = styled(ContainerSC.Container)`
 `;
 
 const Content = styled.section`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
 `;
 
@@ -37,7 +37,7 @@ const Title = styled.h1`
 `;
 
 const Section = styled.section`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
 `;
 
@@ -116,7 +116,7 @@ const AccessOpenIcon = styled(AccessOpenIconBase)`
 `;
 
 const SpinnerContainer = styled.div`
-  background-color: ${theme.colour(Colour.NEUTRAL, 'N02')};
+  background-color: ${theme.colour(Colour.BLUE, 'B02')};
   display: flex;
   justify-content: center;
   align-items: center;

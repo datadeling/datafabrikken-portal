@@ -57,7 +57,7 @@ const Link = styled(LinkBase)`
     height: 4px;
     width: 0;
     margin: 0 auto;
-    background-color: ${theme.colour(Colour.BLUE, 'B20')};
+    background-color: ${theme.colour(Colour.BLUE, 'B16')};
   }
   &:hover {
     &:after {
