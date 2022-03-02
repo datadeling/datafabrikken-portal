@@ -26,23 +26,20 @@ const Link = styled.a<linkProps>`
         `;
       default:
         return css`
-          color: ${theme.colour(Colour.NEUTRAL, 'N0')};
-          border-bottom: 3px solid rgb(158, 190, 255);
+          color: ${theme.colour(Colour.BLUE, 'B16')};
+          &:hover {
+            text-decoration: underline;
+          }
         `;
     }
   }}
 
   & > svg {
-    width: 30px;
-    ${({ $external }) =>
-      $external &&
-      css`
-        transform: rotate(-45deg);
-      `}
+    width: 20px;
   }
 
   &:hover {
-    & > svg * {
+    & > svg {
       animation-play-state: running !important;
     }
   }

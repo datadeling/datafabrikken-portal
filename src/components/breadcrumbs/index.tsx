@@ -142,7 +142,7 @@ const Breadcrumbs: FC<Props> = ({ breadcrumbs }: any) =>
           {breadcrumbs.map(({ key, match, breadcrumb }: any, index: number) => (
             <SC.BreadCrumb key={key}>
               {index < breadcrumbs.length - 1 && (
-                <Link as={RouterLink} to={match?.url} showIcon={false}>
+                <Link as={RouterLink} to={match?.url} hideIcon>
                   {breadcrumb}
                 </Link>
               )}

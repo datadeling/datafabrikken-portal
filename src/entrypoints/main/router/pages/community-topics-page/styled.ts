@@ -83,7 +83,6 @@ const Sort = styled.div`
 
 const SortLabel = styled.span`
   font-weight: ${theme.fontWeight('FW500')};
-  padding-bottom: ${theme.spacing('S2')}; ;
 `;
 
 const SortButtonWrapper = styled.span`

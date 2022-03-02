@@ -29,7 +29,6 @@ const Header = styled.h1`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
-  font-weight: ${theme.fontWeight('FW400')};
 
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};

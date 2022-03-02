@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 import { theme, Colour } from '../../../entrypoints/main/app/theme';
 
-const User = styled.a`
+const User = styled.div`
   display: inline-flex;
   align-items: center;
   text-decoration: none;
   font-size: ${theme.fontSize('FS10')};
-
-  &:hover {
-    text-decoration: none;
-  }
 `;
 
 const Icon = styled.div<{ $colour: string }>`
@@ -42,12 +38,7 @@ const NameWrapper = styled.div`
 
 const Name = styled.span<{ $colour: string }>`
   color: ${theme.colour(Colour.NEUTRAL, 'N70')};
-  border-bottom: 2px solid ${({ $colour }) => $colour};
   margin-right: 5px;
-
-  &:hover {
-    border-bottom: 0;
-  }
 `;
 
 export default { User, Icon, NameWrapper, Name, Picture };

@@ -26,7 +26,7 @@ const User: FC<Props> = ({ user }) => {
   };
 
   return (
-    <SC.User href={`${COMMUNITY_API_HOST}/user/${user.userslug}`}>
+    <SC.User>
       {user.picture ? (
         <SC.Picture src={`${COMMUNITY_API_HOST}${user.picture}`} />
       ) : (

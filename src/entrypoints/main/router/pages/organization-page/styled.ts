@@ -29,7 +29,6 @@ const Banner = styled(ContainerSC.Container)`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
-  font-weight: ${theme.fontWeight('FW400')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
     word-break: break-word;

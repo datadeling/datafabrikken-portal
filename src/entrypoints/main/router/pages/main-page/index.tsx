@@ -192,9 +192,11 @@ const MainPage: FC<Props> = ({
                       hideUserInfoAndTags
                     />
                   ))}
-                <Link as={RouterLink} to={PATHNAME.COMMUNITY}>
-                  <Translation id='main.seeAllPostsCommunity' />
-                </Link>
+                <SC.LinkWrapper>
+                  <Link as={RouterLink} to={PATHNAME.COMMUNITY}>
+                    <Translation id='main.seeAllPostsCommunity' />
+                  </Link>
+                </SC.LinkWrapper>
               </SC.Topics>
             </SC.Row>
             <SC.Row>

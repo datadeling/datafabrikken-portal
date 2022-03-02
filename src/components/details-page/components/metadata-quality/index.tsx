@@ -78,6 +78,7 @@ const MetadataQuality: FC<Props> = ({
       <SC.MetadataQuality>
         <InternalLink
           to={`${PATHNAME.ORGANIZATION}/${orgId}${PATHNAME.METADATAQUALITY}/${entityId}`}
+          hideIcon
         >
           <Translation id='metadataQualityPage.metadataQuality' />{' '}
           {calculateRatingPercentage(assessment.rating)}%

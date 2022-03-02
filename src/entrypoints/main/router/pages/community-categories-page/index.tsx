@@ -61,12 +61,14 @@ const CommunityCategoriesPage: FC<Props> = ({
               <CommunityIcon />
             </SC.IconWrapper>
           </SC.Header>
-          {communityCategories
-            .filter(category => !category.disabled)
-            .sort(categorySorter)
-            .map((category, index) => (
-              <Category key={`category-${index}`} category={category} />
-            ))}
+          <SC.Categories>
+            {communityCategories
+              .filter(category => !category.disabled)
+              .sort(categorySorter)
+              .map((category, index) => (
+                <Category key={`category-${index}`} category={category} />
+              ))}
+          </SC.Categories>
         </SC.Page>
       </Container>
     </Root>

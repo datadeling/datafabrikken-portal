@@ -1,14 +1,8 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import { theme, Colour } from '../../../../../app/theme';
 
-import ButtonBase from '../../../../../../../components/button';
 import CloseIconBase from '../../../../../../../images/close.inline.svg';
-
-type buttonProps = {
-  $arrowUp?: boolean;
-  $arrowDown?: boolean;
-};
 
 const onMobileView = '@media (max-width: 900px)';
 
@@ -48,29 +42,6 @@ const FilterGroup = styled.h5`
   padding-bottom: ${theme.spacing('S6')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS10')};
-  }
-`;
-
-const CollapseButton = styled(ButtonBase)<buttonProps>`
-  margin-top: ${theme.spacing('S2')};
-  & > svg {
-    width: 18px;
-    ${({ $arrowDown }) =>
-      $arrowDown &&
-      css`
-        transform: rotate(90deg);
-      `}
-    ${({ $arrowUp }) =>
-      $arrowUp &&
-      css`
-        transform: rotate(-90deg);
-      `}
-  }
-
-  &:hover {
-    & > svg * {
-      animation-play-state: running !important;
-    }
   }
 `;
 
@@ -120,7 +91,6 @@ export default {
   FilterSection,
   FilterTypeTitle,
   FilterGroup,
-  CollapseButton,
   FilterPillContainer,
   FilterPill,
   InversePill,

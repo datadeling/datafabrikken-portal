@@ -66,6 +66,7 @@ const RelationsList: FC<Props> = ({
             <span>
               <InternalLink
                 to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/${id}`}
+                hideIcon
               >
                 {translations.getTranslateText(title) ?? uri}
               </InternalLink>

@@ -12,13 +12,12 @@ import {
   Props as TranslationProps
 } from '../../../../../../../providers/translations';
 
-import LinkIcon from '../../../../../../../components/icons/link-icon';
-
 import FilterSearchField from '../filter-search-field';
 import { GetDatasetsParams } from '../../../../../../../components/with-datasets/redux/actions';
 import { Publisher } from '../../../../../../../types';
 import translations from '../../../../../../../services/translations';
 import RadioOptions from '../../../../../../../components/radio-options';
+import CollapseButton from '../../../../../../../components/button-collapse';
 
 interface ExternalProps {
   handleRadioChange: (selected: string, deselected: string[]) => void;
@@ -149,19 +148,16 @@ const Filters: FC<Props> = ({
               <Collapse isOpened={openGroups.includes(group)}>
                 {renderFormatFilterCheckbox(items.slice(5), groupIndex)}
               </Collapse>
-              <SC.CollapseButton
+              <CollapseButton
                 onClick={() => toggleGroup(group)}
-                $arrowUp={openGroups.includes(group)}
-                $arrowDown={!openGroups.includes(group)}
-                active
+                open={openGroups.includes(group)}
               >
-                <LinkIcon />
                 {openGroups.includes(group) ? (
                   <Translation id='filter.showFewer' />
                 ) : (
                   <Translation id='filter.showMore' />
                 )}
-              </SC.CollapseButton>
+              </CollapseButton>
             </div>
           )}
         </div>

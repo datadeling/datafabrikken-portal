@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { theme, Colour } from '../../../../entrypoints/main/app/theme';
+import { theme } from '../../../../entrypoints/main/app/theme';
 
 import LinkSC from '../../../link/styled';
 
@@ -17,7 +17,7 @@ const ContentBoxBody = styled.div`
   }
 
   & > div > p > a {
-    border-bottom: 3px solid ${theme.colour(Colour.BLUE, 'B16')};
+    text-decoration: underline;
   }
 `;
 

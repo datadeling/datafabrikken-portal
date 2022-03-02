@@ -95,7 +95,10 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
         <SC.SubBanner>
           <SC.PublisherContainer>
             <Translation id={`${publisherLabel[entity]}`} />:
-            <InternalLink to={`${PATHNAME.ORGANIZATION}/${publisher?.id}`}>
+            <InternalLink
+              to={`${PATHNAME.ORGANIZATION}/${publisher?.id}`}
+              hideIcon
+            >
               <Translation text={publisher?.prefLabel} />
             </InternalLink>
           </SC.PublisherContainer>

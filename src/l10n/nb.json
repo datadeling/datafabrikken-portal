@@ -325,6 +325,7 @@
     "views": "visninger",
     "votes": "stemmer",
     "users": "brukere",
+    "pinned": "Festet",
     "categoryHasNoPosts": "Denne kategorien har ingen innlegg ennå. Bli den første til å publisere.",
     "newTopic": "Nytt emne",
     "writeComment": "Skriv kommentar",

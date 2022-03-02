@@ -718,6 +718,7 @@ const DatasetDetailsPage: FC<Props> = ({
                     value={
                       <InternalLink
                         to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/${id}`}
+                        hideIcon
                       >
                         {translations.getTranslateText(datasetTitle)}
                       </InternalLink>
@@ -766,6 +767,7 @@ const DatasetDetailsPage: FC<Props> = ({
                 to={`${PATHNAME.FIND_DATA}?keywords=${encodeURIComponent(
                   keyword ?? ''
                 )}`}
+                hideIcon
               >
                 {keyword}
               </InternalLink>
@@ -901,18 +903,22 @@ const DatasetDetailsPage: FC<Props> = ({
                     : 'detailsPage.community.subtitle.mentionPlural'
                 }
               />
-              <InternalLink to={PATHNAME.COMMUNITY}>
+              <InternalLink to={PATHNAME.COMMUNITY} hideIcon>
                 <Translation id='detailsPage.community.subtitle.link' />
               </InternalLink>
             </span>
             {topics.map(topic => (
-              <Topic key={`topic_${topic.tid}`} topic={topic} />
+              <Topic
+                key={`topic_${topic.tid}`}
+                topic={topic}
+                hideUserInfoAndTags
+              />
             ))}
           </>
         ) : (
           <span>
             <Translation id='detailsPage.community.subtitle.empty.dataset' />
-            <InternalLink to={PATHNAME.COMMUNITY}>
+            <InternalLink to={PATHNAME.COMMUNITY} hideIcon>
               <Translation id='detailsPage.community.subtitle.link' />
             </InternalLink>
           </span>
