@@ -9,7 +9,7 @@ import { compose } from 'redux';
 import TextCloudIcon from '../../../../../../../images/icon-text-cloud.inline.svg';
 import LightBulbIcon from '../../../../../../../images/icon-lightbulb.inline.svg';
 import CalendarIcon from '../../../../../../../images/icon-calendar.inline.svg';
-import MegaphoneIcon from '../../../../../../../images/icon-megaphone.inline.svg';
+import DatasetApiIcon from '../../../../../../../images/icon-dataset-api.inline.svg';
 import ThumbsIcon from '../../../../../../../images/icon-thumbs.inline.svg';
 
 import InsightIcon from '../../../../../../../images/icon-community-insight.inline.svg';
@@ -43,7 +43,7 @@ const getCategoryIcon = (slug: string) => {
     case 'tilbakemeldinger-og-nyheter':
       return <ThumbsIcon />;
     case 'etterspør-datasett-og-api-er':
-      return <MegaphoneIcon />;
+      return <DatasetApiIcon />;
     case 'innsynsløsning-utredning-av-tekniske-og-juridiske-muligheter':
       return <InsightIcon />;
     case 'juss-og-data':
