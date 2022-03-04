@@ -21,7 +21,7 @@ const ScrollToTop: FC<Props> = ({ invertColor }) => {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      if (window.pageYOffset > 500) {
+      if (window.pageYOffset > 800) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
