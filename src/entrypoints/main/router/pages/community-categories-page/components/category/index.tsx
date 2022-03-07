@@ -11,7 +11,7 @@ import LightBulbIcon from '../../../../../../../images/icon-lightbulb.inline.svg
 import CalendarIcon from '../../../../../../../images/icon-calendar.inline.svg';
 import DatasetApiIcon from '../../../../../../../images/icon-dataset-api.inline.svg';
 import ThumbsIcon from '../../../../../../../images/icon-thumbs.inline.svg';
-
+import ExamplesIcon from '../../../../../../../images/icon-examples.inline.svg';
 import InsightIcon from '../../../../../../../images/icon-community-insight.inline.svg';
 import LawIcon from '../../../../../../../images/icon-law.inline.svg';
 
@@ -37,7 +37,7 @@ const getCategoryIcon = (slug: string) => {
 
   switch (slugName) {
     case 'gode-eksempler-på-bruk':
-      return <LightBulbIcon />;
+      return <ExamplesIcon />;
     case 'møter-og-arrangementer':
       return <CalendarIcon />;
     case 'tilbakemeldinger-og-nyheter':
@@ -48,6 +48,8 @@ const getCategoryIcon = (slug: string) => {
       return <InsightIcon />;
     case 'juss-og-data':
       return <LawIcon />;
+    case 'tips-og-spørsmål':
+      return <LightBulbIcon />;
     default:
       return <TextCloudIcon />;
   }
