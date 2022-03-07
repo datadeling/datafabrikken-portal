@@ -203,6 +203,7 @@ export type ComponentBasicImageInput = {
 export type ComponentBasicInfobox = {
   __typename?: 'ComponentBasicInfobox';
   content?: Maybe<Scalars['String']>;
+  hoverIllustration?: Maybe<UploadFile>;
   id: Scalars['ID'];
   illustration?: Maybe<UploadFile>;
   link?: Maybe<Scalars['String']>;
@@ -211,6 +212,7 @@ export type ComponentBasicInfobox = {
 
 export type ComponentBasicInfoboxInput = {
   content?: Maybe<Scalars['String']>;
+  hoverIllustration?: Maybe<Scalars['ID']>;
   illustration?: Maybe<Scalars['ID']>;
   link?: Maybe<Scalars['String']>;
   title: Scalars['String'];
@@ -2305,6 +2307,7 @@ export type EditComponentBasicImageInput = {
 
 export type EditComponentBasicInfoboxInput = {
   content?: Maybe<Scalars['String']>;
+  hoverIllustration?: Maybe<Scalars['ID']>;
   id?: Maybe<Scalars['ID']>;
   illustration?: Maybe<Scalars['ID']>;
   link?: Maybe<Scalars['String']>;
@@ -2676,6 +2679,12 @@ export type GetGuidanceQuery = { __typename?: 'Query' } & {
                         'url' | 'alternativeText'
                       >
                     >;
+                    hoverIllustration?: Maybe<
+                      { __typename?: 'UploadFile' } & Pick<
+                        UploadFile,
+                        'url' | 'alternativeText'
+                      >
+                    >;
                   })
               | ({ __typename: 'ComponentBasicParagraph' } & Pick<
                   ComponentBasicParagraph,
@@ -2964,6 +2973,10 @@ export const GetGuidanceDocument = gql`
           title
           content
           illustration {
+            url
+            alternativeText
+          }
+          hoverIllustration {
             url
             alternativeText
           }
