@@ -6,11 +6,15 @@ query GetGuidance {
         __typename
         content
       }
-            ... on ComponentBasicInfobox {
+      ... on ComponentBasicInfobox {
         __typename
         title
         content
         illustration {
+          url
+          alternativeText
+        }
+        hoverIllustration {
           url
           alternativeText
         }

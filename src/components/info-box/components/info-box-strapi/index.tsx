@@ -27,7 +27,7 @@ const ResolveInfoboxUrl = (url?: string) => {
 };
 
 const InfoBoxStrapi: FC<Props> = ({
-  infoBox: { id, link, title, content, illustration },
+  infoBox: { id, link, title, content, illustration, hoverIllustration },
   invertColor
 }) => (
   <InfoBox
@@ -40,6 +40,11 @@ const InfoBoxStrapi: FC<Props> = ({
         <InfoBoxImage
           src={`${env.STRAPI_API_HOST}${illustration.url}`}
           alt={illustration.alternativeText ?? `${id}-illustration`}
+          hoverSrc={
+            hoverIllustration?.url &&
+            `${env.STRAPI_API_HOST}${hoverIllustration.url}`
+          }
+          hoverAlt={hoverIllustration?.alternativeText ?? `${id}-illustration`}
         />
       )}
     </InfoBoxIcon>
