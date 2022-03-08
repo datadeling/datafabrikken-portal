@@ -26,6 +26,7 @@ const Header = styled.section`
 
 const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
+  line-height: 1.25;
   margin-bottom: ${theme.spacing('S10')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
@@ -43,7 +44,6 @@ const Ingress = styled.div`
 
 const Body = styled.div`
   font-size: ${theme.fontSize('FS12')};
-  line-height: 1.25;
 
   ${onMobileView} {
     font-size: ${theme.fontSize('FS10')};

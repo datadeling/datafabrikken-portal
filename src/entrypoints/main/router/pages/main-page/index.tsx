@@ -128,7 +128,7 @@ const MainPage: FC<Props> = ({
         <SC.BannerSection>
           <SC.Row>
             <ContentBox>
-              <ContentBoxHeader>
+              <ContentBoxHeader as='h1'>
                 <ContentBoxSC.ContentBoxHeader.Title>
                   {firstElement?.field_title}
                 </ContentBoxSC.ContentBoxHeader.Title>
@@ -220,7 +220,7 @@ const MainPage: FC<Props> = ({
                     )}
                   </InfoBoxIcon>
                   <InfoBoxTitle>
-                    <h2>{module.field_link?.title}</h2>
+                    <h3>{module.field_link?.title}</h3>
                   </InfoBoxTitle>
                   <InfoBoxBody>
                     <Markdown allowHtml>
@@ -277,7 +277,7 @@ const MainPage: FC<Props> = ({
                       {created && formatDate(dateStringToDate(created))}
                     </InfoBoxSC.InfoBox.Date>
                     <InfoBoxTitle>
-                      <h2>{title}</h2>
+                      <h4>{title}</h4>
                     </InfoBoxTitle>
                     <InfoBoxBody>{ingress}</InfoBoxBody>
                   </InfoBox>

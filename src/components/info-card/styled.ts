@@ -21,7 +21,7 @@ const CourseContent = styled.div`
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
-  padding: ${theme.spacing('S16')};
+  padding: ${theme.spacing('S20')};
   line-height: ${theme.fontSize('FS16')};
   background-color: ${theme.colour(Colour.BLUE, 'B48')};
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
@@ -86,7 +86,6 @@ const Tags = styled.div`
 const Card = styled.a`
   display: flex;
   flex-direction: column;
-  margin-bottom: ${theme.spacing('S16')};
   border-radius: 2px;
   overflow: hidden;
   box-shadow: 2.9px 2.9px 3.6px rgba(0, 0, 0, 0.049),

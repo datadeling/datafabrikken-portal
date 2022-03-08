@@ -125,7 +125,7 @@ const Article: FC<Props> = ({ article }) => {
         <meta name='og:description' content={ingress} />
       </Helmet>
       <SC.Header>
-        <SC.Container variant={ContainerVariant.WIDTH_720}>
+        <SC.Container $variant={ContainerVariant.WIDTH_720}>
           <SC.Title>{title}</SC.Title>
           {ingress && (
             <SC.Ingress>
@@ -134,7 +134,7 @@ const Article: FC<Props> = ({ article }) => {
           )}
         </SC.Container>
       </SC.Header>
-      <SC.Container variant={ContainerVariant.WIDTH_720}>
+      <SC.Container $variant={ContainerVariant.WIDTH_720}>
         {modules?.map((module: any) => renderModule(module))}
       </SC.Container>
     </SC.Article>

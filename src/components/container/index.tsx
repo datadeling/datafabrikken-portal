@@ -8,7 +8,7 @@ interface Props {
 }
 
 const Container: FC<PropsWithChildren<Props>> = ({ variant, children }) => (
-  <SC.Container variant={variant}>{children}</SC.Container>
+  <SC.Container $variant={variant}>{children}</SC.Container>
 );
 
 export default memo(Container);
