@@ -125,7 +125,7 @@ const DatasetDistribution: FC<Props> = ({
             }
           />
         )}
-        {accessServices.length > 0 && (
+        {accessServices?.length > 0 && (
           <Detail
             property='dataset.distribution.dataService'
             value={
@@ -152,7 +152,7 @@ const DatasetDistribution: FC<Props> = ({
             }
           />
         )}
-        {endpointDescriptions.length > 0 && (
+        {endpointDescriptions?.length > 0 && (
           <Detail
             property='dataset.distribution.endpointDescription'
             value={
