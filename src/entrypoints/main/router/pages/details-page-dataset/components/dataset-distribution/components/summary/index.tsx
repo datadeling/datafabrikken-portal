@@ -64,12 +64,20 @@ interface Props {
   title: string;
   formats: MediaTypeOrExtent[];
   hasDataservice?: boolean;
+  hasDownloadUrl?: boolean;
 }
 
-const Summary: FC<Props> = ({ title, formats, hasDataservice, ...props }) => (
+const Summary: FC<Props> = ({
+  title,
+  formats,
+  hasDataservice,
+  hasDownloadUrl,
+  ...props
+}) => (
   <SC.Summary {...props}>
     <SC.Title>{title}</SC.Title>
     <SC.Formats>
+      {hasDownloadUrl && <SC.DownloadIcon />}
       {hasDataservice && (
         <RoundedTag as='div' variant={Variant.SECONDARY}>
           <SC.DataserviceIcon />

@@ -71,6 +71,7 @@ const DatasetDistribution: FC<Props> = ({
           }
           formats={formats}
           hasDataservice={!!accessServices?.length}
+          hasDownloadUrl={!!downloadURL}
         />
       </ExpansionPanelHead>
       <ExpansionPanelBody>
