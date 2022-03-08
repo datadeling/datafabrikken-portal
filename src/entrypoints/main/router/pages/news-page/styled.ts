@@ -24,6 +24,10 @@ const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
+  & > a {
+    flex: 0 1 32%;
+  }
 `;
 
 export default {
