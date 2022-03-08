@@ -15,6 +15,7 @@ import {
   useGetUserQuery
 } from '../../../services/api/user-feedback-api/comments';
 import Translation from '../../translation';
+import LogOut from './components/logOut';
 
 const { COMMUNITY_API_HOST } = env;
 
@@ -65,14 +66,18 @@ const CommentSection: FC<Props> = ({ entityId, authService }) => {
               postComment({ id: entityId, post: { content } })
             }
             openToggle={() => setNewCommentOpen(false)}
+            showLogout
           />
         )}
 
         {isLoggedIn && !newCommentOpen && (
-          <Buttons.BigButton onClick={() => setNewCommentOpen(true)}>
-            <Translation id='community.comments.buttons.feedback' />
-            <SC.CommentIcon />
-          </Buttons.BigButton>
+          <SC.PostCommentButtons>
+            <Buttons.BigButton onClick={() => setNewCommentOpen(true)}>
+              <Translation id='community.comments.buttons.feedback' />
+              <SC.CommentIcon />
+            </Buttons.BigButton>
+            <LogOut />
+          </SC.PostCommentButtons>
         )}
 
         {!authenticated && (
