@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { Colour, theme } from '../../../../../entrypoints/main/app/theme';
 
 const BigButton = styled.button<{ $inverse?: boolean }>`
+  display: flex;
+  align-items: center;
   cursor: pointer;
   border: 1px solid;
   border-radius: 2px;

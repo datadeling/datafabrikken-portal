@@ -3,6 +3,8 @@ import { theme } from '../../../entrypoints/main/app/theme';
 
 import CommentIconBase from '../../../images/comment-icon.inline.svg';
 
+const onMobileView = '@media (max-width: 900px)';
+
 const Ingress = styled.p`
   margin-bottom: ${theme.spacing('S24')};
 `;
@@ -25,6 +27,14 @@ const PostCommentContainer = styled.div`
 
 const PostCommentButtons = styled.div`
   display: flex;
+  gap: ${theme.spacing('S16')};
+  align-items: center;
+
+  ${onMobileView} {
+    gap: ${theme.spacing('S8')};
+    align-items: flex-start;
+    flex-direction: column-reverse;
+  }
 `;
 
 const Comments = styled.ul`

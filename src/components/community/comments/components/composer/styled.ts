@@ -11,6 +11,10 @@ import StrikethroughIconBase from '../../../../../images/compose-strikethrough.i
 import CodeIconBase from '../../../../../images/compose-code.inline.svg';
 import LinkIconBase from '../../../../../images/compose-link.inline.svg';
 
+import LogOutSC from '../logOut/styled';
+
+const onMobileView = '@media (max-width: 900px)';
+
 const PostCommentContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -33,7 +37,6 @@ const PostCommentButtons = styled.div`
 
 const ToolsContainer = styled.div`
   display: flex;
-  padding-bottom: ${theme.spacing('S8')};
 `;
 
 const ToolButton = styled.button`
@@ -92,6 +95,21 @@ const LinkIcon = styled(LinkIconBase)`
   ${IconStyle}
 `;
 
+const ComposerHeader = styled.div`
+  display: flex;
+  padding-bottom: ${theme.spacing('S8')};
+  gap: ${theme.spacing('S24')};
+
+  ${onMobileView} {
+    gap: ${theme.spacing('S8')};
+    flex-direction: column-reverse;
+  }
+
+  & > ${LogOutSC.LogOutContainer} {
+    font-size: ${theme.fontSize('FS10')};
+  }
+`;
+
 export default {
   PostCommentContainer,
   PostCommentButtons,
@@ -105,5 +123,6 @@ export default {
   UserIcon,
   StrikethroughIcon,
   CodeIcon,
-  LinkIcon
+  LinkIcon,
+  ComposerHeader
 };
