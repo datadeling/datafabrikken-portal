@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import InfoBoxSC from '../../../../../components/info-box/components/info-box/styled';
+
 import { theme } from '../../../app/theme';
 
 const onMobileView = '@media (max-width: 900px)';
@@ -25,8 +27,18 @@ const Content = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
 
-  & > a {
+  ${InfoBoxSC.InfoBox} {
     flex: 0 1 32%;
+
+    & ${InfoBoxSC.ContentWrapper} {
+      & > div:last-child {
+        font-size: ${theme.fontSize('FS10')};
+      }
+    }
+
+    ${onMobileView} {
+      flex: 0 1 100%;
+    }
   }
 `;
 

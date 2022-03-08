@@ -41,7 +41,7 @@ const ImageWrapper = styled.div`
 `;
 
 const Date = styled.span`
-  color: ${theme.colour(Colour.BLUE, 'B16')};
+  color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   font-size: ${theme.fontSize('FS10')};
   margin-bottom: ${theme.spacing('S6')};
 `;
@@ -71,15 +71,15 @@ const InfoBox = styled.a<infoBoxProps>`
     background-color: ${theme.colour(Colour.BLUE, 'B16')};
     color: ${theme.colour(Colour.BLUE, 'B52')};
 
-    ${Date} {
+    & ${Date} {
       color: ${theme.colour(Colour.BLUE, 'B52')};
     }
 
-    ${ImageWrapper} {
+    & ${ImageWrapper} {
       opacity: 0.5;
     }
 
-    ${InfoBoxTitleSC.Title} {
+    & ${InfoBoxTitleSC.Title} {
       text-decoration: none;
       color: ${theme.colour(Colour.BLUE, 'B52')};
 

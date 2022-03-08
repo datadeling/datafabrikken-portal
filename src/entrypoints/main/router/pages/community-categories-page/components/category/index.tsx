@@ -63,7 +63,7 @@ const Category: FC<Props> = ({ category: { slug, name, description } }) => (
   >
     <InfoBoxIcon>{getCategoryIcon(slug)}</InfoBoxIcon>
     <InfoBoxTitle>
-      <h2>{parse(name)}</h2>
+      <h3>{parse(name)}</h3>
     </InfoBoxTitle>
     <InfoBoxBody>
       <Markdown allowHtml>{description}</Markdown>

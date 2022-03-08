@@ -9,7 +9,7 @@ interface Props {
 }
 
 const InfoBoxImage: FC<Props> = ({ alt, hoverSrc, hoverAlt, ...props }) => (
-  <SC.InfoBoxImage>
+  <SC.InfoBoxImage $hasHover={!!hoverSrc}>
     <img {...props} alt={alt} />
     <img {...props} alt={hoverAlt} src={hoverSrc} />
   </SC.InfoBoxImage>

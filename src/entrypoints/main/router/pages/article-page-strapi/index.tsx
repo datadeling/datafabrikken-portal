@@ -20,11 +20,11 @@ export const ArticlePageStrapi: FC<RouteComponentProps> = ({
   return (
     <Root invertColor>
       <SC.Header>
-        <SC.Container variant={ContainerVariant.WIDTH_720}>
+        <SC.Container $variant={ContainerVariant.WIDTH_720}>
           <SC.Title>{data?.fancyArticle?.title}</SC.Title>
         </SC.Container>
       </SC.Header>
-      <SC.Container variant={ContainerVariant.WIDTH_720}>
+      <SC.Container $variant={ContainerVariant.WIDTH_720}>
         <ArticleSC.Body>
           {data?.fancyArticle?.content?.map(
             paragraph =>
