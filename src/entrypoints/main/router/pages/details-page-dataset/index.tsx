@@ -925,18 +925,20 @@ const DatasetDetailsPage: FC<Props> = ({
           </span>
         )}
       </ContentSection>
-      <ContentSection
-        id='comment-section'
-        title={
-          translations.translate('community.comments.sectionTitle', {
-            entityType: translations.translate(
-              `community.comments.entityTypes.${entity}`
-            ) as string
-          }) as string
-        }
-      >
-        <CommentSection entityId={datasetId ?? ''} />
-      </ContentSection>
+      {env.USER_FEEDBACK_TOGGLE && (
+        <ContentSection
+          id='comment-section'
+          title={
+            translations.translate('community.comments.sectionTitle', {
+              entityType: translations.translate(
+                `community.comments.entityTypes.${entity}`
+              ) as string
+            }) as string
+          }
+        >
+          <CommentSection entityId={datasetId ?? ''} />
+        </ContentSection>
+      )}
     </DetailsPage>
   ) : (
     <ErrorPage errorCode='404' />
