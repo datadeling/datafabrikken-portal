@@ -66,18 +66,25 @@ const CommentCard: FC<Props> = ({
   const hasReplies = (replies?.length ?? 0) > 0;
   const maxVisibleReplies = 3;
   const croppedReplies = showAllReplies
-    ? replies?.reverse()
-    : replies?.slice(0, maxVisibleReplies)?.reverse();
+    ? replies
+    : replies?.slice(-maxVisibleReplies);
 
   const sendPost = (content: string, mode: Mode) => {
     switch (mode) {
       case Mode.UPDATE:
-        updateComment({ id: entityId, post: { ...comment, content } });
+        updateComment({
+          id: entityId,
+          post: { ...comment, content },
+          page: comment.page ?? 1
+        });
         break;
 
       case Mode.REPLY:
       default:
-        postComment({ id: entityId, post: { content, toPid: comment.pid } });
+        postComment({
+          id: entityId,
+          post: { content, toPid: comment.pid }
+        });
         break;
     }
   };
@@ -113,7 +120,7 @@ const CommentCard: FC<Props> = ({
             </Buttons.UnderlineButton>
           )}
 
-          {currentUser && !replies && !isReply && (
+          {currentUser && !replies && !isReply && currentMode === Mode.NONE && (
             <Buttons.UnderlineButton
               onClick={() => {
                 setCurrentMode(Mode.REPLY);
@@ -139,7 +146,11 @@ const CommentCard: FC<Props> = ({
                 onClick={() =>
                   deleteComment({
                     id: entityId,
-                    postId: comment.pid.toString()
+                    post: comment,
+                    invalidatedPages: Array.from(
+                      { length: comment.page ?? 1 },
+                      (_, i) => i + 1
+                    )
                   })
                 }
               >
@@ -165,12 +176,13 @@ const CommentCard: FC<Props> = ({
 
       {currentUser && hasReplies && !isReply && (
         <SC.CommentActions>
-          {currentMode === Mode.REPLY ? (
+          {currentMode === Mode.REPLY && (
             <Composer
               openToggle={() => setCurrentMode(Mode.NONE)}
               onSubmit={(content: string) => sendPost(content, currentMode)}
             />
-          ) : (
+          )}
+          {currentMode === Mode.NONE && (
             <Buttons.UnderlineButton
               onClick={() => {
                 setCurrentMode(Mode.REPLY);

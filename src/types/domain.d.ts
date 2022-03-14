@@ -225,6 +225,13 @@ export interface CommunityPost {
   isMainPost: boolean;
   replies: number;
   index: number;
+  page?: number;
+}
+
+export interface UserFeedbackPagination {
+  currentPage: number;
+  pageCount: number;
+  totalPosts: number;
 }
 
 export interface CommunityTopic {
@@ -267,6 +274,7 @@ export interface CommunityTopic {
   icons: string[];
   thumb: string;
   index: number;
+  pagination: UserFeedbackPagination;
 }
 
 export interface CommunityTeaser {
