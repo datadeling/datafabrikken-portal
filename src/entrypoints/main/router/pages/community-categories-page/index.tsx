@@ -63,7 +63,10 @@ const CommunityCategoriesPage: FC<Props> = ({
           </SC.Header>
           <SC.Categories>
             {communityCategories
-              .filter(category => !category.disabled)
+              .filter(
+                category =>
+                  !(category.disabled || category.slug.includes('/prosjekter'))
+              )
               .sort(categorySorter)
               .map((category, index) => (
                 <Category key={`category-${index}`} category={category} />
