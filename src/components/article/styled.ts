@@ -74,6 +74,8 @@ const Body = styled.div`
   & > div > p {
     margin-bottom: ${theme.spacing('S20')};
     padding-bottom: 0;
+    line-height: 1.5;
+
     & > a {
       text-decoration: underline;
     }
