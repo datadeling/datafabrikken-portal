@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { Colour, theme } from '../../../../../entrypoints/main/app/theme';
 
 import CommentIconBase from '../../../../../images/comment-icon.inline.svg';
@@ -79,10 +79,35 @@ const CommentIcon = styled(CommentIconBase)`
   }
 `;
 
+const MovingGradient = keyframes`
+  0%{
+      background-position: -1000px 0
+  }
+  100%{
+      background-position: 1000px 0
+  }
+`;
+
+const PlaceholderCard = styled.li`
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: ${MovingGradient};
+  animation-timing-function: linear;
+  background: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  background: linear-gradient(to right, #ffffff 10%, #dddddd 18%, #ffffff 33%);
+  position: relative;
+  height: 200px;
+  width: 100%;
+  border-radius: 5px;
+  margin: ${theme.spacing('S8')} 0;
+`;
+
 export default {
   CommentCard,
   CommentInfo,
   CommentActions,
   ButtonContainer,
-  CommentIcon
+  CommentIcon,
+  PlaceholderCard
 };
