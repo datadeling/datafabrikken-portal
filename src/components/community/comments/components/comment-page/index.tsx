@@ -2,6 +2,8 @@ import React, { FC, useEffect } from 'react';
 import { compose } from 'redux';
 
 import CommentCard from '../comment-card';
+import CommentCardSC from '../comment-card/styled';
+
 import { CommunityPost } from '../../../../../types';
 import {
   useGetThreadByIdQuery,
@@ -21,8 +23,9 @@ const CommentPage: FC<ExternalProps> = ({
   replies,
   updateReplies
 }) => {
+  const numberOfPlaceholders = 3;
   const { data: currentUser } = useGetUserQuery();
-  const { rootComments, pageReplies, isInitalizing, isReloading } =
+  const { rootComments, pageReplies, isReloading, initialLoading } =
     useGetThreadByIdQuery(
       { id: entityId, page },
       {
@@ -32,24 +35,24 @@ const CommentPage: FC<ExternalProps> = ({
               post => !post.toPid && `${post.index}` !== '0'
             ) ?? [],
           pageReplies: data?.posts?.filter(post => post.toPid) ?? [],
-          isInitalizing: isFetching,
-          isReloading: isLoading
+          isReloading: isFetching,
+          initialLoading: isLoading
         })
       }
     );
 
   useEffect(() => {
-    if (!isInitalizing && !isReloading) {
+    if (!isReloading && !initialLoading) {
       updateReplies(
         pageReplies.map(reply => ({ ...reply, page })),
         page
       );
     }
-  }, [isInitalizing, isReloading]);
+  }, [isReloading, initialLoading]);
 
   return (
     <>
-      {rootComments?.map(comment => (
+      {rootComments.map(comment => (
         <CommentCard
           comment={{ ...comment, page }}
           currentUser={currentUser}
@@ -59,6 +62,10 @@ const CommentPage: FC<ExternalProps> = ({
           key={`comment-card-p${page}-id-${comment.pid}`}
         />
       ))}
+      {initialLoading &&
+        [...Array(numberOfPlaceholders).keys()].map(index => (
+          <CommentCardSC.PlaceholderCard key={`placeholder-card-${index}`} />
+        ))}
     </>
   );
 };
