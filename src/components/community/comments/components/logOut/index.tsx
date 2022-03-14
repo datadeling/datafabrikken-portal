@@ -13,10 +13,12 @@ const LogOut: FC<AuthProps> = ({ authService }) => {
 
   return (
     <SC.LogOutContainer>
-      <span>
-        <Translation id='community.comments.session' />
-        {currentUser?.username} &bull;{' '}
-      </span>
+      {currentUser?.username && (
+        <span>
+          <Translation id='community.comments.session' />
+          {currentUser?.username} &bull;{' '}
+        </span>
+      )}
       <Buttons.UnderlineButton onClick={() => authService.signOut()}>
         <Translation id='community.comments.buttons.logOutFeedback' />
       </Buttons.UnderlineButton>
