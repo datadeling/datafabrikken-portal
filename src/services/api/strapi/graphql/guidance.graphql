@@ -23,7 +23,7 @@ query GetGuidance {
     }
   }
 
-  guides {
+  guides(sort: "position:asc") {
     title
     featureImage {
       url

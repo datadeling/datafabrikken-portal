@@ -8,7 +8,7 @@ query GetCourses {
       }
     }
   }
-  courses {
+  courses(sort: "position:asc") {
     title
     featureImage {
       url
