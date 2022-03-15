@@ -4,6 +4,8 @@ import { theme, Colour } from '../../../app/theme';
 
 import ButtonBase from '../../../../../components/button';
 
+import { SC as InfoBoxSC } from '../../../../../components/info-box';
+
 const onMinWidth = '@media (max-width: 1350px)';
 const onMobileView = '@media (max-width: 900px)';
 
@@ -15,6 +17,13 @@ const Title = styled.h1`
   font-size: ${theme.fontSize('FS32')};
   ${onMobileView} {
     font-size: ${theme.fontSize('FS18')};
+  }
+`;
+
+const SubTitle = styled.h3`
+  font-size: ${theme.fontSize('FS18')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS16')};
   }
 `;
 
@@ -118,9 +127,43 @@ const Pagination = styled.div`
   }
 `;
 
+const Subcategories = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${theme.spacing('S10')};
+  margin-bottom: ${theme.spacing('S20')};
+  
+  & > ${InfoBoxSC.InfoBox.InfoBox} {
+    margin-bottom: 0; 
+    & > ${InfoBoxSC.InfoBox.InfoBoxRow} {
+      padding: ${theme.spacing('S12')};
+      & ${InfoBoxSC.InfoBoxTitle.Title} {
+        margin-bottom: ${theme.spacing('S2')};
+      }
+      & ${InfoBoxSC.InfoBoxBody.Body} {
+        font-size: ${theme.fontSize('FS10')};
+      }
+      & ${InfoBoxSC.InfoBox.ContentRightWrapper} {
+        gap: ${theme.spacing('S6')};
+        align-items: center;
+      }
+    }
+
+    &:hover {
+      & > ${InfoBoxSC.InfoBox.InfoBoxRow} {
+        & ${InfoBoxSC.InfoBox.ContentRightWrapper} {          
+          & > svg > g {
+            stroke: ${theme.colour(Colour.BLUE, 'B52')};
+          }
+        }
+    }
+  }
+`;
+
 export default {
   Page,
   Title,
+  SubTitle,
   Info,
   IconWrapper,
   Ingress,
@@ -131,5 +174,6 @@ export default {
   SortLabel,
   SortButtonWrapper,
   SortButton,
+  Subcategories,
   Pagination
 };

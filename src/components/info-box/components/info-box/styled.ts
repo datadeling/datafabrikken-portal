@@ -127,6 +127,12 @@ const ContentWrapper = styled.div`
   flex: 1;
 `;
 
+const ContentRightWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 export default {
   InfoBox,
   InfoBoxHeader,
@@ -134,5 +140,6 @@ export default {
   IconWrapper,
   ImageWrapper,
   ContentWrapper,
+  ContentRightWrapper,
   Date
 };
