@@ -44,6 +44,10 @@ const UserInfo = styled.div`
 const Content = styled.div`
   padding-top: ${theme.spacing('S20')};
 
+  & > ul {
+    list-style: disc;
+  }
+
   & > p {
     margin-bottom: ${theme.spacing('S10')};
   }
