@@ -28,6 +28,8 @@ import {
   InfoBoxTitle
 } from '../../../../../../../components/info-box';
 
+import SC from './styled';
+
 interface Props {
   category: CommunityCategory;
 }
@@ -46,7 +48,7 @@ const getCategoryIcon = (slug: string) => {
       return <DatasetApiIcon />;
     case 'juss-og-data':
       return <LawIcon />;
-    case 'prosjekter':
+    case 'arenaer-og-prosjekter':
       return <ProjectsIcon />;
     case 'tips-og-spørsmål':
       return <LightBulbIcon />;
@@ -55,7 +57,9 @@ const getCategoryIcon = (slug: string) => {
   }
 };
 
-const Category: FC<Props> = ({ category: { slug, name, description } }) => (
+const Category: FC<Props> = ({
+  category: { slug, name, description, children }
+}) => (
   <InfoBox
     key={`category-${slug}`}
     as={RouterLink}
@@ -65,7 +69,14 @@ const Category: FC<Props> = ({ category: { slug, name, description } }) => (
     <InfoBoxTitle>
       <h3>{parse(name)}</h3>
     </InfoBoxTitle>
-    <InfoBoxBody>
+    <InfoBoxBody truncate={false}>
+      {children?.length > 0 && (
+        <SC.Subcategories>
+          {children.map((subCategory, index) =>
+            index > 0 ? <> &#8226; {subCategory.name}</> : subCategory.name
+          )}
+        </SC.Subcategories>
+      )}
       <Markdown allowHtml>{description}</Markdown>
     </InfoBoxBody>
   </InfoBox>

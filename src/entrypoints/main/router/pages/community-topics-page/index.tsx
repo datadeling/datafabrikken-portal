@@ -1,7 +1,7 @@
 import React, { FC, memo, useEffect, useState } from 'react';
 import { compose } from 'redux';
 
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, Link as RouterLink } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
 import parse from 'html-react-parser';
@@ -33,6 +33,15 @@ import {
   withTranslations,
   Props as TranslationProps
 } from '../../../../../providers/translations';
+import {
+  InfoBox,
+  InfoBoxBody,
+  InfoBoxTitle
+} from '../../../../../components/info-box';
+import Markdown from '../../../../../components/markdown';
+import InfoBoxBodyRight from '../../../../../components/info-box/components/info-box-body-right';
+
+import CategoryTopicsIcon from '../../../../../images/icon-category-topics.inline.svg';
 
 interface Props
   extends CommunityCategoryProps,
@@ -131,6 +140,39 @@ const CommunityTopicsPage: FC<Props> = ({
         <SC.Page>
           <CommunityMenu />
           <SC.Title>{getTitle()}</SC.Title>
+          {isCategory && communityCategory?.children?.length > 0 && (
+            <SC.SubTitle>
+              <Translation id='community.header.subcategories' />
+            </SC.SubTitle>
+          )}
+          <SC.Subcategories>
+            {isCategory &&
+              communityCategory?.children?.map(subcategory => (
+                <InfoBox
+                  key={`category-${subcategory.slug}`}
+                  as={RouterLink}
+                  to={`${PATHNAME.COMMUNITY}/${subcategory.slug}`}
+                >
+                  <InfoBoxTitle>
+                    <h4>{parse(subcategory.name)}</h4>
+                  </InfoBoxTitle>
+                  <InfoBoxBody>
+                    <Markdown allowHtml>{subcategory.description}</Markdown>
+                  </InfoBoxBody>
+                  <InfoBoxBodyRight>
+                    <CategoryTopicsIcon />
+                    {`${subcategory.topic_count} ${
+                      subcategory.topic_count === 1
+                        ? translationsService.translate('community.topic')
+                        : translationsService.translate('community.topics')
+                    }`}
+                  </InfoBoxBodyRight>
+                </InfoBox>
+              ))}
+          </SC.Subcategories>
+          <SC.SubTitle>
+            <Translation id='community.header.topics' />
+          </SC.SubTitle>
           {isCategory && getActiveTopics().length === 0 && (
             <SC.Info>
               <Translation id='community.categoryHasNoPosts' />
