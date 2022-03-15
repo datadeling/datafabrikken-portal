@@ -12,7 +12,7 @@ import CalendarIcon from '../../../../../../../images/icon-calendar.inline.svg';
 import DatasetApiIcon from '../../../../../../../images/icon-dataset-api.inline.svg';
 import ThumbsIcon from '../../../../../../../images/icon-thumbs.inline.svg';
 import ExamplesIcon from '../../../../../../../images/icon-examples.inline.svg';
-import InsightIcon from '../../../../../../../images/icon-community-insight.inline.svg';
+import ProjectsIcon from '../../../../../../../images/icon-projects.inline.svg';
 import LawIcon from '../../../../../../../images/icon-law.inline.svg';
 
 import { CommunityCategory } from '../../../../../../../types';
@@ -44,10 +44,10 @@ const getCategoryIcon = (slug: string) => {
       return <ThumbsIcon />;
     case 'etterspør-datasett-og-api-er':
       return <DatasetApiIcon />;
-    case 'innsynsløsning-utredning-av-tekniske-og-juridiske-muligheter':
-      return <InsightIcon />;
     case 'juss-og-data':
       return <LawIcon />;
+    case 'prosjekter':
+      return <ProjectsIcon />;
     case 'tips-og-spørsmål':
       return <LightBulbIcon />;
     default:
