@@ -22,18 +22,23 @@ export const ArticlePageStrapi: FC<RouteComponentProps> = ({
       <SC.Header>
         <SC.Container $variant={ContainerVariant.WIDTH_720}>
           <SC.Title>{data?.fancyArticle?.title}</SC.Title>
+          <SC.Subtitle>{data?.fancyArticle?.subtitle}</SC.Subtitle>
         </SC.Container>
       </SC.Header>
-      <SC.Container $variant={ContainerVariant.WIDTH_720}>
-        <ArticleSC.Body>
-          {data?.fancyArticle?.content?.map(
-            paragraph =>
-              isBasicParagraph(paragraph) && (
-                <Markdown>{paragraph?.content ?? ''}</Markdown>
-              )
-          )}
-        </ArticleSC.Body>
-      </SC.Container>
+      <SC.ContentSection>
+        {data?.fancyArticle?.content?.map(
+          paragraph =>
+            isBasicParagraph(paragraph) && (
+              <SC.ParagraphBackground>
+                <SC.Container $variant={ContainerVariant.WIDTH_720}>
+                  <ArticleSC.Body>
+                    <Markdown>{paragraph?.content ?? ''}</Markdown>
+                  </ArticleSC.Body>
+                </SC.Container>
+              </SC.ParagraphBackground>
+            )
+        )}
+      </SC.ContentSection>
     </Root>
   );
 };

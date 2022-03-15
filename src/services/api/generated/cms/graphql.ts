@@ -520,6 +520,7 @@ export type FancyArticle = {
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<FancyArticle>>>;
   published_at?: Maybe<Scalars['DateTime']>;
+  subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_at: Scalars['DateTime'];
 };
@@ -568,6 +569,12 @@ export type FancyArticleConnectionPublished_At = {
   key?: Maybe<Scalars['DateTime']>;
 };
 
+export type FancyArticleConnectionSubtitle = {
+  __typename?: 'FancyArticleConnectionSubtitle';
+  connection?: Maybe<FancyArticleConnection>;
+  key?: Maybe<Scalars['String']>;
+};
+
 export type FancyArticleConnectionTitle = {
   __typename?: 'FancyArticleConnectionTitle';
   connection?: Maybe<FancyArticleConnection>;
@@ -594,6 +601,7 @@ export type FancyArticleGroupBy = {
   id?: Maybe<Array<Maybe<FancyArticleConnectionId>>>;
   locale?: Maybe<Array<Maybe<FancyArticleConnectionLocale>>>;
   published_at?: Maybe<Array<Maybe<FancyArticleConnectionPublished_At>>>;
+  subtitle?: Maybe<Array<Maybe<FancyArticleConnectionSubtitle>>>;
   title?: Maybe<Array<Maybe<FancyArticleConnectionTitle>>>;
   updated_at?: Maybe<Array<Maybe<FancyArticleConnectionUpdated_At>>>;
 };
@@ -604,6 +612,7 @@ export type FancyArticleInput = {
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   published_at?: Maybe<Scalars['DateTime']>;
+  subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -905,6 +914,7 @@ export type Morph =
   | FancyArticleConnectionId
   | FancyArticleConnectionLocale
   | FancyArticleConnectionPublished_At
+  | FancyArticleConnectionSubtitle
   | FancyArticleConnectionTitle
   | FancyArticleConnectionUpdated_At
   | FancyArticleGroupBy
@@ -2383,6 +2393,7 @@ export type EditFancyArticleInput = {
   locale?: Maybe<Scalars['String']>;
   localizations?: Maybe<Array<Maybe<Scalars['ID']>>>;
   published_at?: Maybe<Scalars['DateTime']>;
+  subtitle?: Maybe<Scalars['String']>;
   title?: Maybe<Scalars['String']>;
   updated_by?: Maybe<Scalars['ID']>;
 };
@@ -2669,7 +2680,10 @@ export type GetFancyArticleQueryVariables = Exact<{
 
 export type GetFancyArticleQuery = { __typename?: 'Query' } & {
   fancyArticle?: Maybe<
-    { __typename?: 'FancyArticle' } & Pick<FancyArticle, 'title'> & {
+    { __typename?: 'FancyArticle' } & Pick<
+      FancyArticle,
+      'title' | 'subtitle'
+    > & {
         content?: Maybe<
           Array<
             Maybe<
@@ -2929,6 +2943,7 @@ export const GetFancyArticleDocument = gql`
   query GetFancyArticle($id: ID!) {
     fancyArticle(id: $id) {
       title
+      subtitle
       content {
         ... on ComponentBasicParagraph {
           __typename
