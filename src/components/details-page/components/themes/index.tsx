@@ -72,51 +72,47 @@ const Themes: FC<Props> = ({
   isRestrictedData,
   isNonPublicData,
   themes
-}) => (
-  <SC.Themes>
-    {isOpenData && (
-      <Link to={`${rootPaths[entity]}?opendata=true`} className='open-data'>
-        <Translation id='detailsPage.openData' />
-      </Link>
-    )}
-    {isPublicData && (
-      <Link
-        to={`${rootPaths[entity]}?accessrights=PUBLIC`}
-        className='public-data'
-      >
-        <Translation id='detailsPage.publicData' />
-      </Link>
-    )}
-    {isRestrictedData && (
-      <Link
-        to={`${rootPaths[entity]}?accessrights=RESTRICTED`}
-        className='restricted-data'
-      >
-        <Translation id='detailsPage.restrictedData' />
-      </Link>
-    )}
-    {isNonPublicData && (
-      <Link
-        to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
-        className='non-public-data'
-      >
-        <Translation id='detailsPage.nonPublicData' />
-      </Link>
-    )}
-    {themes.map(theme => {
-      if (isEuTheme(theme)) {
-        const { id, title: themeTitle, code } = theme;
-        return (
-          <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
-            {(code && themeIconMap[code]) ?? null}
-            <Translation text={themeTitle} />
-          </Link>
-        );
-      }
-
-      return null;
-    })}
-  </SC.Themes>
-);
+}) => {
+  const euThemes = themes.filter(theme => isEuTheme(theme)) as EuTheme[];
+  return (
+    <SC.Themes>
+      {isOpenData && (
+        <Link to={`${rootPaths[entity]}?opendata=true`} className='open-data'>
+          <Translation id='detailsPage.openData' />
+        </Link>
+      )}
+      {isPublicData && (
+        <Link
+          to={`${rootPaths[entity]}?accessrights=PUBLIC`}
+          className='public-data'
+        >
+          <Translation id='detailsPage.publicData' />
+        </Link>
+      )}
+      {isRestrictedData && (
+        <Link
+          to={`${rootPaths[entity]}?accessrights=RESTRICTED`}
+          className='restricted-data'
+        >
+          <Translation id='detailsPage.restrictedData' />
+        </Link>
+      )}
+      {isNonPublicData && (
+        <Link
+          to={`${rootPaths[entity]}?accessrights=NON_PUBLIC`}
+          className='non-public-data'
+        >
+          <Translation id='detailsPage.nonPublicData' />
+        </Link>
+      )}
+      {euThemes.map(({ id, code, title: themeTitle }) => (
+        <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
+          {(code && themeIconMap[code]) ?? null}
+          <Translation text={themeTitle} />
+        </Link>
+      ))}
+    </SC.Themes>
+  );
+};
 
 export default Themes;
