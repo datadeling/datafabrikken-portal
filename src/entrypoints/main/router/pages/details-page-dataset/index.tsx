@@ -859,7 +859,8 @@ const DatasetDetailsPage: FC<Props> = ({
                     )}
                     value={
                       <ExternalLink href={hasURL} openInNewTab>
-                        {organizationUnit ?? hasURL}
+                        {translations.getTranslateText(organizationUnit) ??
+                          hasURL}
                       </ExternalLink>
                     }
                   />
