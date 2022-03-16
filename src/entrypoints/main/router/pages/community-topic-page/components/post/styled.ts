@@ -57,6 +57,12 @@ const Content = styled.div`
     height: auto;
   }
 
+  & .emoji {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
+  }
+
   & span.hidden,
   & div.plugin-calendar-event-responses-lists,
   & div.plugin-calendar-event-date,
