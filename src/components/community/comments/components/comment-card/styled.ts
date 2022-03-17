@@ -26,7 +26,7 @@ const CommentCard = styled.li<{ $isReply: boolean }>`
     height: 20px;
     width: 20px;
     display: inline;
-    vertical-align: text-top;
+    vertical-align: middle;
   }
 
   ${onMobileView} {

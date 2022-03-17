@@ -44,6 +44,10 @@ const UserInfo = styled.div`
 const Content = styled.div`
   padding-top: ${theme.spacing('S20')};
 
+  & > ul {
+    list-style: disc;
+  }
+
   & > p {
     margin-bottom: ${theme.spacing('S10')};
   }
@@ -51,6 +55,12 @@ const Content = styled.div`
   & img {
     max-width: 100%;
     height: auto;
+  }
+
+  & .emoji {
+    height: 20px;
+    width: 20px;
+    vertical-align: middle;
   }
 
   & span.hidden,
