@@ -58,7 +58,7 @@ const InfoBox = styled.a<infoBoxProps>`
   box-shadow: 0 12px 48px
     ${({ $invertColor }) =>
       $invertColor
-        ? theme.colour(Colour.BLUE, 'B38', 50)
+        ? theme.colour(Colour.BLUE, 'B38', 15)
         : theme.colour(Colour.BLUE, 'B56', 50)};
   display: flex;
   flex-direction: column;
@@ -100,7 +100,7 @@ const InfoBox = styled.a<infoBoxProps>`
     box-shadow: 0 6px 24px
       ${({ $invertColor }) =>
         $invertColor
-          ? theme.colour(Colour.BLUE, 'B38', 50)
+          ? theme.colour(Colour.BLUE, 'B38', 15)
           : theme.colour(Colour.BLUE, 'B56', 50)};
   }
 `;
