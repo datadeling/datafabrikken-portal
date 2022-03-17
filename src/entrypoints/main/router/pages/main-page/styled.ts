@@ -109,6 +109,7 @@ const MainContentSection = styled.section`
 
   background: linear-gradient(
     ${theme.colour(Colour.BLUE, 'B48')},
+    ${theme.colour(Colour.BLUE, 'B54')},
     ${theme.colour(Colour.BLUE, 'B54')}
   );
 `;
