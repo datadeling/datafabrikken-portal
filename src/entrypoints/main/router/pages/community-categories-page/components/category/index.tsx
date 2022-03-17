@@ -12,7 +12,7 @@ import CalendarIcon from '../../../../../../../images/icon-calendar.inline.svg';
 import DatasetApiIcon from '../../../../../../../images/icon-dataset-api.inline.svg';
 import ThumbsIcon from '../../../../../../../images/icon-thumbs.inline.svg';
 import ExamplesIcon from '../../../../../../../images/icon-examples.inline.svg';
-import InsightIcon from '../../../../../../../images/icon-community-insight.inline.svg';
+import ProjectsIcon from '../../../../../../../images/icon-projects.inline.svg';
 import LawIcon from '../../../../../../../images/icon-law.inline.svg';
 
 import { CommunityCategory } from '../../../../../../../types';
@@ -27,6 +27,8 @@ import {
   InfoBoxIcon,
   InfoBoxTitle
 } from '../../../../../../../components/info-box';
+
+import SC from './styled';
 
 interface Props {
   category: CommunityCategory;
@@ -44,10 +46,10 @@ const getCategoryIcon = (slug: string) => {
       return <ThumbsIcon />;
     case 'etterspør-datasett-og-api-er':
       return <DatasetApiIcon />;
-    case 'innsynsløsning-utredning-av-tekniske-og-juridiske-muligheter':
-      return <InsightIcon />;
     case 'juss-og-data':
       return <LawIcon />;
+    case 'arenaer-og-prosjekter':
+      return <ProjectsIcon />;
     case 'tips-og-spørsmål':
       return <LightBulbIcon />;
     default:
@@ -55,7 +57,9 @@ const getCategoryIcon = (slug: string) => {
   }
 };
 
-const Category: FC<Props> = ({ category: { slug, name, description } }) => (
+const Category: FC<Props> = ({
+  category: { slug, name, description, children }
+}) => (
   <InfoBox
     key={`category-${slug}`}
     as={RouterLink}
@@ -65,7 +69,14 @@ const Category: FC<Props> = ({ category: { slug, name, description } }) => (
     <InfoBoxTitle>
       <h3>{parse(name)}</h3>
     </InfoBoxTitle>
-    <InfoBoxBody>
+    <InfoBoxBody truncate={false}>
+      {children?.length > 0 && (
+        <SC.Subcategories>
+          {children.map((subCategory, index) =>
+            index > 0 ? <> &#8226; {subCategory.name}</> : subCategory.name
+          )}
+        </SC.Subcategories>
+      )}
       <Markdown allowHtml>{description}</Markdown>
     </InfoBoxBody>
   </InfoBox>

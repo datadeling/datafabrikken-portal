@@ -196,6 +196,7 @@ export interface CmsArticle {
 
 export interface CommunityCategory {
   cid: number;
+  children: CommunityCategory[];
   description: string;
   disabled: boolean;
   name: string;

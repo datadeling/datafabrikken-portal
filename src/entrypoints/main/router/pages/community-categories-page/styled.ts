@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 import { theme, Colour } from '../../../app/theme';
 
+import { SC as InfoBoxSC } from '../../../../../components/info-box';
+
 const onMinWidth = '@media (max-width: 1350px)';
 const onMobileView = '@media (max-width: 900px)';
 
@@ -26,6 +28,14 @@ const Title = styled.h1`
   }
 `;
 
+const SubTitle = styled.h3`
+  font-size: ${theme.fontSize('FS18')};
+  margin-bottom: ${theme.spacing('S2')};
+  ${onMobileView} {
+    font-size: ${theme.fontSize('FS16')};
+  }
+`;
+
 const Ingress = styled.div`
   font-size: ${theme.fontSize('FS16')};
   line-height: 1.5;
@@ -47,14 +57,14 @@ const Ingress = styled.div`
 
 const IconWrapper = styled.div`
   display: flex;
-  flex: 0 0 15%;
+  flex: 0 0 10%;
   margin-left: ${theme.spacing('S64')};
   ${onMinWidth} {
     display: none;
   }
   & > svg {
     flex-basis: 100%;
-    fill: ${theme.colour(Colour.BLUE, 'B16')};
+    transform: scaleX(-1);
   }
 `;
 
@@ -72,6 +82,14 @@ const Categories = styled.div`
   & > a {
     margin-bottom: 0;
   }
+
+  & > ${InfoBoxSC.InfoBox.InfoBox} {
+    & > ${InfoBoxSC.InfoBox.InfoBoxRow} {
+      & ${InfoBoxSC.InfoBoxTitle.Title} {
+        margin-bottom: ${theme.spacing('S2')};
+      }
+    }
+  }
 `;
 
 export default {
@@ -79,6 +97,7 @@ export default {
   Header,
   TitleContainer,
   Title,
+  SubTitle,
   IconWrapper,
   Ingress,
   Content,

@@ -12,6 +12,7 @@ import InfoBoxImage from '../info-box-image';
 import InfoBoxIcon from '../info-box-icon';
 import InfoBoxTitle from '../info-box-title';
 import InfoBoxBody from '../info-box-body';
+import InfoBoxBodyRight from '../info-box-body-right';
 
 import SC from './styled';
 
@@ -56,6 +57,13 @@ const InfoBox: FC<PropsWithChildren<Props>> = ({
       isValidElement(child) && child.type === InfoBoxBody ? child : null
     )?.shift();
 
+  const renderInfoBoxBodyRight = () =>
+    Children.map(children, child =>
+      isValidElement(child) && child.type === InfoBoxBodyRight ? (
+        <SC.ContentRightWrapper>{child}</SC.ContentRightWrapper>
+      ) : null
+    )?.shift();
+
   return (
     <SC.InfoBox $invertColor={invertColor} as={as} {...props}>
       <SC.InfoBoxHeader>{renderInfoBoxImage()}</SC.InfoBoxHeader>
@@ -66,6 +74,7 @@ const InfoBox: FC<PropsWithChildren<Props>> = ({
           {renderInfoBoxTitle()}
           {renderInfoBoxBody()}
         </SC.ContentWrapper>
+        {renderInfoBoxBodyRight()}
       </SC.InfoBoxRow>
     </SC.InfoBox>
   );

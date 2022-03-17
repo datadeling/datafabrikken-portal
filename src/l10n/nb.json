@@ -321,6 +321,7 @@
     "posted": "svarte",
     "noPosts": "Ingen innlegg ennå",
     "topics": "emner",
+    "topic": "emne",
     "posts": "innlegg",
     "views": "visninger",
     "votes": "stemmer",
@@ -344,7 +345,10 @@
       "popular": "Populære",
       "calendar": "Kalender",
       "about": "Om Datalandsbyen",
-      "login": "Login/registrer"
+      "login": "Login/registrer",
+      "subcategories": "Underkategorier",
+      "topics": "Emner",
+      "inDatalandsbyen": "i Datalandsbyen"
     },
     "comments": {
       "sectionTitle": "Har du spørsmål eller kommentarer til {entityType}?",
@@ -383,7 +387,7 @@
       "send": "Send",
       "cancel": "Avbryt",
       "tools": {
-        "modificationAlt" : {
+        "modificationAlt": {
           "bold": "Sterk",
           "italic": "Kursiv",
           "ul": "Punktliste",
@@ -395,44 +399,44 @@
         },
         "modification": {
           "bold": {
-            "value":"**sterk tekst her**",
-            "left":"**",
-            "right":"**"
+            "value": "**sterk tekst her**",
+            "left": "**",
+            "right": "**"
           },
           "italic": {
-            "value":"*krusiv tekst her*",
-            "left":"*",
-            "right":"*"
+            "value": "*krusiv tekst her*",
+            "left": "*",
+            "right": "*"
           },
           "ul": {
-            "value":"\n* punkt",
-            "left":"\n* ",
-            "right":""
+            "value": "\n* punkt",
+            "left": "\n* ",
+            "right": ""
           },
           "image": {
-            "value":"![bildetekst](url til bilde)",
-            "left":"![",
-            "right":"](url til bilde)"
+            "value": "![bildetekst](url til bilde)",
+            "left": "![",
+            "right": "](url til bilde)"
           },
           "tag": {
-            "value":"@brukernavn",
-            "left":"@",
-            "right":""
+            "value": "@brukernavn",
+            "left": "@",
+            "right": ""
           },
           "strikethrough": {
-            "value":"~~gjennomstreking~~",
-            "left":"~~",
-            "right":"~~"
+            "value": "~~gjennomstreking~~",
+            "left": "~~",
+            "right": "~~"
           },
           "code": {
-            "value":"```\nkode\n```",
-            "left":"```\n",
-            "right":"\n```"
+            "value": "```\nkode\n```",
+            "left": "```\n",
+            "right": "\n```"
           },
           "link": {
-            "value":"[lenketekst](lenkeurl)",
-            "left":"[",
-            "right":"](lenkeurl)"
+            "value": "[lenketekst](lenkeurl)",
+            "left": "[",
+            "right": "](lenkeurl)"
           }
         }
       }

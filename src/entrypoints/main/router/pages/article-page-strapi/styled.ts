@@ -12,8 +12,14 @@ const Container = styled(ContainerSC.Container)`
   }
 `;
 
-const Content = styled.section`
-  padding-bottom: ${theme.spacing('S32')};
+const ParagraphBackground = styled.div`
+  padding: ${theme.spacing('S16')} 0;
+`;
+
+const ContentSection = styled.section`
+  & > ${ParagraphBackground}:nth-of-type(even) {
+    background-color: ${theme.colour(Colour.BLUE, 'B04')};
+  }
 `;
 
 const Header = styled.header`
@@ -36,6 +42,7 @@ const Subtitle = styled.p`
   font-size: ${theme.fontSize('FS16')};
   line-height: ${theme.fontSize('FS24')};
   max-width: 800px;
+  margin-bottom: ${theme.spacing('S8')};
 
   ${onMobileView} {
     font-size: ${theme.fontSize('FS14')};
@@ -44,8 +51,9 @@ const Subtitle = styled.p`
 
 export default {
   Container,
-  Content,
+  ContentSection,
   Header,
   Title,
-  Subtitle
+  Subtitle,
+  ParagraphBackground
 };
