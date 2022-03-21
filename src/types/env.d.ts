@@ -16,5 +16,4 @@ export interface EnvironmentVariables {
   FDK_DATASET_PREVIEW_API_KEY: string;
   STRAPI_API_HOST: string;
   FDK_USER_FEEDBACK_SERVICE_BASE_URI: string;
-  USER_FEEDBACK_TOGGLE: boolean;
 }

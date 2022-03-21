@@ -23,7 +23,6 @@ export default validateEnv(
     FDK_DATASET_PREVIEW_API_KEY: '',
     STRAPI_API_HOST: 'https://cms.datafabrikken.norge.no',
     FDK_USER_FEEDBACK_SERVICE_BASE_URI:
-      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/user-feedback-service-staging',
-    USER_FEEDBACK_TOGGLE: localStorage.getItem('USER_FEEDBACK_TOGGLE') ?? false
+      'https://europe-west1-digdir-cloud-functions.cloudfunctions.net/user-feedback-service-staging'
   }
 );
