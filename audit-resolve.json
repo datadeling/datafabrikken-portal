@@ -1,0 +1,66 @@
+{
+  "decisions": {
+    "1067259|html-to-text>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|@pmmmwh/react-refresh-webpack-plugin>loader-utils>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|react-svg-loader>react-svg-core>@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|jest>@jest/core>@jest/transform>@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|@graphql-codegen/typescript>@graphql-codegen/visitor-plugin-common>@graphql-tools/relay-operation-optimizer>relay-compiler>@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|@graphql-codegen/typescript-operations>@graphql-codegen/typescript>@graphql-codegen/visitor-plugin-common>@graphql-tools/relay-operation-optimizer>relay-compiler>@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|jest>@jest/core>jest-config>@jest/test-sequencer>jest-runtime>@jest/transform>@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|jest>jest-cli>@jest/core>jest-config>@jest/test-sequencer>jest-runtime>@jest/transform>@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|jest>jest-cli>@jest/core>jest-config>@jest/test-sequencer>jest-runtime>jest-snapshot>@jest/transform>@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|jest>jest-cli>@jest/core>jest-config>@jest/test-sequencer>jest-runtime>@jest/transform>babel-plugin-istanbul>istanbul-lib-instrument>@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    },
+    "1067259|jest>jest-cli>@jest/core>jest-config>@jest/test-sequencer>jest-runtime>jest-snapshot>@jest/transform>babel-plugin-istanbul>istanbul-lib-instrument>@babel/core>json5>minimist": {
+      "decision": "ignore",
+      "madeAt": 1647936954875,
+      "expiresAt": 1650528942386
+    }
+  },
+  "rules": {},
+  "version": 1
+}
