@@ -73,7 +73,13 @@ const Themes: FC<Props> = ({
   isNonPublicData,
   themes
 }) => {
-  const euThemes = themes.filter(theme => isEuTheme(theme)) as EuTheme[];
+  const euThemesById = themes.reduce((acc, theme) => {
+    if (isEuTheme(theme)) {
+      return { ...acc, [theme.id]: theme };
+    }
+    return acc;
+  }, {} as Record<string, EuTheme>);
+
   return (
     <SC.Themes>
       {isOpenData && (
@@ -105,7 +111,7 @@ const Themes: FC<Props> = ({
           <Translation id='detailsPage.nonPublicData' />
         </Link>
       )}
-      {euThemes.map(({ id, code, title: themeTitle }) => (
+      {Object.values(euThemesById).map(({ id, code, title: themeTitle }) => (
         <Link key={id} to={`${rootPaths[entity]}?theme=${code}`}>
           {(code && themeIconMap[code]) ?? null}
           <Translation text={themeTitle} />
