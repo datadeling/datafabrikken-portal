@@ -46,6 +46,7 @@ const Content = styled.div`
 
   & > ul {
     list-style: disc;
+    padding-left: ${theme.spacing('S24')};
   }
 
   & > p {
