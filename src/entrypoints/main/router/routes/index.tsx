@@ -5,8 +5,9 @@ import routes from '../../../../routes';
 
 const Routes: FC = () => (
   <Switch>
-    {Object.keys(routes).map((path: string) => (
+    {Object.keys(routes).map((path: string, index) => (
       <Route
+        key={`${path}-${index}`}
         exact
         path={path}
         component={lazy(() => import(`../pages/${routes[path]}`))}
