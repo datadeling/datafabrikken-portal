@@ -17,12 +17,14 @@ interface Props {
   visibleLines: number;
   lineHeight: number;
   backgroundColour?: (props: ThemeProps) => string;
+  showExpandButton?: boolean;
 }
 
 const TruncatedText: FC<PropsWithChildren<Props>> = ({
   visibleLines,
   lineHeight,
   backgroundColour,
+  showExpandButton = true,
   children
 }) => {
   const [expanded, setExpanded] = useState(false);
@@ -46,7 +48,7 @@ const TruncatedText: FC<PropsWithChildren<Props>> = ({
       >
         {children}
       </SC.TextContent>
-      {truncate && (
+      {showExpandButton && truncate && (
         <SC.ExpandButton onClick={() => setExpanded(!expanded)}>
           {expanded ? (
             <Translation id='truncatedText.expanded' />
