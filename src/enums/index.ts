@@ -9,6 +9,7 @@ export enum PATHNAME {
   COMMUNITY_RECENT = '/datalandsbyen/siste',
   COMMUNITY_TAGS = '/datalandsbyen/emneord',
   COMMUNITY_ABOUT = '/datalandsbyen/om-datalandsbyen',
+  COMMUNITY_SEARCH = '/datalandsbyen/søk',
   DATA_SOURCES = '/datakilder',
   GUIDEANCE_AND_COMPETENCE = '/veiledere-og-kompetanse',
   PRIVATE_SECTOR = '/privat-sektor',

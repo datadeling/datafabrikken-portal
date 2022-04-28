@@ -6,7 +6,35 @@ import { theme, Colour } from '../../../entrypoints/main/app/theme';
 
 import TopicIconBase from '../../../images/icon-topic.inline.svg';
 
+import SearchBarSC from '../../search-bar/styled';
+
 const onMobileView = '@media (max-width: 900px)';
+
+const MenuWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  & > ${SearchBarSC.SearchBar} {
+    height: 40px;
+
+    & > ${SearchBarSC.SearchField} {
+      font-size: ${theme.fontSize('FS12')};
+    }
+
+    & > ${SearchBarSC.ClearButton} {
+      display: flex;
+    }
+
+    & > ${SearchBarSC.SearchButton} {
+      display: flex;
+
+      & > ${SearchBarSC.SearchIcon} {
+        width: 1.5em;
+      }
+    }
+  }
+`;
 
 const Link = styled(LinkBase)`
   display: flex;
@@ -82,4 +110,4 @@ const TopicIcon = styled(TopicIconBase)`
   }
 `;
 
-export default { Link, ExternalLink, Menu, TopicIcon };
+export default { MenuWrapper, Link, ExternalLink, Menu, TopicIcon };

@@ -338,6 +338,7 @@
       "ascending": "Stigende",
       "descending": "Synkende"
     },
+    "communitySearchPlaceholder": "Søk etter innhold i Datalandsbyen",
     "header": {
       "categories": "Kategorier",
       "tags": "Emneord",
@@ -348,7 +349,9 @@
       "login": "Login/registrer",
       "subcategories": "Underkategorier",
       "topics": "Emner",
-      "inDatalandsbyen": "i Datalandsbyen"
+      "inDatalandsbyen": "i Datalandsbyen",
+      "search": "Søk",
+      "searchHits": "Søket ditt ga {matchCount} treff"
     },
     "comments": {
       "sectionTitle": "Har du spørsmål eller kommentarer til {entityType}?",

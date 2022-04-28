@@ -100,6 +100,10 @@ const routes = [
     breadcrumb: () => <CommunityTopicBreadCrumb />
   },
   {
+    path: PATHNAME.COMMUNITY_SEARCH,
+    breadcrumb: () => <Translation id='community.header.search' />
+  },
+  {
     path: `${PATHNAME.ORGANIZATION}/:organizationId`,
     breadcrumb: () => <OrganizationPageBreadcrumb />
   },

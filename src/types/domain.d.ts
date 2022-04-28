@@ -324,6 +324,33 @@ export interface CommunityCalendarDate {
   endDate?: Date;
   allDay?: boolean;
 }
+
+export interface CommunitySearchPost {
+  pid: number;
+  tid: number;
+  content: string;
+  uid: number;
+  timestamp: number;
+  upvotes: number;
+  downvotes: number;
+  replies: number;
+  votes: number;
+  user: CommunityUser;
+  topic: Partial<CommunityTopic>;
+  category: Partial<CommunityCategory>;
+}
+
+export interface CommunitySearchItem {
+  posts: CommunitySearchPost[];
+  matchCount: number;
+  pageCount: number;
+  time: string;
+  pagination: CommunityPagination;
+  multiplePages: boolean;
+  search_query: string;
+  term: string;
+}
+
 interface DatasetReference {
   referenceType: ReferenceType;
   source?: { uri?: string };

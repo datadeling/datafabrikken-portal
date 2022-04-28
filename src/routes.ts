@@ -24,6 +24,9 @@ export default {
   [`${PATHNAME.COMMUNITY_TAGS}/:tag`]: 'community-topics-page',
   [`${PATHNAME.COMMUNITY}/:categorySlugId/:categorySlugTitle/:topicSlugId/:topicSlugTitle`]:
     'community-topic-page',
+  [PATHNAME.COMMUNITY_SEARCH]: 'community-search-page',
+  [`${PATHNAME.COMMUNITY_SEARCH}/:topicSlugId/:topicSlugTitle`]:
+    'community-topic-page',
   [PATHNAME.CONTACT]: 'contact-page',
   [PATHNAME.ORGANIZATION]: 'organizations-page',
   [`${PATHNAME.ORGANIZATION}/:organizationId`]: 'organization-page',
