@@ -70,9 +70,9 @@ export const pruneNodebbTemplateTags = (
     /(?:\|\s)(?:\[{2})(.*?)(?:\]{2}:)(.*?)(?:\s\|)/g,
     (_substring, tagCapture, valueCapture) => {
       if (tagCapture === CommunityTemplateTag.CALENDAR_EVENT_TITLE) {
-        return `${translationsService.translate(
+        return `| ${translationsService.translate(
           'community.calendarEvent'
-        )}${valueCapture}`;
+        )}:${valueCapture} |`;
       }
       return valueCapture;
     }
