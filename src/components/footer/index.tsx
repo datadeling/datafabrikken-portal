@@ -110,7 +110,7 @@ const Footer: FC<Props> = () => (
               </SC.PlainLink>
             </li>
             <li>
-              <SC.PlainLink href='/sitemap.xml'>
+              <SC.PlainLink href={PATHNAME.SITEMAP}>
                 <Translation id='footer.linkSection.links.sitemap' />
               </SC.PlainLink>
             </li>
