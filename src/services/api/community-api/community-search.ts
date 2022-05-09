@@ -18,8 +18,7 @@ export const communitySearchApi = createApi({
         page: number;
       }
     >({
-      query: ({ queryTerm, page }) =>
-        `?term=${queryTerm}&page=${page}&in=titles`
+      query: ({ queryTerm, page }) => `?term=${queryTerm}&page=${page}`
     })
   })
 });
