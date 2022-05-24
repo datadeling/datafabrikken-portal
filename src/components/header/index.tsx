@@ -43,9 +43,9 @@ const Header: FC<Props> = () => {
         </SC.Logo>
         <SC.NavigationLinks>
           <li>
-            <SC.Link to={PATHNAME.ABOUT}>
+            <SC.PlainLink href={PATHNAME.ABOUT}>
               <Translation id='header.about' />
-            </SC.Link>
+            </SC.PlainLink>
           </li>
           <li>
             <SC.Link to={PATHNAME.FIND_DATA}>
@@ -53,19 +53,19 @@ const Header: FC<Props> = () => {
             </SC.Link>
           </li>
           <li>
-            <SC.Link to={PATHNAME.NEWS}>
+            <SC.PlainLink href={PATHNAME.NEWS}>
               <Translation id='header.news' />
-            </SC.Link>
+            </SC.PlainLink>
           </li>
           <li>
-            <SC.Link to={PATHNAME.COURSES}>
+            <SC.PlainLink href={PATHNAME.COURSES}>
               <Translation id='header.courses' />
-            </SC.Link>
+            </SC.PlainLink>
           </li>
           <li>
-            <SC.Link to={PATHNAME.GUIDANCE}>
+            <SC.PlainLink href={PATHNAME.GUIDANCE}>
               <Translation id='header.guidance' />
-            </SC.Link>
+            </SC.PlainLink>
           </li>
           <li>
             <SC.Link to={PATHNAME.COMMUNITY}>
@@ -90,17 +90,20 @@ const Header: FC<Props> = () => {
           <Menu>
             <SC.Menu>
               <li>
-                <SC.Link to={PATHNAME.MAIN} onClick={() => closeDropdownMenu()}>
+                <SC.PlainLink
+                  href={PATHNAME.MAIN}
+                  onClick={() => closeDropdownMenu()}
+                >
                   <Translation id='header.home' />
-                </SC.Link>
+                </SC.PlainLink>
               </li>
               <li>
-                <SC.Link
-                  to={PATHNAME.ABOUT}
+                <SC.PlainLink
+                  href={PATHNAME.ABOUT}
                   onClick={() => closeDropdownMenu()}
                 >
                   <Translation id='header.about' />
-                </SC.Link>
+                </SC.PlainLink>
               </li>
               <li>
                 <SC.Link
@@ -111,25 +114,28 @@ const Header: FC<Props> = () => {
                 </SC.Link>
               </li>
               <li>
-                <SC.Link to={PATHNAME.NEWS} onClick={() => closeDropdownMenu()}>
+                <SC.PlainLink
+                  href={PATHNAME.NEWS}
+                  onClick={() => closeDropdownMenu()}
+                >
                   <Translation id='header.news' />
-                </SC.Link>
+                </SC.PlainLink>
               </li>
               <li>
-                <SC.Link
-                  to={PATHNAME.COURSES}
+                <SC.PlainLink
+                  href={PATHNAME.COURSES}
                   onClick={() => closeDropdownMenu()}
                 >
                   <Translation id='header.courses' />
-                </SC.Link>
+                </SC.PlainLink>
               </li>
               <li>
-                <SC.Link
-                  to={PATHNAME.GUIDANCE}
+                <SC.PlainLink
+                  href={PATHNAME.GUIDANCE}
                   onClick={() => closeDropdownMenu()}
                 >
                   <Translation id='header.guidance' />
-                </SC.Link>
+                </SC.PlainLink>
               </li>
               <li>
                 <SC.Link

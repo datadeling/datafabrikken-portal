@@ -69,6 +69,30 @@ const Link = styled(LinkBase)`
   }
 `;
 
+const PlainLink = styled.a`
+  padding-bottom: ${theme.spacing('S4')};
+  position: relative;
+  &:after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    width: 0;
+    margin: 0 auto;
+    background-color: ${theme.colour(Colour.BLUE, 'B16')};
+  }
+  &:hover {
+    &:after {
+      left: 0;
+      right: auto;
+      width: 100%;
+      transition: width 0.4s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
+    }
+  }
+`;
+
 const NavigationLinks = styled.ul`
   display: flex;
   margin-left: auto;
@@ -216,6 +240,7 @@ export default {
   Nav,
   NavigationLinks,
   Link,
+  PlainLink,
   SkipLink,
   Logo,
   DropdownMenu,
