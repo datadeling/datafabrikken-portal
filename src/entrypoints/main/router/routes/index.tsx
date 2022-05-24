@@ -5,14 +5,16 @@ import routes from '../../../../routes';
 
 const Routes: FC = () => (
   <Switch>
-    {Object.keys(routes).map((path: string, index) => (
-      <Route
-        key={`${path}-${index}`}
-        exact
-        path={path}
-        component={lazy(() => import(`../pages/${routes[path]}`))}
-      />
-    ))}
+    {Object.keys(routes)
+      .filter((path: string) => !!routes[path])
+      .map((path: string, index) => (
+        <Route
+          key={`${path}-${index}`}
+          exact
+          path={path}
+          component={lazy(() => import(`../pages/${routes[path]}`))}
+        />
+      ))}
     <Route render={() => <ErrorPage errorCode='404' />} />
   </Switch>
 );

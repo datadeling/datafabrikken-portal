@@ -34,24 +34,24 @@ const Footer: FC<Props> = () => (
           </SC.LinkTitle>
           <SC.LinkList>
             <li>
-              <SC.LinkItem to={PATHNAME.MAIN}>
+              <SC.PlainLink href={PATHNAME.MAIN}>
                 <Translation id='footer.linkSection.links.home' />
-              </SC.LinkItem>
+              </SC.PlainLink>
             </li>
             <li>
-              <SC.LinkItem to={PATHNAME.ABOUT}>
+              <SC.PlainLink href={PATHNAME.ABOUT}>
                 <Translation id='footer.linkSection.links.about' />
-              </SC.LinkItem>
+              </SC.PlainLink>
             </li>
             <li>
-              <SC.LinkItem to={PATHNAME.COMMUNITY_ABOUT}>
+              <SC.PlainLink href={PATHNAME.COMMUNITY_ABOUT}>
                 <Translation id='footer.linkSection.links.communityAbout' />
-              </SC.LinkItem>
+              </SC.PlainLink>
             </li>
             <li>
-              <SC.LinkItem to={PATHNAME.NEWS}>
+              <SC.PlainLink href={PATHNAME.NEWS}>
                 <Translation id='footer.linkSection.links.news' />
-              </SC.LinkItem>
+              </SC.PlainLink>
             </li>
           </SC.LinkList>
         </div>
@@ -67,14 +67,14 @@ const Footer: FC<Props> = () => (
               </SC.LinkItem>
             </li>
             <li>
-              <SC.LinkItem to={PATHNAME.COURSES}>
+              <SC.PlainLink href={PATHNAME.COURSES}>
                 <Translation id='footer.linkSection.links.courses' />
-              </SC.LinkItem>
+              </SC.PlainLink>
             </li>
             <li>
-              <SC.LinkItem to={PATHNAME.GUIDANCE}>
+              <SC.PlainLink href={PATHNAME.GUIDANCE}>
                 <Translation id='footer.linkSection.links.guidance' />
-              </SC.LinkItem>
+              </SC.PlainLink>
             </li>
             <li>
               <SC.LinkItem to={PATHNAME.COMMUNITY}>
@@ -95,9 +95,9 @@ const Footer: FC<Props> = () => (
           </SC.LinkTitle>
           <SC.LinkList>
             <li>
-              <SC.LinkItem to={PATHNAME.CONTACT}>
+              <SC.PlainLink href={PATHNAME.CONTACT}>
                 <Translation id='footer.linkSection.links.contact' />
-              </SC.LinkItem>
+              </SC.PlainLink>
             </li>
             <li>
               <SC.PlainLink href='https://www.digdir.no/om-oss/personvernerklaering/706'>

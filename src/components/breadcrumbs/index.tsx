@@ -8,7 +8,6 @@ import Translation from '../translation';
 import Container from '../container';
 import Link from '../link';
 
-import ArticleBreadCrumb from './article-breadcrumb';
 import DatasetBreadcrumb from './dataset-breadcrumb';
 import CommunityCategoryBreadCrumb from './community-category-breadcrumb';
 import CommunityTopicBreadCrumb from './community-topic-breadcrumb';
@@ -17,51 +16,13 @@ import OrganizationPageBreadcrumb from './organization-breadcrumb';
 import MetadataDatasetBreadcrumb from './metadata-dataset-breadcrumb';
 
 import SC from './styled';
-import { StrapiArticleBreadcrumb } from './strapi-article-breadcrumb';
 
 interface Props {}
 
 const routes = [
   {
-    path: PATHNAME.MAIN,
-    breadcrumb: () => <Translation id='header.home' />
-  },
-  {
-    path: PATHNAME.ABOUT,
-    breadcrumb: () => <Translation id='header.about' />
-  },
-  {
     path: `${PATHNAME.FIND_DATA}`,
     breadcrumb: () => <Translation id='header.findData' />
-  },
-  {
-    path: `${PATHNAME.DATA_SOURCES}${PATHNAME.PRIVATE_SECTOR}`,
-    breadcrumb: () => <ArticleBreadCrumb />
-  },
-  {
-    path: `${PATHNAME.DATA_SOURCES}`,
-    breadcrumb: 'Oversikt over datakilder'
-  },
-  {
-    path: `${PATHNAME.GUIDEANCE_AND_COMPETENCE}${PATHNAME.LEGAL_FRAMEWORK}`,
-    breadcrumb: () => <ArticleBreadCrumb />
-  },
-  {
-    path: `${PATHNAME.GUIDEANCE_AND_COMPETENCE}`,
-    breadcrumb: 'Veiledere og kompetanse'
-  },
-
-  {
-    path: PATHNAME.NEWS,
-    breadcrumb: () => <Translation id='header.news' />
-  },
-  {
-    path: `${PATHNAME.NEWS}/:newsArticleId`,
-    breadcrumb: () => <ArticleBreadCrumb />
-  },
-  {
-    path: PATHNAME.CONTACT,
-    breadcrumb: () => <Translation id='header.contact' />
   },
   {
     path: PATHNAME.COMMUNITY,
@@ -70,10 +31,6 @@ const routes = [
   {
     path: `${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/:id`,
     breadcrumb: () => <DatasetBreadcrumb />
-  },
-  {
-    path: PATHNAME.COMMUNITY_ABOUT,
-    breadcrumb: () => <Translation id='header.communityAbout' />
   },
   {
     path: PATHNAME.COMMUNITY_RECENT,
@@ -118,18 +75,6 @@ const routes = [
   {
     path: `${PATHNAME.ORGANIZATION}/:organizationId${PATHNAME.METADATAQUALITY}/:datasetId`,
     breadcrumb: () => <MetadataDatasetBreadcrumb />
-  },
-  {
-    path: PATHNAME.COURSES,
-    breadcrumb: () => <Translation id='header.courses' />
-  },
-  {
-    path: PATHNAME.GUIDANCE,
-    breadcrumb: () => <Translation id='header.guidance' />
-  },
-  {
-    path: `${PATHNAME.GUIDANCE}/:articleTitle`,
-    breadcrumb: () => <StrapiArticleBreadcrumb />
   }
 ];
 
