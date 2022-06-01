@@ -46,6 +46,7 @@ import translations from '../../../../../services/translations';
 import { GetDatasetsParams } from '../../../../../components/with-datasets/redux/actions';
 import { resetSearchSuggestions } from '../../../../../components/with-suggestions/redux/actions';
 import AutosuggestSearchbar from '../../../../../components/autosuggest-searchbar';
+import { registerFilterSearchEvent } from '../../../../../utils/analytics';
 
 interface Props
   extends RouteComponentProps,
@@ -141,6 +142,9 @@ const DatasetsPage: FC<Props> = ({
     target: { name, value, checked }
   }: ChangeEvent<HTMLInputElement>) => {
     setMultiselectFilterValue(history, name, value, checked);
+    if (checked) {
+      registerFilterSearchEvent(name, value);
+    }
   };
 
   const handleMultiSelectFilter = (
@@ -149,6 +153,9 @@ const DatasetsPage: FC<Props> = ({
     value: string
   ) => {
     setMultiselectFilterValue(history, name, value, checked);
+    if (checked) {
+      registerFilterSearchEvent(name, value);
+    }
   };
 
   return (

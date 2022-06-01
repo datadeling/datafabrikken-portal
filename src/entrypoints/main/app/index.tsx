@@ -13,6 +13,7 @@ import TranslationsProvider from '../../../providers/translations';
 import store from '../redux/store';
 
 import AuthProvider from '../../../providers/auth';
+import { initAnalytics } from '../../../utils/analytics';
 import env from '../../../env';
 
 const { STRAPI_API_HOST } = env;
@@ -21,6 +22,8 @@ const client = new ApolloClient({
   uri: `${STRAPI_API_HOST}/graphql`,
   cache: new InMemoryCache()
 });
+
+initAnalytics();
 
 const App: FC = () => (
   <ThemeProvider theme={theme}>
