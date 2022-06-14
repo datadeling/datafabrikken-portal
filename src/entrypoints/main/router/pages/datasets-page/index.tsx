@@ -158,6 +158,13 @@ const DatasetsPage: FC<Props> = ({
     }
   };
 
+  const handleRadioChange = (selected: string, deselected: string[]) => {
+    setRadioFilterValue(history, selected, deselected);
+    if (selected) {
+      registerFilterSearchEvent(selected, 'true');
+    }
+  };
+
   return (
     <Root>
       <SC.Container>
@@ -218,9 +225,7 @@ const DatasetsPage: FC<Props> = ({
             <SC.Aside>
               <SC.Filters>
                 <Filters
-                  handleRadioChange={(selected, deselected) =>
-                    setRadioFilterValue(history, selected, deselected)
-                  }
+                  handleRadioChange={handleRadioChange}
                   handleMultiSelectFilter={handleMultiSelectFilter}
                   handleRemoveFilter={(parameter: string) =>
                     removeParameter(history, parameter)

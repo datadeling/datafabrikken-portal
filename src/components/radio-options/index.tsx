@@ -41,7 +41,7 @@ const RadioOption: FC<RadioOptionProps> = ({
       name={group}
       value={value}
       onChange={onChange}
-      {...(checked !== undefined && !!checked)}
+      checked={checked !== undefined && !!checked}
     />
 
     <Translation id={label} />
@@ -64,6 +64,7 @@ const RadioOptions: FC<Props> = ({ title, options, onChange }) => (
   <SC.RadioContainer>
     {options.map(({ value, label, checked }, index) => (
       <RadioOption
+        key={`${value}-${index}`}
         value={value}
         label={label}
         group={title}
