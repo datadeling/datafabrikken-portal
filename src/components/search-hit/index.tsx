@@ -38,7 +38,7 @@ function isDatasetOpen(
 
 const SearchHit: FC<PropsWithChildren<Props>> = ({
   id,
-  publisher: { name, prefLabel },
+  publisher,
   title,
   description,
   distributions = [],
@@ -67,12 +67,20 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
           <Translation text={title} />
         </a>
       </SC.Title>
-      <SC.Publisher>
-        <span>
-          <Translation id='owner' />:
-        </span>
-        <span>{prefLabel ? <Translation text={prefLabel} /> : name}</span>
-      </SC.Publisher>
+      {publisher && (
+        <SC.Publisher>
+          <span>
+            <Translation id='owner' />:
+          </span>
+          <span>
+            {publisher.prefLabel ? (
+              <Translation text={publisher.prefLabel} />
+            ) : (
+              publisher.name
+            )}
+          </span>
+        </SC.Publisher>
+      )}
       <SC.Description>
         <TruncatedText visibleLines={4} lineHeight={28}>
           <Translation text={description} />
