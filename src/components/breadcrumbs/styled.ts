@@ -7,7 +7,7 @@ const onMobileView = '@media (max-width: 900px)';
 
 const Root = styled.div`
   background-color: ${theme.colour(Colour.BLUE, 'B54')};
-  margin-top: 80px;
+  margin-top: 68px;
   ${onMobileView} {
     & {
       margin-top: calc(55px + (80 - 55) * ((100vw - 320px) / (900 - 320)));

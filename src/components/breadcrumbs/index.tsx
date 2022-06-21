@@ -21,7 +21,11 @@ interface Props {}
 
 const routes = [
   {
-    path: `${PATHNAME.FIND_DATA}`,
+    path: PATHNAME.MAIN,
+    breadcrumb: () => <Translation id='header.home' />
+  },
+  {
+    path: PATHNAME.FIND_DATA,
     breadcrumb: () => <Translation id='header.findData' />
   },
   {
@@ -102,4 +106,5 @@ const Breadcrumbs: FC<Props> = ({ breadcrumbs }: any) =>
       </Container>
     </SC.Root>
   ) : null;
+
 export default withBreadcrumbs(routes, options)(Breadcrumbs);

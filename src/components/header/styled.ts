@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { Link as LinkBase } from 'react-router-dom';
-
+import DropdownMenuBase from '../dropdown-menu';
 import { theme, Colour } from '../../entrypoints/main/app/theme';
 
-import DropdownMenuBase from '../dropdown-menu';
+import ExpandIconBase from '../../images/icon-expand-md.inline.svg';
 
 const onMobileView = '@media (max-width: 900px)';
 
@@ -11,8 +11,8 @@ const Header = styled.header`
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
   display: flex;
   align-items: center;
-  height: 80px;
-  background: ${theme.colour(Colour.BLUE, 'B54')};
+  height: 68px;
+  background: ${theme.colour(Colour.BLUE, 'B54', 80)};
   position: fixed;
   top: 0;
   width: 100%;
@@ -20,6 +20,7 @@ const Header = styled.header`
 
   ${onMobileView} {
     & {
+      background: ${theme.colour(Colour.BLUE, 'B54')};
       height: calc(55px + (80 - 55) * ((100vw - 320px) / (900 - 320)));
     }
   }
@@ -105,7 +106,7 @@ const NavigationLinks = styled.ul`
     margin-left: ${theme.spacing('S24')};
   }
 
-  @media (max-width: 1050px) {
+  ${onMobileView} {
     & {
       display: none;
     }
@@ -146,11 +147,33 @@ const Logo = styled.a`
   }
 `;
 
-const DropdownMenu = styled(DropdownMenuBase)`
+const ExpandIcon = styled(ExpandIconBase)`
+  width: 12px;
+  margin-left: ${theme.spacing('S2')};
+  path {
+    fill: ${theme.colour(Colour.NEUTRAL, 'N0')};
+  }
+`;
+
+const Submenu = styled.ul<{ $open: boolean }>`
+  display: ${({ $open }) => ($open ? 'flex' : 'none')};
+  flex-direction: column;
+  gap: ${theme.spacing('S10')};
+  position: absolute;
+  margin-top: ${theme.spacing('S8')};
+  left: auto;
+  z-index: 9999;
+  min-width: 150px;
+  padding: ${theme.spacing('S16')};
+  list-style: none;
+  background: ${theme.colour(Colour.BLUE, 'B52')};
+`;
+
+const MobileMenu = styled(DropdownMenuBase)`
   display: none;
   margin-left: auto;
 
-  @media (max-width: 1050px) {
+  ${onMobileView} {
     & {
       display: flex;
     }
@@ -214,24 +237,31 @@ const Burger = styled.div<burgerProps>`
 `;
 
 const Menu = styled.ul`
-  overflow-y: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   list-style: none;
   position: fixed;
-  top: calc(55px + (80 - 55) * ((100vw - 320px) / (900 - 320)));
+  top: calc(55px + (68 - 55) * ((100vw - 320px) / (900 - 320)));
   background: ${theme.colour(Colour.BLUE, 'B52')};
   left: 0;
   bottom: 0;
   height: 100vh;
   width: 100vh;
-  overflow: hidden;
   z-index: 9;
 
-  & > li > a {
+  & > li {
     display: block;
     padding: ${theme.spacing('S12')} ${theme.spacing('S16')};
     white-space: pre;
     border-top: 1px solid ${theme.colour(Colour.BLUE, 'B48')};
     font-size: 1.5rem;
+
+    & > ul {
+      margin-left: ${theme.spacing('S10')};
+      & > li {
+        margin-top: ${theme.spacing('S10')};
+      }
+    }
   }
 `;
 
@@ -243,7 +273,9 @@ export default {
   PlainLink,
   SkipLink,
   Logo,
-  DropdownMenu,
+  ExpandIcon,
+  Submenu,
+  MobileMenu,
   MenuButton,
   Menu,
   Burger
