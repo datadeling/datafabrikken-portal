@@ -9,16 +9,20 @@
   "header": {
     "mainContent": "Til hovedinnhold",
     "home": "Hjem",
-    "about": "Om Datafabrikken",
     "findData": "Finn data",
-    "news": "Siste nytt",
-    "guidance": "Veiledning",
+    "news": "Nyheter",
     "community": "Datalandsbyen",
     "communityAbout": "Om Datalandsbyen",
     "organizations": "Virksomheter",
     "metadataquality": "Metadatakvalitet",
     "courses": "Kurs",
-    "guidance": "Veiledning"
+    "guidance": "Veiledning",
+    "offerData": "Tilby data",
+    "howOfferData": "Hvordan tilby data",
+    "useData": "Bruke data",
+    "gettingStarted": "Kom i gang",
+    "search": "Søk",
+    "wizardForSharingData": "Juridisk veileder"
   },
   "footer": {
     "title": "Følg med på Datafabrikken",

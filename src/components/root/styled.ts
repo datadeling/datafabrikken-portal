@@ -4,6 +4,7 @@ import { Colour, theme } from '../../entrypoints/main/app/theme';
 
 type RootProps = {
   $invertColor?: boolean;
+  $addPadding?: boolean;
 };
 
 const Root = styled.main<RootProps>`
@@ -19,6 +20,7 @@ const Root = styled.main<RootProps>`
   flex: 1 0 auto;
   flex-direction: column;
   word-break: break-word;
+  padding-top: ${({ $addPadding }) => ($addPadding ? '68px' : 0)};
 `;
 
 export default { Root };

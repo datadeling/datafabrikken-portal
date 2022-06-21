@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { Colour, theme } from '../theme';
 
 export default css`
   html,
@@ -9,6 +10,7 @@ export default css`
   body {
     overflow-x: hidden;
     overflow-y: scroll;
+    background-color: ${theme.colour(Colour.BLUE, 'B54')};
   }
 
   body,

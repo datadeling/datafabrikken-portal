@@ -1,6 +1,8 @@
 export enum PATHNAME {
   MAIN = '/',
   FIND_DATA = '/finn-data',
+  USE_DATA = '/finn-data/bruke-data',
+  OFFER_DATA = '/tilby-data',
   DATASETS = '/sok-datasett',
   ABOUT = '/om-datafabrikken',
   NEWS = '/siste-nytt',
@@ -24,7 +26,8 @@ export enum PATHNAME {
   METADATAQUALITY = '/metadatakvalitet',
   COURSES = '/kurs',
   GUIDANCE = '/veiledning',
-  SITEMAP = '/nettstedkart'
+  SITEMAP = '/nettstedkart',
+  WIZARD_FOR_SHARING_DATA = '/veiviser-for-deling-av-data'
 }
 
 export enum PARAGRAPH {
