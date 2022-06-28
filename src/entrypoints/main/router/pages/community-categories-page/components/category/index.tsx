@@ -67,7 +67,7 @@ const Category: FC<Props> = ({
   >
     <InfoBoxIcon>{getCategoryIcon(slug)}</InfoBoxIcon>
     <InfoBoxTitle>
-      <h3>{parse(name)}</h3>
+      <h4>{parse(name)}</h4>
     </InfoBoxTitle>
     <InfoBoxBody truncate={false}>
       {children?.length > 0 && (

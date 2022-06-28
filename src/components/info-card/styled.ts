@@ -26,7 +26,7 @@ const CourseContent = styled.div`
   background-color: ${theme.colour(Colour.BLUE, 'B48')};
   color: ${theme.colour(Colour.NEUTRAL, 'N0')};
 
-  & > h3 {
+  & > h4 {
     color: ${theme.colour(Colour.BLUE, 'B16')};
     font-size: ${theme.fontSize('FS14')};
     line-height: ${theme.fontSize('FS20')};
@@ -104,7 +104,7 @@ const Card = styled.a`
     & > ${CourseContent} {
       color: ${theme.colour(Colour.BLUE, 'B52')};
       background-color: ${theme.colour(Colour.BLUE, 'B16')};
-      & > h3 {
+      & > h4 {
         color: ${theme.colour(Colour.BLUE, 'B52')};
         & > a {
           border-color: ${theme.colour(Colour.BLUE, 'B52')};
