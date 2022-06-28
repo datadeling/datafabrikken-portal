@@ -189,7 +189,7 @@ const OrganizationPage: FC<Props> = ({
                 <StatisticsRegularLink
                   to={
                     organization.organizationId
-                      ? `${PATHNAME.FIND_DATA}${patchSearchQuery(
+                      ? `${PATHNAME.SEARCH}${patchSearchQuery(
                           Filter.ORGANIZATION_NUMBER,
                           organization.organizationId
                         )}`
@@ -216,7 +216,7 @@ const OrganizationPage: FC<Props> = ({
               )}
 
               <StatisticsRegularLink
-                to={`${PATHNAME.FIND_DATA}${patchMultipleSearchQuery({
+                to={`${PATHNAME.SEARCH}${patchMultipleSearchQuery({
                   [Filter.ORGPATH]: organization.orgPath,
                   [Filter.LASTXDAYS]: '7'
                 })}`}
@@ -234,7 +234,7 @@ const OrganizationPage: FC<Props> = ({
                 }
               />
               <StatisticsRegularLink
-                to={`${PATHNAME.FIND_DATA}${patchMultipleSearchQuery({
+                to={`${PATHNAME.SEARCH}${patchMultipleSearchQuery({
                   [Filter.ORGPATH]: organization.orgPath,
                   [Filter.PROVENANCE]: 'NASJONAL'
                 })}`}
@@ -249,7 +249,7 @@ const OrganizationPage: FC<Props> = ({
                 }
               />
               <StatisticsRegularLink
-                to={`${PATHNAME.FIND_DATA}${patchMultipleSearchQuery({
+                to={`${PATHNAME.SEARCH}${patchMultipleSearchQuery({
                   [Filter.ORGPATH]: organization.orgPath,
                   [Filter.OPENDATA]: 'true'
                 })}`}

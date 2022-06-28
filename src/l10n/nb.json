@@ -20,9 +20,8 @@
     "offerData": "Tilby data",
     "howOfferData": "Hvordan tilby data",
     "useData": "Bruke data",
-    "gettingStarted": "Kom i gang",
     "search": "Søk",
-    "wizardForSharingData": "Juridisk veileder"
+    "legalGuide": "Juridisk veileder"
   },
   "footer": {
     "title": "Følg med på Datafabrikken",
@@ -40,9 +39,9 @@
         "home": "Hjem",
         "about": "Om Datafabrikken",
         "communityAbout": "Om Datalandsbyen",
-        "news": "Siste nytt",
+        "news": "Nyheter",
 
-        "findData": "Finn data",
+        "search": "Søk",
         "courses": "Kurs",
         "guidance": "Veiledning",
         "community": "Datalandsbyen",

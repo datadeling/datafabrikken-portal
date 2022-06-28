@@ -31,7 +31,7 @@ interface Props {
 }
 
 const rootPaths = {
-  [Entity.DATASET]: PATHNAME.FIND_DATA
+  [Entity.DATASET]: PATHNAME.SEARCH
 };
 
 const themeIconMap: Record<string, JSX.Element> = {

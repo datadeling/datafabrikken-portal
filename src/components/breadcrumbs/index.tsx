@@ -22,18 +22,24 @@ interface Props {}
 const routes = [
   {
     path: PATHNAME.MAIN,
+    isExternal: true,
     breadcrumb: () => <Translation id='header.home' />
   },
   {
     path: PATHNAME.FIND_DATA,
+    isLink: false,
     breadcrumb: () => <Translation id='header.findData' />
+  },
+  {
+    path: PATHNAME.SEARCH,
+    breadcrumb: () => <Translation id='header.search' />
   },
   {
     path: PATHNAME.COMMUNITY,
     breadcrumb: () => <Translation id='header.community' />
   },
   {
-    path: `${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/:id`,
+    path: `${PATHNAME.SEARCH}${PATHNAME.DATASET_DETAILS}/:id`,
     breadcrumb: () => <DatasetBreadcrumb />
   },
   {
@@ -92,16 +98,32 @@ const Breadcrumbs: FC<Props> = ({ breadcrumbs }: any) =>
     <SC.Root>
       <Container>
         <SC.BreadCrumbs>
-          {breadcrumbs.map(({ key, match, breadcrumb }: any, index: number) => (
-            <SC.BreadCrumb key={key}>
-              {index < breadcrumbs.length - 1 && (
-                <Link as={RouterLink} to={match?.url} hideIcon>
-                  {breadcrumb}
-                </Link>
-              )}
-              {index === breadcrumbs.length - 1 && <span>{breadcrumb}</span>}
-            </SC.BreadCrumb>
-          ))}
+          {breadcrumbs.map(
+            (
+              { key, match, breadcrumb, isLink, isExternal }: any,
+              index: number
+            ) => (
+              <SC.BreadCrumb key={key}>
+                {index < breadcrumbs.length - 1 &&
+                  isLink !== false &&
+                  isExternal && (
+                    <Link href={match?.url} hideIcon>
+                      {breadcrumb}
+                    </Link>
+                  )}
+                {index < breadcrumbs.length - 1 &&
+                  isLink !== false &&
+                  !isExternal && (
+                    <Link as={RouterLink} to={match?.url} hideIcon>
+                      {breadcrumb}
+                    </Link>
+                  )}
+                {(index === breadcrumbs.length - 1 || isLink === false) && (
+                  <span>{breadcrumb}</span>
+                )}
+              </SC.BreadCrumb>
+            )
+          )}
         </SC.BreadCrumbs>
       </Container>
     </SC.Root>

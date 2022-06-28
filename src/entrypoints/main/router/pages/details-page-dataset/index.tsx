@@ -718,7 +718,7 @@ const DatasetDetailsPage: FC<Props> = ({
                     )}
                     value={
                       <InternalLink
-                        to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/${id}`}
+                        to={`${PATHNAME.SEARCH}${PATHNAME.DATASET_DETAILS}/${id}`}
                         hideIcon
                       >
                         {translations.getTranslateText(datasetTitle)}
@@ -765,7 +765,7 @@ const DatasetDetailsPage: FC<Props> = ({
             {keywords.map((keyword, index) => (
               <InternalLink
                 key={`${keyword}-${index}`}
-                to={`${PATHNAME.FIND_DATA}?keywords=${encodeURIComponent(
+                to={`${PATHNAME.SEARCH}?keywords=${encodeURIComponent(
                   keyword ?? ''
                 )}`}
                 hideIcon
