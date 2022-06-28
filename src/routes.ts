@@ -3,8 +3,8 @@ import { PATHNAME } from './enums';
 export default {
   [PATHNAME.MAIN]: undefined,
   [PATHNAME.ABOUT]: undefined,
-  [PATHNAME.FIND_DATA]: 'datasets-page',
-  [`${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/:datasetId`]:
+  [PATHNAME.SEARCH]: 'datasets-page',
+  [`${PATHNAME.SEARCH}${PATHNAME.DATASET_DETAILS}/:datasetId`]:
     'details-page-dataset',
   [PATHNAME.NEWS]: undefined,
   [`${PATHNAME.NEWS}/:newsArticleId`]: undefined,
@@ -30,6 +30,6 @@ export default {
     'metadata-quality-dataset-page',
   [PATHNAME.COURSES]: undefined,
   [PATHNAME.GUIDANCE]: undefined,
-  [`${PATHNAME.GUIDANCE}/tilby-data`]: undefined,
-  [`${PATHNAME.GUIDANCE}/bruke-data`]: undefined
+  [`${PATHNAME.OFFER_DATA}/hvordan-tilby-data`]: undefined,
+  [`${PATHNAME.USE_DATA}`]: undefined
 };

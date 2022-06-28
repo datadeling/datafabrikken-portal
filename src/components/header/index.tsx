@@ -94,13 +94,13 @@ const Header: FC<Props> = () => {
             </SC.PlainLink>
             <SC.Submenu $open={isFindDataMenuOpen} ref={findDataMenuRef}>
               <li>
-                <SC.Link to={`${PATHNAME.FIND_DATA}`}>
+                <SC.Link to={`${PATHNAME.SEARCH}`}>
                   <Translation id='header.search' />
                 </SC.Link>
               </li>
               <li>
                 <SC.PlainLink href={`${PATHNAME.USE_DATA}`}>
-                  <Translation id='header.gettingStarted' />
+                  <Translation id='header.useData' />
                 </SC.PlainLink>
               </li>
             </SC.Submenu>
@@ -117,11 +117,8 @@ const Header: FC<Props> = () => {
                 </SC.PlainLink>
               </li>
               <li>
-                <SC.PlainLink
-                  href={PATHNAME.WIZARD_FOR_SHARING_DATA}
-                  target='blank'
-                >
-                  <Translation id='header.wizardForSharingData' />
+                <SC.PlainLink href={PATHNAME.LEGAL_GUIDE} target='blank'>
+                  <Translation id='header.legalGuide' />
                 </SC.PlainLink>
               </li>
             </SC.Submenu>
@@ -174,13 +171,13 @@ const Header: FC<Props> = () => {
                 </SC.PlainLink>
                 <ul>
                   <li>
-                    <SC.Link to={`${PATHNAME.FIND_DATA}`}>
+                    <SC.Link to={`${PATHNAME.SEARCH}`}>
                       <Translation id='header.search' />
                     </SC.Link>
                   </li>
                   <li>
                     <SC.PlainLink href={`${PATHNAME.USE_DATA}`}>
-                      <Translation id='header.gettingStarted' />
+                      <Translation id='header.useData' />
                     </SC.PlainLink>
                   </li>
                 </ul>
@@ -196,11 +193,8 @@ const Header: FC<Props> = () => {
                     </SC.PlainLink>
                   </li>
                   <li>
-                    <SC.PlainLink
-                      href={PATHNAME.WIZARD_FOR_SHARING_DATA}
-                      target='blank'
-                    >
-                      <Translation id='header.wizardForSharingData' />
+                    <SC.PlainLink href={PATHNAME.LEGAL_GUIDE} target='blank'>
+                      <Translation id='header.legalGuide' />
                     </SC.PlainLink>
                   </li>
                 </ul>

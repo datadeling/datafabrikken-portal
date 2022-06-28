@@ -62,8 +62,8 @@ const Footer: FC<Props> = () => (
           </SC.LinkTitle>
           <SC.LinkList>
             <li>
-              <SC.LinkItem to={PATHNAME.FIND_DATA}>
-                <Translation id='footer.linkSection.links.findData' />
+              <SC.LinkItem to={PATHNAME.SEARCH}>
+                <Translation id='footer.linkSection.links.search' />
               </SC.LinkItem>
             </li>
             <li>

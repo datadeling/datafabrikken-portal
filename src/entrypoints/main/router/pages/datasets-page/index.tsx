@@ -286,7 +286,7 @@ const DatasetsPage: FC<Props> = ({
                 </h3>
                 <p>
                   <Translation id='findDataPage.noHitsSubtitle' />{' '}
-                  <InternalLink to={`${PATHNAME.FIND_DATA}`}>
+                  <InternalLink to={`${PATHNAME.SEARCH}`}>
                     <Translation id='findDataPage.noHitsLink' />
                   </InternalLink>
                 </p>
@@ -314,7 +314,7 @@ const DatasetsPage: FC<Props> = ({
               }
             />
             <StatisticsRegularLink
-              to={`${PATHNAME.FIND_DATA}?last_x_days=7`}
+              to={`${PATHNAME.SEARCH}?last_x_days=7`}
               icon={<SC.NewIcon />}
               count={datasetsReport?.newLastWeek ?? ''}
               description={

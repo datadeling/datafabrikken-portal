@@ -63,7 +63,7 @@ const SearchHit: FC<PropsWithChildren<Props>> = ({
   return (
     <SC.SearchHit>
       <SC.Title>
-        <a href={`${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/${id}`}>
+        <a href={`${PATHNAME.SEARCH}${PATHNAME.DATASET_DETAILS}/${id}`}>
           <Translation text={title} />
         </a>
       </SC.Title>

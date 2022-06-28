@@ -1,11 +1,11 @@
 export enum PATHNAME {
   MAIN = '/',
   FIND_DATA = '/finn-data',
+  SEARCH = '/finn-data/sok',
   USE_DATA = '/finn-data/bruke-data',
   OFFER_DATA = '/tilby-data',
-  DATASETS = '/sok-datasett',
   ABOUT = '/om-datafabrikken',
-  NEWS = '/siste-nytt',
+  NEWS = '/nyheter',
   COMMUNITY = '/datalandsbyen',
   COMMUNITY_POPULAR = '/datalandsbyen/populaer',
   COMMUNITY_RECENT = '/datalandsbyen/siste',
@@ -27,7 +27,7 @@ export enum PATHNAME {
   COURSES = '/kurs',
   GUIDANCE = '/veiledning',
   SITEMAP = '/nettstedkart',
-  WIZARD_FOR_SHARING_DATA = '/veiviser-for-deling-av-data'
+  LEGAL_GUIDE = '/jurdisk-veileder-for-datadeling'
 }
 
 export enum PARAGRAPH {

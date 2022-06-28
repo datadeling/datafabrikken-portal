@@ -184,7 +184,7 @@ const DatasetPage: FC<Props> = ({
           </SC.Title>
           <SC.SubTitle>
             <InternalLink
-              to={`${PATHNAME.FIND_DATA}${PATHNAME.DATASET_DETAILS}/${datasetId}`}
+              to={`${PATHNAME.SEARCH}${PATHNAME.DATASET_DETAILS}/${datasetId}`}
             >
               <Translation id='metadataQualityPage.goToDataset' />
             </InternalLink>
