@@ -4,6 +4,7 @@ export enum PATHNAME {
   SEARCH = '/finn-data/sok',
   USE_DATA = '/finn-data/bruke-data',
   OFFER_DATA = '/tilby-data',
+  HOW_TO_OFFER_DATA = '/tilby-data/hvordan-tilby-data',
   ABOUT = '/om-datafabrikken',
   NEWS = '/nyheter',
   COMMUNITY = '/datalandsbyen',
@@ -27,7 +28,7 @@ export enum PATHNAME {
   COURSES = '/kurs',
   GUIDANCE = '/veiledning',
   SITEMAP = '/nettstedkart',
-  LEGAL_GUIDE = '/jurdisk-veileder-for-datadeling'
+  LEGAL_GUIDE = '/juridisk-veileder-for-datadeling'
 }
 
 export enum PARAGRAPH {

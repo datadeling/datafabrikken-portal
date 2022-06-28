@@ -112,8 +112,8 @@ const Header: FC<Props> = () => {
             </SC.PlainLink>
             <SC.Submenu $open={isOfferDataMenuOpen} ref={offerDataMenuRef}>
               <li>
-                <SC.PlainLink href={`${PATHNAME.OFFER_DATA}`}>
-                  <Translation id='header.howOfferData' />
+                <SC.PlainLink href={`${PATHNAME.HOW_TO_OFFER_DATA}`}>
+                  <Translation id='header.howToOfferData' />
                 </SC.PlainLink>
               </li>
               <li>
@@ -188,8 +188,8 @@ const Header: FC<Props> = () => {
                 </SC.PlainLink>
                 <ul>
                   <li>
-                    <SC.PlainLink href={`${PATHNAME.OFFER_DATA}`}>
-                      <Translation id='header.howOfferData' />
+                    <SC.PlainLink href={`${PATHNAME.HOW_TO_OFFER_DATA}`}>
+                      <Translation id='header.howToOfferData' />
                     </SC.PlainLink>
                   </li>
                   <li>
