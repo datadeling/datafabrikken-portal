@@ -49,7 +49,7 @@ const InfoBoxStrapi: FC<Props> = ({
       )}
     </InfoBoxIcon>
     <InfoBoxTitle invertColor={invertColor}>
-      <h3>{title}</h3>
+      <h4>{title}</h4>
     </InfoBoxTitle>
     {content && (
       <InfoBoxBody truncate={false}>

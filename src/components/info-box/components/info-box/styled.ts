@@ -116,12 +116,10 @@ const InfoBoxRow = styled.div`
   align-items: stretch;
   gap: ${theme.spacing('S12')};
 
-  padding: ${theme.spacing('S24')};
+  padding: ${theme.spacing('S16')};
 
   ${onMobileView} {
-    gap: 0;
-    flex-direction: column;
-    padding: ${theme.spacing('S10')};
+    padding: ${theme.spacing('S12')};
   }
 `;
 

@@ -53,10 +53,10 @@ const InfoCard: FC<Props> = ({
           </RoundedTag>
         )}
       </SC.Tags>
-      <h3>
+      <h4>
         {title}
         <ExternalLinkIcon />
-      </h3>
+      </h4>
       <p>{description}</p>
       <SC.CourseFacts>
         {durationInMinutes && (
