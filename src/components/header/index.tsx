@@ -99,6 +99,11 @@ const Header: FC<Props> = () => {
                 </SC.Link>
               </li>
               <li>
+                <SC.PlainLink href={`${PATHNAME.DATAJEGEREN}`}>
+                  <Translation id='header.datajegeren' />
+                </SC.PlainLink>
+              </li>
+              <li>
                 <SC.PlainLink href={`${PATHNAME.USE_DATA}`}>
                   <Translation id='header.useData' />
                 </SC.PlainLink>
@@ -174,6 +179,11 @@ const Header: FC<Props> = () => {
                     <SC.Link to={`${PATHNAME.SEARCH}`}>
                       <Translation id='header.search' />
                     </SC.Link>
+                  </li>
+                  <li>
+                    <SC.PlainLink href={`${PATHNAME.DATAJEGEREN}`}>
+                      <Translation id='header.datajegeren' />
+                    </SC.PlainLink>
                   </li>
                   <li>
                     <SC.PlainLink href={`${PATHNAME.USE_DATA}`}>
