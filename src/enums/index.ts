@@ -3,6 +3,7 @@ export enum PATHNAME {
   FIND_DATA = '/finn-data',
   SEARCH = '/finn-data/sok',
   USE_DATA = '/finn-data/bruke-data',
+  DATAJEGEREN = '/finn-data/datajegeren',
   OFFER_DATA = '/tilby-data',
   HOW_TO_OFFER_DATA = '/tilby-data/hvordan-tilby-data',
   ABOUT = '/om-datafabrikken',
