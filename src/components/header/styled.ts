@@ -245,7 +245,6 @@ const Menu = styled.ul`
   background: ${theme.colour(Colour.BLUE, 'B52')};
   left: 0;
   bottom: 0;
-  height: 100vh;
   width: 100vh;
   z-index: 9;
 
