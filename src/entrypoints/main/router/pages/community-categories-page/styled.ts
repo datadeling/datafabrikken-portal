@@ -85,6 +85,12 @@ const Categories = styled.div`
 
   & > ${InfoBoxSC.InfoBox.InfoBox} {
     & > ${InfoBoxSC.InfoBox.InfoBoxRow} {
+      padding: ${theme.spacing('S10')};
+
+      ${onMobileView} {
+        padding: ${theme.spacing('S8')};
+      }
+
       & ${InfoBoxSC.InfoBoxTitle.Title} {
         margin-bottom: ${theme.spacing('S2')};
       }
@@ -92,9 +98,14 @@ const Categories = styled.div`
   }
 `;
 
+const Topics = styled.div`
+  padding-bottom: ${theme.spacing('S20')};
+`;
+
 export default {
   Page,
   Header,
+  Topics,
   TitleContainer,
   Title,
   SubTitle,
