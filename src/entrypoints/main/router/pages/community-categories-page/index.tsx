@@ -1,15 +1,13 @@
 import React, { FC, memo, useEffect } from 'react';
 import { compose } from 'redux';
 
-import withPage, {
-  Props as CmsArticleProps
-} from '../../../../../components/with-cms-page';
-
 import withCommunityCategories, {
   Props as CommunityCategoriesProps
 } from '../../../../../components/with-community-categories';
 
-import CommunityIllustration from '../../../../../images/illustration-community-large.inline.svg';
+import withCommunityTopics, {
+  Props as CommunityTopicsProps
+} from '../../../../../components/with-community-topics';
 
 import Root from '../../../../../components/root';
 import Container from '../../../../../components/container';
@@ -19,22 +17,25 @@ import Category from './components/category';
 
 import SC from './styled';
 import { categorySorter } from '../../../../../utils/community/utils';
-import Markdown from '../../../../../components/markdown';
 import {
   withTranslations,
   Props as TranslationProps
 } from '../../../../../providers/translations';
-
-const articleId = '7e856b1b-0f96-44fe-b4c3-7a30a3140fb7';
+import Link from '../../../../../components/link';
+import Translation from '../../../../../components/translation';
+import Topic from '../../../../../components/community/topic';
+import env from '../../../../../env';
 
 interface Props
-  extends CmsArticleProps,
+  extends CommunityTopicsProps,
     CommunityCategoriesProps,
     TranslationProps {}
 
+const { COMMUNITY_API_HOST } = env;
+
 const CommunityCategoriesPage: FC<Props> = ({
-  cmsPage,
-  cmsPageActions: { getCmsPageRequested: getCmsPage, resetCmsPage },
+  communityTopics,
+  communityTopicsActions: { getRecentTopicsRequested: getRecentTopics },
   communityCategories,
   communityCategoriesActions: {
     getCategoriesRequested: getCategories,
@@ -43,10 +44,9 @@ const CommunityCategoriesPage: FC<Props> = ({
   translationsService
 }) => {
   useEffect(() => {
-    getCmsPage(articleId);
     getCategories();
+    getRecentTopics();
     return () => {
-      resetCmsPage();
       resetCategories();
     };
   }, []);
@@ -58,17 +58,24 @@ const CommunityCategoriesPage: FC<Props> = ({
           <CommunityMenu />
           <SC.Header>
             <SC.TitleContainer>
-              <SC.Title>{cmsPage?.title}</SC.Title>
-              <SC.Ingress>
-                <Markdown allowHtml>
-                  {cmsPage?.field_modules[0]?.field_body?.value ?? ''}
-                </Markdown>
-              </SC.Ingress>
+              <SC.Title>
+                {translationsService.translate('header.community')}
+              </SC.Title>
             </SC.TitleContainer>
-            <SC.IconWrapper>
-              <CommunityIllustration />
-            </SC.IconWrapper>
           </SC.Header>
+          <SC.SubTitle>
+            {`${translationsService.translate(
+              'community.header.recent'
+            )} ${translationsService.translate('community.posts')}`}
+          </SC.SubTitle>
+          <SC.Topics>
+            <Link external href={`${COMMUNITY_API_HOST}/recent`}>
+              <Translation id='community.newTopic' />
+            </Link>
+            {communityTopics.slice(0, 3).map((topic, index) => (
+              <Topic key={`topic-${index}`} topic={topic} />
+            ))}
+          </SC.Topics>
           <SC.SubTitle>
             {`${translationsService.translate(
               'community.header.categories'
@@ -92,7 +99,7 @@ const CommunityCategoriesPage: FC<Props> = ({
 
 export default compose<FC>(
   memo,
-  withPage,
+  withCommunityTopics,
   withCommunityCategories,
   withTranslations
 )(CommunityCategoriesPage);
