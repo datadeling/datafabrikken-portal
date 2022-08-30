@@ -29,7 +29,7 @@ export enum PATHNAME {
   COURSES = '/kurs',
   GUIDANCE = '/veiledning',
   SITEMAP = '/nettstedkart',
-  LEGAL_GUIDE = '/juridisk-veileder-for-datadeling'
+  LEGAL_GUIDE = '/juridisk-veiviser-for-datadeling'
 }
 
 export enum PARAGRAPH {
