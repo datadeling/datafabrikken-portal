@@ -139,11 +139,10 @@ const SkipLink = styled.a`
 `;
 
 const Logo = styled.a`
-  font-size: ${theme.fontSize('FS20')};
-  font-weight: 600;
-
   ${onMobileView} {
-    font-size: ${theme.fontSize('FS18')};
+    & > svg {
+      width: 80%;
+    }
   }
 `;
 
@@ -189,6 +188,8 @@ const MenuButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
+  gap: 0.4em;
+  white-space: nowrap;
 `;
 
 type burgerProps = {
