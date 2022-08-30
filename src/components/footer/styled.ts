@@ -87,6 +87,12 @@ const LinkItem = styled(Link)`
   text-decoration: underline;
 `;
 
+const Social = styled.div`
+  display: flex;
+  gap: 1.5em;
+  align-items: center;
+`;
+
 export default {
   Footer,
   Container,
@@ -96,5 +102,6 @@ export default {
   LinkSection,
   LinkTitle,
   LinkList,
-  LinkItem
+  LinkItem,
+  Social
 };
