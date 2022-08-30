@@ -122,7 +122,7 @@ const Header: FC<Props> = () => {
                 </SC.PlainLink>
               </li>
               <li>
-                <SC.PlainLink href={PATHNAME.LEGAL_GUIDE} target='blank'>
+                <SC.PlainLink href={PATHNAME.LEGAL_GUIDE}>
                   <Translation id='header.legalGuide' />
                 </SC.PlainLink>
               </li>
@@ -203,7 +203,7 @@ const Header: FC<Props> = () => {
                     </SC.PlainLink>
                   </li>
                   <li>
-                    <SC.PlainLink href={PATHNAME.LEGAL_GUIDE} target='blank'>
+                    <SC.PlainLink href={PATHNAME.LEGAL_GUIDE}>
                       <Translation id='header.legalGuide' />
                     </SC.PlainLink>
                   </li>
