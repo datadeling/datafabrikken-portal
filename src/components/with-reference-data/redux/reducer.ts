@@ -21,7 +21,7 @@ export default function reducer(
       return state.setIn(['referenceData', action.payload.category], undefined);
     case GET_REFERENCE_DATA_SUCCEEDED: {
       const { category, data } = action.payload;
-      return state.setIn(['referenceData', category], fromJS(data));
+      return state.setIn(['referenceData', category], fromJS(data[category]));
     }
     default:
       return state;

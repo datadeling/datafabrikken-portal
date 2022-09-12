@@ -76,7 +76,7 @@ const DatasetDetailsPage: FC<Props> = ({
   dataServicesRelations,
   isLoadingDataset,
   topics,
-  referenceData: { referencetypes: referenceTypes },
+  referenceData: { referenceTypes },
   concepts,
   conceptsActions: { getConceptsRequested: getConcepts, resetConcepts },
   datasetActions: { getDatasetRequested: getDataset, resetDataset },
@@ -223,7 +223,7 @@ const DatasetDetailsPage: FC<Props> = ({
     }
 
     if (!referenceTypes) {
-      getReferenceData('referencetypes');
+      getReferenceData('referenceTypes');
     }
 
     return () => {
@@ -714,7 +714,7 @@ const DatasetDetailsPage: FC<Props> = ({
                           datasetReferenceTypes.find(
                             ({ source }) => source?.uri === uri
                           )?.referenceType?.uri
-                      )?.prefLabel
+                      )?.label
                     )}
                     value={
                       <InternalLink
@@ -740,7 +740,7 @@ const DatasetDetailsPage: FC<Props> = ({
                       referenceTypes?.find(
                         ({ uri: referenceTypesUri }) =>
                           referenceTypesUri === referenceTypeUri
-                      )?.prefLabel
+                      )?.label
                     )}
                     value={
                       <ExternalLink href={source.uri} rel='noopener noreferrer'>

@@ -6,9 +6,6 @@ import ReactPaginate from 'react-paginate';
 import withDatasets, {
   Props as DatasetsProps
 } from '../../../../../components/with-datasets';
-import withReferenceData, {
-  Props as ReferenceDataProps
-} from '../../../../../components/with-reference-data';
 
 import { Menu, Trigger } from '../../../../../components/dropdown-menu';
 import Translation from '../../../../../components/translation';
@@ -52,7 +49,6 @@ interface Props
   extends RouteComponentProps,
     DatasetsProps,
     ReportProps,
-    ReferenceDataProps,
     OrganizationProps {}
 
 const DatasetsPage: FC<Props> = ({
@@ -65,8 +61,6 @@ const DatasetsPage: FC<Props> = ({
     getPagedDatasetsRequested: getPagedDatasets,
     resetPagedDatasets
   },
-  referenceData: { themes = [] },
-  referenceDataActions: { getReferenceDataRequested: getReferenceData },
   datasetsReport,
   reportActions: { getDatasetsReportRequested: getReport },
   organization,
@@ -102,9 +96,6 @@ const DatasetsPage: FC<Props> = ({
   }, [search]);
 
   useEffect(() => {
-    if (themes.length === 0) {
-      getReferenceData('themes');
-    }
     if (datasetsReport == null) {
       getReport({});
     }
@@ -341,7 +332,6 @@ const DatasetsPage: FC<Props> = ({
 export default compose<FC>(
   memo,
   withDatasets,
-  withReferenceData,
   withReport,
   withOrganization,
   withErrorBoundary(ErrorPage)

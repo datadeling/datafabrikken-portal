@@ -17,7 +17,7 @@ export function getReferenceDataRequested(category: keyof ReferenceData) {
 
 export function getReferenceDataSucceeded(
   category: keyof ReferenceData,
-  data: any
+  data: ReferenceData
 ) {
   return {
     type: GET_REFERENCE_DATA_SUCCEEDED,
