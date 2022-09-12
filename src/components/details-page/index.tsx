@@ -3,15 +3,11 @@ import React, {
   FC,
   isValidElement,
   memo,
-  PropsWithChildren,
-  useEffect
+  PropsWithChildren
 } from 'react';
 import { compose } from 'redux';
 
 import withDataset, { Props as DatasetProps } from '../with-dataset';
-import withReferenceData, {
-  Props as ReferenceDataProps
-} from '../with-reference-data';
 
 import Translation from '../translation';
 import Root from '../root';
@@ -22,7 +18,6 @@ import SideMenu from './components/side-menu';
 import { Entity } from '../../types/enums';
 import Themes from './components/themes';
 import { Publisher, TextLanguage, Theme } from '../../types';
-import { getReferenceData } from '../../services/api/reference-data/reference-data';
 import translations from '../../services/translations';
 import ContentSection from './components/content-section';
 import MetadataQuality from './components/metadata-quality';
@@ -43,7 +38,7 @@ interface ExternalProps {
   themes: Theme[];
 }
 
-interface Props extends DatasetProps, ReferenceDataProps, ExternalProps {}
+interface Props extends DatasetProps, ExternalProps {}
 
 const publisherLabel: Record<Entity, string> = {
   [Entity.DATASET]: 'owner'
@@ -61,7 +56,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   isRestrictedData,
   isNonPublicData,
   themes,
-  referenceData: { los: losThemes, themes: euThemes },
   children
 }) => {
   const contentSections = Children.toArray(children);
@@ -77,14 +71,6 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
     title: translations.getTranslateText(child.props.title)
   }));
 
-  useEffect(() => {
-    if (!losThemes) {
-      getReferenceData('los');
-    }
-    if (!euThemes) {
-      getReferenceData('themes');
-    }
-  }, []);
   return (
     <Root>
       <SC.Banner>
@@ -136,8 +122,4 @@ const DetailsPage: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default compose<FC<ExternalProps>>(
-  memo,
-  withDataset,
-  withReferenceData
-)(DetailsPage);
+export default compose<FC<ExternalProps>>(memo, withDataset)(DetailsPage);

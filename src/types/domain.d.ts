@@ -33,6 +33,12 @@ export interface EuTheme {
   code?: string;
 }
 
+export interface ReferenceDataReferenceType {
+  uri: string;
+  label: Partial<TextLanguage>;
+  code?: string;
+}
+
 interface License {
   uri: string;
   prefLabel?: Partial<TextLanguage>;
@@ -152,12 +158,7 @@ export interface MediaTypeOrExtent {
 }
 
 export interface ReferenceData {
-  los?: LosTheme[];
-  themes?: EuTheme[];
-  referencetypes?: ReferenceType[];
-  mediatypes?: MediaType[];
-  linguisticsystem?: ReferenceType[];
-  apiservicetype?: ReferenceType[];
+  referenceTypes?: ReferenceDataReferenceType[];
 }
 
 export interface ESPage {

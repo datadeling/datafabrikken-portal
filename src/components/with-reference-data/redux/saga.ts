@@ -5,22 +5,19 @@ import * as actions from './actions';
 
 import { getReferenceData } from '../../../services/api/reference-data/reference-data';
 
-import type { ReferenceType } from '../../../types';
+import type { ReferenceData } from '../../../types';
 
 function* getReferenceDataRequested({
   payload: { category }
 }: ReturnType<typeof actions.getReferenceDataRequested>) {
   try {
-    const codes = [
-      'referencetypes',
-      'mediatypes',
-      'linguisticsystem',
-      'apiservicetype'
-    ];
+    const pathMapping = {
+      referenceTypes: 'reference-types'
+    };
 
-    const data: ReferenceType[] = yield call(
+    const data: ReferenceData = yield call(
       getReferenceData,
-      codes.includes(category) ? `codes/${category}` : category
+      pathMapping[category]
     );
 
     if (data) {
