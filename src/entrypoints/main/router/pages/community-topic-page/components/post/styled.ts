@@ -44,9 +44,16 @@ const UserInfo = styled.div`
 const Content = styled.div`
   padding-top: ${theme.spacing('S20')};
 
+  & > ol {
+    list-style: decimal;
+    padding-left: ${theme.spacing('S24')};
+    margin-bottom: ${theme.spacing('S10')};
+  }
+
   & > ul {
     list-style: disc;
     padding-left: ${theme.spacing('S24')};
+    margin-bottom: ${theme.spacing('S10')};
   }
 
   & > p {
@@ -79,6 +86,15 @@ const Content = styled.div`
 
   & a {
     text-decoration: underline;
+  }
+
+  & pre {
+    background: #f3f3f3;
+    max-height: 350px;
+    display: block;
+    overflow: auto;
+    padding: ${theme.spacing('S8')};
+    font-size: ${theme.fontSize('FS8')};
   }
 `;
 
