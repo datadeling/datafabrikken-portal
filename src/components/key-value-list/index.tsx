@@ -3,7 +3,8 @@ import React, {
   FC,
   PropsWithChildren,
   Children,
-  isValidElement
+  isValidElement,
+  ReactElement
 } from 'react';
 
 import KeyValueListItem from '../key-value-list-item';
@@ -20,11 +21,16 @@ const KeyValueList: FC<PropsWithChildren<Props>> = ({
   ...props
 }) => (
   <SC.List {...props}>
-    {Children.map(children, child =>
-      isValidElement(child) && child.type === KeyValueListItem
-        ? React.cloneElement(child, { $highlighted })
-        : null
-    )}
+    {Children.map(children, child => {
+      if (isValidElement(child) && child.type === KeyValueListItem) {
+        const item = child as ReactElement<PropsWithChildren<Props>>;
+        return React.cloneElement(item, {
+          $highlighted
+        });
+      }
+
+      return null;
+    })}
   </SC.List>
 );
 

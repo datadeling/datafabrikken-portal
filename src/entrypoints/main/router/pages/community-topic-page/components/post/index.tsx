@@ -4,6 +4,9 @@ import { compose } from 'redux';
 
 import parse from 'html-react-parser';
 
+import highLight from 'highlight.js';
+import 'highlight.js/styles/default.css';
+
 import { CommunityPost } from '../../../../../../../types';
 
 import Translation from '../../../../../../../components/translation';
@@ -31,6 +34,7 @@ interface Props extends ExternalProps {}
 const Post: FC<Props> = ({ post: { content, user, timestampISO } }) => {
   const parsePost = () => {
     const { COMMUNITY_API_HOST } = env;
+
     return parse(
       content.replaceAll(
         'src="/assets/',
@@ -49,6 +53,12 @@ const Post: FC<Props> = ({ post: { content, user, timestampISO } }) => {
               />
             );
           }
+
+          if (domNode.name === 'code' && domNode.parent.name === 'pre') {
+            const code = domNode.children[0]?.data;
+            return <code>{parse(highLight.highlightAuto(code).value)}</code>;
+          }
+
           return domNode;
         }
       }
