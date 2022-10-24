@@ -44,3 +44,9 @@ export const registerFilterSearchEvent = (
     filter_value
   });
 };
+
+export const registerTextSearchEvent = (text_value: string) => {
+  ReactGA.event('text-search', {
+    text_value
+  });
+};

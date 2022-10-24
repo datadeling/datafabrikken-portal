@@ -43,7 +43,10 @@ import translations from '../../../../../services/translations';
 import { GetDatasetsParams } from '../../../../../components/with-datasets/redux/actions';
 import { resetSearchSuggestions } from '../../../../../components/with-suggestions/redux/actions';
 import AutosuggestSearchbar from '../../../../../components/autosuggest-searchbar';
-import { registerFilterSearchEvent } from '../../../../../utils/analytics';
+import {
+  registerFilterSearchEvent,
+  registerTextSearchEvent
+} from '../../../../../utils/analytics';
 
 interface Props
   extends RouteComponentProps,
@@ -115,6 +118,9 @@ const DatasetsPage: FC<Props> = ({
       q: searchValue || null,
       page: null
     });
+    if (searchValue) {
+      registerTextSearchEvent(searchValue);
+    }
   };
 
   const searchClear = () => {
