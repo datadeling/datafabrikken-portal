@@ -15,3 +15,9 @@ export const validateEnv = (
   Object.entries(env).forEach(([key, value]) => assertIsDefined(key, value));
   return env;
 };
+
+export const cookieValue = (name: string) =>
+  document.cookie
+    .split('; ')
+    .filter(row => row.startsWith(`${name}=`))
+    .map(c => c.split('=')[1])[0];

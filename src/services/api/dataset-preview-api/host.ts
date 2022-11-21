@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import env from '../../../env';
+import { cookieValue } from '../../../utils/common';
 
 const { FDK_PORTAL_HOST, FDK_DATASET_PREVIEW_API_KEY } = env;
 
@@ -10,12 +11,22 @@ interface Props {
 }
 
 export const datasetPreviewApi = async ({ method, data }: Props) =>
+  (await axios({
+    url: `${FDK_PORTAL_HOST}/dataset/preview`,
+    headers: {
+      'X-API-KEY': FDK_DATASET_PREVIEW_API_KEY
+    },
+    withCredentials: true,
+    method: 'GET'
+  })) &&
   axios({
     url: `${FDK_PORTAL_HOST}/dataset/preview`,
     headers: {
       'Content-Type': 'application/json',
-      'X-API-KEY': FDK_DATASET_PREVIEW_API_KEY
+      'X-API-KEY': FDK_DATASET_PREVIEW_API_KEY,
+      'X-XSRF-TOKEN': cookieValue('DATASET-PREVIEW-CSRF-TOKEN')
     },
+    withCredentials: true,
     method,
     data
   }).then(r => r.data);
