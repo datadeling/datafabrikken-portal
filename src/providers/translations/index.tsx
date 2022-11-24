@@ -50,7 +50,7 @@ const TranslationsProvider: FC<PropsWithChildren<Props>> = ({
   );
 };
 
-export default compose<FC>(memo, withCookies)(TranslationsProvider);
+export default compose<FC<Props>>(memo, withCookies)(TranslationsProvider);
 export { withTranslations } from './hoc';
 export { Language } from '../../services/translations';
 export type { ServiceProps as Props } from './hoc';

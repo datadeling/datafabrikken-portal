@@ -16,8 +16,8 @@ const configuration: Configuration = {
   },
   resolve: {
     alias: {
-      'react/jsx-dev-runtime': 'react/jsx-dev-runtime.js',
-      'react/jsx-runtime': 'react/jsx-runtime.js'
+      'react/jsx-runtime.js': 'react/jsx-runtime',
+      'react/jsx-dev-runtime.js': 'react/jsx-dev-runtime'
     },
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },

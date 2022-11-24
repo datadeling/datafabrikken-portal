@@ -1,5 +1,8 @@
 import type { Configuration as WebpackConfiguration } from 'webpack';
-import type { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+import type {
+  Configuration as WebpackDevServerConfiguration,
+  Middleware
+} from 'webpack-dev-server';
 import { resolve } from 'path';
 import {
   mergeWithCustomize,
@@ -9,6 +12,7 @@ import {
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 
+import Server from 'webpack-dev-server';
 import baseConfig from './base.config';
 
 interface Configuration extends WebpackConfiguration {
@@ -26,8 +30,14 @@ const configuration: Configuration = mergeWithCustomize<Configuration>({
     host: '0.0.0.0',
     port: 3000,
     hot: true,
-    onBeforeSetupMiddleware: devServer =>
-      devServer.app.get('/config.js', (_, res) => res.status(204).send()),
+    setupMiddlewares: (middlewares: Middleware[], devServer: Server) => {
+      if (!devServer) {
+        throw new Error('webpack-dev-server is not defined');
+      }
+      devServer.app?.get('/config.js', (_, res) => res.status(204).send());
+
+      return middlewares;
+    },
     historyApiFallback: {
       rewrites: [
         { from: /^\/auth/, to: '/auth.html' },
