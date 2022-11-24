@@ -24,7 +24,7 @@ import MetadataQuality from './components/metadata-quality';
 import InternalLink from '../link-internal';
 import { PATHNAME } from '../../enums';
 
-interface ExternalProps {
+interface ExternalProps extends PropsWithChildren {
   entity: Entity;
   entityId?: string;
   title: Partial<TextLanguage>;
@@ -44,7 +44,7 @@ const publisherLabel: Record<Entity, string> = {
   [Entity.DATASET]: 'owner'
 };
 
-const DetailsPage: FC<PropsWithChildren<Props>> = ({
+const DetailsPage: FC<Props> = ({
   entity,
   entityId,
   title: pageTitle,

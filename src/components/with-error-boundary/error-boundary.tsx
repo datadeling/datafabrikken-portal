@@ -1,6 +1,6 @@
-import React, { Component, ComponentType } from 'react';
+import React, { Component, ComponentType, PropsWithChildren } from 'react';
 
-interface Props {
+interface Props extends PropsWithChildren {
   fallback?: ComponentType<any>;
   logError?: boolean;
 }
