@@ -3,7 +3,7 @@ import axios from 'axios';
 import env from '../../../env';
 import { cookieValue } from '../../../utils/common';
 
-const { FDK_PORTAL_HOST, FDK_DATASET_PREVIEW_API_KEY } = env;
+const { FDK_DATASET_PREVIEW_API_KEY } = env;
 
 interface Props {
   method: any;
@@ -12,7 +12,7 @@ interface Props {
 
 export const datasetPreviewApi = async ({ method, data }: Props) =>
   (await axios({
-    url: `${FDK_PORTAL_HOST}/dataset/preview`,
+    url: `/api/dataset/preview`,
     headers: {
       'X-API-KEY': FDK_DATASET_PREVIEW_API_KEY
     },
@@ -20,7 +20,7 @@ export const datasetPreviewApi = async ({ method, data }: Props) =>
     method: 'GET'
   })) &&
   axios({
-    url: `${FDK_PORTAL_HOST}/dataset/preview`,
+    url: `/api/dataset/preview`,
     headers: {
       'Content-Type': 'application/json',
       'X-API-KEY': FDK_DATASET_PREVIEW_API_KEY,
