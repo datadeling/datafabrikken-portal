@@ -2,7 +2,8 @@ import React, { memo, FC, useEffect } from 'react';
 
 import { compose } from 'redux';
 
-import DataGrid from 'react-data-grid';
+import ReactDataGrid from '@inovua/reactdatagrid-community';
+import '@inovua/reactdatagrid-community/index.css';
 
 import xmlFormat from 'xml-formatter';
 
@@ -47,11 +48,9 @@ const Preview: FC<Props> = ({
     } = datasetPreview;
 
     return header?.columns.map((column: string, index) => ({
-      key: `column-${index}`,
       name: column,
-      resizable: true,
-      sortable: true,
-      width:
+      header: column,
+      minWidth:
         rows.reduce(
           (length, row) =>
             row.columns[index]?.length > length
@@ -64,14 +63,14 @@ const Preview: FC<Props> = ({
 
   const getRows = (): any => {
     const {
-      table: { rows }
+      table: { header, rows }
     } = datasetPreview;
 
     return rows?.map(row =>
       row.columns.reduce(
         (result, column, index) => ({
           ...result,
-          [`column-${index}`]: column
+          [header?.columns[index]]: column
         }),
         {}
       )
@@ -122,7 +121,7 @@ const Preview: FC<Props> = ({
           </SC.Center>
         )}
         {datasetPreview?.table && !isLoadingDatasetPreview && (
-          <DataGrid columns={getColumns()} rows={getRows()} />
+          <ReactDataGrid columns={getColumns()} dataSource={getRows()} />
         )}
         {datasetPreview?.plain &&
           !datasetPreview?.table &&
