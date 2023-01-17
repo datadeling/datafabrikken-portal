@@ -58,7 +58,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
-          build-args:  |
+          build-args: |
             GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
       - name: Apply Helm template
@@ -77,9 +77,14 @@ jobs:
         with:
           credentials_json: ${{ secrets.DATAFABRIKKEN_DEV_AUTODEPLOY }}
 
+      - name: Get credentials
+        uses: google-github-actions/get-gke-credentials@v1
+        with:
+          cluster_name: datafabrikken-dev
+          location: europe-north1-a
+
       - name: Deploy to GCP
         run: |
-          gcloud container clusters get-credentials datafabrikken-dev --region europe-north1-a --project datafabrikken-dev
           kubectl apply -f ./kubectlapply.yaml --force
           if ! kubectl --namespace=staging rollout status deployment datafabrikken-portal; then
             kubectl --namespace=staging rollout undo deployment datafabrikken-portal
