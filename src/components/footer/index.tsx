@@ -83,6 +83,11 @@ const Footer: FC<Props> = () => (
                 <Translation id='footer.linkSection.links.news' />
               </SC.PlainLink>
             </li>
+            <li>
+              <SC.PlainLink href='https://uustatus.no/nn/erklaringer/publisert/df126c4a-7ba8-4faa-aa84-cfa781659b47'>
+                <Translation id='footer.linkSection.links.accessibility' />
+              </SC.PlainLink>
+            </li>
           </SC.LinkList>
         </div>
 
