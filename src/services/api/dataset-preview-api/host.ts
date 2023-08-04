@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 import env from '../../../env';
-import { cookieValue } from '../../../utils/common';
 
 const { FDK_DATASET_PREVIEW_API_KEY } = env;
 
@@ -10,26 +9,28 @@ interface Props {
   data?: any;
 }
 
-export const datasetPreviewApi = async ({ method, data }: Props) =>
-  (await axios({
-    url: `/api/dataset/preview`,
+export const datasetPreviewApi = async ({ method, data }: Props) => {
+  const csrf = await axios({
+    url: `/api/dataset/preview/csrf`,
     headers: {
       'X-API-KEY': FDK_DATASET_PREVIEW_API_KEY
     },
     withCredentials: true,
     method: 'GET'
-  })) &&
-  axios({
+  }).then((r: { data: any }) => r.data);
+
+  return axios({
     url: `/api/dataset/preview`,
     headers: {
       'Content-Type': 'application/json',
       'X-API-KEY': FDK_DATASET_PREVIEW_API_KEY,
-      'X-XSRF-TOKEN': cookieValue('DATASET-PREVIEW-CSRF-TOKEN')
+      'X-XSRF-TOKEN': csrf.token
     },
     withCredentials: true,
     method,
     data
-  }).then(r => r.data);
+  }).then((r: { data: any }) => r.data);
+};
 
 export const datasetPreviewApiPost = (data: any) =>
   datasetPreviewApi({ method: 'POST', data });
