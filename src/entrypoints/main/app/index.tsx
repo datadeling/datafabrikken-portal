@@ -13,12 +13,16 @@ import store from '../redux/store';
 
 import AuthProvider from '../../../providers/auth';
 import { initAnalytics } from '../../../utils/analytics';
+import AnalyticsMonsido from '../../../components/analytics-monsido';
+import AnalyticsSiteImprove from '../../../components/analytics-siteimprove';
 
 initAnalytics();
 
 const App: FC = () => (
   <ThemeProvider theme={theme}>
     <GlobalStyles />
+    <AnalyticsSiteImprove />
+    <AnalyticsMonsido />
     <AuthProvider>
       <CookiesProvider>
         <TranslationsProvider>
