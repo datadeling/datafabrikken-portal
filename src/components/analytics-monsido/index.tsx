@@ -10,9 +10,18 @@ const AnalyticsMonsido: FC = () => {
 
     scriptInline.type = 'text/javascript';
     scriptInline.innerHTML = `
-            window._monsido = window._monsido || {
-              token: '2lrkUeAAHPLoQul74vboSQ',
-              heatmap: { enabled: true }
+            window._monsido = window._monsido || { 
+              token: "2lrkUeAAHPLoQul74vboSQ", 
+              statistics: { 
+                enabled: true, 
+                cookieLessTracking: false, documentTracking: { 
+                  enabled: false, 
+                  documentCls: "monsido_download", 
+                  documentIgnoreCls: "monsido_ignore_download", 
+                  documentExt: ["pdf","doc","ppt","docx","pptx"], 
+                }, 
+              }, 
+              heatmap: { enabled: true, }, 
             };
           `;
 
